@@ -533,14 +533,24 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-06 00:10 JST";
-const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 的区域级摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回影响状态；官方图例对应“Cancelled or delayed for 30 minutes or more, or stopped”。路线链路可行，但出发日必须按具体线路、车次和替代交通再查。`;
-const jrEastLiveNote = "本次核验 2026-07-06 00:02 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏仍出现 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
+const checkedAt = "2026-07-06 01:24 JST";
+const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为服务时间外；同次地图分段 JSON 全部为绿色“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
+const jrEastLiveNote = "本次核验 2026-07-06 01:23 JST：JR East 页面显示 Shinkansen 大类 Normal operation，东北新干线 Normal operation；同页服务暂停栏仍列出 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
+
+const transportAudit = {
+  title: "官方交通核验",
+  checked: checkedAt,
+  items: [
+    "JR 北海道：区域摘要此刻为服务时间外；地图分段文件显示无取消/30 分钟以上延误信息。",
+    "JR East：新干线大类正常，东北新干线正常；但跨海区间仍出现个别 Hayabusa 停运记录。",
+    "结论：基地链路成立；真正风险在旭川->钏路、钏路->函馆、函馆->新函馆北斗->新青森这三段。"
+  ]
+};
 
 const coreTransfers = [
   {
     id: "transfer-arrival",
-    icon: "train",
+    icon: "plane",
     mode: "JR Airport",
     from: "新千岁 CTS",
     to: "札幌基地",
@@ -548,7 +558,7 @@ const coreTransfers = [
     status: "需当天复查",
     verdict: "落地后只进城，不再叠加远支线。",
     steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
-    note: "JR 北海道最新区域级摘要显示有运行影响信息；落地当天按新千岁机场-札幌具体列车再查。",
+    note: "JR 北海道当前区域摘要为服务时间外；落地当天按新千岁机场-札幌具体列车再查。",
     sources: ["operation", "timetable"]
   },
   {
@@ -785,7 +795,7 @@ const outline = [
         summary: "这不是可有可无的景点城市，而是第一段路线的交通与生活枢纽。",
         sections: sections(
           ["札幌市负责让整段北海道开局稳定。", "它是机场、住宿、餐饮和西北海道支线之间的缓冲点。"],
-          ["新千岁机场至札幌有 JR Airport 系统；但最新 JR 北海道区域级摘要显示有运行影响信息，落地当天按 Airport/函馆千岁线具体列车再查。", "札幌出发到旭川、函馆、钏路方向都有特急系统，但长线必须预留座位和换乘时间。"],
+          ["新千岁机场至札幌有 JR Airport 系统；但本次 JR 北海道区域摘要处于服务时间外，落地当天按 Airport/函馆千岁线具体列车再查。", "札幌出发到旭川、函馆、钏路方向都有特急系统，但长线必须预留座位和换乘时间。"],
           ["落地日只做札幌市内，不要落地当天上神威岬。"]
         ),
         sources: ["operation", "reservation"],
@@ -843,7 +853,7 @@ const outline = [
         summary: "札幌最稳的短支线。港口、运河、旧仓库都容易理解。",
         sections: sections(
           ["小樽适合低风险地获得一个清楚的港口城市画面。"],
-          ["札幌-小樽属于 JR 函馆线方向短程移动；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按札幌区域和函馆线车次再查。", "它是可选城市，不影响主线南下。"],
+          ["札幌-小樽属于 JR 函馆线方向短程移动；本次 JR 北海道区域摘要处于服务时间外，出发前按札幌区域和函馆线车次再查。", "它是可选城市，不影响主线南下。"],
           ["体力一般时优先小樽，不要硬上神威岬。"]
         ),
         sources: ["operation", "timetable"],
@@ -1074,7 +1084,7 @@ const outline = [
     summary: "第二基地。它让美瑛、富良野变成轻一点的支线，但不能把带广误写成 JR 直通。",
     sections: sections(
       ["旭川的意义是让中北海道停住，而不是从札幌硬冲花田。"],
-      ["札幌-旭川由特急 Kamui / Lilac 连接，官方列车指南确认该主干线存在且为全席指定。", "旭川-美瑛-富良野走富良野线；最新 JR 北海道区域级摘要显示有运行影响信息，花田日出发前必须按富良野线具体班次再查。", "旭川去钏路没有顺直 JR，JR-only 通常要折返札幌/南千岁再接特急 Ozora，属于长移动日。"],
+      ["札幌-旭川由特急 Kamui / Lilac 连接，官方列车指南确认该主干线存在且为全席指定。", "旭川-美瑛-富良野走富良野线；本次 JR 北海道区域摘要处于服务时间外，花田日出发前必须按富良野线具体班次再查。", "旭川去钏路没有顺直 JR，JR-only 通常要折返札幌/南千岁再接特急 Ozora，属于长移动日。"],
       ["美瑛、富良野可选；带广不要作为旭川侧轻支线。"],
       [{ title: "下一基地", items: ["旭川 -> 钏路：可用 JR 拼接，但不是顺路短线；建议定义为移动日。"] }]
     ),
@@ -1090,7 +1100,7 @@ const outline = [
         summary: "中北海道的住宿、吃饭、换乘点。",
         sections: sections(
           ["旭川让美瑛和富良野不再变成从札幌硬冲。"],
-          ["札幌-旭川主干线作为 JR 特急系统成立；但最新 JR 北海道区域级摘要显示有运行影响信息，换基地当天按 Kamui / Lilac 具体车次再查。"],
+          ["札幌-旭川主干线作为 JR 特急系统成立；但本次 JR 北海道区域摘要处于服务时间外，换基地当天按 Kamui / Lilac 具体车次再查。"],
           ["换基地日留在旭川，不要当晚再冲富良野。"]
         ),
         sources: ["operation", "asahikawa"],
@@ -1148,7 +1158,7 @@ const outline = [
         summary: "看丘陵农田、拼布色块和缓坡道路。",
         sections: sections(
           ["美瑛看的是地貌结构：路、坡、田块、树列和远山。"],
-          ["旭川-美瑛属于富良野线方向；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "美瑛内部移动不全靠 JR，公交/包车/租车/骑行要提前决定。"],
+          ["旭川-美瑛属于富良野线方向；本次 JR 北海道区域摘要处于服务时间外，出发前按富良野线具体班次再查。", "美瑛内部移动不全靠 JR，公交/包车/租车/骑行要提前决定。"],
           ["晴天价值高；天气普通就做短线。"]
         ),
         sources: ["operation", "timetable", "bieiJnto"],
@@ -1220,7 +1230,7 @@ const outline = [
         summary: "7月主视觉。花田、缓坡和远山构成北海道夏天。",
         sections: sections(
           ["富良野是季节性画面最强的一站。"],
-          ["旭川-富良野走富良野线；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
+          ["旭川-富良野走富良野线；本次 JR 北海道区域摘要处于服务时间外，出发前按富良野线具体班次再查。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
           ["可和美瑛同日，但不要接带广。"]
         ),
         sources: ["operation", "furanoClosed", "jrFuranoBiei"],
@@ -1382,7 +1392,7 @@ const outline = [
     summary: "第三基地。湿原、阿寒湖、海雾、根室最东端都从这里展开。",
     sections: sections(
       ["钏路让东北海道真正进入路线。"],
-      ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；最新 JR 北海道区域级摘要显示有运行影响信息，长移动日必须按 Ozora / 换乘站车次再查。"],
+      ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；本次 JR 北海道区域摘要处于服务时间外，长移动日必须按 Ozora / 换乘站车次再查。"],
       ["钏路必须住下来。阿寒湖、根室、厚岸和湿原都不适合从别的基地当天硬刷。"],
       [{ title: "下一基地", items: ["钏路 -> 函馆：JR 可拼接，但极长，通常经札幌/南千岁再接 Hokuto。最好拆分或考虑飞行。"] }]
     ),
@@ -1398,7 +1408,7 @@ const outline = [
         summary: "东北海道住宿和支线起点。",
         sections: sections(
           ["它承接湿原、厚岸、根室。"],
-          ["钏路站是根室线/花咲线一侧的关键节点；最新 JR 北海道区域级摘要显示有运行影响信息，东北海道支线当天按具体线路再查。"],
+          ["钏路站是根室线/花咲线一侧的关键节点；本次 JR 北海道区域摘要处于服务时间外，东北海道支线当天按具体线路再查。"],
           ["抵达当天只做市内。"]
         ),
         sources: ["operation", "obihiro"],
@@ -1688,7 +1698,7 @@ const outline = [
         summary: "如果要看十胜，从钏路侧或顺路移动时更合理。",
         sections: sections(
           ["带广补上十胜平原的开阔感。"],
-          ["钏路-带广在札幌-带广-钏路特急体系上；官方列车指南确认 Ozora 连接札幌-钏路，Tokachi 连接札幌-带广。", "最新 JR 北海道区域级摘要显示有运行影响信息，带广/钏路线出发前按特急和石胜线/根室线状态再查。"],
+          ["钏路-带广在札幌-带广-钏路特急体系上；官方列车指南确认 Ozora 连接札幌-钏路，Tokachi 连接札幌-带广。", "本次 JR 北海道区域摘要处于服务时间外，带广/钏路线出发前按特急和石胜线/根室线状态再查。"],
           ["若已经很累，就跳过。它不是主线必要点。"]
         ),
         sources: ["operation", "obihiro"],
@@ -1734,7 +1744,7 @@ const outline = [
     summary: "第四基地。北海道结束、本州开始前的停顿。",
     sections: sections(
       ["函馆的价值是港口城市和跨海铁路节点。"],
-      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "钏路-函馆 JR-only 很长，通常要经札幌/南千岁再接 Hokuto；最新 JR 北海道区域级摘要显示有运行影响信息，因此它更不能当观光日。"],
+      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "钏路-函馆 JR-only 很长，通常要经札幌/南千岁再接 Hokuto；本次 JR 北海道区域摘要处于服务时间外，因此它更不能当观光日。"],
       ["从钏路长移动到达后至少住一晚。"],
       [{ title: "下一基地", items: ["函馆 -> 仙台：先 Hakodate Liner 到新函馆北斗，再新干线穿青函隧道到新青森，继续东北新干线南下。"] }]
     ),
@@ -1750,7 +1760,7 @@ const outline = [
         summary: "北海道南端的住宿和跨海前缓冲城市。",
         sections: sections(
           ["函馆有港口、坡道、夜景和西式建筑，值得停住。"],
-          ["函馆站本身不是新干线站；跨海前要先去新函馆北斗。", "最新 JR 北海道区域级摘要显示有运行影响信息，跨海前必须按 Hakodate Liner、Hokuto 和北海道新干线具体车次再查。"],
+          ["函馆站本身不是新干线站；跨海前要先去新函馆北斗。", "本次 JR 北海道区域摘要处于服务时间外，跨海前必须按 Hakodate Liner、Hokuto 和北海道新干线具体车次再查。"],
           ["长移动后不要继续南下，先睡一晚。"]
         ),
         sources: ["operation", "shinkansen"],
@@ -4097,6 +4107,7 @@ function renderReviewLinks(item) {
 
 const outlineTree = document.querySelector("#outlineTree");
 const filterButtons = document.querySelectorAll("[data-filter]");
+const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
 const optimizationList = document.querySelector("#optimizationList");
 const modal = document.querySelector("#detailModal");
@@ -4234,6 +4245,16 @@ function icon(name) {
   return `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
 }
 
+function renderTransportAudit() {
+  if (!transportAuditElement) return;
+  transportAuditElement.innerHTML = `
+    <div class="audit-kicker">${escapeHtml(transportAudit.title)} / ${escapeHtml(transportAudit.checked)}</div>
+    <ul>
+      ${transportAudit.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+    </ul>
+  `;
+}
+
 function renderTransfers() {
   transferList.innerHTML = coreTransfers
     .map(
@@ -4243,7 +4264,11 @@ function renderTransfers() {
             <span class="transfer-icon" aria-hidden="true">${icon(transfer.icon || "route")}</span>
             <div class="transfer-route">
               <strong>${escapeHtml(transfer.from)} -> ${escapeHtml(transfer.to)}</strong>
-              <small>${escapeHtml(transfer.mode)} / ${escapeHtml(transfer.status)} / ${escapeHtml(transfer.time)}</small>
+              <span class="transfer-meta">
+                <span>${escapeHtml(transfer.mode)}</span>
+                <span>${escapeHtml(transfer.time)}</span>
+                <span>${escapeHtml(transfer.status)}</span>
+              </span>
             </div>
             <span class="transfer-disclosure" aria-hidden="true">${icon("plus")}</span>
           </summary>
@@ -4326,7 +4351,7 @@ function renderNode(item, level = 1) {
             : `<span class="toggle-placeholder" aria-hidden="true"></span>`
         }
         <button class="name-button" type="button" data-detail-id="${item.id}">
-          <span class="row-label">${levelLabels[level]}</span>
+          <span class="row-label">${icon(typeIconName(item))}<span>${levelLabels[level]}</span></span>
           <strong>${item.hub ? '<span class="hub-symbol" aria-label="枢纽城市">◎</span>' : ""}${escapeHtml(item.title)}</strong>
           <small>${escapeHtml(item.meta)}</small>
         </button>
@@ -4334,6 +4359,13 @@ function renderNode(item, level = 1) {
       ${childMarkup}
     </article>
   `;
+}
+
+function typeIconName(item) {
+  if (item.hub) return "hub";
+  if (item.type === "base") return "home";
+  if (item.type === "city") return "city";
+  return "pin";
 }
 
 function renderOutline() {
@@ -4417,6 +4449,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+renderTransportAudit();
 renderTransfers();
 renderOptimizations();
 updateFilterButtons();

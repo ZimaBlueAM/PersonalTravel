@@ -190,6 +190,47 @@ img {
   display: grid;
 }
 
+.transport-audit {
+  display: grid;
+  gap: 7px;
+  border-bottom: 1px solid var(--soft-line);
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #fbfcfa 0%, #f6f8f5 100%);
+}
+
+.audit-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.transport-audit ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.transport-audit li {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 6px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.transport-audit li::before {
+  content: "";
+  align-self: start;
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 999px;
+  background: var(--forest);
+}
+
 .transfer-card,
 .optimization-card {
   border-bottom: 1px solid var(--soft-line);
@@ -260,10 +301,36 @@ img {
   line-height: 1.25;
 }
 
-.transfer-route small {
+.transfer-route small,
+.transfer-meta {
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
+}
+
+.transfer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+.transfer-meta span {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 23px;
+  align-items: center;
+  border: 1px solid var(--soft-line);
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #fafbf8;
+  line-height: 1.25;
+}
+
+.is-caution .transfer-meta span:last-child {
+  border-color: #edd1bc;
+  background: var(--amber-soft);
+  color: var(--amber);
 }
 
 .transfer-disclosure {
@@ -362,7 +429,7 @@ img {
 
 .focus-strip {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   padding: 10px 14px;
@@ -379,12 +446,12 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 5px;
   flex: 0 0 auto;
   min-height: 44px;
   border: 1px solid var(--soft-line);
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 8px;
   background: var(--paper);
   color: var(--text);
   cursor: pointer;
@@ -467,16 +534,26 @@ img {
 }
 
 .row-label {
+  display: inline-flex;
   grid-row: span 2;
   align-self: center;
-  min-width: 46px;
+  min-width: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   border: 1px solid var(--soft-line);
   border-radius: 7px;
-  padding: 3px 6px;
+  padding: 3px 6px 3px 5px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
   text-align: center;
+}
+
+.row-label svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
 }
 
 .name-button strong,

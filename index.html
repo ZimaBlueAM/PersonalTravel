@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="JR路线大纲" />
     <title>北海道到东京｜JR路线大纲</title>
-    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%231f4b3f"/><path d="M18 18h28M18 32h28M18 46h28" stroke="white" stroke-width="6" stroke-linecap="round"/></svg>' />
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23f7f7f5"/><path d="M18 18h28M18 32h22M18 46h16" stroke="%2324614f" stroke-width="6" stroke-linecap="round"/><circle cx="47" cy="45" r="7" fill="%23245c92"/></svg>' />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -26,6 +26,10 @@
       <symbol id="i-route" viewBox="0 0 24 24">
         <path d="M6 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM18 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" fill="none" stroke="currentColor" stroke-width="2" />
         <path d="M8.4 14.7c3-1.2 5.2-2.8 6.8-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-plane" viewBox="0 0 24 24">
+        <path d="M21 16 3 21l4-7-4-7 18 5v4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        <path d="M7 14h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </symbol>
       <symbol id="i-train" viewBox="0 0 24 24">
         <path d="M7 3h10a3 3 0 0 1 3 3v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a3 3 0 0 1 3-3Z" fill="none" stroke="currentColor" stroke-width="2" />
@@ -63,6 +67,21 @@
       <symbol id="i-compass" viewBox="0 0 24 24">
         <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" fill="none" stroke="currentColor" stroke-width="2" />
         <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="m3 11 9-8 9 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M5 10v10h14V10M9 20v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-city" viewBox="0 0 24 24">
+        <path d="M4 21V7h6v14M14 21V3h6v18M2 21h20M7 10h.01M7 14h.01M7 18h.01M17 6h.01M17 10h.01M17 14h.01M17 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        <path d="M12 10.5h.01" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-hub" viewBox="0 0 24 24">
+        <path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
       </symbol>
       <symbol id="i-cup" viewBox="0 0 24 24">
         <path d="M5 8h11v5a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z" fill="none" stroke="currentColor" stroke-width="2" />
@@ -104,6 +123,7 @@
             <p>6 段核心移动 / 点开看换乘</p>
           </div>
         </div>
+        <div class="transport-audit" id="transportAudit"></div>
         <div class="transfer-list" id="transferList"></div>
       </section>
 
