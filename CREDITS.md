@@ -36,6 +36,11 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Lake Akan: https://commons.wikimedia.org/wiki/File:Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg
 - Lake Akan promenade: https://commons.wikimedia.org/wiki/File:Promenade_of_lake_akan_2017.jpg
 - Akanko Ainu Kotan: https://commons.wikimedia.org/wiki/File:Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg
+- Kushiro Marsh / Hosooka Observatory: https://commons.wikimedia.org/wiki/File:Kushirositsugen_Hosooka_Tenboudai01.jpg
+- Nusamai Bridge twilight: https://commons.wikimedia.org/wiki/File:Nusamai-bridge-Magictime.JPG
+- Kushiro Shitsugen Norokko train: https://commons.wikimedia.org/wiki/File:JRH-Kushiro_Shitsugen_Norokko.jpg
+- Hanasaki Line KiHa 54: https://commons.wikimedia.org/wiki/File:Hanasaki-Line-Kiha-54-507.jpg
+- Akkeshi Gourmet Park Conchiglie: https://commons.wikimedia.org/wiki/File:Roadside_Station_Akkeshi_Gourmet_Park.jpg
 - Odori Park / Sapporo TV Tower: https://commons.wikimedia.org/wiki/File:Odori_park_at_Sapporo_TV_tower.jpg
 - Tanukikoji Shopping Arcade: https://commons.wikimedia.org/wiki/File:Tanukikoji_01.jpg
 - Asahikawa Heiwa Street Shopping Park: https://commons.wikimedia.org/wiki/File:Asahikawa_city_Heiwa_street_shopping_park.jpg

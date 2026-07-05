@@ -11,6 +11,12 @@ const placeImages = {
   lakeAkan: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg/1280px-Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg",
   lakeAkanPromenade: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Promenade_of_lake_akan_2017.jpg/1280px-Promenade_of_lake_akan_2017.jpg",
   ainuKotan: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg/1280px-Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg",
+  kushiroMarsh: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Kushirositsugen_Hosooka_Tenboudai01.jpg/1280px-Kushirositsugen_Hosooka_Tenboudai01.jpg",
+  nusamaiTwilight: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Nusamai-bridge-Magictime.JPG/1280px-Nusamai-bridge-Magictime.JPG",
+  kushiroNorokko: "https://upload.wikimedia.org/wikipedia/commons/0/04/JRH-Kushiro_Shitsugen_Norokko.jpg",
+  hanasakiLine: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hanasaki-Line-Kiha-54-507.jpg/1280px-Hanasaki-Line-Kiha-54-507.jpg",
+  akkeshiConchiglie: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Roadside_Station_Akkeshi_Gourmet_Park.jpg/1280px-Roadside_Station_Akkeshi_Gourmet_Park.jpg",
+  akkeshiBay: img("akkeshi"),
   bieiPatchwork: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/140724_Biei_Hokkaido_Japan01s8.jpg/1280px-140724_Biei_Hokkaido_Japan01s8.jpg",
   bieiBluePond: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Hokkaido_-_Biei%2C_blue_pond_%289962205026%29.jpg/1280px-Hokkaido_-_Biei%2C_blue_pond_%289962205026%29.jpg",
   shikisai: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/140726_Shikisai-no-oka_Biei_Hokkaido_Japan01n.jpg/1280px-140726_Shikisai-no-oka_Biei_Hokkaido_Japan01n.jpg",
@@ -245,9 +251,25 @@ const sourceLinks = {
     label: "JR Hokkaido: Kushiro Shitsugen Norokko Train",
     url: "https://www.jrhokkaido.co.jp/global/english/travel/tour-train/tour-train03.html"
   },
+  jrNorokkoGuide: {
+    label: "JR Hokkaido Train Guide: Norokko reserved seats",
+    url: "https://www.jrhokkaido.co.jp/global/english/train/guide/norokkko.html"
+  },
   kushiroNorokkoHokkaido: {
     label: "Hokkaido Love: Kushiro Shitsugen Norokko Train",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10126.html"
+  },
+  kushiroShitsugenAccess: {
+    label: "National Parks of Japan: Kushiro Shitsugen access",
+    url: "https://www.japan.travel/national-parks/parks/kushiroshitsugen/how-to-get-there/"
+  },
+  kushiroMarshSummary: {
+    label: "Kushiro official guide: wetlands access summary",
+    url: "https://en.kushiro-lakeakan.com/overview/20589/"
+  },
+  akanBusWetland: {
+    label: "Akan Bus: Kushiro Wetland access",
+    url: "https://www.akanbus.co.jp/east-hokkaido-navi/en-US/featured/article-1/index.html"
   },
   kushiroRobata: {
     label: "Hokkaido Love: Kushiro robata-yaki",
@@ -269,17 +291,37 @@ const sourceLinks = {
     label: "Akkeshi model courses",
     url: "https://akkeshi.shop/en/modelcourse/"
   },
+  akkeshiConchiglie: {
+    label: "Akkeshi Gourmet Park Conchiglie",
+    url: "https://akkeshi.shop/en/spot/single-spot9/"
+  },
   akkeshiOysters: {
     label: "Kushiro official guide: Akkeshi oysters",
     url: "https://en.kushiro-lakeakan.com/sightseeing_around/4403/"
+  },
+  hokkaidoHanasakiPlan: {
+    label: "Hokkaido Love: Hanasaki Line Kushiro-Nemuro plan",
+    url: "https://www.visit-hokkaido.jp/en/plan/detail_18.html"
   },
   nosappu: {
     label: "JNTO: Cape Nosappu",
     url: "https://www.japan.travel/en/spot/2146/"
   },
+  hanasakiOfficial: {
+    label: "Official Hanasaki Line site",
+    url: "https://www.hanasaki-line.com/en/"
+  },
+  visitNemuroHanasaki: {
+    label: "Visit Nemuro: riding the Hanasaki Line",
+    url: "https://www.visitnemurojapan.com/en/thingstodo/1002/"
+  },
   nemuroOfficialFaq: {
     label: "Visit Nemuro Japan: FAQ / transportation",
     url: "https://www.visitnemurojapan.com/en/faq/"
+  },
+  nemuroKotsu: {
+    label: "Nemuro Kotsu: Cape Nosappu bus",
+    url: "https://uu-nippon.com/hokkaido/corporate/nemurokotsu.shtml"
   },
   nemuroTourism: {
     label: "Nemuro tourism guide",
@@ -1335,7 +1377,7 @@ const outline = [
     id: "base-kushiro",
     title: "钏路基地",
     meta: "东北海道核心 / 建议2晚",
-    image: img("kushiro"),
+    image: placeImages.kushiroMarsh,
     tags: ["基地", "东北海道", "长线慎排"],
     summary: "第三基地。湿原、阿寒湖、海雾、根室最东端都从这里展开。",
     sections: sections(
@@ -1351,7 +1393,7 @@ const outline = [
         hub: true,
         title: "钏路市",
         meta: "枢纽城市 / 本基地",
-        image: img("kushiro"),
+        image: placeImages.nusamaiTwilight,
         tags: ["枢纽城市", "本基地"],
         summary: "东北海道住宿和支线起点。",
         sections: sections(
@@ -1365,47 +1407,49 @@ const outline = [
             id: "spot-kushiro-marsh",
             title: "钏路湿原",
             meta: "可选 / 曲流湿地",
-            image: img("kushiro"),
+            image: placeImages.kushiroMarsh,
             tags: ["可选子目的地", "核心"],
             summary: "低平湿地和曲流河道，是钏路最重要的自然结构。",
             sections: sections(
-              ["这里看的是东北海道的空间尺度。"],
-              ["展望点末端交通要查，不是全部靠 JR。"],
-              ["不要和根室同日。"]
-            )
+              ["这里看的是东北海道的空间尺度：低平湿地、曲流、芦苇、远山和开阔天空。"],
+              ["国家公园官方写明公共交通有限；Akan Bus 给出的例子是钏路站坐鹤居线到湿原展望台约 40 分钟，JR 钏网线可到钏路湿原站但只解决一部分接近。"],
+              ["湿原和根室都很吃时间，不要同日。选一个展望方向或一趟 Norokko 就够。"]
+            ),
+            sources: ["kushiroShitsugenAccess", "kushiroMarshSummary", "akanBusWetland"]
           }),
           spot({
             id: "spot-nusamai",
             title: "幣舞桥与炉端",
             meta: "可选 / 傍晚",
-            image: img("kushiro"),
+            image: placeImages.nusamaiTwilight,
             tags: ["可选子目的地", "轻松"],
             summary: "用港口、桥和晚饭收住节奏。",
             sections: sections(
               ["这是钏路市内最轻的收尾。"],
               ["不需要长交通。"],
               ["长移动日后很适合。"]
-            )
+            ),
+            sources: ["kushiro", "mooRobata", "kushiroRobataOfficial"]
           }),
           spot({
             id: "spot-kushiro-norokko",
             title: "钏路湿原 Norokko 观光列车",
             meta: "可选 / 季节列车",
-            image: img("kushiro"),
+            image: placeImages.kushiroNorokko,
             tags: ["可选子目的地", "观光列车", "湿原"],
             summary: "用慢车看湿原，把交通本身变成体验。",
             sections: sections(
               ["适合不想折腾末端交通、又想看湿原氛围的人。"],
-              ["2026 年 JR 北海道标注为 4-10 月季节运行；席位规则要提前确认。"],
+              ["2026 年 JR 北海道标注为 4-10 月季节运行；列车指南写明 Kushiro Shitsugen Norokko 全席指定，没有指定席券不能乘车。"],
               ["它不能覆盖所有展望点，但能降低交通压力。"]
             ),
-            sources: ["kushiroNorokko", "kushiroNorokkoHokkaido"]
+            sources: ["kushiroNorokko", "jrNorokkoGuide", "kushiroNorokkoHokkaido"]
           }),
           spot({
             id: "spot-moo-robata",
             title: "MOO 岸壁炉端",
             meta: "可选 / 傍晚吃饭",
-            image: img("kushiro"),
+            image: placeImages.nusamaiTwilight,
             tags: ["可选子目的地", "炉端", "低体力"],
             summary: "长移动日后的理想收尾：港口边、炭火、海鲜。",
             sections: sections(
@@ -1523,55 +1567,57 @@ const outline = [
         id: "city-akkeshi",
         title: "厚岸",
         meta: "可选城市 / 花咲线方向",
-        image: img("akkeshi"),
+        image: placeImages.akkeshiBay,
         tags: ["可选城市", "海雾海岸"],
         summary: "比根室轻一点的东海岸选择。",
         sections: sections(
-          ["厚岸适合看海雾、海湾和渔业生活感。"],
-          ["钏路-厚岸在花咲线/根室线方向；最新 JR 北海道区域级摘要显示有运行影响信息，出发和回程必须按具体列车提前定。", "班次不密，不能临时赌。"],
+          ["厚岸适合看海雾、海湾和渔业生活感；它比根室轻，但仍然有东海岸边界感。"],
+          ["钏路-厚岸在花咲线/根室线方向；Hokkaido Love 的花咲线计划也把厚岸作为钏路-根室之间的牡蛎海岸停点。", "班次不密，出发和回程必须按具体列车提前定。"],
           ["不想跑根室那么重时，厚岸是更稳的海岸日。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "hokkaidoHanasakiPlan", "akkeshiOysters"],
         children: [
           spot({
             id: "spot-aikappu",
             title: "爱冠岬",
             meta: "可选 / 岬角海湾",
-            image: img("akkeshi"),
+            image: placeImages.akkeshiBay,
             tags: ["可选子目的地", "海岸"],
             summary: "看海湾、岬角和雾气。",
             sections: sections(
-              ["它是厚岸最明确的地形点。"],
-              ["厚岸站后末端交通要查。"],
-              ["适合半日海岸线。"]
-            )
+              ["它是厚岸最明确的地形点，适合把海湾、岬角和低能见度海岸放在同一组理解。"],
+              ["厚岸站后末端交通要查；如果天气差或接驳不顺，把重点转到 Conchiglie 和海湾即可。"],
+              ["适合半日海岸线，不要把它做成根室同等重量。"]
+            ),
+            sources: ["akkeshiGuide", "akkeshiModel"]
           }),
           spot({
             id: "spot-akkeshi-bay",
             title: "厚岸湾",
             meta: "可选 / 渔业生活",
-            image: img("akkeshi"),
+            image: placeImages.akkeshiBay,
             tags: ["可选子目的地", "生活感"],
             summary: "低能见度海岸和渔业生活感。",
             sections: sections(
-              ["它更像环境体验，不是打卡点。"],
-              ["与爱冠岬同日即可。"],
-              ["低体力时只看湾和吃饭。"]
-            )
+              ["它更像环境体验，不是打卡点：海湾、渔港、低云和生活密度构成厚岸的味道。"],
+              ["与爱冠岬或 Conchiglie 同日即可。"],
+              ["低体力时只看湾和吃饭，保留回钏路的确定性。"]
+            ),
+            sources: ["akkeshiGuide", "akkeshiConchiglie", "akkeshiModel"]
           }),
           spot({
             id: "spot-akkeshi-oysters",
             title: "Conchiglie / 厚岸牡蛎",
             meta: "可选 / 午饭",
-            image: img("akkeshi"),
+            image: placeImages.akkeshiConchiglie,
             tags: ["可选子目的地", "牡蛎", "餐饮"],
             summary: "厚岸如果只留一个生活体验，就是吃牡蛎和看海湾。",
             sections: sections(
-              ["道之站 Conchiglie 与牡蛎料理是厚岸最明确的吃饭目标。"],
-              ["适合把厚岸做成比根室轻的半日到一日海岸线。"],
+              ["道之站 Conchiglie 与牡蛎料理是厚岸最明确的吃饭目标；官方页面写明这里有普通餐厅、炭火烤餐厅、土产和观光服务。"],
+              ["Kushiro 官方介绍厚岸牡蛎为日本少见的一年四季都能吃到的牡蛎，海湾和牡蛎本身就是目的地价值。"],
               ["回程花咲线班次必须先锁住，再决定吃饭时间。"]
             ),
-            sources: ["akkeshiOysters", "akkeshiModel", "akkeshiGuide"]
+            sources: ["akkeshiOysters", "akkeshiConchiglie", "akkeshiModel", "akkeshiGuide"]
           })
         ]
       }),
@@ -1583,11 +1629,11 @@ const outline = [
         tags: ["可选城市", "最东端", "长日"],
         summary: "价值是地理极限：日本本土最东端的边界感。",
         sections: sections(
-          ["这条线的体验包括长时间坐车和最东端本身。"],
-          ["钏路-根室走花咲线方向；最新 JR 北海道区域级摘要显示有运行影响信息，重线出发前必须按根室方向具体列车再查。", "纳沙布岬不是 JR 直达，根室站后还要巴士或出租。"],
+          ["这条线的体验包括长时间坐车、花咲线车窗和最东端本身。"],
+          ["JNTO 写明钏路站到根室站约 2 小时 40 分钟，根室站到纳沙布岬再坐约 45 分钟巴士；Nemuro Kotsu 写 Nosappu Line 到 Nosappu Misaki 约 47 分钟后步行约 2 分钟。", "纳沙布岬不是 JR 直达，根室站后还要巴士或出租。"],
           ["当天只做这一件大事。天气差时降级到厚岸或钏路市内。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "nosappu", "nemuroKotsu", "visitNemuroHanasaki"],
         children: [
           spot({
             id: "spot-nosappu",
@@ -1597,23 +1643,25 @@ const outline = [
             tags: ["可选子目的地", "核心"],
             summary: "灯塔、海风、边界感构成东北海道终点。",
             sections: sections(
-              ["它的价值在地理意义。"],
-              ["末端巴士/出租和回程班次必须提前确认。"],
-              ["风雨天不要硬冲。"]
-            )
+              ["它的价值在地理意义：灯塔、海风、北方海面和日本本土最东端的边界感。"],
+              ["末端巴士/出租和回程班次必须提前确认；Nemuro Kotsu 的 Nosappu Line 从根室站前出发。"],
+              ["风雨天不要硬冲，低能见度但风小可以保留，强风直接降级。"]
+            ),
+            sources: ["nosappu", "nemuroKotsu", "nemuroOfficialFaq"]
           }),
           spot({
             id: "spot-nemuro-line",
             title: "根室本线尽头感",
             meta: "可选 / 车窗体验",
-            image: img("cape-nosappu"),
+            image: placeImages.hanasakiLine,
             tags: ["可选子目的地", "铁路体验"],
             summary: "越坐越空、越坐越东。",
             sections: sections(
-              ["坐车过程本身就是内容。"],
-              ["适合把车窗当旅行一部分的人。"],
-              ["不喜欢长时间坐车则慎选。"]
-            )
+              ["坐车过程本身就是内容：花咲线官网把它描述为连接钏路与根室、穿过东北海道海岸和开阔地貌的地方铁路。"],
+              ["Visit Nemuro 的花咲线文章写明钏路-根室段被称为 Hanasaki Line，班次数量有限，必须把回程先定住。"],
+              ["不喜欢长时间坐车则慎选；厚岸是更轻的替代。"]
+            ),
+            sources: ["hanasakiOfficial", "visitNemuroHanasaki", "hokkaidoHanasakiPlan"]
           }),
           spot({
             id: "spot-nemuro-hanamaru",
@@ -3017,48 +3065,48 @@ const detailGuides = {
   }),
   "base-kushiro": guide({
     facts: [["节奏", "2晚东北海道"], ["主线", "湿原/海岸/最东端"], ["交通", "花咲线+末端巴士"], ["风险", "长线"]],
-    play: ["钏路必须住下，不能当天来回硬刷。", "一天湿原或市内，一天厚岸/根室二选一。"],
-    time: ["钏路市内半日。", "根室/纳沙布岬整日。"],
-    route: ["从札幌/带广方向依赖 Ozora；根室方向走花咲线。"],
+    play: ["钏路必须住下，不能当天来回硬刷。", "2 晚时只选两件：湿原/Norokko、厚岸牡蛎、阿寒湖、根室最东端。根室一旦保留，其它远线就要让路。"],
+    time: ["钏路市内半日。", "厚岸半日到一日；根室/纳沙布岬整日；阿寒湖住一晚最舒服。"],
+    route: ["从札幌/带广方向依赖 Ozora；根室/厚岸方向走花咲线；阿寒湖靠巴士，川汤靠 JR 钏网线再接巴士。"],
     best: ["海雾、湿原、低密度就是这里的主题。"],
-    avoid: ["不要把根室和湿原排同一天。"],
-    sources: ["kushiro", "eastHokkaido", "operation"]
+    avoid: ["不要把根室和湿原排同一天。", "不要把阿寒湖当 JR 支线；它是巴士线或住一晚线。"],
+    sources: ["kushiro", "eastHokkaido", "operation", "kushiroShitsugenAccess", "lakeAkanBus"]
   }),
   "city-kushiro": guide({
     facts: [["角色", "东北海道枢纽"], ["时间", "半日"], ["适合", "抵达日"], ["交通", "根室/花咲线"]],
-    play: ["抵达后只做幣舞桥、港口、晚饭。", "第二天再去湿原或根室。"],
+    play: ["抵达后只做幣舞桥、港口、晚饭。", "第二天再去湿原、厚岸或根室；如果前一天是旭川/带广过来的长移动，不要立刻加远郊。"],
     time: ["2-4 小时足够。"],
-    route: ["钏路站是花咲线/根室方向起点。"],
+    route: ["钏路站是花咲线/根室方向起点，也是钏网线去湿原/川汤方向的锚点。", "出发前分别查 JR Hokkaido 实时运行、花咲线班次、阿寒巴士或湿原巴士。"],
     best: ["傍晚。"],
     avoid: ["长移动后不要冲远郊。"],
-    sources: ["kushiro", "operation"]
+    sources: ["kushiro", "operation", "timetable"]
   }),
   "spot-kushiro-marsh": guide({
     facts: [["角色", "湿原核心"], ["时间", "半日"], ["交通", "展望点末端"], ["最佳", "晴/薄雾"]],
-    play: ["选择一个展望点，专心看曲流、湿地和低平空间。"],
-    time: ["半日最稳。"],
-    route: ["JR 只能解决部分接近，展望点末端交通要查。"],
+    play: ["先选湿原玩法：西侧湿原展望台更像站上去看全景，东侧 Hosooka/Toro 更像把 JR 钏网线和湿原曲流结合。", "不要追多个展望台；把曲流、芦苇和低平空间看明白就够。"],
+    time: ["半日最稳；含巴士/JR 等待就不要再接根室。"],
+    route: ["国家公园官方写明公园内公共交通有限，很多景点要以钏路住宿为前提。", "Akan Bus 示例：钏路站坐鹤居线到 Wetland Observatory 约 40 分钟/690 日元；JR 方式可坐钏网线到 Kushiro-Shitsugen Station 约 20 分钟/440 日元，但只覆盖部分接近。", "钏路官方湿原交通摘要提醒，东侧公共交通主要靠 JR 钏网线，班次约 5-6 次/日量级，冬季部分列车不靠近钏路湿原站。"],
     best: ["晴天层次清楚，薄雾也有气质。"],
-    avoid: ["不要和根室最东端同日。"],
-    sources: ["kushiro"]
+    avoid: ["不要和根室最东端同日。", "不要把“湿原”理解成一个站到即玩的单点。"],
+    sources: ["kushiroShitsugenAccess", "kushiroMarshSummary", "akanBusWetland", "kushiro"]
   }),
   "spot-nusamai": guide({
     facts: [["角色", "钏路傍晚"], ["时间", "1-2小时"], ["适合", "抵达日"], ["交通", "市内"]],
-    play: ["傍晚到幣舞桥，看港口光线，再吃炉端或海鲜。"],
+    play: ["傍晚到幣舞桥，看港口光线，再吃炉端或海鲜。", "它的价值是把长移动后的身体放下来，而不是增加打卡数量。"],
     time: ["1-2 小时。"],
-    route: ["市内短距离完成。"],
+    route: ["市内短距离完成；围绕钏路站、幣舞桥、MOO 和酒店做小环线。"],
     best: ["日落前后。"],
-    avoid: ["天气差时缩短，留体力。"],
-    sources: ["kushiro"]
+    avoid: ["天气差时缩短，留体力。", "不要吃完再去湿原夜路或远郊。"],
+    sources: ["kushiro", "mooRobata", "kushiroRobataOfficial"]
   }),
   "spot-kushiro-norokko": guide({
     facts: [["角色", "湿原慢车"], ["时间", "半日框架"], ["运营", "4-10月"], ["座位", "需确认"]],
     play: ["把慢车当湿原体验的一部分，而不是单纯交通。", "如果不想折腾展望点末端交通，这是一种更稳的湿原接触方式。"],
     time: ["按具体车次做半日规划。", "不要再和根室同日。"],
-    route: ["JR 北海道标注 2026 年 4-10 月运行，Kushiro-Toro 方向可看湿原与野生动物机会。"],
+    route: ["JR 北海道标注 2026 年 4-10 月运行，Kushiro-Toro 方向可看湿原与野生动物机会。", "JR 列车指南写明 Kushiro Shitsugen Norokko 为全席指定，除基本票外需要指定席券；没有指定席券不能乘车。"],
     best: ["天气稳定、车次合适、有座位。"],
     avoid: ["不要以为它能覆盖所有湿原展望点；它是体验补充。"],
-    sources: ["kushiroNorokko", "kushiroNorokkoHokkaido"]
+    sources: ["kushiroNorokko", "jrNorokkoGuide", "kushiroNorokkoHokkaido"]
   }),
   "spot-moo-robata": guide({
     facts: [["角色", "港口晚饭"], ["时间", "1-2小时"], ["适合", "抵达日"], ["重点", "炭火海鲜"]],
@@ -3134,30 +3182,30 @@ const detailGuides = {
   }),
   "city-akkeshi": guide({
     facts: [["角色", "轻一点东海岸"], ["时间", "半日-一日"], ["交通", "花咲线"], ["重点", "海雾/海湾"]],
-    play: ["把厚岸当根室的轻量替代：海湾、岬角、吃饭。"],
-    time: ["半日到一日，取决于班次。"],
-    route: ["钏路到厚岸走花咲线方向，班次要提前锁定。"],
+    play: ["把厚岸当根室的轻量替代：海湾、岬角、牡蛎和低能见度海岸。", "如果你们想探店，Conchiglie/牡蛎比多跑一个岬角更有记忆点。"],
+    time: ["半日到一日，取决于花咲线班次和是否吃饭。"],
+    route: ["钏路到厚岸走花咲线方向，班次要提前锁定。", "Hokkaido Love 的花咲线计划把厚岸作为钏路-根室之间的海岸/牡蛎停点；如果班次不顺，就把厚岸当替代根室的一天。"],
     best: ["海雾天也有味道。"],
-    avoid: ["不要错过回程班次。"],
-    sources: ["akkeshiGuide", "operation"]
+    avoid: ["不要错过回程班次。", "不要把厚岸和根室都排满，二选一更像人类旅行。"],
+    sources: ["akkeshiGuide", "hokkaidoHanasakiPlan", "akkeshiOysters", "operation"]
   }),
   "spot-aikappu": guide({
     facts: [["角色", "岬角海湾"], ["时间", "1小时"], ["交通", "末端查"], ["最佳", "低风"]],
-    play: ["看厚岸湾的曲线和海雾，不要追过多点。"],
+    play: ["看厚岸湾的曲线、海雾和岬角，不要追过多点。", "它适合和 Conchiglie/海湾吃饭一起理解，而不是单独远征。"],
     time: ["现场约 1 小时。"],
-    route: ["厚岸站后末端交通提前查。"],
+    route: ["厚岸站后末端交通提前查；天气或接驳不顺就改海湾和牡蛎。"],
     best: ["低风、能见度适中。"],
     avoid: ["风雨大时不必硬上。"],
-    sources: ["akkeshiGuide"]
+    sources: ["akkeshiGuide", "akkeshiModel"]
   }),
   "spot-akkeshi-bay": guide({
     facts: [["角色", "渔业生活感"], ["时间", "1-2小时"], ["适合", "低压力"], ["交通", "站周边/短接驳"]],
-    play: ["看海湾、吃本地东西，把它当生活环境体验。"],
+    play: ["看海湾、吃本地东西，把它当生活环境体验。", "如果你们喜欢“世界边缘”的低密度，这里比普通城市逛街更贴合。"],
     time: ["1-2 小时。"],
-    route: ["和爱冠岬同日即可。"],
+    route: ["和爱冠岬或 Conchiglie 同日即可。", "回程花咲线必须先锁，不要临时延长海边散步。"],
     best: ["天气普通也可。"],
     avoid: ["不要排成景点打卡。"],
-    sources: ["akkeshiGuide"]
+    sources: ["akkeshiGuide", "akkeshiConchiglie", "akkeshiModel"]
   }),
   "spot-akkeshi-oysters": guide({
     facts: [["角色", "厚岸主餐"], ["时间", "1-1.5小时"], ["重点", "牡蛎"], ["交通", "先锁回程"]],
@@ -3170,30 +3218,30 @@ const detailGuides = {
   }),
   "city-nemuro": guide({
     facts: [["角色", "最东端重体验"], ["时间", "整日"], ["交通", "JR+巴士/出租"], ["风险", "班次+天气"]],
-    play: ["把坐车过程也当旅行内容。", "到根室后只做纳沙布岬这一件大事。"],
-    time: ["从钏路往返按整日。"],
-    route: ["钏路到根室走花咲线；根室站到纳沙布岬还需巴士或出租。"],
+    play: ["把坐车过程也当旅行内容。", "到根室后只做纳沙布岬这一件大事；吃饭只是余量奖励。"],
+    time: ["从钏路往返按整日。", "JNTO 给出的量级是钏路站到根室站约 2 小时 40 分钟，根室站到岬角约 45 分钟巴士。"],
+    route: ["钏路到根室走花咲线；根室站到纳沙布岬还需巴士或出租。", "Nemuro Kotsu 写 Nosappu Line 到 Nosappu Misaki 约 47 分钟并步行约 2 分钟；当地也有一日巴士 pass，但当天规则要再查。"],
     best: ["晴天或有边界感的海雾天。"],
-    avoid: ["不要和湿原或厚岸深度游同日。"],
-    sources: ["nosappu", "eastHokkaido", "operation"]
+    avoid: ["不要和湿原或厚岸深度游同日。", "风雨强、回程不稳、当天体力差时，直接降级厚岸。"],
+    sources: ["nosappu", "nemuroKotsu", "visitNemuroHanasaki", "eastHokkaido", "operation"]
   }),
   "spot-nosappu": guide({
     facts: [["角色", "日本最东端"], ["时间", "1-2小时"], ["交通", "根室后接驳"], ["最佳", "低风"]],
     play: ["看灯塔、海面、边界感和地理尽头。", "拍照后留 20 分钟安静站着，比多跑一个点更值。"],
     time: ["现场 1-2 小时。"],
-    route: ["根室站后需巴士或出租。"],
+    route: ["JNTO 给出的公共交通量级是钏路站到根室站约 2 小时 40 分钟，再从根室站坐约 45 分钟巴士到岬角。", "Nemuro Kotsu 写 Nosappu Line 到 Nosappu Misaki 约 47 分钟，下车后步行约 2 分钟。"],
     best: ["低风、能见度好。"],
-    avoid: ["回程末班前必须撤。"],
-    sources: ["nosappu", "eastHokkaido"]
+    avoid: ["回程末班前必须撤。", "强风雨不要硬冲地理极限。"],
+    sources: ["nosappu", "nemuroKotsu", "nemuroOfficialFaq"]
   }),
   "spot-nemuro-line": guide({
     facts: [["角色", "铁路尽头感"], ["时间", "车程本身"], ["适合", "喜欢车窗"], ["交通", "花咲线"]],
-    play: ["不要只等到达，车窗里的低密度就是体验。"],
-    time: ["随钏路-根室车程发生。"],
-    route: ["花咲线班次稀疏，先锁回程。"],
+    play: ["不要只等到达，车窗里的低密度就是体验。", "花咲线官网强调海和天空之间的地方铁路；Hokkaido Love 也把它作为钏路-根室海岸体验来写。"],
+    time: ["随钏路-根室车程发生。", "白天车窗价值明显高于夜间移动。"],
+    route: ["花咲线班次稀疏，先锁回程。", "Visit Nemuro 的花咲线文章写有上下行服务数量有限，不能临时把它当城市电车。"],
     best: ["白天有光时。"],
     avoid: ["不喜欢长车程则改厚岸。"],
-    sources: ["operation", "timetable"]
+    sources: ["hanasakiOfficial", "visitNemuroHanasaki", "hokkaidoHanasakiPlan", "operation", "timetable"]
   }),
   "spot-nemuro-hanamaru": guide({
     facts: [["角色", "根室主餐"], ["时间", "1小时"], ["重点", "寿司/花咲蟹"], ["条件", "回程有余量"]],
@@ -3883,6 +3931,8 @@ const foodTips = {
   "city-obihiro-asahikawa": ["带广如果纳入，豚丼、甜点和六花亭方向是最清楚的探店理由。", "但它应作为移动日/中继，不要为了吃饭破坏花田日。"],
   "base-kushiro": ["钏路的关键词是炉端、海鲜、港口傍晚。", "长移动到达后，幣舞桥和炉端比继续跑湿原更合理。"],
   "city-kushiro": ["MOO 岸壁炉端适合傍晚，但仍要确认营业和天气。", "港口边吃饭后直接回酒店，第二天再跑湿原或根室。"],
+  "spot-kushiro-marsh": ["湿原不是餐饮点，先在钏路站/便利店补水和轻食。", "湿原日的正餐放回钏路市内，避免为了吃饭错过巴士或 JR。"],
+  "spot-nusamai": ["幣舞桥适合接炉端、海鲜居酒屋或 MOO，不要为了名店跨太远。", "日落后直接吃饭回酒店，是长移动后的最佳节奏。"],
   "spot-moo-robata": ["适合选当天看着新鲜的海鲜和贝类，不要点太复杂。", "风雨天确认是否开放和座位安排。"],
   "city-lake-akan": ["阿寒湖适合温泉旅馆餐、湖畔咖啡、Ainu Kotan 工艺店和餐厅。", "比起追名店，更重要的是查回程巴士和店铺/演出当天开放。"],
   "spot-lake-akan-lakeside": ["湖畔散步后坐下喝东西或泡汤，比继续加远点更符合松弛。", "若住湖边，晚饭优先看旅馆餐或温泉街步行范围。"],
@@ -3891,8 +3941,12 @@ const foodTips = {
   "city-kawayu-mashu": ["川汤适合温泉街咖啡、旅馆餐、轻食和土产，不适合追大城市餐厅。", "摩周湖天气不稳时，把探店和泡汤作为兜底。"],
   "spot-kawayu-iozan": ["硫磺山方向先看火山地貌，再回温泉街坐下。", "温泉设施、咖啡和土产营业时间比店名更重要。"],
   "city-akkeshi": ["厚岸最清楚的吃法是牡蛎；Conchiglie / 道之站方向适合和海湾同日。", "先定回程花咲线，再决定午饭时长。"],
+  "spot-aikappu": ["爱冠岬本身不是吃饭点，吃饭放在 Conchiglie 或厚岸站周边。", "风大时不要为了岬角牺牲一顿稳的牡蛎午饭。"],
+  "spot-akkeshi-bay": ["海湾体验和牡蛎最好绑定，不需要单独追复杂餐厅。", "如果天气普通，找能看海湾的餐厅/道之站比硬走岬角更舒服。"],
   "spot-akkeshi-oysters": ["牡蛎饭、牡蛎拉面、烧牡蛎都可作为目标，但按季节和营业为准。", "不要为了吃饭错过回钏路的车。"],
   "city-nemuro": ["根室吃饭以回转寿司、炉端、花咲蟹/秋刀鱼方向为主。", "纳沙布岬优先于餐厅，餐厅只作为体力允许时的补充。"],
+  "spot-nosappu": ["纳沙布岬不是吃饭核心，补给应在根室市区解决。", "若想吃海鲜，先完成岬角和回程，再看花丸/炉端是否还有余量。"],
+  "spot-nemuro-line": ["花咲线车窗日要准备水和轻食，别把正餐压在短换乘。", "到根室后若时间紧，买轻食比排队更稳。"],
   "spot-nemuro-hanamaru": ["花丸本店适合作为根室市区吃饭方向，但排队和营业要当天查。", "如果回程紧，宁可买轻食也别冒末班风险。"],
   "city-obihiro-kushiro": ["钏路侧带广适合豚丼、甜点、六花亭和站周边轻探店。", "如果只是中继，吃一顿就好，不要再加远郊牧场。"],
   "base-hakodate": ["函馆用海鲜早饭、红砖仓库和市电慢走恢复，不要继续长移动。", "天气好再上函馆山，天气差把预算留给吃饭。"],
@@ -3962,7 +4016,10 @@ const reviewQueries = {
   "spot-daisetsuzan-ropeway": "层云峡 黑岳 缆车 天气",
   "city-obihiro-asahikawa": "带广 十胜 豚丼 六花亭",
   "city-kushiro": "钏路 炉端 幣舞桥",
+  "spot-kushiro-marsh": "钏路湿原 展望台 交通 巴士",
+  "spot-nusamai": "钏路 幣舞桥 炉端 MOO",
   "spot-kushiro-norokko": "钏路湿原 Norokko",
+  "spot-moo-robata": "钏路 MOO 岸壁炉端 炉端烧",
   "base-kushiro": "钏路 炉端 湿原 旅行",
   "city-lake-akan": "阿寒湖温泉 Ainu Kotan 巴士 旅行",
   "spot-lake-akan-lakeside": "阿寒湖 湖畔 温泉 旅行",
@@ -3972,7 +4029,13 @@ const reviewQueries = {
   "spot-lake-mashu": "摩周湖 展望台 雾 交通",
   "spot-kawayu-iozan": "川汤温泉 硫磺山 日归温泉",
   "city-akkeshi": "厚岸 牡蛎 Conchiglie",
+  "spot-aikappu": "厚岸 爱冠岬 交通 海雾",
+  "spot-akkeshi-bay": "厚岸湾 Conchiglie 海湾",
+  "spot-akkeshi-oysters": "厚岸 Conchiglie 牡蛎 道之站",
   "city-nemuro": "根室 纳沙布岬 花丸 本店",
+  "spot-nosappu": "纳沙布岬 根室 巴士 天气",
+  "spot-nemuro-line": "花咲线 钏路 根室 车窗",
+  "spot-nemuro-hanamaru": "根室 花丸 本店 花咲蟹",
   "city-obihiro-kushiro": "带广 豚丼 六花亭 十胜",
   "city-hakodate": "函馆 朝市 函馆山 元町",
   "city-onuma": "大沼公园 函馆 半日 团子",
