@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f7fb" />
+    <meta name="theme-color" content="#f5f6f8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="JR基地路线" />
-    <title>北海道到东京｜JR基地路线</title>
-    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%231d4ed8"/><path d="M15 20h34M32 20v28M20 48h24" stroke="white" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="20" r="5" fill="white"/><circle cx="32" cy="20" r="5" fill="white"/><circle cx="46" cy="20" r="5" fill="white"/></svg>' />
+    <meta name="apple-mobile-web-app-title" content="JR路线大纲" />
+    <title>北海道到东京｜JR路线大纲</title>
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230b5cab"/><path d="M32 10v44M20 18h24M20 32h24M20 46h24" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="18" r="5" fill="white"/><circle cx="32" cy="32" r="5" fill="white"/><circle cx="32" cy="46" r="5" fill="white"/></svg>' />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#bases">跳到基地支线</a>
+    <a class="skip-link" href="#outline">跳到路线大纲</a>
 
     <svg class="icons" aria-hidden="true" focusable="false">
       <symbol id="i-plane" viewBox="0 0 24 24">
@@ -20,24 +20,28 @@
       <symbol id="i-bed" viewBox="0 0 24 24">
         <path d="M4 11V5h7a3 3 0 0 1 3 3v3M4 11h16a2 2 0 0 1 2 2v6M4 11v8M4 16h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
       </symbol>
-      <symbol id="i-train" viewBox="0 0 24 24">
-        <path d="M7 3h10a3 3 0 0 1 3 3v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a3 3 0 0 1 3-3Z" fill="none" stroke="currentColor" stroke-width="1.8" />
-        <path d="M8 7h8M7 12h10M9 19l-2 3M15 19l2 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      <symbol id="i-list" viewBox="0 0 24 24">
+        <path d="M8 6h13M8 12h13M8 18h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M3.5 6h.1M3.5 12h.1M3.5 18h.1" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" />
       </symbol>
-      <symbol id="i-route" viewBox="0 0 24 24">
-        <path d="M6 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM18 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8.6 13.5l6.8-3M18 12v4a3 3 0 0 1-3 3H9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      <symbol id="i-alert" viewBox="0 0 24 24">
+        <path d="M12 4 3 20h18L12 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        <path d="M12 9v5M12 17.4h.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
       </symbol>
       <symbol id="i-image" viewBox="0 0 24 24">
         <path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" />
         <path d="m4 16 4.4-4 3.6 3 2.5-2.5L20 17M8 8.5h.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </symbol>
     </svg>
 
     <main class="page">
       <header class="hero" id="top">
         <p class="label">JR 基地旅行系统</p>
-        <h1>六个基地，向南走</h1>
-        <p class="hero-text">这不是 19 站硬跑。先点开基地，看它能辐射哪些城市；再点开城市，看具体子目的地、图片和取舍理由。</p>
+        <h1>像地铁站一样看完整路线</h1>
+        <p class="hero-text">所有基地、城市、子目的地都直接摆出来。只看路线时不读长文；点任意一站，再看图片、介绍和可行性。</p>
 
         <div class="fixed-facts" aria-label="已确定行程">
           <article>
@@ -48,46 +52,55 @@
           </article>
           <article>
             <svg aria-hidden="true"><use href="#i-bed"></use></svg>
-            <span>前 4 晚</span>
+            <span>7月12日-16日</span>
             <strong>札幌公寓</strong>
-            <small>7月12日-16日 · Minami 3 Johigashi</small>
+            <small>Minami 3 Johigashi · 前 4 晚</small>
           </article>
         </div>
       </header>
 
-      <section class="route-board" id="route" aria-labelledby="route-title">
-        <div class="section-title">
-          <p class="label">主路径</p>
-          <h2 id="route-title">一条线向南走</h2>
+      <section class="outline-board" id="outline" aria-labelledby="outline-title">
+        <div class="section-title section-title-row">
+          <div>
+            <p class="label">Outline</p>
+            <h2 id="outline-title">基地 → 城市 → 子目的地</h2>
+          </div>
+          <p class="microcopy">点开任意一行看详情</p>
         </div>
-        <div class="rail-map" id="railMap" aria-label="札幌到东京基地路线"></div>
+        <div class="legend" aria-label="图例">
+          <span><i class="legend-dot legend-base"></i>基地</span>
+          <span><i class="legend-dot legend-city"></i>城市</span>
+          <span><i class="legend-dot legend-spot"></i>子目的地</span>
+          <span><i class="legend-dot legend-move"></i>基地移动</span>
+        </div>
+        <div class="metro-list" id="metroList"></div>
       </section>
 
-      <section class="bases" id="bases" aria-labelledby="bases-title">
+      <section class="audit-board" aria-labelledby="audit-title">
         <div class="section-title">
-          <p class="label">可交互大纲</p>
-          <h2 id="bases-title">基地 → 城市 → 子目的地</h2>
+          <p class="label">路线审计</p>
+          <h2 id="audit-title">三个关键判断</h2>
         </div>
-        <div class="base-list" id="baseList"></div>
+        <div class="audit-strip" id="auditStrip"></div>
       </section>
 
       <section class="rule-board" aria-labelledby="rules-title">
         <div class="section-title">
-          <p class="label">不会累的规则</p>
-          <h2 id="rules-title">临时改行程时照这几条</h2>
+          <p class="label">执行规则</p>
+          <h2 id="rules-title">不累版取舍</h2>
         </div>
         <div class="rules">
           <article>
-            <strong>移动日不加远支线</strong>
-            <span>跨基地当天只吃饭、入住、散步。</span>
+            <strong>移动日只移动</strong>
+            <span>尤其是旭川→钏路、钏路→函馆，不要再加远支线。</span>
           </article>
           <article>
-            <strong>坏天气选城市或短 JR</strong>
-            <span>优先小樽、松岛、银座、台场。</span>
+            <strong>晴天才跑岬角</strong>
+            <span>神威岬、纳沙布岬都靠天气，风雨天直接降级。</span>
           </article>
           <article>
-            <strong>晴天才上重体验</strong>
-            <span>神威岬、根室、长距离海岸线不要硬冲。</span>
+            <strong>本州穿越要预留换乘</strong>
+            <span>函馆先到新函馆北斗，再坐新干线穿青函隧道。</span>
           </article>
         </div>
       </section>
@@ -95,7 +108,7 @@
       <section class="source" id="source" aria-labelledby="source-title">
         <div class="section-title">
           <p class="label">原图</p>
-          <h2 id="source-title">细节查这里</h2>
+          <h2 id="source-title">需要查旧版细节时再展开</h2>
         </div>
         <details class="poster">
           <summary>
@@ -108,12 +121,8 @@
     </main>
 
     <nav class="bottom-nav" aria-label="页面导航">
-      <a href="#route" class="nav-link">
-        <svg aria-hidden="true"><use href="#i-train"></use></svg>
-        <span>主线</span>
-      </a>
-      <a href="#bases" class="nav-link">
-        <svg aria-hidden="true"><use href="#i-route"></use></svg>
+      <a href="#outline" class="nav-link">
+        <svg aria-hidden="true"><use href="#i-list"></use></svg>
         <span>大纲</span>
       </a>
       <a href="#source" class="nav-link">
@@ -121,6 +130,23 @@
         <span>原图</span>
       </a>
     </nav>
+
+    <div class="detail-modal" id="detailModal" hidden>
+      <div class="modal-backdrop" data-close-modal aria-hidden="true"></div>
+      <section class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <button class="modal-close" type="button" data-close-modal aria-label="关闭详情">
+          <svg aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+        <img class="modal-image" id="modalImage" alt="" width="1200" height="800" />
+        <div class="modal-body">
+          <p class="modal-kind" id="modalKind"></p>
+          <h2 id="modalTitle"></h2>
+          <p class="modal-summary" id="modalSummary"></p>
+          <div class="modal-tags" id="modalTags"></div>
+          <div class="modal-sections" id="modalSections"></div>
+        </div>
+      </section>
+    </div>
 
     <script src="app.js"></script>
   </body>
