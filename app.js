@@ -45,6 +45,14 @@ const sourceLinks = {
     label: "Furano City: Furano - Shintoku replacement buses",
     url: "https://www.city.furano.hokkaido.jp/life/docs/542998.html?cat=%2Flife%2Fkankou%2F60%2F"
   },
+  sapporoNijo: {
+    label: "Sapporo Travel: Nijo Fish Market",
+    url: "https://www.sapporo.travel/en/spot/facility/nijo_fish_market/"
+  },
+  sapporoRamen: {
+    label: "JNTO: Sapporo Ramen Street",
+    url: "https://www.japan.travel/en/ph/story/ramen-street-japan/"
+  },
   otaruCanal: {
     label: "Hokkaido Love: Otaru Canal",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10040.html"
@@ -65,33 +73,101 @@ const sourceLinks = {
     label: "Hokkaido Love: Cape Kamui",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10342.html"
   },
+  capeKamuiAccess: {
+    label: "Good Luck Trip: Cape Kamui access",
+    url: "https://www.gltjp.com/en/directory/item/14829/"
+  },
   biei: {
     label: "Biei Tourism Association",
     url: "https://www.biei-hokkaido.jp/en/"
+  },
+  bluePondBiei: {
+    label: "Biei Tourism Association: Shirogane Blue Pond",
+    url: "https://www.biei-hokkaido.jp/en/facility/shirogane-blue-pond"
   },
   bluePond: {
     label: "JNTO: Blue Pond",
     url: "https://www.japan.travel/en/spot/1889/"
   },
+  jrFuranoBiei: {
+    label: "JR Hokkaido: Furano / Biei sightseeing trains",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/furanobiei/train/index.html"
+  },
+  jrNorokkoFurano: {
+    label: "JR Hokkaido: Furano Biei Norokko Train",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/tour-train/tour-train04.html"
+  },
+  jrSightseeing2026: {
+    label: "JR Hokkaido: 2026 sightseeing train operation PDF",
+    url: "https://www.jrhokkaido.co.jp/CM/Info/news_en/pdf/sightseeing_train_2026_en.pdf"
+  },
   farmTomita: {
     label: "Farm Tomita official website",
     url: "https://www.farm-tomita.co.jp/en/"
+  },
+  farmTomitaEast: {
+    label: "Farm Tomita: Lavender East",
+    url: "https://www.farm-tomita.co.jp/en/east/"
   },
   farmTomitaHokkaido: {
     label: "Hokkaido Love: Farm Tomita",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10174.html"
   },
+  asahikawaRamen: {
+    label: "Hokkaido Love: Asahikawa Ramen Village",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_11227.html"
+  },
+  asahikawaRamenStation: {
+    label: "Taisetsu Kamui: Asahikawa ramen around station",
+    url: "https://taisetsu-kamui.jp/en/features/29869"
+  },
   kushiro: {
     label: "Kushiro / Lake Akan official travel guide",
     url: "https://en.kushiro-lakeakan.com/"
+  },
+  kushiroNorokko: {
+    label: "JR Hokkaido: Kushiro Shitsugen Norokko Train",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/tour-train/tour-train03.html"
+  },
+  kushiroNorokkoHokkaido: {
+    label: "Hokkaido Love: Kushiro Shitsugen Norokko Train",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10126.html"
+  },
+  kushiroRobata: {
+    label: "Hokkaido Love: Kushiro robata-yaki",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_12816.html"
+  },
+  kushiroRobataOfficial: {
+    label: "Kushiro official guide: Robatayaki",
+    url: "https://en.kushiro-lakeakan.com/eat_souvenir/eat_souvenir_category/gourmet-en/robatayaki-en/"
+  },
+  mooRobata: {
+    label: "Kushiro Fisherman's Wharf MOO: Ganpeki-Robata",
+    url: "https://www.moo946.com/lang-en/"
   },
   akkeshiGuide: {
     label: "Akkeshi town guidebook",
     url: "https://www.akkeshi-town.jp/file/contents/2798/46569/guidebook_English.pdf"
   },
+  akkeshiModel: {
+    label: "Akkeshi model courses",
+    url: "https://akkeshi.shop/en/modelcourse/"
+  },
+  akkeshiOysters: {
+    label: "Kushiro official guide: Akkeshi oysters",
+    url: "https://en.kushiro-lakeakan.com/sightseeing_around/4403/"
+  },
   nosappu: {
     label: "JNTO: Cape Nosappu",
     url: "https://www.japan.travel/en/spot/2146/"
+  },
+  nemuroOfficialFaq: {
+    label: "Visit Nemuro Japan: FAQ / transportation",
+    url: "https://www.visitnemurojapan.com/en/faq/"
+  },
+  nemuroTourism: {
+    label: "Nemuro tourism guide",
+    url: "https://uu-nippon.com/hokkaido/corporate/nemuro-kankou.shtml"
   },
   eastHokkaido: {
     label: "East Hokkaido: Kushiro / Nemuro access",
@@ -100,6 +176,10 @@ const sourceLinks = {
   hakodateTravel: {
     label: "Travel Hakodate official guide",
     url: "https://www.hakodate.travel/en/"
+  },
+  hakodateTransport: {
+    label: "Travel Hakodate: transportation",
+    url: "https://www.hakodate.travel/en/information/transportation/"
   },
   mtHakodate: {
     label: "Hokkaido Love: Mt. Hakodate",
@@ -113,6 +193,18 @@ const sourceLinks = {
     label: "Visit Hachinohe official guide",
     url: "https://visithachinohe.com/en/"
   },
+  hachinoheFood: {
+    label: "Amazing AOMORI: Hachinohe food",
+    url: "https://aomori-tourism.com/en/feature/detail_309.html"
+  },
+  hachinoheTanesashiFood: {
+    label: "Visit Hachinohe: food around Tanesashi Coast",
+    url: "https://visithachinohe.com/en/park/shoku/"
+  },
+  tatehanaMarket: {
+    label: "Good Luck Trip: Tatehana Wharf Morning Market",
+    url: "https://www.gltjp.com/en/directory/item/12490/"
+  },
   tanesashi: {
     label: "Amazing AOMORI: Tanesashi Coast",
     url: "https://aomori-tourism.com/en/spot/detail_30.html"
@@ -124,6 +216,14 @@ const sourceLinks = {
   jntoMatsushima: {
     label: "JNTO: Matsushima",
     url: "https://www.japan.travel/en/spot/2127/"
+  },
+  matsushimaFood: {
+    label: "Nihon Sankei: Matsushima food",
+    url: "https://nihonsankei.jp/eng/matsu_kanko.html"
+  },
+  matsushimaSeafood: {
+    label: "Discover Sendai: culinary Matsushima",
+    url: "https://discoversendai.travel/places/culinary-matsushima/"
   },
   zuiganji: {
     label: "Zuiganji Temple official website",
@@ -137,21 +237,41 @@ const sourceLinks = {
     label: "JNTO: Sendai",
     url: "https://www.japan.travel/en/destinations/tohoku/miyagi/sendai-area/"
   },
+  sendaiGuidebook: {
+    label: "Discover Sendai guidebook PDF",
+    url: "https://discoversendai.travel/pdf/182/sendai_guidebook.pdf"
+  },
+  loopleSendai: {
+    label: "Visit Miyagi: Loople Sendai access",
+    url: "https://visitmiyagi.com/model_course/history-and-culture-of-sendai/"
+  },
   tokyo: {
     label: "GO TOKYO official guide",
     url: "https://www.gotokyo.org/en/index.html"
+  },
+  goTokyoGinza: {
+    label: "GO TOKYO: Ginza",
+    url: "https://www.gotokyo.org/en/destinations/central-tokyo/ginza/index.html"
   },
   odaiba: {
     label: "GO TOKYO: Odaiba",
     url: "https://www.gotokyo.org/en/destinations/southern-tokyo/odaiba/index.html"
   },
+  odaibaOfficial: {
+    label: "Tokyo Odaiba official tourist information",
+    url: "https://www.tokyo-odaiba.net/en/"
+  },
   rainbowBridge: {
     label: "Minato City: Rainbow Bridge",
     url: "https://visit-minato-city.tokyo/en/places/700"
+  },
+  rainbowBridgeGoodLuck: {
+    label: "Good Luck Trip: Rainbow Bridge",
+    url: "https://www.gltjp.com/en/directory/item/rainbow-bridge/"
   }
 };
 
-const checkedAt = "2026-07-05 22:41 JST";
+const checkedAt = "2026-07-05 22:59 JST";
 const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 对特急、快速 Airport、函馆/千岁线、函馆 Liner、函馆线、石胜线、根室线、花咲线、富良野线、北海道新干线均显示无停驶/30分钟以上延误信息。出发当天仍以实时页面为准。`;
 const jrEastLiveNote = "本次核验 2026-07-05 21:58 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏出现 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
 
@@ -240,6 +360,81 @@ const coreTransfers = [
   }
 ];
 
+const routeOptimizations = [
+  {
+    id: "opt-six-bases",
+    icon: "check",
+    title: "继续用 6 基地，不拆成 19 站搬家",
+    meta: "行李 / 工作 / 体力",
+    verdict: "这是这条路线最重要的结构判断。",
+    steps: [
+      "基地只负责住宿和主移动，城市与子目的地全部可选。",
+      "小樽、余市、美瑛、富良野、厚岸、根室、松岛都不应该变成搬行李住宿点。",
+      "每次换基地后的晚上默认只吃饭和恢复。"
+    ],
+    note: "页面大纲默认只露出 6 个基地；展开后才看城市和子目的地。",
+    sources: ["operation", "asahikawa", "obihiro", "hakodate", "shinkansen", "jreast"]
+  },
+  {
+    id: "opt-asahikawa-kushiro",
+    icon: "alert",
+    title: "旭川到钏路必须当长移动日",
+    meta: "最容易排错的一段",
+    caution: true,
+    verdict: "不要把旭川 -> 富良野 -> 带广 -> 钏路写成顺直 JR。",
+    steps: [
+      "2024-04-01 起富良野-新得铁路事业废止，不能用这段 JR 穿越到十胜。",
+      "公共交通可选：North Liner 巴士到带广，再接 JR 去钏路。",
+      "JR-only 可走旭川 -> 札幌/南千岁 -> 钏路，但绕路且很长。"
+    ],
+    note: "如果想舒服，带广要么删掉，要么作为中继停留，不要塞进观光日。",
+    sources: ["furanoClosed", "furanoCityBus", "northliner", "obihiro"]
+  },
+  {
+    id: "opt-seikan",
+    icon: "train",
+    title: "北海道到本州：函馆站不能直上新干线",
+    meta: "青函隧道链路",
+    caution: true,
+    verdict: "真实换乘是函馆 -> 新函馆北斗 -> 新青森 -> 仙台。",
+    steps: [
+      "函馆站到新函馆北斗坐 Hakodate Liner，官方标注 15-22 分钟、每天 16 往复。",
+      "新函馆北斗到新青森才是北海道新干线跨海段，经青函隧道。",
+      "JR East 当前显示东北新干线整体正常，但个别 Hayabusa 跨海车次有停运记录，必须按车次查。"
+    ],
+    note: "跨海当天不要压 5 分钟换乘；给买水、上厕所、找站台留余量。",
+    sources: ["shinkansen", "jreast"]
+  },
+  {
+    id: "opt-seasonal-trains",
+    icon: "info",
+    title: "观光列车只当加分项，不当骨架",
+    meta: "富良野 / 钏路",
+    verdict: "富良野、美瑛、钏路湿原的观光列车很好，但要看运营日和座位。",
+    steps: [
+      "JR 北海道 2026 年富良野/美瑛观光列车集中在 6-9 月，部分列车全席指定。",
+      "富良野・美瑛 Norokko 需要基本票价外的指定席券；没有指定席券可能无法乘车。",
+      "钏路湿原 Norokko 也是季节性列车，适合替代一部分末端交通压力。"
+    ],
+    note: "先定基地移动，再决定是否把观光列车嵌进去。",
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "kushiroNorokko"]
+  },
+  {
+    id: "opt-weather",
+    icon: "route",
+    title: "晴天给岬角和花田，雨天给城市和吃饭",
+    meta: "执行规则",
+    verdict: "不累版的核心不是少玩，而是把好天气留给正确对象。",
+    steps: [
+      "神威岬、纳沙布岬、函馆山、种差海岸都强依赖天气和风。",
+      "小樽、余市 Nikka、札幌、旭川拉面、仙台站区、银座更适合雨天。",
+      "长移动日不再加远支线，最多只保留站周边晚饭。"
+    ],
+    note: "每个弹窗里都把“最佳条件”和“别踩坑”单独列出来。",
+    sources: ["capeKamuiAccess", "nikkaYoichi", "asahikawaRamen", "goTokyoGinza"]
+  }
+];
+
 function sections(why, traffic, decision, extra = []) {
   return [
     { title: "为什么看", items: why },
@@ -321,6 +516,20 @@ const outline = [
               ["市内短交通，不占用 JR 规划。"],
               ["远支线回来后只做这里，不再加景点。"]
             )
+          }),
+          spot({
+            id: "spot-sapporo-food",
+            title: "札幌拉面与二条市场方向",
+            meta: "可选 / 吃饭补给",
+            image: img("sapporo"),
+            tags: ["可选子目的地", "雨天", "餐饮"],
+            summary: "把札幌作为恢复基地时，吃饭和补给比继续跑景点更重要。",
+            sections: sections(
+              ["适合落地日、雨天或长支线返回后的低压力收束。"],
+              ["市内短交通即可，不影响 JR 主线。"],
+              ["不要为了名店排到过累；选离酒店近、排队可控的店。"]
+            ),
+            sources: ["sapporoNijo", "sapporoRamen"]
           })
         ]
       }),
@@ -363,6 +572,20 @@ const outline = [
               ["与小樽运河自然串联。"],
               ["不要排成任务清单，留时间吃东西。"]
             )
+          }),
+          spot({
+            id: "spot-otaru-glass-dessert",
+            title: "北一硝子 / LeTAO 甜品方向",
+            meta: "可选 / 店铺慢逛",
+            image: img("otaru"),
+            tags: ["可选子目的地", "甜品", "雨天"],
+            summary: "把小樽从运河打卡变成轻松半日的关键补充。",
+            sections: sections(
+              ["玻璃店、甜品和旧建筑能让小樽更适合两个人慢逛。"],
+              ["从运河和堺町通步行串联，不需要额外 JR。"],
+              ["人多时只选一家坐下休息，别每家都排。"]
+            ),
+            sources: ["otaruDay", "otaruCanal"]
           })
         ]
       }),
@@ -507,6 +730,20 @@ const outline = [
               ["市内短交通或步行即可。"],
               ["不要给它安排任务感。"]
             )
+          }),
+          spot({
+            id: "spot-asahikawa-ramen",
+            title: "旭川拉面村 / 站前名店",
+            meta: "可选 / 晚饭",
+            image: img("asahikawa"),
+            tags: ["可选子目的地", "餐饮", "雨天"],
+            summary: "旭川的最好用法之一：移动日吃一碗拉面，然后早点休息。",
+            sections: sections(
+              ["旭川酱油拉面是城市辨识度很高的吃法。"],
+              ["站前名店更省交通，拉面村更像主题集合；按酒店位置选。"],
+              ["不要为了吃饭再跨很远，核心是恢复体力。"]
+            ),
+            sources: ["asahikawaRamen", "asahikawaRamenStation"]
           })
         ]
       }),
@@ -549,6 +786,34 @@ const outline = [
               ["公共交通班次有限，不能临时硬加。"],
               ["体力一般时可以放弃。"]
             )
+          }),
+          spot({
+            id: "spot-shikisai",
+            title: "四季彩之丘",
+            meta: "可选 / 花田丘陵",
+            image: img("biei"),
+            tags: ["可选子目的地", "花田", "晴天"],
+            summary: "比拼布之路更直接的花田画面，适合想要颜色更满的一站。",
+            sections: sections(
+              ["它补的是花田色块，不是青池那种颜色奇观。"],
+              ["美瑛内部点位分散，必须和拼布之路/青池取舍。"],
+              ["晴天好看，人多时停留不要过长。"]
+            ),
+            sources: ["biei"]
+          }),
+          spot({
+            id: "spot-shirahige",
+            title: "白须瀑布 / 白金温泉方向",
+            meta: "可选 / 青池同线",
+            image: img("biei"),
+            tags: ["可选子目的地", "同线", "末端交通"],
+            summary: "如果已经去青池，可考虑顺路补白金温泉方向的水景。",
+            sections: sections(
+              ["它适合和青池同线理解，不适合单独为它绕路。"],
+              ["公交班次有限，最好在出发前把回程也锁住。"],
+              ["天气差或时间紧时优先保留青池，删瀑布。"]
+            ),
+            sources: ["bluePondBiei", "bluePond"]
           })
         ]
       }),
@@ -591,6 +856,34 @@ const outline = [
               ["与富田农场相近，仍需查末端交通。"],
               ["体力一般时二选一。"]
             )
+          }),
+          spot({
+            id: "spot-furano-norokko",
+            title: "富良野・美瑛 Norokko 观光列车",
+            meta: "可选 / 季节列车",
+            image: img("furano"),
+            tags: ["可选子目的地", "观光列车", "需预约"],
+            summary: "把车程变成内容，但它不能替代对运营日和指定席的确认。",
+            sections: sections(
+              ["适合喜欢慢车、车窗、花田季节感的人。"],
+              ["2026 年为季节运营，且指定席规则要提前确认。"],
+              ["先定美瑛/富良野当天路线，再看能否嵌入列车。"]
+            ),
+            sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026"]
+          }),
+          spot({
+            id: "spot-lavender-east",
+            title: "Lavender East",
+            meta: "可选 / 2026限期",
+            image: img("furano"),
+            tags: ["可选子目的地", "花田", "限期"],
+            summary: "富田农场的延展花田，2026 年开放期较短，适合花期正好时加。",
+            sections: sections(
+              ["它更像薰衣草面积的延展，不是必去主点。"],
+              ["2026 年官网开放期为 6月20日-7月20日，且受天气等影响。"],
+              ["如果当天已经在富田农场耗尽体力，就删掉。"]
+            ),
+            sources: ["farmTomitaEast", "farmTomita"]
           })
         ]
       }),
@@ -693,6 +986,34 @@ const outline = [
               ["不需要长交通。"],
               ["长移动日后很适合。"]
             )
+          }),
+          spot({
+            id: "spot-kushiro-norokko",
+            title: "钏路湿原 Norokko 观光列车",
+            meta: "可选 / 季节列车",
+            image: img("kushiro"),
+            tags: ["可选子目的地", "观光列车", "湿原"],
+            summary: "用慢车看湿原，把交通本身变成体验。",
+            sections: sections(
+              ["适合不想折腾末端交通、又想看湿原氛围的人。"],
+              ["2026 年 JR 北海道标注为 4-10 月季节运行；席位规则要提前确认。"],
+              ["它不能覆盖所有展望点，但能降低交通压力。"]
+            ),
+            sources: ["kushiroNorokko", "kushiroNorokkoHokkaido"]
+          }),
+          spot({
+            id: "spot-moo-robata",
+            title: "MOO 岸壁炉端",
+            meta: "可选 / 傍晚吃饭",
+            image: img("kushiro"),
+            tags: ["可选子目的地", "炉端", "低体力"],
+            summary: "长移动日后的理想收尾：港口边、炭火、海鲜。",
+            sections: sections(
+              ["钏路炉端的价值是地方吃法和港口氛围。"],
+              ["MOO 岸壁炉端在幣舞桥和港区动线上，适合傍晚。"],
+              ["旺季或天气差时提前确认营业和席位。"]
+            ),
+            sources: ["mooRobata", "kushiroRobata", "kushiroRobataOfficial"]
           })
         ]
       }),
@@ -735,6 +1056,20 @@ const outline = [
               ["与爱冠岬同日即可。"],
               ["低体力时只看湾和吃饭。"]
             )
+          }),
+          spot({
+            id: "spot-akkeshi-oysters",
+            title: "Conchiglie / 厚岸牡蛎",
+            meta: "可选 / 午饭",
+            image: img("akkeshi"),
+            tags: ["可选子目的地", "牡蛎", "餐饮"],
+            summary: "厚岸如果只留一个生活体验，就是吃牡蛎和看海湾。",
+            sections: sections(
+              ["道之站 Conchiglie 与牡蛎料理是厚岸最明确的吃饭目标。"],
+              ["适合把厚岸做成比根室轻的半日到一日海岸线。"],
+              ["回程花咲线班次必须先锁住，再决定吃饭时间。"]
+            ),
+            sources: ["akkeshiOysters", "akkeshiModel", "akkeshiGuide"]
           })
         ]
       }),
@@ -777,6 +1112,20 @@ const outline = [
               ["适合把车窗当旅行一部分的人。"],
               ["不喜欢长时间坐车则慎选。"]
             )
+          }),
+          spot({
+            id: "spot-nemuro-hanamaru",
+            title: "花丸本店 / 花咲蟹方向",
+            meta: "可选 / 根室吃饭",
+            image: img("cape-nosappu"),
+            tags: ["可选子目的地", "寿司", "海鲜"],
+            summary: "根室重线如果体力允许，用一顿本地海鲜把长车程收住。",
+            sections: sections(
+              ["官方 Nemuro FAQ 建议白天可吃回转寿司，晚上再找炉端或居酒屋。"],
+              ["花咲蟹、秋刀鱼等是根室方向的强识别食物。"],
+              ["别为了吃饭错过纳沙布岬回程交通。"]
+            ),
+            sources: ["nemuroOfficialFaq", "nemuroTourism", "nosappu"]
           })
         ]
       }),
@@ -879,6 +1228,34 @@ const outline = [
               ["和函馆山、港区自然串联。"],
               ["不要赶点。"]
             )
+          }),
+          spot({
+            id: "spot-hakodate-market",
+            title: "函馆朝市 / 海鲜早饭",
+            meta: "可选 / 早饭",
+            image: img("hakodate"),
+            tags: ["可选子目的地", "餐饮", "低体力"],
+            summary: "函馆最适合用早饭打开，不需要再加远支线。",
+            sections: sections(
+              ["朝市和港区能把函馆的海鲜城市属性直接带出来。"],
+              ["从函馆站周边最省交通，适合跨海前或抵达后第二天。"],
+              ["不要带着行李在坡道和市场之间折腾。"]
+            ),
+            sources: ["hakodateTravel", "hakodateTransport"]
+          }),
+          spot({
+            id: "spot-hakodate-tram",
+            title: "函馆市电慢线",
+            meta: "可选 / 市内串联",
+            image: img("hakodate"),
+            tags: ["可选子目的地", "市电", "雨天"],
+            summary: "用市电串函馆站、元町、五棱郭、汤之川，减少步行疲劳。",
+            sections: sections(
+              ["函馆市电白天班次较频繁，覆盖主要观光点。"],
+              ["比打车更有城市感，比全步行更省体力。"],
+              ["坡道区仍要注意鞋和天气。"]
+            ),
+            sources: ["hakodateTransport", "hakodateTravel"]
           })
         ]
       }),
@@ -966,6 +1343,34 @@ const outline = [
               ["交通成本比松岛高。"],
               ["时间紧就留给松岛。"]
             )
+          }),
+          spot({
+            id: "spot-hasshoku",
+            title: "八食中心",
+            meta: "可选 / 市场吃饭",
+            image: img("hachinohe"),
+            tags: ["可选子目的地", "市场", "餐饮"],
+            summary: "如果去八户，市场和吃饭比多追一个景点更有回报。",
+            sections: sections(
+              ["八食中心适合把海鲜、市场、东北日常感一次解决。"],
+              ["它属于八户市内短接驳，不适合跨海换乘日临时硬塞。"],
+              ["如果当天已经安排种差海岸，就只选一个吃饭点。"]
+            ),
+            sources: ["hachinoheFood", "hachinohe"]
+          }),
+          spot({
+            id: "spot-tatehana",
+            title: "馆鼻岸壁朝市",
+            meta: "可选 / 早市",
+            image: img("hachinohe"),
+            tags: ["可选子目的地", "早市", "餐饮"],
+            summary: "更生活化、更早起的八户体验，适合住一晚时考虑。",
+            sections: sections(
+              ["这里更像地方早市，不是随时可插入的景点。"],
+              ["适合八户过夜或很早抵达的人。"],
+              ["先确认开市日和时间，再决定是否牺牲睡眠。"]
+            ),
+            sources: ["tatehanaMarket", "hachinoheFood"]
           })
         ]
       })
@@ -1026,6 +1431,34 @@ const outline = [
               ["市内完成即可。"],
               ["第二天再支线。"]
             )
+          }),
+          spot({
+            id: "spot-sendai-zunda",
+            title: "Zunda / 站内甜品收尾",
+            meta: "可选 / 甜品",
+            image: img("sendai"),
+            tags: ["可选子目的地", "甜品", "低体力"],
+            summary: "跨海长移动后，甜品和站区短逛比继续冲景点更合理。",
+            sections: sections(
+              ["仙台的地方味道不只有牛舌，zunda 适合作为轻收尾。"],
+              ["站区完成，几乎不增加交通成本。"],
+              ["排队太长就换店，不要为甜品透支。"]
+            ),
+            sources: ["jntoSendai", "sendaiGuidebook"]
+          }),
+          spot({
+            id: "spot-kokubuncho",
+            title: "国分町夜晚",
+            meta: "可选 / 夜间餐饮",
+            image: img("sendai"),
+            tags: ["可选子目的地", "夜晚", "餐饮"],
+            summary: "想要更城市化的仙台夜晚，可以用国分町替代继续跑远点。",
+            sections: sections(
+              ["JNTO 将国分町描述为东北大型夜生活区，餐饮密度高。"],
+              ["只适合已经入住、体力还可以的晚上。"],
+              ["不要跨海抵达很晚还硬去。"]
+            ),
+            sources: ["jntoSendai"]
           })
         ]
       }),
@@ -1068,6 +1501,20 @@ const outline = [
               ["两者都做也可以，但不要赶。"],
               ["和仙台晚饭组合舒服。"]
             )
+          }),
+          spot({
+            id: "spot-matsushima-fishmarket",
+            title: "松岛鱼市场 / 牡蛎方向",
+            meta: "可选 / 海鲜",
+            image: img("matsushima"),
+            tags: ["可选子目的地", "牡蛎", "餐饮"],
+            summary: "松岛半日支线最自然的吃饭选择：海湾、鱼市场、牡蛎。",
+            sections: sections(
+              ["松岛以牡蛎、穴子等海湾食物形成地方识别。"],
+              ["鱼市场、瑞严寺、游船码头区域可步行组合。"],
+              ["牡蛎季节性强，夏天不要只为了牡蛎而去。"]
+            ),
+            sources: ["matsushimaFood", "matsushimaSeafood", "jntoMatsushima"]
           })
         ]
       }),
@@ -1250,6 +1697,20 @@ const outline = [
               ["室内选项多。"],
               ["适合整理行李和买东西。"]
             )
+          }),
+          spot({
+            id: "spot-ginza-itoya",
+            title: "伊东屋 / Ginza Six 茑屋方向",
+            meta: "可选 / 纸品书店",
+            image: img("ginza"),
+            tags: ["可选子目的地", "店铺", "雨天"],
+            summary: "比纯购物更适合两个人慢慢看的银座收尾。",
+            sections: sections(
+              ["银座的价值是商业密度和店铺选择，不必只看奢侈品。"],
+              ["纸品、书店、咖啡和百货可以组成低体力雨天路线。"],
+              ["别把银座和涩谷都排成长逛。"]
+            ),
+            sources: ["goTokyoGinza", "tokyo"]
           })
         ]
       }),
@@ -1291,6 +1752,20 @@ const outline = [
               ["夜景和天气影响体验。"],
               ["不赶时间时去。"]
             )
+          }),
+          spot({
+            id: "spot-odaiba-gundam-miraikan",
+            title: "独角兽高达 / Miraikan 方向",
+            meta: "可选 / 台场室内外",
+            image: img("odaiba"),
+            tags: ["可选子目的地", "店铺", "雨天备选"],
+            summary: "台场如果不只看海边，可以用高达、商场或 Miraikan 做雨天替代。",
+            sections: sections(
+              ["它让台场不完全依赖海风和夜景。"],
+              ["官方台场信息站会更新活动与推荐路线，出发前查当天开放情况。"],
+              ["旅行尾声只选一个室内外组合，不要把台场逛成一整天。"]
+            ),
+            sources: ["odaibaOfficial", "odaiba", "rainbowBridgeGoodLuck"]
           })
         ]
       })
@@ -1337,6 +1812,15 @@ const detailGuides = {
     best: ["雨天和低体力日很适合。"],
     avoid: ["不要在这里继续加第二个夜景点。"]
   }),
+  "spot-sapporo-food": guide({
+    facts: [["角色", "恢复吃饭"], ["时间", "1-2小时"], ["区域", "二条/薄野"], ["适合", "雨天"]],
+    play: ["早饭看二条市场，晚上看薄野拉面或汤咖喱。", "两个人先定排队容忍度，再选店。"],
+    time: ["市场 45-90 分钟。", "晚饭含排队 1-2 小时。"],
+    route: ["札幌市内短交通，不影响 JR 主线。"],
+    best: ["落地日、雨天、神威岬取消日。"],
+    avoid: ["不要为了热门店排到错过休息。", "二条市场具体店铺口碑差异大，出发前看近期评价。"],
+    sources: ["sapporoNijo", "sapporoRamen"]
+  }),
   "city-otaru": guide({
     facts: [["角色", "札幌短支线"], ["时间", "半日"], ["适合", "轻松日"], ["交通", "JR短线"]],
     play: ["下午去运河，傍晚看灯，再吃海鲜或甜品。", "如果体力足，运河后接堺町通；体力弱，只做运河。"],
@@ -1363,6 +1847,15 @@ const detailGuides = {
     best: ["下午和雨天更舒服。"],
     avoid: ["人多时不要每家店都排队。"],
     sources: ["otaruDay"]
+  }),
+  "spot-otaru-glass-dessert": guide({
+    facts: [["角色", "慢逛休息"], ["时间", "1-2小时"], ["适合", "雨天"], ["交通", "步行"]],
+    play: ["把北一硝子方向当旧商街质感，把 LeTAO 方向当坐下休息。", "只选一到两家店，保留运河傍晚。"],
+    time: ["短逛 45 分钟。", "含甜品 1.5-2 小时。"],
+    route: ["和堺町通、运河步行串联。"],
+    best: ["下午、雨天、低体力日。"],
+    avoid: ["易碎品别买太多。", "热门甜品排队很长时直接换店。"],
+    sources: ["otaruDay", "otaruCanal"]
   }),
   "city-yoichi": guide({
     facts: [["角色", "工业+小城"], ["时间", "半日"], ["重点", "Nikka"], ["交通", "经小樽JR"]],
@@ -1451,6 +1944,15 @@ const detailGuides = {
     best: ["移动后。"],
     avoid: ["不要替代美瑛/富良野主日。"]
   }),
+  "spot-asahikawa-ramen": guide({
+    facts: [["角色", "移动日主餐"], ["时间", "1-1.5小时"], ["重点", "酱油拉面"], ["交通", "站前/巴士"]],
+    play: ["站前名店适合省交通，拉面村适合想一次比较多家风格。", "两个人可以点不同口味，但不要为了多吃继续加宵夜。"],
+    time: ["排队和用餐按 1-1.5 小时。"],
+    route: ["站前店步行更稳；拉面村需市内交通或打车。"],
+    best: ["札幌到旭川移动日晚饭。", "雨天或花田日后。"],
+    avoid: ["第二天早起去美瑛/富良野时，不要排队到太晚。"],
+    sources: ["asahikawaRamen", "asahikawaRamenStation"]
+  }),
   "city-biei": guide({
     facts: [["角色", "丘陵农田"], ["时间", "半日-一日"], ["交通", "末端需规划"], ["最佳", "晴天"]],
     play: ["先决定玩法：公交少点、骑行、包车或租车。", "只追一条路线：拼布之路或青池方向，不要两边乱切。"],
@@ -1478,6 +1980,24 @@ const detailGuides = {
     avoid: ["阴雨或大客流时性价比下降。"],
     sources: ["bluePond", "biei"]
   }),
+  "spot-shikisai": guide({
+    facts: [["角色", "花田色块"], ["时间", "1-2小时"], ["交通", "末端规划"], ["最佳", "晴天"]],
+    play: ["把它当美瑛的颜色补充，不要再追太多树。", "如果富良野也排花田，美瑛当天就减少花田重复。"],
+    time: ["现场 1-2 小时。"],
+    route: ["美瑛内部交通分散，和拼布之路/青池一起规划。"],
+    best: ["晴天、花期、能见度高。"],
+    avoid: ["不要和青池、拼布之路、富良野全部硬塞同一天。"],
+    sources: ["biei"]
+  }),
+  "spot-shirahige": guide({
+    facts: [["角色", "青池同线"], ["时间", "45-90分钟"], ["交通", "白金温泉方向"], ["取舍", "可删"]],
+    play: ["如果已经去青池，白须瀑布可以作为同线补充。", "把水色和白金温泉方向一起理解。"],
+    time: ["现场 45-90 分钟。"],
+    route: ["从旭川或美瑛有前往青池/白金温泉方向的路线巴士，但班次有限。"],
+    best: ["晴天或薄云，且回程班次明确。"],
+    avoid: ["回程不稳就删；不要为了它错过主花田。"],
+    sources: ["bluePondBiei", "bluePond"]
+  }),
   "city-furano": guide({
     facts: [["角色", "7月主视觉"], ["时间", "半日-一日"], ["交通", "富良野线"], ["风险", "不能直去新得"]],
     play: ["用富田农场做主点，周边花田做延展。", "如果和美瑛同日，严格减少停留点。"],
@@ -1504,6 +2024,24 @@ const detailGuides = {
     best: ["晴天、山体能见度高。"],
     avoid: ["如果富田已经很累，就删掉。"],
     sources: ["farmTomitaHokkaido"]
+  }),
+  "spot-furano-norokko": guide({
+    facts: [["角色", "车窗体验"], ["时间", "随车次"], ["运营", "季节性"], ["座位", "需确认"]],
+    play: ["把它当富良野/美瑛花田日的慢速骨架。", "坐车本身看田野、花田和远山，不要只把它当交通。"],
+    time: ["按具体车次反推全天。", "不要把午饭压在短换乘之间。"],
+    route: ["JR 北海道 2026 年观光列车集中在 6-9 月，Norokko 需要票券/座位确认。"],
+    best: ["运营日、白天、有指定席。"],
+    avoid: ["没有合适车次就不要硬嵌；普通列车或巴士也可以完成旅行。"],
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026"]
+  }),
+  "spot-lavender-east": guide({
+    facts: [["角色", "薰衣草延展"], ["时间", "1小时"], ["2026", "6/20-7/20"], ["取舍", "可删"]],
+    play: ["只在花期正好、天气好、富田农场后仍有体力时加。", "重点看大面积薰衣草，不要再追过多小点。"],
+    time: ["现场约 1 小时。"],
+    route: ["以 Farm Tomita 官网当日开放和交通为准。"],
+    best: ["2026-06-20 至 2026-07-20 开放期内，晴天或薄云。"],
+    avoid: ["开放期外、天气差或富田农场已很累时直接删。"],
+    sources: ["farmTomitaEast", "farmTomita"]
   }),
   "city-obihiro-asahikawa": guide({
     facts: [["角色", "十胜备选"], ["交通", "非JR直通"], ["时间", "移动日"], ["风险", "绕行"]],
@@ -1566,6 +2104,24 @@ const detailGuides = {
     avoid: ["天气差时缩短，留体力。"],
     sources: ["kushiro"]
   }),
+  "spot-kushiro-norokko": guide({
+    facts: [["角色", "湿原慢车"], ["时间", "半日框架"], ["运营", "4-10月"], ["座位", "需确认"]],
+    play: ["把慢车当湿原体验的一部分，而不是单纯交通。", "如果不想折腾展望点末端交通，这是一种更稳的湿原接触方式。"],
+    time: ["按具体车次做半日规划。", "不要再和根室同日。"],
+    route: ["JR 北海道标注 2026 年 4-10 月运行，Kushiro-Toro 方向可看湿原与野生动物机会。"],
+    best: ["天气稳定、车次合适、有座位。"],
+    avoid: ["不要以为它能覆盖所有湿原展望点；它是体验补充。"],
+    sources: ["kushiroNorokko", "kushiroNorokkoHokkaido"]
+  }),
+  "spot-moo-robata": guide({
+    facts: [["角色", "港口晚饭"], ["时间", "1-2小时"], ["适合", "抵达日"], ["重点", "炭火海鲜"]],
+    play: ["傍晚看幣舞桥，再去港口边吃炉端。", "两个人可以选鱼、贝类、蔬菜分着烤。"],
+    time: ["用餐 1-2 小时。"],
+    route: ["在钏路市内港口动线上，不需要额外长交通。"],
+    best: ["长移动日后、傍晚、有营业确认。"],
+    avoid: ["天气差或客流大时提前确认；不要吃完继续跑远点。"],
+    sources: ["mooRobata", "kushiroRobata", "kushiroRobataOfficial"]
+  }),
   "city-akkeshi": guide({
     facts: [["角色", "轻一点东海岸"], ["时间", "半日-一日"], ["交通", "花咲线"], ["重点", "海雾/海湾"]],
     play: ["把厚岸当根室的轻量替代：海湾、岬角、吃饭。"],
@@ -1593,6 +2149,15 @@ const detailGuides = {
     avoid: ["不要排成景点打卡。"],
     sources: ["akkeshiGuide"]
   }),
+  "spot-akkeshi-oysters": guide({
+    facts: [["角色", "厚岸主餐"], ["时间", "1-1.5小时"], ["重点", "牡蛎"], ["交通", "先锁回程"]],
+    play: ["把牡蛎当厚岸的主体验之一，和海湾/爱冠岬组合。", "不必追很多店，选交通最稳的一处即可。"],
+    time: ["午饭 1-1.5 小时。"],
+    route: ["厚岸往返班次稀疏，先定回程，再安排用餐。"],
+    best: ["厚岸替代根室的轻量海岸日。"],
+    avoid: ["不要为了吃饭错过花咲线回程。"],
+    sources: ["akkeshiOysters", "akkeshiModel", "akkeshiGuide"]
+  }),
   "city-nemuro": guide({
     facts: [["角色", "最东端重体验"], ["时间", "整日"], ["交通", "JR+巴士/出租"], ["风险", "班次+天气"]],
     play: ["把坐车过程也当旅行内容。", "到根室后只做纳沙布岬这一件大事。"],
@@ -1619,6 +2184,15 @@ const detailGuides = {
     best: ["白天有光时。"],
     avoid: ["不喜欢长车程则改厚岸。"],
     sources: ["operation", "timetable"]
+  }),
+  "spot-nemuro-hanamaru": guide({
+    facts: [["角色", "根室主餐"], ["时间", "1小时"], ["重点", "寿司/花咲蟹"], ["条件", "回程有余量"]],
+    play: ["纳沙布岬完成后，如果回程余量足，再在根室市区吃饭。", "白天回转寿司、晚上炉端/居酒屋方向更合理。"],
+    time: ["用餐 45-75 分钟，排队另算。"],
+    route: ["根室站、纳沙布岬接驳和回钏路列车要一起看。"],
+    best: ["天气和交通都顺，且不赶末班。"],
+    avoid: ["不要为了餐厅牺牲最东端或回程安全。"],
+    sources: ["nemuroOfficialFaq", "nemuroTourism", "nosappu"]
   }),
   "city-obihiro-kushiro": guide({
     facts: [["角色", "十胜顺路点"], ["时间", "半日-一日"], ["交通", "Ozora体系"], ["取舍", "可跳过"]],
@@ -1681,6 +2255,24 @@ const detailGuides = {
     avoid: ["行李日不要拖箱走坡。"],
     sources: ["motomachi", "hakodateTravel"]
   }),
+  "spot-hakodate-market": guide({
+    facts: [["角色", "函馆早饭"], ["时间", "1小时"], ["区域", "函馆站旁"], ["适合", "跨海前"]],
+    play: ["早上先吃海鲜，再决定是否补元町/红砖仓库。", "把它当轻松生活点，不要在市场里耗尽预算和体力。"],
+    time: ["45-75 分钟。"],
+    route: ["函馆站周边最省交通，跨海前也好安排。"],
+    best: ["早饭、雨天、跨海前半天。"],
+    avoid: ["拖行李不舒服；具体店铺价格和口碑差异大，要看近期评价。"],
+    sources: ["hakodateTravel", "hakodateTransport"]
+  }),
+  "spot-hakodate-tram": guide({
+    facts: [["角色", "市内骨架"], ["时间", "随路线"], ["覆盖", "主观光点"], ["体力", "省腿"]],
+    play: ["用市电把函馆站、元町、五棱郭、汤之川这些方向串起来。", "坐车看城市尺度，比一路步行更稳。"],
+    time: ["按 1-4 小时的市内半日来用。"],
+    route: ["官方交通页说明市电白天频繁运行，并服务函馆站、元町、Bay Area、五棱郭、汤之川等主要点。"],
+    best: ["雨天、行程恢复日、坡道前后。"],
+    avoid: ["市电不是新干线换乘；跨海仍要 Hakodate Liner 去新函馆北斗。"],
+    sources: ["hakodateTransport"]
+  }),
   "city-seikan": guide({
     facts: [["角色", "跨海枢纽"], ["必须", "新函馆北斗"], ["时间", "半日移动"], ["风险", "具体车次"]],
     play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。"],
@@ -1735,6 +2327,24 @@ const detailGuides = {
     avoid: ["不要为它打乱新干线主线。"],
     sources: ["hachinohe"]
   }),
+  "spot-hasshoku": guide({
+    facts: [["角色", "八户市场"], ["时间", "1-2小时"], ["适合", "午饭"], ["交通", "市内接驳"]],
+    play: ["把八食中心当八户吃饭和市场生活的主点。", "如果种差海岸也去，市场只吃饭不深逛。"],
+    time: ["吃饭和短逛 1-2 小时。"],
+    route: ["从八户站/市区需要市内交通衔接，不能当新干线站内点。"],
+    best: ["八户停留有完整半天时。"],
+    avoid: ["跨海换乘日不要为它绕路。"],
+    sources: ["hachinoheFood", "hachinohe"]
+  }),
+  "spot-tatehana": guide({
+    facts: [["角色", "大型早市"], ["时间", "1-2小时"], ["条件", "早起/开市日"], ["取舍", "住一晚更好"]],
+    play: ["早起边走边吃，感受八户港口生活。", "它不是普通全天景点，要按开市日和时间来。"],
+    time: ["1-2 小时。"],
+    route: ["适合八户过夜或很早抵达后用短交通前往。"],
+    best: ["开市日、天气可接受、愿意早起。"],
+    avoid: ["为了早市牺牲跨海/仙台主线不划算。"],
+    sources: ["tatehanaMarket", "hachinoheFood"]
+  }),
   "base-sendai": guide({
     facts: [["节奏", "1-2晚"], ["角色", "本州缓冲"], ["主线", "松岛"], ["交通", "东北新干线"]],
     play: ["跨海抵达只住下吃饭。", "第二天松岛半日，再回仙台收尾。"],
@@ -1771,6 +2381,24 @@ const detailGuides = {
     avoid: ["不要为了名店排到过累。"],
     sources: ["jntoSendai"]
   }),
+  "spot-sendai-zunda": guide({
+    facts: [["角色", "甜品收尾"], ["时间", "20-45分钟"], ["区域", "站区"], ["体力", "低"]],
+    play: ["把 zunda 当跨海抵达后的轻甜品。", "如果牛舌排队太久，可用甜品和简单晚饭替代。"],
+    time: ["20-45 分钟。"],
+    route: ["仙台站区解决即可。"],
+    best: ["跨海抵达日晚、松岛回来后。"],
+    avoid: ["不要为了甜品再跨很远。"],
+    sources: ["jntoSendai", "sendaiGuidebook"]
+  }),
+  "spot-kokubuncho": guide({
+    facts: [["角色", "夜晚餐饮区"], ["时间", "1-2小时"], ["体力", "中"], ["适合", "住下后"]],
+    play: ["如果抵达不晚，可把国分町作为仙台夜晚的餐饮选择。", "两个人选一家舒服店坐下，不做夜生活扫街。"],
+    time: ["晚饭 1-2 小时。"],
+    route: ["市内短交通或步行，按酒店位置决定。"],
+    best: ["已经入住、第二天不早起太狠。"],
+    avoid: ["跨海到达太晚就别去；仙台第一晚不需要再跑远。"],
+    sources: ["jntoSendai"]
+  }),
   "city-matsushima": guide({
     facts: [["角色", "仙台最佳支线"], ["时间", "半日"], ["交通", "JR普通支线"], ["重点", "海湾岛屿"]],
     play: ["海湾散步+游船/瑞严寺二选一。", "下午回仙台吃饭，不要赶一整天。"],
@@ -1797,6 +2425,15 @@ const detailGuides = {
     best: ["雨天或想看文化时。"],
     avoid: ["时间短时不要寺和船都赶。"],
     sources: ["zuiganji", "matsushima"]
+  }),
+  "spot-matsushima-fishmarket": guide({
+    facts: [["角色", "海湾午饭"], ["时间", "1小时"], ["重点", "牡蛎/穴子"], ["季节", "需确认"]],
+    play: ["海湾散步后，用鱼市场或附近餐厅解决午饭。", "牡蛎、穴子、海鲜小吃都可以，不必只盯一项。"],
+    time: ["午饭 45-75 分钟。"],
+    route: ["鱼市场、游船码头、瑞严寺区域适合步行串联。"],
+    best: ["松岛半日中段。"],
+    avoid: ["牡蛎季节性强；夏天不要只按冬季牡蛎攻略期待。"],
+    sources: ["matsushimaFood", "matsushimaSeafood", "jntoMatsushima"]
   }),
   "city-hachinohe-sendai": guide({
     facts: [["角色", "若未去的补线"], ["时间", "一日"], ["交通", "新干线北上"], ["优先级", "低"]],
@@ -1914,6 +2551,15 @@ const detailGuides = {
     avoid: ["不要买到行李超载。"],
     sources: ["tokyo"]
   }),
+  "spot-ginza-itoya": guide({
+    facts: [["角色", "纸品书店"], ["时间", "1-2小时"], ["适合", "雨天"], ["体力", "低"]],
+    play: ["用纸品、书店、咖啡替代高强度购物。", "两个人各自慢看，再约一个咖啡点集合。"],
+    time: ["1-2 小时。"],
+    route: ["银座中央通周边步行即可。"],
+    best: ["雨天、返程前、想买轻量伴手礼时。"],
+    avoid: ["不要把银座和涩谷都逛成重体力日。"],
+    sources: ["goTokyoGinza", "tokyo"]
+  }),
   "city-odaiba": guide({
     facts: [["角色", "人工海岸"], ["时间", "2-4小时"], ["最佳", "傍晚"], ["交通", "市内非JR单线"]],
     play: ["海滨散步、彩虹桥视角、晚饭三选二。"],
@@ -1940,6 +2586,15 @@ const detailGuides = {
     best: ["夜景和低风。"],
     avoid: ["天气恶劣时不要走桥。"],
     sources: ["rainbowBridge", "odaiba"]
+  }),
+  "spot-odaiba-gundam-miraikan": guide({
+    facts: [["角色", "台场雨天替代"], ["时间", "1.5-3小时"], ["适合", "傍晚/雨天"], ["交通", "市内"]],
+    play: ["晴天先海边，天气普通就改高达、商场或 Miraikan。", "选一个室内外组合，不要把台场拆成太多任务。"],
+    time: ["1.5-3 小时。"],
+    route: ["按酒店位置接入台场区域交通；当天查开放和活动。"],
+    best: ["强风以外的傍晚，或雨天需要室内替代时。"],
+    avoid: ["台场交通回市区需要时间，最后一天别玩到太晚。"],
+    sources: ["odaibaOfficial", "odaiba", "rainbowBridgeGoodLuck"]
   })
 };
 
@@ -1967,8 +2622,107 @@ const levelLabels = {
   3: "子目的地"
 };
 
+const foodTips = {
+  "base-sapporo": ["札幌段优先把拉面、海鲜市场、便利店补给和药妆放在同一晚解决。", "二条市场适合早饭或看海鲜，薄野/狸小路适合雨天晚饭。"],
+  "city-sapporo": ["低体力时选酒店附近拉面或汤咖喱，不必跨城追店。", "二条市场更适合早去；晚上用薄野和狸小路收尾。"],
+  "spot-sapporo-food": ["二条市场看海鲜，拉面街看札幌味噌拉面的集中度。", "先看近期评价和排队，再决定具体店名。"],
+  "city-otaru": ["小樽吃法不必复杂：运河附近海鲜、堺町通甜品、玻璃店慢逛即可。", "LeTAO、北一硝子方向适合雨天或下午休息。"],
+  "spot-otaru-glass-dessert": ["把甜品店当休息点，不要每家都排。", "玻璃店适合买小件，注意行李重量和易碎。"],
+  "city-yoichi": ["Nikka 内部餐厅和商店要按当天开放情况看；没有预约也可把余市做成轻散步。", "试饮后不要再安排紧张交通。"],
+  "spot-nikka": ["Rita's Kitchen 和蒸馏所商店适合顺手解决，不要为了购物拖到末班。", "酒类购买要考虑行李和航空限制。"],
+  "city-kamui": ["岬角没有稳定餐饮期待，出发前在札幌/小樽/余市补水和轻食。", "晴天跑岬角，晚饭回札幌或小樽解决更稳。"],
+  "base-asahikawa": ["旭川适合用拉面收住移动日；站前名店省交通，拉面村更像集合体验。", "第二天要跑美瑛/富良野时，前一晚不要排长队太久。"],
+  "city-asahikawa": ["站前拉面名店适合低成本尝试，拉面村适合想比较多家风格的人。", "把吃饭和查第二天交通放在同一段时间。"],
+  "spot-asahikawa-ramen": ["酱油汤底是旭川拉面的核心识别。", "选店时看当天营业、排队、离酒店距离，而不是只看排名。"],
+  "city-biei": ["美瑛内部餐饮和交通都分散，午饭不要压到很晚。", "有包车/租车时可更灵活；公交玩法要先定吃饭点。"],
+  "spot-shikisai": ["适合搭配简单午饭，不要为了花田继续横跳太多点。", "人多时把它当颜色补充，停留短一点。"],
+  "spot-shirahige": ["青池/白金温泉方向要先看回程班次，再决定是否坐下吃饭。", "天气差时不要把午饭地点放得太偏。"],
+  "city-furano": ["富良野花田日适合轻食、冰淇淋和早出发，正餐不要排得太远。", "富田农场周边人多，提前准备备选餐厅。"],
+  "spot-farm-tomita": ["薰衣草冰淇淋和农场内轻食适合短休息。", "先看花田，再吃东西，避免高温下排队消耗。"],
+  "spot-furano-norokko": ["观光列车当天不要把午饭卡在换乘间隙。", "有指定席时按列车时刻反推吃饭和花田停留。"],
+  "base-kushiro": ["钏路的关键词是炉端、海鲜、港口傍晚。", "长移动到达后，幣舞桥和炉端比继续跑湿原更合理。"],
+  "city-kushiro": ["MOO 岸壁炉端适合傍晚，但仍要确认营业和天气。", "港口边吃饭后直接回酒店，第二天再跑湿原或根室。"],
+  "spot-moo-robata": ["适合选当天看着新鲜的海鲜和贝类，不要点太复杂。", "风雨天确认是否开放和座位安排。"],
+  "city-akkeshi": ["厚岸最清楚的吃法是牡蛎；Conchiglie / 道之站方向适合和海湾同日。", "先定回程花咲线，再决定午饭时长。"],
+  "spot-akkeshi-oysters": ["牡蛎饭、牡蛎拉面、烧牡蛎都可作为目标，但按季节和营业为准。", "不要为了吃饭错过回钏路的车。"],
+  "city-nemuro": ["根室吃饭以回转寿司、炉端、花咲蟹/秋刀鱼方向为主。", "纳沙布岬优先于餐厅，餐厅只作为体力允许时的补充。"],
+  "spot-nemuro-hanamaru": ["花丸本店适合作为根室市区吃饭方向，但排队和营业要当天查。", "如果回程紧，宁可买轻食也别冒末班风险。"],
+  "base-hakodate": ["函馆用海鲜早饭、红砖仓库和市电慢走恢复，不要继续长移动。", "天气好再上函馆山，天气差把预算留给吃饭。"],
+  "city-hakodate": ["朝市适合早饭，金森仓库适合下午，汤之川/五棱郭看体力决定。", "市电能减少腿部疲劳。"],
+  "spot-hakodate-market": ["海鲜早饭适合跨海前半天；先放行李再去吃。", "价格和体验差异大，出发前看近期评价。"],
+  "city-hachinohe-hakodate": ["八户如果要加，优先市场/港口吃饭或种差海岸二选一。", "八食中心适合午饭，馆鼻朝市适合住一晚且早起。"],
+  "spot-hasshoku": ["市场适合用午饭解决八户生活感。", "如果当天还要长距离新干线，不要逛太久。"],
+  "spot-tatehana": ["早市更吃日期和时间，不能按普通景点处理。", "适合八户过夜，不适合跨海当天硬塞。"],
+  "base-sendai": ["仙台第一晚：牛舌或 zunda，别再跑远。", "松岛日可以把海鲜午饭放在海湾附近。"],
+  "city-sendai": ["牛舌通、站区甜品、国分町分别对应低/中/高体力夜晚。", "跨海抵达晚就只吃站区。"],
+  "spot-gyutan": ["站内牛舌街最省交通，但排队要看当日。", "不必为名店排到影响睡眠。"],
+  "spot-sendai-zunda": ["zunda 适合做轻甜品收尾。", "在站区解决，别把甜品变成额外景点。"],
+  "city-matsushima": ["松岛吃饭看牡蛎、穴子、鱼市场，但牡蛎季节性强。", "海湾散步和午饭比赶多个寺庙更舒服。"],
+  "spot-matsushima-fishmarket": ["夏天不要只为牡蛎期待而去；海鲜和穴子也可作为目标。", "鱼市场、码头、瑞严寺适合步行组合。"],
+  "base-tokyo": ["东京收尾用短区域吃饭，不再跨远郊。", "涩谷吃人流，银座吃室内和咖啡，台场吃海湾晚饭。"],
+  "city-ginza": ["银座适合咖啡、书店、纸品和百货，不必只逛奢侈品。", "雨天优先银座，强风雨删台场。"],
+  "spot-ginza-itoya": ["纸品/书店/咖啡适合两个人慢慢看。", "买东西前先确认行李空间。"],
+  "city-odaiba": ["台场适合傍晚海边晚饭，也可以用商场/Miraikan 做雨天替代。", "强风时不要把海边作为唯一目标。"],
+  "spot-odaiba-gundam-miraikan": ["高达、商场、Miraikan 可作为一组雨天替代。", "当天查开放和活动，不要把台场撑成整天。"]
+};
+
+const reviewQueries = {
+  "base-sapporo": "札幌 美食 旅行 攻略",
+  "spot-sapporo-food": "札幌 二条市场 拉面 横丁",
+  "city-otaru": "小樽 运河 堺町通 LeTAO",
+  "city-yoichi": "余市 Nikka 蒸馏所 参观",
+  "city-kamui": "神威岬 积丹 交通 天气",
+  "city-asahikawa": "旭川 拉面 站前",
+  "city-biei": "美瑛 拼布之路 青池 交通",
+  "city-furano": "富良野 富田农场 薰衣草",
+  "spot-furano-norokko": "富良野 美瑛 Norokko 观光列车",
+  "city-kushiro": "钏路 炉端 幣舞桥",
+  "spot-kushiro-norokko": "钏路湿原 Norokko",
+  "city-akkeshi": "厚岸 牡蛎 Conchiglie",
+  "city-nemuro": "根室 纳沙布岬 花丸 本店",
+  "city-hakodate": "函馆 朝市 函馆山 元町",
+  "city-seikan": "函馆 新函馆北斗 新青森 换乘",
+  "city-hachinohe-hakodate": "八户 种差海岸 八食中心",
+  "city-sendai": "仙台 牛舌 zunda 国分町",
+  "city-matsushima": "松岛 牡蛎 鱼市场 瑞严寺",
+  "city-shibuya": "涩谷 旅行 餐厅 咖啡",
+  "city-ginza": "银座 Itoya Ginza Six 茑屋",
+  "city-odaiba": "台场 彩虹桥 高达 Miraikan"
+};
+
+function getFoodTips(item) {
+  return foodTips[item.id] || [
+    "先以当天住宿、天气和回程交通决定吃饭区域。",
+    "具体店名用下方评测索引二次确认，避免只按旧攻略排队。"
+  ];
+}
+
+function getReviewQuery(item) {
+  return reviewQueries[item.id] || `${item.title} ${item.meta || ""}`;
+}
+
+function renderReviewLinks(item) {
+  const query = getReviewQuery(item);
+  const links = [
+    ["小红书", `https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(query)}`],
+    ["Google Maps", `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} 日本`)}`],
+    ["Tabelog/网页", `https://www.google.com/search?q=${encodeURIComponent(`${query} 食べログ OR tabelog`)}`],
+    ["近期游记", `https://www.google.com/search?q=${encodeURIComponent(`${query} 2026 旅行 攻略`)}`]
+  ];
+
+  return `
+    <section>
+      <h3>评测索引</h3>
+      <div class="review-links">
+        ${links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`).join("")}
+      </div>
+    </section>
+  `;
+}
+
 const outlineTree = document.querySelector("#outlineTree");
 const transferList = document.querySelector("#transferList");
+const optimizationList = document.querySelector("#optimizationList");
 const modal = document.querySelector("#detailModal");
 const modalSheet = modal.querySelector(".modal-sheet");
 const modalImage = document.querySelector("#modalImage");
@@ -2035,6 +2789,7 @@ function renderDetailSections(item) {
     { title: "时间预算", items: guideData.time },
     { title: "交通要点", items: guideData.route },
     { title: "最佳条件", items: guideData.best },
+    { title: "店铺 / 餐厅方向", items: getFoodTips(item) },
     { title: "别踩坑", items: guideData.avoid }
   ];
   const allSections = [...guideSections, ...item.sections];
@@ -2051,7 +2806,7 @@ function renderDetailSections(item) {
     )
     .join("");
 
-  return body + renderSources([...(item.sources || []), ...(guideData.sources || [])]);
+  return body + renderReviewLinks(item) + renderSources([...(item.sources || []), ...(guideData.sources || [])]);
 }
 
 function icon(name) {
@@ -2078,6 +2833,33 @@ function renderTransfers() {
             </ol>
             <p class="transfer-note">${escapeHtml(transfer.note)}</p>
             ${renderSources(transfer.sources, "交通依据")}
+          </div>
+        </details>
+      `
+    )
+    .join("");
+}
+
+function renderOptimizations() {
+  optimizationList.innerHTML = routeOptimizations
+    .map(
+      (item) => `
+        <details class="optimization-card${item.caution ? " is-caution" : ""}">
+          <summary class="optimization-summary">
+            <span class="transfer-icon" aria-hidden="true">${icon(item.icon || "check")}</span>
+            <div class="transfer-route">
+              <strong>${escapeHtml(item.title)}</strong>
+              <small>${escapeHtml(item.meta)}</small>
+            </div>
+            <span class="transfer-disclosure" aria-hidden="true">${icon("plus")}</span>
+          </summary>
+          <div class="optimization-main">
+            <p class="optimization-verdict">${escapeHtml(item.verdict)}</p>
+            <ol class="optimization-steps">
+              ${item.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
+            </ol>
+            <p class="optimization-note">${escapeHtml(item.note)}</p>
+            ${renderSources(item.sources, "判断依据")}
           </div>
         </details>
       `
@@ -2177,4 +2959,5 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderTransfers();
+renderOptimizations();
 renderOutline();

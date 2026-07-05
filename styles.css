@@ -120,6 +120,7 @@ img {
 }
 
 .transport-board,
+.optimization-board,
 .outline-board {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -127,7 +128,12 @@ img {
   overflow: hidden;
 }
 
-.transport-board {
+.transport-board,
+.optimization-board {
+  margin-bottom: 14px;
+}
+
+.outline-board {
   margin-bottom: 14px;
 }
 
@@ -174,20 +180,29 @@ img {
   height: 19px;
 }
 
-.transfer-list {
+.heading-icon.is-quiet {
+  background: var(--forest-soft);
+  color: var(--forest);
+}
+
+.transfer-list,
+.optimization-list {
   display: grid;
 }
 
-.transfer-card {
+.transfer-card,
+.optimization-card {
   border-bottom: 1px solid var(--soft-line);
   background: var(--paper);
 }
 
-.transfer-card:last-child {
+.transfer-card:last-child,
+.optimization-card:last-child {
   border-bottom: 0;
 }
 
-.transfer-summary {
+.transfer-summary,
+.optimization-summary {
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr) 34px;
   gap: 10px;
@@ -198,7 +213,8 @@ img {
   list-style: none;
 }
 
-.transfer-summary::-webkit-details-marker {
+.transfer-summary::-webkit-details-marker,
+.optimization-summary::-webkit-details-marker {
   display: none;
 }
 
@@ -218,12 +234,14 @@ img {
   height: 21px;
 }
 
-.transfer-card.is-caution .transfer-icon {
+.transfer-card.is-caution .transfer-icon,
+.optimization-card.is-caution .transfer-icon {
   background: var(--amber-soft);
   color: var(--amber);
 }
 
-.transfer-main {
+.transfer-main,
+.optimization-main {
   min-width: 0;
   padding: 0 14px 14px 66px;
 }
@@ -263,19 +281,22 @@ img {
   height: 20px;
 }
 
-.transfer-card[open] .transfer-disclosure {
+.transfer-card[open] .transfer-disclosure,
+.optimization-card[open] .transfer-disclosure {
   transform: rotate(45deg);
   background: var(--accent-soft);
 }
 
-.transfer-verdict {
+.transfer-verdict,
+.optimization-verdict {
   margin: 0 0 8px;
   color: var(--ink);
   font-size: 14px;
   font-weight: 800;
 }
 
-.transfer-steps {
+.transfer-steps,
+.optimization-steps {
   display: grid;
   gap: 5px;
   margin: 0 0 8px;
@@ -283,7 +304,8 @@ img {
   list-style: none;
 }
 
-.transfer-steps li {
+.transfer-steps li,
+.optimization-steps li {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
   gap: 6px;
@@ -291,7 +313,8 @@ img {
   font-size: 13px;
 }
 
-.transfer-steps li::before {
+.transfer-steps li::before,
+.optimization-steps li::before {
   content: "";
   align-self: center;
   width: 7px;
@@ -300,27 +323,31 @@ img {
   border-radius: 50%;
 }
 
-.transfer-note {
+.transfer-note,
+.optimization-note {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
 }
 
-.transfer-card .source-links {
+.transfer-card .source-links,
+.optimization-card .source-links {
   margin-top: 10px;
   border-top: 1px solid var(--soft-line);
   padding-top: 9px;
 }
 
-.transfer-card .source-links h3 {
+.transfer-card .source-links h3,
+.optimization-card .source-links h3 {
   margin: 0 0 6px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.25;
 }
 
-.transfer-card .source-links ul {
+.transfer-card .source-links ul,
+.optimization-card .source-links ul {
   display: grid;
   gap: 5px;
   margin: 0;
@@ -650,6 +677,28 @@ img {
   color: var(--accent);
 }
 
+.review-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding-left: 0;
+}
+
+.review-links a {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  background: #fafbf8;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+}
+
 .source-links a {
   color: var(--accent);
   text-decoration-thickness: 1px;
@@ -674,7 +723,8 @@ img {
     padding-inline: 0;
   }
 
-  .transfer-summary {
+  .transfer-summary,
+  .optimization-summary {
     grid-template-columns: 48px minmax(0, 1fr) 36px;
     padding-inline: 18px;
   }
@@ -684,7 +734,8 @@ img {
     height: 48px;
   }
 
-  .transfer-main {
+  .transfer-main,
+  .optimization-main {
     padding-inline: 84px 18px;
   }
 
