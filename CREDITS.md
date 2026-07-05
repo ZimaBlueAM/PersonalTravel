@@ -27,8 +27,13 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Lake Toya: https://en.wikipedia.org/wiki/Lake_T%C5%8Dya
 - Onuma Quasi-National Park: https://en.wikipedia.org/wiki/%C5%8Cnuma_Quasi-National_Park
 - Hirosaki Castle: https://en.wikipedia.org/wiki/Hirosaki_Castle
+- Sounkyo Ginga Falls: https://commons.wikimedia.org/wiki/Category:Ginga_Falls
+- Lake Mashu: https://commons.wikimedia.org/wiki/File:Lake_Mashu.jpg
+- Mount Io / Atosanupuri: https://commons.wikimedia.org/wiki/File:Iou-zan_hokkaido01.jpg
 - Yamadera / Risshakuji: https://en.wikipedia.org/wiki/Yamadera
+- Akiu Rairaikyo: https://commons.wikimedia.org/wiki/File:Akiu_Rairaikyo_2008B.jpg
 - Yokohama Minato Mirai: https://en.wikipedia.org/wiki/Yokohama
 - Kamakura / Tsurugaoka Hachimangu: https://en.wikipedia.org/wiki/Kamakura
+- Nikko Yomeimon: https://commons.wikimedia.org/wiki/File:Nikko_Toshogu_Yomeimon_M3249.jpg
 
 The original long itinerary poster in `assets/source-plan.png` was provided by the site owner for personal reference.

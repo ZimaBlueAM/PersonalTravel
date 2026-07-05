@@ -360,6 +360,51 @@ img {
   display: grid;
 }
 
+.focus-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--soft-line);
+  background: #fbfcfa;
+  scrollbar-width: none;
+}
+
+.focus-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  min-height: 44px;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: var(--paper);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 850;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.filter-button svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.filter-button.is-active {
+  border-color: #c6d8cf;
+  background: var(--forest-soft);
+  color: var(--forest);
+}
+
 .tree-item {
   border-bottom: 1px solid var(--soft-line);
   background: var(--paper);

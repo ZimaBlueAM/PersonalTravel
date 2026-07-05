@@ -5,10 +5,15 @@ const placeImages = {
   lakeToya: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/130922_Lake_Toya_Toyako_Hokkaido_Japan03s3.jpg/1280px-130922_Lake_Toya_Toyako_Hokkaido_Japan03s3.jpg",
   onuma: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Komagatake_dusk.jpg/1280px-Komagatake_dusk.jpg",
   aomoriHirosaki: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Hirosaki-castle_Aomori_with_Sakura_blossoms.jpg",
+  sounkyo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ginga_Falls_of_Sounkyo_-_panoramio.jpg",
+  kawayuMashu: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Lake_Mashu.jpg",
+  iozan: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Iou-zan_hokkaido01.jpg",
   yamadera: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Risshaku-ji_Kaisan-do_201706b.jpg/1280px-Risshaku-ji_Kaisan-do_201706b.jpg",
   sakunami: img("sendai"),
+  akiu: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Akiu_Rairaikyo_2008B.jpg",
   yokohama: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Minato_Mirai.jpg/1280px-Minato_Mirai.jpg",
-  kamakura: "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg"
+  kamakura: "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg",
+  nikko: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nikko_Toshogu_Yomeimon_M3249.jpg"
 };
 
 const sourceLinks = {
@@ -160,6 +165,14 @@ const sourceLinks = {
     label: "Taisetsu Kamui: Asahikawa ramen around station",
     url: "https://taisetsu-kamui.jp/en/features/29869"
   },
+  sounkyoTaisetsu: {
+    label: "Heart of Hokkaido: Sounkyo Onsen",
+    url: "https://taisetsu-kamui.jp/en/spots/16268"
+  },
+  sounkyoVisitorAccess: {
+    label: "Sounkyo Visitor Center: access",
+    url: "https://sounkyovc.net/en/access"
+  },
   kushiro: {
     label: "Kushiro / Lake Akan official travel guide",
     url: "https://en.kushiro-lakeakan.com/"
@@ -211,6 +224,14 @@ const sourceLinks = {
   eastHokkaido: {
     label: "East Hokkaido: Kushiro / Nemuro access",
     url: "https://easthokkaido.com/en/winter-highlight-kushiro/"
+  },
+  kawayuVisitor: {
+    label: "Kawayu Visitor Center: access",
+    url: "https://www.kawayu-eco-museum.com/eng/"
+  },
+  akanMashuAccess: {
+    label: "Akan-Mashu National Park: how to get there",
+    url: "https://www.japan.travel/national-parks/parks/akan-mashu/how-to-get-there/"
   },
   hakodateTravel: {
     label: "Travel Hakodate official guide",
@@ -324,6 +345,14 @@ const sourceLinks = {
     label: "Nikka Whisky: Miyagikyo Distillery access",
     url: "https://www.nikka.com/en/distilleries/miyagikyo/access/"
   },
+  akiuSendai: {
+    label: "Discover Sendai: Akiu Onsen",
+    url: "https://discoversendai.travel/places/akiu-onsen/"
+  },
+  akiuSatoAccess: {
+    label: "Akiu Sato Center: access",
+    url: "https://akiusato.jp/en/kannai/access01.html"
+  },
   tokyo: {
     label: "GO TOKYO official guide",
     url: "https://www.gotokyo.org/en/index.html"
@@ -339,6 +368,22 @@ const sourceLinks = {
   yokohamaPass: {
     label: "JR East: Yokohama-Minatomirai Pass",
     url: "https://www.jreast.co.jp/en/multi/pass/yokohama_minatomirai.html"
+  },
+  nikkoOfficialAccess: {
+    label: "Nikko Official Guide: getting here and around",
+    url: "https://www.visitnikko.jp/en/plan-your-trip/getting-to-and-around-nikko/"
+  },
+  nikkoNationalParkAccess: {
+    label: "JNTO National Parks: Nikko access",
+    url: "https://www.japan.travel/national-parks/parks/nikko/how-to-get-there/"
+  },
+  nikkoJnto: {
+    label: "JNTO: Nikko area",
+    url: "https://www.japan.travel/en/destinations/kanto/tochigi/nikko-area/"
+  },
+  jrTokyoWidePass: {
+    label: "JR East: JR TOKYO Wide Pass",
+    url: "https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html"
   },
   goTokyoGinza: {
     label: "GO TOKYO: Ginza",
@@ -362,9 +407,9 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-05 23:31 JST";
-const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 对特急、快速 Airport、函馆/千岁线、函馆 Liner、函馆线、石胜线、根室线、花咲线、富良野线、北海道新干线均显示无停驶/30分钟以上延误信息。出发当天仍以实时页面为准。`;
-const jrEastLiveNote = "本次核验 2026-07-05 23:27 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏仍出现 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
+const checkedAt = "2026-07-06 00:10 JST";
+const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 的区域级摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回影响状态；官方图例对应“Cancelled or delayed for 30 minutes or more, or stopped”。路线链路可行，但出发日必须按具体线路、车次和替代交通再查。`;
+const jrEastLiveNote = "本次核验 2026-07-06 00:02 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏仍出现 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
 
 const coreTransfers = [
   {
@@ -373,10 +418,10 @@ const coreTransfers = [
     from: "新千岁 CTS",
     to: "札幌基地",
     time: "约 40-50 分钟",
-    status: "正常核验",
+    status: "需当天复查",
     verdict: "落地后只进城，不再叠加远支线。",
     steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
-    note: "JR 北海道实时核验显示 Airport 与札幌区域相关线路无停驶/30分钟以上延误信息。",
+    note: "JR 北海道最新区域级摘要显示有运行影响信息；落地当天按新千岁机场-札幌具体列车再查。",
     sources: ["operation", "timetable"]
   },
   {
@@ -467,6 +512,21 @@ const routeOptimizations = [
     sources: ["operation", "asahikawa", "obihiro", "hakodate", "shinkansen", "jreast"]
   },
   {
+    id: "opt-taste-fit",
+    icon: "search",
+    title: "按偏好取舍：松弛 / 世界边缘 / 探店",
+    meta: "不要为了完整而完整",
+    verdict: "每个可选点至少命中一个偏好，否则就是可以删的点。",
+    steps: [
+      "松弛：温泉、咖啡、短散步、雨天室内、长移动后的晚饭。",
+      "世界边缘：岬角、海岸、跨海、火山湖、峡谷、山岳、最东端。",
+      "探店：市场、拉面、炉端、牡蛎、甜品、纸品书店、温泉街小店。",
+      "如果一个点既不松弛、也没有边缘感、也没有店可探，就不要占用一天。"
+    ],
+    note: "路线大纲顶部可以按这几类临时筛选；详情弹窗会自动写“适合你们吗”。",
+    sources: ["sounkyoTaisetsu", "akanMashuAccess", "akiuSendai", "nikkoJnto", "yokohamaJnto", "kamakuraJnto"]
+  },
+  {
     id: "opt-asahikawa-kushiro",
     icon: "alert",
     title: "旭川到钏路必须当长移动日",
@@ -528,16 +588,17 @@ const routeOptimizations = [
     id: "opt-expansion",
     icon: "search",
     title: "新增候选城市只做替代，不做加法",
-    meta: "登别 / 洞爷 / 大沼 / 山寺 / 横滨",
+    meta: "登别 / 洞爷 / 层云峡 / 川汤 / 秋保 / 日光",
     verdict: "新补的城市不是让行程变满，而是让坏天气或体力变化时有更好的替换。",
     steps: [
       "想泡温泉：用登别或作并替代一条重海岸线，不要叠加。",
+      "想要世界边缘：用层云峡、川汤/摩周、日光湖区替代普通城市逛街。",
       "函馆段天气好：大沼公园比继续城市打卡更有空间感。",
-      "仙台住 2 晚：松岛和山寺二选一，除非你们明确想要一个满强度日。",
-      "东京收尾：横滨/镰仓二选一，作为远郊替代，不和涩谷/台场同日硬塞。"
+      "仙台住 2 晚：松岛、山寺、作并、秋保四选一到二，不要全做。",
+      "东京收尾：横滨/镰仓/日光三选一，作为替代，不和涩谷/台场同日硬塞。"
     ],
     note: "新增候选全部在对应基地下面，点开看交通与取舍。",
-    sources: ["jrNoboribetsuToyako", "onumaJnto", "yamaderaJnto", "kamakuraJnto", "yokohamaJnto"]
+    sources: ["jrNoboribetsuToyako", "sounkyoTaisetsu", "akanMashuAccess", "akiuSendai", "nikkoJnto", "kamakuraJnto", "yokohamaJnto"]
   }
 ];
 
@@ -572,7 +633,7 @@ const outline = [
     title: "札幌基地",
     meta: "西北海道核心 / 前 4 晚",
     image: img("sapporo"),
-    tags: ["基地", "已定住宿", "JR主干线正常"],
+    tags: ["基地", "已定住宿", "JR主干线需查"],
     summary: "第一基地。用来落地、恢复体力，并向小樽、余市、神威岬放射。",
     sections: sections(
       ["札幌是西北海道最稳的住宿与补给点。", "你们已经有前 4 晚住宿，因此这里应承担恢复、吃饭、洗衣、购物和短支线选择。"],
@@ -592,7 +653,7 @@ const outline = [
         summary: "这不是可有可无的景点城市，而是第一段路线的交通与生活枢纽。",
         sections: sections(
           ["札幌市负责让整段北海道开局稳定。", "它是机场、住宿、餐饮和西北海道支线之间的缓冲点。"],
-          ["新千岁机场至札幌有 JR Airport 系统；本次 JR 北海道状态核验显示 Airport、函馆/千岁线无停驶/延误信息。", "札幌出发到旭川、函馆、钏路方向都有特急系统，但长线必须预留座位和换乘时间。"],
+          ["新千岁机场至札幌有 JR Airport 系统；但最新 JR 北海道区域级摘要显示有运行影响信息，落地当天按 Airport/函馆千岁线具体列车再查。", "札幌出发到旭川、函馆、钏路方向都有特急系统，但长线必须预留座位和换乘时间。"],
           ["落地日只做札幌市内，不要落地当天上神威岬。"]
         ),
         sources: ["operation", "reservation"],
@@ -648,7 +709,7 @@ const outline = [
         summary: "札幌最稳的短支线。港口、运河、旧仓库都容易理解。",
         sections: sections(
           ["小樽适合低风险地获得一个清楚的港口城市画面。"],
-          ["札幌-小樽属于 JR 函馆线方向短程移动；本次 JR 北海道状态核验显示相关札幌区域线路无停驶/延误信息。", "它是可选城市，不影响主线南下。"],
+          ["札幌-小樽属于 JR 函馆线方向短程移动；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按札幌区域和函馆线车次再查。", "它是可选城市，不影响主线南下。"],
           ["体力一般时优先小樽，不要硬上神威岬。"]
         ),
         sources: ["operation", "timetable"],
@@ -878,7 +939,7 @@ const outline = [
     summary: "第二基地。它让美瑛、富良野变成轻一点的支线，但不能把带广误写成 JR 直通。",
     sections: sections(
       ["旭川的意义是让中北海道停住，而不是从札幌硬冲花田。"],
-      ["札幌-旭川由特急 Kamui / Lilac 连接，官方列车指南确认该主干线存在且为全席指定。", "旭川-美瑛-富良野走富良野线；本次状态核验显示富良野线无停驶/延误信息。", "旭川去钏路没有顺直 JR，JR-only 通常要折返札幌/南千岁再接特急 Ozora，属于长移动日。"],
+      ["札幌-旭川由特急 Kamui / Lilac 连接，官方列车指南确认该主干线存在且为全席指定。", "旭川-美瑛-富良野走富良野线；最新 JR 北海道区域级摘要显示有运行影响信息，花田日出发前必须按富良野线具体班次再查。", "旭川去钏路没有顺直 JR，JR-only 通常要折返札幌/南千岁再接特急 Ozora，属于长移动日。"],
       ["美瑛、富良野可选；带广不要作为旭川侧轻支线。"],
       [{ title: "下一基地", items: ["旭川 -> 钏路：可用 JR 拼接，但不是顺路短线；建议定义为移动日。"] }]
     ),
@@ -894,7 +955,7 @@ const outline = [
         summary: "中北海道的住宿、吃饭、换乘点。",
         sections: sections(
           ["旭川让美瑛和富良野不再变成从札幌硬冲。"],
-          ["札幌-旭川主干线正常作为 JR 特急系统运行；本次状态核验未见 JR 北海道相关停驶/延误信息。"],
+          ["札幌-旭川主干线作为 JR 特急系统成立；但最新 JR 北海道区域级摘要显示有运行影响信息，换基地当天按 Kamui / Lilac 具体车次再查。"],
           ["换基地日留在旭川，不要当晚再冲富良野。"]
         ),
         sources: ["operation", "asahikawa"],
@@ -950,7 +1011,7 @@ const outline = [
         summary: "看丘陵农田、拼布色块和缓坡道路。",
         sections: sections(
           ["美瑛看的是地貌结构：路、坡、田块、树列和远山。"],
-          ["旭川-美瑛属于富良野线方向；本次 JR 北海道状态核验显示富良野线无停驶/延误信息。", "美瑛内部移动不全靠 JR，公交/包车/租车/骑行要提前决定。"],
+          ["旭川-美瑛属于富良野线方向；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "美瑛内部移动不全靠 JR，公交/包车/租车/骑行要提前决定。"],
           ["晴天价值高；天气普通就做短线。"]
         ),
         sources: ["operation", "timetable"],
@@ -1020,7 +1081,7 @@ const outline = [
         summary: "7月主视觉。花田、缓坡和远山构成北海道夏天。",
         sections: sections(
           ["富良野是季节性画面最强的一站。"],
-          ["旭川-富良野走富良野线；本次状态核验显示富良野线无停驶/延误信息。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
+          ["旭川-富良野走富良野线；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
           ["可和美瑛同日，但不要接带广。"]
         ),
         sources: ["operation", "furanoClosed"],
@@ -1082,6 +1143,50 @@ const outline = [
         ]
       }),
       city({
+        id: "city-sounkyo",
+        title: "层云峡",
+        meta: "可选城市 / 旭川巴士线",
+        image: placeImages.sounkyo,
+        tags: ["可选城市", "峡谷", "温泉", "非JR直达"],
+        summary: "如果你们想给旭川段加一个峡谷和温泉替代，层云峡比继续堆花田更有变化。",
+        sections: sections(
+          ["层云峡看的是大雪山系峡谷、瀑布、温泉街和更粗粝的山地尺度。"],
+          ["Heart of Hokkaido 写明可从旭川换当地巴士前往层云峡；Sounkyo Visitor Center 也列出旭川-上川-层云峡线。"],
+          ["它适合替代带广或富良野第二点，不适合美瑛/富良野之后临时硬加。"]
+        ),
+        sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"],
+        children: [
+          spot({
+            id: "spot-sounkyo-gorge",
+            title: "银河瀑布 / 流星瀑布方向",
+            meta: "可选 / 峡谷瀑布",
+            image: placeImages.sounkyo,
+            tags: ["可选子目的地", "瀑布", "天气关键"],
+            summary: "层云峡最清楚的一眼理由：峡谷岩壁和双瀑布。",
+            sections: sections(
+              ["它给北海道段补上山地峡谷，不再只是花田和海岸。"],
+              ["末端靠巴士/步行组合，出发前查回旭川班次。"],
+              ["雨雾或强风时只保留温泉街，不要硬走太远。"]
+            ),
+            sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"]
+          }),
+          spot({
+            id: "spot-daisetsuzan-ropeway",
+            title: "大雪山黑岳缆车方向",
+            meta: "可选 / 山岳视野",
+            image: placeImages.sounkyo,
+            tags: ["可选子目的地", "缆车", "晴天"],
+            summary: "天气好、体力好时，层云峡可以从温泉线升级成山岳视野线。",
+            sections: sections(
+              ["它适合清晨或晴天，不适合临时赶末班。"],
+              ["缆车、登山道和天气状态必须当天确认。"],
+              ["如果只是想恢复体力，就别把温泉日升级成登山日。"]
+            ),
+            sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"]
+          })
+        ]
+      }),
+      city({
         id: "city-obihiro-asahikawa",
         title: "带广 / 十胜",
         meta: "可选城市 / 不按旭川侧JR直通",
@@ -1134,7 +1239,7 @@ const outline = [
     summary: "第三基地。湿原、海雾、根室最东端都从这里展开。",
     sections: sections(
       ["钏路让东北海道真正进入路线。"],
-      ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；本次状态核验无停驶/延误信息，但这是长移动日。"],
+      ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；最新 JR 北海道区域级摘要显示有运行影响信息，长移动日必须按 Ozora / 换乘站车次再查。"],
       ["钏路必须住下来。不要从别的基地当天来回硬刷。"],
       [{ title: "下一基地", items: ["钏路 -> 函馆：JR 可拼接，但极长，通常经札幌/南千岁再接 Hokuto。最好拆分或考虑飞行。"] }]
     ),
@@ -1150,7 +1255,7 @@ const outline = [
         summary: "东北海道住宿和支线起点。",
         sections: sections(
           ["它承接湿原、厚岸、根室。"],
-          ["钏路站是根室线/花咲线一侧的关键节点；本次状态核验显示根室线、花咲线无停驶/延误信息。"],
+          ["钏路站是根室线/花咲线一侧的关键节点；最新 JR 北海道区域级摘要显示有运行影响信息，东北海道支线当天按具体线路再查。"],
           ["抵达当天只做市内。"]
         ),
         sources: ["operation", "obihiro"],
@@ -1212,6 +1317,50 @@ const outline = [
         ]
       }),
       city({
+        id: "city-kawayu-mashu",
+        title: "川汤温泉 / 摩周湖",
+        meta: "可选城市 / JR钏网线",
+        image: placeImages.kawayuMashu,
+        tags: ["可选城市", "温泉", "湖景", "末端交通"],
+        summary: "钏路段如果想从海岸切到火山湖和温泉，川汤/摩周是强替代，但公共交通要提前锁。",
+        sections: sections(
+          ["它的特点是阿寒摩周国立公园、摩周湖、屈斜路湖、川汤温泉和硫磺山一组火山地貌。"],
+          ["川汤游客中心写明钏路站坐 JR 钏网线约 1.5 小时到川汤温泉站，再接阿寒巴士约 10 分钟；国家公园页面也确认 JR Senmo Main Line 连接网走与钏路并停靠川汤温泉。"],
+          ["适合替代根室重线或厚岸海岸线；雾大、巴士不顺时不要硬做。"]
+        ),
+        sources: ["kawayuVisitor", "akanMashuAccess"],
+        children: [
+          spot({
+            id: "spot-lake-mashu",
+            title: "摩周湖展望方向",
+            meta: "可选 / 火山湖",
+            image: placeImages.kawayuMashu,
+            tags: ["可选子目的地", "湖景", "天气关键"],
+            summary: "摩周湖的价值在清澈、深蓝和火山湖边界感；但雾是最大变量。",
+            sections: sections(
+              ["天气好时它比许多城市点更有记忆点。"],
+              ["公共交通绕湖不如自驾自由，巴士/观光线要按季节确认。"],
+              ["如果能见度差，把它降级为川汤温泉恢复日。"]
+            ),
+            sources: ["akanMashuAccess", "kawayuVisitor"]
+          }),
+          spot({
+            id: "spot-kawayu-iozan",
+            title: "川汤温泉 / 硫磺山方向",
+            meta: "可选 / 温泉火山",
+            image: placeImages.iozan,
+            tags: ["可选子目的地", "温泉", "火山"],
+            summary: "比单纯看湖更稳：温泉街、硫磺气味和火山地表能兜住天气波动。",
+            sections: sections(
+              ["川汤温泉适合做东北海道的低体力恢复点。"],
+              ["游客中心开放日、巴士接驳和温泉设施规则需要当天确认。"],
+              ["不要和根室/纳沙布岬同一天做。"]
+            ),
+            sources: ["kawayuVisitor", "akanMashuAccess"]
+          })
+        ]
+      }),
+      city({
         id: "city-akkeshi",
         title: "厚岸",
         meta: "可选城市 / 花咲线方向",
@@ -1220,7 +1369,7 @@ const outline = [
         summary: "比根室轻一点的东海岸选择。",
         sections: sections(
           ["厚岸适合看海雾、海湾和渔业生活感。"],
-          ["钏路-厚岸在花咲线/根室线方向；本次 JR 北海道状态核验显示花咲线无停驶/延误信息。", "班次不密，出发和回程必须提前定。"],
+          ["钏路-厚岸在花咲线/根室线方向；最新 JR 北海道区域级摘要显示有运行影响信息，出发和回程必须按具体列车提前定。", "班次不密，不能临时赌。"],
           ["不想跑根室那么重时，厚岸是更稳的海岸日。"]
         ),
         sources: ["operation", "timetable"],
@@ -1276,7 +1425,7 @@ const outline = [
         summary: "价值是地理极限：日本本土最东端的边界感。",
         sections: sections(
           ["这条线的体验包括长时间坐车和最东端本身。"],
-          ["钏路-根室走花咲线方向；本次状态核验显示花咲线无停驶/延误信息。", "纳沙布岬不是 JR 直达，根室站后还要巴士或出租。"],
+          ["钏路-根室走花咲线方向；最新 JR 北海道区域级摘要显示有运行影响信息，重线出发前必须按根室方向具体列车再查。", "纳沙布岬不是 JR 直达，根室站后还要巴士或出租。"],
           ["当天只做这一件大事。天气差时降级到厚岸或钏路市内。"]
         ),
         sources: ["operation", "timetable"],
@@ -1332,7 +1481,7 @@ const outline = [
         summary: "如果要看十胜，从钏路侧或顺路移动时更合理。",
         sections: sections(
           ["带广补上十胜平原的开阔感。"],
-          ["钏路-带广在札幌-带广-钏路特急体系上；官方列车指南确认 Ozora 连接札幌-钏路，Tokachi 连接札幌-带广。", "本次状态核验显示相关特急/石胜线/根室线无停驶或30分钟以上延误信息。"],
+          ["钏路-带广在札幌-带广-钏路特急体系上；官方列车指南确认 Ozora 连接札幌-钏路，Tokachi 连接札幌-带广。", "最新 JR 北海道区域级摘要显示有运行影响信息，带广/钏路线出发前按特急和石胜线/根室线状态再查。"],
           ["若已经很累，就跳过。它不是主线必要点。"]
         ),
         sources: ["operation", "obihiro"],
@@ -1376,7 +1525,7 @@ const outline = [
     summary: "第四基地。北海道结束、本州开始前的停顿。",
     sections: sections(
       ["函馆的价值是港口城市和跨海铁路节点。"],
-      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "钏路-函馆 JR-only 很长，通常要经札幌/南千岁再接 Hokuto；本次状态核验无停驶/延误信息，但不代表它适合观光日。"],
+      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "钏路-函馆 JR-only 很长，通常要经札幌/南千岁再接 Hokuto；最新 JR 北海道区域级摘要显示有运行影响信息，因此它更不能当观光日。"],
       ["从钏路长移动到达后至少住一晚。"],
       [{ title: "下一基地", items: ["函馆 -> 仙台：先 Hakodate Liner 到新函馆北斗，再新干线穿青函隧道到新青森，继续东北新干线南下。"] }]
     ),
@@ -1392,7 +1541,7 @@ const outline = [
         summary: "北海道南端的住宿和跨海前缓冲城市。",
         sections: sections(
           ["函馆有港口、坡道、夜景和西式建筑，值得停住。"],
-          ["函馆站本身不是新干线站；跨海前要先去新函馆北斗。", "本次状态核验显示 Hakodate Liner 与道南特急相关状态无停驶/延误信息。"],
+          ["函馆站本身不是新干线站；跨海前要先去新函馆北斗。", "最新 JR 北海道区域级摘要显示有运行影响信息，跨海前必须按 Hakodate Liner、Hokuto 和北海道新干线具体车次再查。"],
           ["长移动后不要继续南下，先睡一晚。"]
         ),
         sources: ["operation", "shinkansen"],
@@ -1889,6 +2038,50 @@ const outline = [
         ]
       }),
       city({
+        id: "city-akiu",
+        title: "秋保温泉",
+        meta: "可选城市 / 仙台巴士线",
+        image: placeImages.akiu,
+        tags: ["可选城市", "温泉", "峡谷", "低体力"],
+        summary: "仙台段如果你们想恢复体力，秋保是比继续跑远城更温柔的温泉和峡谷线。",
+        sections: sections(
+          ["秋保的价值是温泉、磊磊峡、短距离自然和仙台近郊的放松感。"],
+          ["Discover Sendai 写明可从仙台站坐 Miyagi Kotsu Bus 或 Seibu Liner 到秋保温泉约 40 分钟；也可 JR 仙山线到爱子站后接仙台市巴士约 15 分钟。"],
+          ["适合作为山寺/松岛之外的恢复替代，不适合跨海抵达当天再跑。"]
+        ),
+        sources: ["akiuSendai", "akiuSatoAccess"],
+        children: [
+          spot({
+            id: "spot-rairaikyo",
+            title: "磊磊峡",
+            meta: "可选 / 峡谷步道",
+            image: placeImages.akiu,
+            tags: ["可选子目的地", "峡谷", "短步行"],
+            summary: "秋保最清楚的自然点：河谷、岩壁和温泉街边的轻步道。",
+            sections: sections(
+              ["它比山寺轻，比纯市区更有自然感。"],
+              ["步道状态和天气要看当天；雨后注意湿滑。"],
+              ["适合和日归汤或秋保里中心组合。"]
+            ),
+            sources: ["akiuSendai", "akiuSatoAccess"]
+          }),
+          spot({
+            id: "spot-akiu-sato",
+            title: "秋保里中心 / 日归汤方向",
+            meta: "可选 / 补给恢复",
+            image: placeImages.akiu,
+            tags: ["可选子目的地", "温泉", "店铺"],
+            summary: "把秋保做成不累线：信息中心、足汤、咖啡或日归温泉。",
+            sections: sections(
+              ["Akiu Sato Center 页面列有从仙台站和爱子站的巴士方式，并写明中心开放时间。"],
+              ["具体日归汤、咖啡、店铺营业变化大，出发前用评测索引二次确认。"],
+              ["如果只剩半天，秋保比八户/日光这类长线更合适。"]
+            ),
+            sources: ["akiuSatoAccess", "akiuSendai"]
+          })
+        ]
+      }),
+      city({
         id: "city-hachinohe-sendai",
         title: "八户（若未去）",
         meta: "可选城市 / 新干线北上",
@@ -2226,13 +2419,57 @@ const outline = [
             sources: ["kamakuraJnto"]
           })
         ]
+      }),
+      city({
+        id: "city-nikko",
+        title: "日光",
+        meta: "可选城市 / 东京大支线",
+        image: placeImages.nikko,
+        tags: ["可选城市", "世界遗产", "山岳", "长线慎排"],
+        summary: "如果东京段还想要一次山岳、神社和世界遗产混合体验，日光很强，但它不是松弛收尾。",
+        sections: sections(
+          ["日光的吸引力在东照宫、山地、瀑布、湖区和从都市突然切到山岳神圣空间的反差。"],
+          ["JNTO 国家公园页面写明东京站可坐 JR 东北新干线到宇都宫，再转 JR 日光线到日光，全程约 1小时40分；日光官方也提醒 JR pass 对到达有用，但区内交通 Tobu pass 往往更实用。"],
+          ["适合替代镰仓/横滨作为一个完整大日，不适合返程前一晚硬加。"]
+        ),
+        sources: ["nikkoNationalParkAccess", "nikkoOfficialAccess", "nikkoJnto", "jrTokyoWidePass"],
+        children: [
+          spot({
+            id: "spot-nikko-toshogu",
+            title: "东照宫 / 神桥方向",
+            meta: "可选 / 世界遗产核心",
+            image: placeImages.nikko,
+            tags: ["可选子目的地", "世界遗产", "神社"],
+            summary: "日光最稳的核心：建筑密度、山林、宗教空间和游客动线都很清楚。",
+            sections: sections(
+              ["如果只做日光半日到一日，先保东照宫与神桥方向。"],
+              ["从车站到核心社寺区还要本地巴士/步行，不能只算东京到日光的铁路时间。"],
+              ["热门日和雨天都可能影响体验，提前看票务、开放和公交。"]
+            ),
+            sources: ["nikkoOfficialAccess", "nikkoJnto"]
+          }),
+          spot({
+            id: "spot-nikko-chuzenji",
+            title: "中禅寺湖 / 华严瀑布方向",
+            meta: "可选 / 山湖瀑布",
+            image: placeImages.nikko,
+            tags: ["可选子目的地", "湖景", "瀑布", "天气关键"],
+            summary: "如果你们要日光的世界边缘感，湖区和瀑布比只看神社更有边界感。",
+            sections: sections(
+              ["这是日光从文化点升级成山岳自然线的关键。"],
+              ["区内交通会继续拉长，不建议一日内把社寺区和湖区都做满。"],
+              ["天气差、返程压力大时，保留东照宫，删湖区。"]
+            ),
+            sources: ["nikkoOfficialAccess", "nikkoNationalParkAccess", "jrTokyoWidePass"]
+          })
+        ]
       })
     ]
   })
 ];
 
-function guide({ facts = [], play = [], time = [], route = [], best = [], avoid = [], sources = [] }) {
-  return { facts, play, time, route, best, avoid, sources };
+function guide({ facts = [], play = [], time = [], route = [], best = [], avoid = [], check = [], sources = [] }) {
+  return { facts, play, time, route, best, avoid, check, sources };
 }
 
 const detailGuides = {
@@ -2555,6 +2792,33 @@ const detailGuides = {
     avoid: ["开放期外、天气差或富田农场已很累时直接删。"],
     sources: ["farmTomitaEast", "farmTomita"]
   }),
+  "city-sounkyo": guide({
+    facts: [["角色", "峡谷温泉替代"], ["时间", "一日/住一晚"], ["交通", "旭川巴士"], ["取舍", "替代花田延展"]],
+    play: ["把层云峡当大雪山入口：先峡谷瀑布，再决定是否泡汤或坐缆车。", "如果你们追“世界边缘”，它比普通城市点更符合山地边界感。"],
+    time: ["旭川往返按一日处理。", "只看瀑布+温泉街半日偏重；加缆车就是完整日。"],
+    route: ["Heart of Hokkaido 写明可从旭川换当地巴士前往层云峡。", "Sounkyo Visitor Center 列出旭川-上川-层云峡线；这不是 JR 直达点。"],
+    best: ["晴天、秋色、想从花田切换到峡谷和温泉时。"],
+    avoid: ["不要把它和美瑛/富良野同日硬串。", "回旭川巴士不稳时删掉，不要赌末班。"],
+    sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"]
+  }),
+  "spot-sounkyo-gorge": guide({
+    facts: [["角色", "层云峡主画面"], ["时间", "1-2小时"], ["交通", "巴士后步行"], ["天气", "雨雾慎重"]],
+    play: ["优先看银河瀑布、流星瀑布方向，把峡谷岩壁和水量作为主体验。", "不需要追太多分散点，看到山地尺度就够。"],
+    time: ["短看 1 小时，慢走拍照 2 小时。"],
+    route: ["从旭川/上川方向接入层云峡后步行或短距离交通。"],
+    best: ["晴天、薄云、秋色或雨后水量稳定时。"],
+    avoid: ["雨大、步道湿滑、回程巴士少时不要走远。"],
+    sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"]
+  }),
+  "spot-daisetsuzan-ropeway": guide({
+    facts: [["角色", "山岳升级"], ["时间", "2-4小时"], ["交通", "缆车+巴士"], ["风险", "天气/运营"]],
+    play: ["只有当天视野好、风不大、体力足时，把层云峡升级到黑岳缆车方向。", "它适合追山岳边缘感，不适合恢复日。"],
+    time: ["缆车和展望至少 2-4 小时，含等待更久。"],
+    route: ["先到层云峡，再查缆车营业、天气和末端接驳。"],
+    best: ["晴天、低风、早出发。"],
+    avoid: ["云低、风强或想松弛时只保留温泉街和瀑布。"],
+    sources: ["sounkyoTaisetsu", "sounkyoVisitorAccess"]
+  }),
   "city-obihiro-asahikawa": guide({
     facts: [["角色", "十胜备选"], ["交通", "非JR直通"], ["时间", "移动日"], ["风险", "绕行"]],
     play: ["如果真想看十胜，把它作为移动日的一部分，而不是旭川支线。"],
@@ -2633,6 +2897,33 @@ const detailGuides = {
     best: ["长移动日后、傍晚、有营业确认。"],
     avoid: ["天气差或客流大时提前确认；不要吃完继续跑远点。"],
     sources: ["mooRobata", "kushiroRobata", "kushiroRobataOfficial"]
+  }),
+  "city-kawayu-mashu": guide({
+    facts: [["角色", "火山湖温泉替代"], ["时间", "一日"], ["交通", "JR钏网线+巴士"], ["风险", "公共交通有限"]],
+    play: ["把川汤/摩周当东北海道的内陆火山线：摩周湖看边界感，川汤温泉和硫磺山负责兜住天气。", "如果你们想松弛，就偏温泉；想世界边缘，就偏摩周湖展望。"],
+    time: ["钏路往返按一日处理。", "只做川汤温泉/硫磺山会轻一些；加摩周湖展望要查季节交通。"],
+    route: ["川汤游客中心写明：钏路站坐 JR 钏网线约 1.5 小时到川汤温泉站，再接阿寒巴士约 10 分钟。", "Akan-Mashu 国家公园页面确认 JR Senmo Main Line 连接网走与钏路并停靠川汤温泉，同时说明园区公共交通有限。"],
+    best: ["晴天、能见度好，或你们想用温泉替代海岸重线时。"],
+    avoid: ["不要和根室/纳沙布岬同一天。", "摩周湖雾大、巴士不顺时降级为川汤温泉恢复。"],
+    sources: ["kawayuVisitor", "akanMashuAccess"]
+  }),
+  "spot-lake-mashu": guide({
+    facts: [["角色", "火山湖边界感"], ["时间", "1-2小时"], ["天气", "强依赖"], ["交通", "季节班次"]],
+    play: ["天气好时优先去展望方向，看深蓝湖面和火山湖边界。", "如果云雾压住，就不要为了湖硬消耗整天。"],
+    time: ["展望停留 1-2 小时；含接驳远超这个时间。"],
+    route: ["从川汤温泉/摩周区域接入，具体公交或观光线按季节查。"],
+    best: ["晴天、低云少、能见度好。"],
+    avoid: ["雾大时不值得硬等；改温泉或钏路市内。"],
+    sources: ["akanMashuAccess", "kawayuVisitor"]
+  }),
+  "spot-kawayu-iozan": guide({
+    facts: [["角色", "温泉火山兜底"], ["时间", "2-3小时"], ["交通", "川汤站后巴士"], ["适合", "低体力"]],
+    play: ["用温泉街、游客中心和硫磺山方向组合，既有火山地貌，又不完全依赖摩周湖天气。", "探店层面看咖啡、温泉旅馆、土产和轻食，不必追热门餐厅。"],
+    time: ["温泉街+硫磺山约 2-3 小时；泡汤另加。"],
+    route: ["JR 川汤温泉站后接阿寒巴士到游客中心/温泉区。"],
+    best: ["天气普通、想恢复体力、又想看一点火山地貌。"],
+    avoid: ["设施开放、接驳和温泉日归规则要当天确认。"],
+    sources: ["kawayuVisitor", "akanMashuAccess"]
   }),
   "city-akkeshi": guide({
     facts: [["角色", "轻一点东海岸"], ["时间", "半日-一日"], ["交通", "花咲线"], ["重点", "海雾/海湾"]],
@@ -3055,6 +3346,33 @@ const detailGuides = {
     avoid: ["饮酒后不要安排紧张换乘；预约/临时运营日必须查。"],
     sources: ["nikkaMiyagikyo", "sendaiGettingAround"]
   }),
+  "city-akiu": guide({
+    facts: [["角色", "仙台近郊恢复"], ["时间", "半日"], ["交通", "巴士/爱子站接驳"], ["取舍", "替代山寺"]],
+    play: ["把秋保当仙台段的松弛线：温泉、磊磊峡、足汤、咖啡或日归汤。", "如果你们想探店，秋保比作并更适合慢看小店和游客中心周边。"],
+    time: ["仙台往返半日较稳。", "只做磊磊峡+坐下休息 3-4 小时；泡汤另加。"],
+    route: ["Discover Sendai 写明仙台站可坐 Miyagi Kotsu Bus 或 Seibu Liner 到秋保温泉约 40 分钟。", "Akiu Sato Center 页面列出仙台站西口 8 号巴士约 50 分钟、青叶通 63 号 Seibu Liner 约 40 分钟，也可 JR 爱子站后接仙台市巴士约 15 分钟。"],
+    best: ["跨海后想恢复、下雨、腿不想爬山寺时。"],
+    avoid: ["不要和山寺同日全做。", "日归汤和店铺营业差异大，先查当天。"],
+    sources: ["akiuSendai", "akiuSatoAccess"]
+  }),
+  "spot-rairaikyo": guide({
+    facts: [["角色", "秋保自然核心"], ["时间", "45-90分钟"], ["体力", "低中"], ["交通", "温泉街步行"]],
+    play: ["沿磊磊峡短步道看河谷岩壁和水流，把它当低强度自然点。", "看完就坐下喝东西或泡汤，不要继续加远瀑布。"],
+    time: ["45-90 分钟。"],
+    route: ["到秋保温泉区域后步行接近，具体入口按现场和地图确认。"],
+    best: ["雨后水量、秋色、想要短自然。"],
+    avoid: ["雨大湿滑时缩短；不要把它升级成重徒步。"],
+    sources: ["akiuSendai", "akiuSatoAccess"]
+  }),
+  "spot-akiu-sato": guide({
+    facts: [["角色", "探店和恢复"], ["时间", "1-2小时"], ["重点", "足汤/店铺"], ["交通", "巴士站周边"]],
+    play: ["把秋保里中心当信息、休息、足汤和小店锚点，再决定日归汤。", "适合两个人分开看店再集合。"],
+    time: ["1-2 小时，泡汤另算。"],
+    route: ["Akiu Sato Center 页面列出中心开放和仙台/爱子站交通方式。"],
+    best: ["低体力、雨天、想探店但不想进市中心时。"],
+    avoid: ["别把秋保拖到晚上太晚，回仙台巴士要先看。"],
+    sources: ["akiuSatoAccess", "akiuSendai"]
+  }),
   "city-hachinohe-sendai": guide({
     facts: [["角色", "若未去的补线"], ["时间", "一日"], ["交通", "新干线北上"], ["优先级", "低"]],
     play: ["仙台住 2 晚且不去松岛以外点时才考虑。"],
@@ -3269,6 +3587,33 @@ const detailGuides = {
     best: ["晴天、愿意走路、时间足。"],
     avoid: ["人潮和换乘会累；不要作为东京返程前夜的压轴。"],
     sources: ["kamakuraJnto"]
+  }),
+  "city-nikko": guide({
+    facts: [["角色", "东京大支线"], ["时间", "一日以上"], ["交通", "JR/东武双系统"], ["取舍", "替代镰仓/横滨"]],
+    play: ["轻量版只做东照宫和神桥方向。", "世界边缘版加中禅寺湖/华严瀑布，但建议住一晚或至少完整一日。"],
+    time: ["东京往返日光核心区至少一日。", "若加湖区和瀑布，体力与区内交通压力明显上升。"],
+    route: ["JNTO 国家公园页面写明东京站坐 JR 东北新干线到宇都宫，再转 JR 日光线到日光，全程约 1小时40分。", "日光官方提醒 JR pass 对到达有用，但区内交通 Tobu pass 往往更实用；JR Tokyo Wide Pass 也覆盖部分 JR/东武直通特急规则。"],
+    best: ["你们想在东京尾声再要一次山岳、神社和边界感时。"],
+    avoid: ["不适合作为返程前夜的临时加法。", "不要和镰仓、横滨同日硬塞。"],
+    sources: ["nikkoNationalParkAccess", "nikkoOfficialAccess", "nikkoJnto", "jrTokyoWidePass"]
+  }),
+  "spot-nikko-toshogu": guide({
+    facts: [["角色", "日光核心"], ["时间", "2-4小时"], ["交通", "站后巴士/步行"], ["重点", "世界遗产"]],
+    play: ["先保东照宫、神桥和社寺区，不要一开始就冲湖区。", "看建筑、山林和游客动线的密度，和东京商业密度形成反差。"],
+    time: ["核心社寺区 2-4 小时。"],
+    route: ["到 JR/东武日光站后仍需本地巴士或步行接入社寺区。"],
+    best: ["早到、天气稳定、游客还未最密时。"],
+    avoid: ["不要只算东京到日光铁路时间；区内移动也会累。"],
+    sources: ["nikkoOfficialAccess", "nikkoJnto"]
+  }),
+  "spot-nikko-chuzenji": guide({
+    facts: [["角色", "山湖瀑布"], ["时间", "半日以上"], ["交通", "区内巴士"], ["天气", "强依赖"]],
+    play: ["如果你们想要真正的世界边缘感，湖区和瀑布比只看社寺更强。", "但它会把日光从文化半日升级成山地一日。"],
+    time: ["湖区/瀑布单独半日以上；和东照宫同日会紧。"],
+    route: ["从日光站/社寺区继续坐区内巴士上山，受季节、人流和道路影响。"],
+    best: ["晴天、低云、完整一日或住一晚。"],
+    avoid: ["天气差或返程压力大时，保留东照宫，删湖区。"],
+    sources: ["nikkoOfficialAccess", "nikkoNationalParkAccess", "jrTokyoWidePass"]
   })
 };
 
@@ -3318,14 +3663,22 @@ const foodTips = {
   "city-furano": ["富良野花田日适合轻食、冰淇淋和早出发，正餐不要排得太远。", "富田农场周边人多，提前准备备选餐厅。"],
   "spot-farm-tomita": ["薰衣草冰淇淋和农场内轻食适合短休息。", "先看花田，再吃东西，避免高温下排队消耗。"],
   "spot-furano-norokko": ["观光列车当天不要把午饭卡在换乘间隙。", "有指定席时按列车时刻反推吃饭和花田停留。"],
+  "city-sounkyo": ["层云峡适合温泉街简单晚饭、旅馆餐或咖啡，不适合追复杂餐厅。", "先查回旭川巴士，再决定是否坐下吃久一点。"],
+  "spot-sounkyo-gorge": ["瀑布方向先补水和轻食，不要指望步道上有稳定餐饮。", "看完回温泉街坐下休息更符合松弛目标。"],
+  "spot-daisetsuzan-ropeway": ["缆车日要先准备水和轻食，山上不要把餐饮当核心。", "如果只想探店，层云峡温泉街比缆车更适合。"],
+  "city-obihiro-asahikawa": ["带广如果纳入，豚丼、甜点和六花亭方向是最清楚的探店理由。", "但它应作为移动日/中继，不要为了吃饭破坏花田日。"],
   "base-kushiro": ["钏路的关键词是炉端、海鲜、港口傍晚。", "长移动到达后，幣舞桥和炉端比继续跑湿原更合理。"],
   "city-kushiro": ["MOO 岸壁炉端适合傍晚，但仍要确认营业和天气。", "港口边吃饭后直接回酒店，第二天再跑湿原或根室。"],
   "spot-moo-robata": ["适合选当天看着新鲜的海鲜和贝类，不要点太复杂。", "风雨天确认是否开放和座位安排。"],
+  "city-kawayu-mashu": ["川汤适合温泉街咖啡、旅馆餐、轻食和土产，不适合追大城市餐厅。", "摩周湖天气不稳时，把探店和泡汤作为兜底。"],
+  "spot-kawayu-iozan": ["硫磺山方向先看火山地貌，再回温泉街坐下。", "温泉设施、咖啡和土产营业时间比店名更重要。"],
   "city-akkeshi": ["厚岸最清楚的吃法是牡蛎；Conchiglie / 道之站方向适合和海湾同日。", "先定回程花咲线，再决定午饭时长。"],
   "spot-akkeshi-oysters": ["牡蛎饭、牡蛎拉面、烧牡蛎都可作为目标，但按季节和营业为准。", "不要为了吃饭错过回钏路的车。"],
   "city-nemuro": ["根室吃饭以回转寿司、炉端、花咲蟹/秋刀鱼方向为主。", "纳沙布岬优先于餐厅，餐厅只作为体力允许时的补充。"],
   "spot-nemuro-hanamaru": ["花丸本店适合作为根室市区吃饭方向，但排队和营业要当天查。", "如果回程紧，宁可买轻食也别冒末班风险。"],
+  "city-obihiro-kushiro": ["钏路侧带广适合豚丼、甜点、六花亭和站周边轻探店。", "如果只是中继，吃一顿就好，不要再加远郊牧场。"],
   "base-hakodate": ["函馆用海鲜早饭、红砖仓库和市电慢走恢复，不要继续长移动。", "天气好再上函馆山，天气差把预算留给吃饭。"],
+  "city-seikan": ["跨海换乘日只做站内便当、咖啡、买水和厕所，不安排探店。", "新函馆北斗/新青森都是交通节点，别拖着行李找远餐厅。"],
   "city-hakodate": ["朝市适合早饭，金森仓库适合下午，汤之川/五棱郭看体力决定。", "市电能减少腿部疲劳。"],
   "spot-hakodate-market": ["海鲜早饭适合跨海前半天；先放行李再去吃。", "价格和体验差异大，出发前看近期评价。"],
   "city-onuma": ["大沼适合团子、咖啡和轻食，不适合安排很重的正餐。", "如果骑行或步行，先补水再出发。"],
@@ -3334,6 +3687,7 @@ const foodTips = {
   "spot-warasse": ["WA-RASSE 附近可顺路看青森站和港口小店。", "苹果派/土产适合轻买，别增加太多行李。"],
   "spot-hirosaki-castle": ["弘前适合苹果甜品、咖啡和城下町慢走。", "樱花季餐厅排队会明显变长，先看近期评价。"],
   "city-hachinohe-hakodate": ["八户如果要加，优先市场/港口吃饭或种差海岸二选一。", "八食中心适合午饭，馆鼻朝市适合住一晚且早起。"],
+  "city-hachinohe-sendai": ["仙台侧补八户时，市场/港口吃饭要比追多个景点更合理。", "除非专门想看海岸生活带，否则优先松岛。"],
   "spot-hasshoku": ["市场适合用午饭解决八户生活感。", "如果当天还要长距离新干线，不要逛太久。"],
   "spot-tatehana": ["早市更吃日期和时间，不能按普通景点处理。", "适合八户过夜，不适合跨海当天硬塞。"],
   "base-sendai": ["仙台第一晚：牛舌或 zunda，别再跑远。", "松岛日可以把海鲜午饭放在海湾附近。"],
@@ -3346,7 +3700,12 @@ const foodTips = {
   "spot-yamadera-soba": ["山脚小店更看当天营业和排队。", "先看回程 JR，再决定是否慢慢吃。"],
   "city-sakunami": ["作并适合温泉旅馆餐、日归汤和宫城峡商店。", "宫城峡试饮/购物要按官网规则，别影响回程。"],
   "spot-nikka-miyagikyo": ["宫城峡商店适合看限定和小瓶，但别让购物压缩接驳时间。", "饮酒后只做轻行程。"],
+  "city-akiu": ["秋保适合咖啡、足汤、日归汤和温泉街小店，是仙台段最松弛的探店线。", "比起追名店，更重要的是查当天营业和回仙台巴士。"],
+  "spot-rairaikyo": ["磊磊峡本身不是吃饭点，适合前后接咖啡、足汤或日归汤。", "雨后注意湿滑，别为了多走错过休息。"],
+  "spot-akiu-sato": ["秋保里中心适合作为信息、足汤、土产和短休息锚点。", "具体咖啡/日归汤用近期评价确认，不要只看旧攻略。"],
   "base-tokyo": ["东京收尾用短区域吃饭，不再跨远郊。", "涩谷吃人流，银座吃室内和咖啡，台场吃海湾晚饭。"],
+  "city-tokyo": ["东京市区优先围绕酒店/到达站吃饭，不要第一晚跨三四个区。", "东京站、上野、新宿各自都能解决晚饭和补给。"],
+  "city-shibuya": ["涩谷适合咖啡、甜品、唱片/杂货和短餐饮，但人流会消耗体力。", "探店要选一两个锚点，不要在涩谷无限漂。"],
   "city-ginza": ["银座适合咖啡、书店、纸品和百货，不必只逛奢侈品。", "雨天优先银座，强风雨删台场。"],
   "spot-ginza-itoya": ["纸品/书店/咖啡适合两个人慢慢看。", "买东西前先确认行李空间。"],
   "city-odaiba": ["台场适合傍晚海边晚饭，也可以用商场/Miraikan 做雨天替代。", "强风时不要把海边作为唯一目标。"],
@@ -3354,11 +3713,15 @@ const foodTips = {
   "city-yokohama": ["横滨适合港未来咖啡、中华街晚饭、海边散步。", "具体店铺差异很大，用地图和小红书看近期评价。"],
   "spot-yokohama-chinatown": ["中华街适合饭点，但热门店排队长。", "选一家舒服店坐下，不必追满小吃清单。"],
   "city-kamakura": ["镰仓适合小町通轻食、咖啡、长谷周边甜品。", "天气热时先找休息点，不要一路暴走。"],
-  "spot-kamakura-hachimangu": ["小町通店铺密集，适合边走边看。", "人多时避免每家排队，保留走到八幡宫的体力。"]
+  "spot-kamakura-hachimangu": ["小町通店铺密集，适合边走边看。", "人多时避免每家排队，保留走到八幡宫的体力。"],
+  "city-nikko": ["日光探店不应压过交通：车站周边、社寺区轻食、羊羹/土产即可。", "若上中禅寺湖，先看回程巴士再决定是否坐下吃饭。"],
+  "spot-nikko-toshogu": ["东照宫方向适合轻食和土产，不适合追复杂餐厅。", "社寺区人多时先完成参观，再找安静店休息。"],
+  "spot-nikko-chuzenji": ["湖区适合简单午饭、咖啡和湖边休息。", "回程巴士时间比餐厅排名更重要。"]
 };
 
 const reviewQueries = {
   "base-sapporo": "札幌 美食 旅行 攻略",
+  "city-sapporo": "札幌 二条市场 薄野 汤咖喱 拉面",
   "spot-sapporo-food": "札幌 二条市场 拉面 横丁",
   "city-otaru": "小樽 运河 堺町通 LeTAO",
   "city-yoichi": "余市 Nikka 蒸馏所 参观",
@@ -3369,24 +3732,45 @@ const reviewQueries = {
   "city-biei": "美瑛 拼布之路 青池 交通",
   "city-furano": "富良野 富田农场 薰衣草",
   "spot-furano-norokko": "富良野 美瑛 Norokko 观光列车",
+  "city-sounkyo": "层云峡 温泉 银河瀑布 旭川 巴士",
+  "spot-sounkyo-gorge": "层云峡 银河瀑布 流星瀑布",
+  "spot-daisetsuzan-ropeway": "层云峡 黑岳 缆车 天气",
+  "city-obihiro-asahikawa": "带广 十胜 豚丼 六花亭",
   "city-kushiro": "钏路 炉端 幣舞桥",
   "spot-kushiro-norokko": "钏路湿原 Norokko",
+  "base-kushiro": "钏路 炉端 湿原 旅行",
+  "city-kawayu-mashu": "川汤温泉 摩周湖 硫磺山 交通",
+  "spot-lake-mashu": "摩周湖 展望台 雾 交通",
+  "spot-kawayu-iozan": "川汤温泉 硫磺山 日归温泉",
   "city-akkeshi": "厚岸 牡蛎 Conchiglie",
   "city-nemuro": "根室 纳沙布岬 花丸 本店",
+  "city-obihiro-kushiro": "带广 豚丼 六花亭 十胜",
   "city-hakodate": "函馆 朝市 函馆山 元町",
   "city-onuma": "大沼公园 函馆 半日 团子",
   "city-seikan": "函馆 新函馆北斗 新青森 换乘",
   "city-aomori-hirosaki": "青森 弘前 睡魔之家 弘前城",
   "city-hachinohe-hakodate": "八户 种差海岸 八食中心",
+  "city-hachinohe-sendai": "仙台 八户 八食中心 种差海岸",
   "city-sendai": "仙台 牛舌 zunda 国分町",
+  "base-sendai": "仙台 牛舌 松岛 山寺 作并 秋保",
   "city-matsushima": "松岛 牡蛎 鱼市场 瑞严寺",
   "city-yamadera": "山寺 立石寺 仙台 一日游",
   "city-sakunami": "作并温泉 宫城峡 Nikka 仙台",
+  "city-akiu": "秋保温泉 磊磊峡 日归温泉 咖啡",
+  "spot-rairaikyo": "秋保 磊磊峡 散步",
+  "spot-akiu-sato": "秋保里中心 足汤 咖啡",
   "city-shibuya": "涩谷 旅行 餐厅 咖啡",
+  "base-asahikawa": "旭川 拉面 美瑛 富良野 旅行",
+  "base-hakodate": "函馆 朝市 函馆山 红砖仓库",
+  "base-tokyo": "东京 收尾 探店 旅行",
+  "city-tokyo": "东京站 上野 新宿 晚饭 咖啡",
   "city-ginza": "银座 Itoya Ginza Six 茑屋",
   "city-odaiba": "台场 彩虹桥 高达 Miraikan",
   "city-yokohama": "横滨 港未来 中华街 夜景",
-  "city-kamakura": "镰仓 小町通 鹤冈八幡宫 江之电"
+  "city-kamakura": "镰仓 小町通 鹤冈八幡宫 江之电",
+  "city-nikko": "日光 东照宫 中禅寺湖 东京 一日游",
+  "spot-nikko-toshogu": "日光 东照宫 神桥 美食",
+  "spot-nikko-chuzenji": "日光 中禅寺湖 华严瀑布 公交"
 };
 
 function getFoodTips(item) {
@@ -3420,6 +3804,7 @@ function renderReviewLinks(item) {
 }
 
 const outlineTree = document.querySelector("#outlineTree");
+const filterButtons = document.querySelectorAll("[data-filter]");
 const transferList = document.querySelector("#transferList");
 const optimizationList = document.querySelector("#optimizationList");
 const modal = document.querySelector("#detailModal");
@@ -3433,6 +3818,7 @@ const modalTags = document.querySelector("#modalTags");
 const modalSections = document.querySelector("#modalSections");
 
 const expandedIds = new Set();
+let activeFilter = "all";
 let lastFocusedElement = null;
 
 function escapeHtml(value) {
@@ -3481,9 +3867,53 @@ function renderFacts(guideData) {
     .join("");
 }
 
+function matchText(item) {
+  return [item.title, item.meta, item.summary, ...(item.tags || [])].join(" ");
+}
+
+function getTasteFit(item) {
+  const text = matchText(item);
+  const points = [];
+  if (/低体力|轻松|恢复|温泉|咖啡|甜品|散步|雨天|补给|晚饭/.test(text)) {
+    points.push("松弛：这个点可以降低节奏，适合当恢复、雨天或长移动后的缓冲。");
+  }
+  if (/最东端|岬|海岸|湖景|峡谷|山岳|瀑布|跨海|断裂|东北海道|边界|世界遗产/.test(text)) {
+    points.push("世界边缘：这里有地理边界、海岸、山地或密度突变，适合做记忆点。");
+  }
+  if (/餐饮|店铺|甜品|咖啡|炉端|牡蛎|寿司|拉面|市场|商业|探店|纸品|书店/.test(text)) {
+    points.push("探店：适合用餐厅、咖啡、市场或小店把目的地变成可坐下的体验。");
+  }
+  if (!points.length) {
+    points.push("偏好匹配：先看交通和天气，如果它不能提供松弛、边缘感或探店价值，就不要硬加。");
+  }
+  return points;
+}
+
+function getPrecheck(item, guideData) {
+  if (guideData.check.length) return guideData.check;
+  const text = matchText(item);
+  const checks = [];
+  if (/JR|新干线|巴士|接驳|末端|非JR|交通|车次|指定席|长线|直通|换乘/.test(text + " " + guideData.route.join(" "))) {
+    checks.push("查当天去程/回程班次，尤其是末端巴士、接驳、指定席和末班。");
+  }
+  if (/天气|晴天|雨天|岬|海岸|湖景|峡谷|山岳|瀑布|花田|夜景|风/.test(text)) {
+    checks.push("查天气、风、能见度；不满足就按弹窗里的取舍降级。");
+  }
+  if (/餐饮|店铺|甜品|咖啡|温泉|市场|蒸馏所|缆车|预约|开放|日归|博物馆/.test(text + " " + guideData.play.join(" "))) {
+    checks.push("查店铺/设施营业、预约、临时休业和近期评价。");
+  }
+  if (!checks.length) {
+    checks.push("查当天体力、住宿位置和下一段移动时间，再决定是否保留。");
+  }
+  checks.push("如果它会压缩基地移动或睡眠，直接删，不用补偿式打卡。");
+  return checks;
+}
+
 function renderDetailSections(item) {
   const guideData = getGuide(item);
   const guideSections = [
+    { title: "适合你们吗", items: getTasteFit(item) },
+    { title: "出发前查", items: getPrecheck(item, guideData) },
     { title: "怎么玩", items: guideData.play },
     { title: "时间预算", items: guideData.time },
     { title: "交通要点", items: guideData.route },
@@ -3566,9 +3996,31 @@ function renderOptimizations() {
     .join("");
 }
 
+const filterMatchers = {
+  all: () => true,
+  relaxed: (item) => /低体力|轻松|恢复|温泉|咖啡|甜品|散步|雨天|补给|晚饭/.test(matchText(item)),
+  edge: (item) => /最东端|岬|海岸|湖景|峡谷|山岳|瀑布|跨海|断裂|东北海道|边界|世界遗产/.test(matchText(item)),
+  food: (item) => /餐饮|店铺|甜品|咖啡|炉端|牡蛎|寿司|拉面|市场|商业|探店|纸品|书店/.test(matchText(item)),
+  transport: (item) => /交通风险|非JR|末端|长线慎排|需预约|需查|换乘|新干线|巴士|接驳|指定席|直通/.test(matchText(item))
+};
+
+function filterOutlineItems(items) {
+  if (activeFilter === "all") return items;
+  const matcher = filterMatchers[activeFilter] || filterMatchers.all;
+  return items
+    .map((item) => {
+      const children = filterOutlineItems(item.children || []);
+      if (matcher(item) || children.length) {
+        return { ...item, children };
+      }
+      return null;
+    })
+    .filter(Boolean);
+}
+
 function renderNode(item, level = 1) {
   const hasChildren = Boolean(item.children?.length);
-  const expanded = expandedIds.has(item.id);
+  const expanded = activeFilter !== "all" || expandedIds.has(item.id);
   const childMarkup = hasChildren
     ? `<div class="children" ${expanded ? "" : "hidden"}>${item.children.map((child) => renderNode(child, level + 1)).join("")}</div>`
     : "";
@@ -3593,7 +4045,15 @@ function renderNode(item, level = 1) {
 }
 
 function renderOutline() {
-  outlineTree.innerHTML = outline.map((item) => renderNode(item, 1)).join("");
+  outlineTree.innerHTML = filterOutlineItems(outline).map((item) => renderNode(item, 1)).join("");
+}
+
+function updateFilterButtons() {
+  filterButtons.forEach((button) => {
+    const active = button.dataset.filter === activeFilter;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
 }
 
 function openDetail(id) {
@@ -3627,6 +4087,14 @@ function closeDetail() {
 }
 
 document.addEventListener("click", (event) => {
+  const filterButton = event.target.closest("[data-filter]");
+  if (filterButton) {
+    activeFilter = filterButton.dataset.filter || "all";
+    updateFilterButtons();
+    renderOutline();
+    return;
+  }
+
   const closeButton = event.target.closest("[data-close-modal]");
   if (closeButton) {
     closeDetail();
@@ -3659,4 +4127,5 @@ document.addEventListener("keydown", (event) => {
 
 renderTransfers();
 renderOptimizations();
+updateFilterButtons();
 renderOutline();

@@ -60,13 +60,22 @@
       <symbol id="i-search" viewBox="0 0 24 24">
         <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24">
+        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-cup" viewBox="0 0 24 24">
+        <path d="M5 8h11v5a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M16 10h1a3 3 0 0 1 0 6h-1M6 21h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <path d="M8 4v1M12 3v2M16 4v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </symbol>
     </svg>
 
     <main class="page">
       <header class="topbar">
         <p>北海道 → 本州 → 东京</p>
         <h1>6 基地路线</h1>
-        <span>2026-07-05 交通审计版</span>
+        <span>实时交通审计版</span>
       </header>
 
       <section class="outline-board" id="outline" aria-labelledby="outline-title">
@@ -77,6 +86,13 @@
             <p>基地 / 城市 / 可选子目的地</p>
           </div>
         </div>
+        <div class="focus-strip" aria-label="按偏好筛选路线">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true"><svg aria-hidden="true"><use href="#i-list"></use></svg><span>全部</span></button>
+          <button class="filter-button" type="button" data-filter="relaxed" aria-pressed="false"><svg aria-hidden="true"><use href="#i-clock"></use></svg><span>松弛</span></button>
+          <button class="filter-button" type="button" data-filter="edge" aria-pressed="false"><svg aria-hidden="true"><use href="#i-compass"></use></svg><span>边缘</span></button>
+          <button class="filter-button" type="button" data-filter="food" aria-pressed="false"><svg aria-hidden="true"><use href="#i-cup"></use></svg><span>探店</span></button>
+          <button class="filter-button" type="button" data-filter="transport" aria-pressed="false"><svg aria-hidden="true"><use href="#i-train"></use></svg><span>交通</span></button>
+        </div>
         <div class="outline-tree" id="outlineTree"></div>
       </section>
 
@@ -84,7 +100,7 @@
         <div class="section-heading">
           <span class="heading-icon" aria-hidden="true"><svg><use href="#i-route"></use></svg></span>
           <div>
-            <h2 id="transport-title">基地间公交</h2>
+            <h2 id="transport-title">基地间公共交通</h2>
             <p>铁路 / 巴士 / 换乘链路</p>
           </div>
         </div>
