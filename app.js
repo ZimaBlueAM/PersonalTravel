@@ -29,6 +29,10 @@ const placeImages = {
   yamadera: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Risshaku-ji_Kaisan-do_201706b.jpg/1280px-Risshaku-ji_Kaisan-do_201706b.jpg",
   sakunami: img("sendai"),
   akiu: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Akiu_Rairaikyo_2008B.jpg",
+  moriokaCastle: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bridge_-_Morioka_Castle_-_Iwate%2C_Japan_-_DSC03946.jpg/1280px-Bridge_-_Morioka_Castle_-_Iwate%2C_Japan_-_DSC03946.jpg",
+  moriokaNoodles: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/%E3%81%84%E3%82%8F%E3%81%A6%E4%B8%89%E5%A4%A7%E9%BA%BA.jpg/1280px-%E3%81%84%E3%82%8F%E3%81%A6%E4%B8%89%E5%A4%A7%E9%BA%BA.jpg",
+  chusonji: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Mine_Yakushido_Hall_-_Chusonji%2C_Hiraizumi%2C_Iwate_-_DSC04835.jpg/1280px-Mine_Yakushido_Hall_-_Chusonji%2C_Hiraizumi%2C_Iwate_-_DSC04835.jpg",
+  motsuji: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/General_view_-_Motsuji%2C_Hiraizumi%2C_Iwate_-_DSC04467.jpg/1280px-General_view_-_Motsuji%2C_Hiraizumi%2C_Iwate_-_DSC04467.jpg",
   yokohama: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Minato_Mirai.jpg/1280px-Minato_Mirai.jpg",
   kamakura: "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg",
   nikko: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nikko_Toshogu_Yomeimon_M3249.jpg"
@@ -511,6 +515,42 @@ const sourceLinks = {
     label: "Akiu Sato Center: access",
     url: "https://akiusato.jp/en/kannai/access01.html"
   },
+  sendaiStationTimetable: {
+    label: "JR East: Sendai Station Shinkansen timetable",
+    url: "https://timetables.jreast.co.jp/en/timetable/list0913.html"
+  },
+  moriokaStationTimetable: {
+    label: "JR East: Morioka Station Shinkansen timetable",
+    url: "https://timetables.jreast.co.jp/en/timetable/list1565.html"
+  },
+  moriokaCastleJnto: {
+    label: "JNTO: Iwate Park / Morioka Castle Ruins",
+    url: "https://www.japan.travel/en/spot/1812/"
+  },
+  moriokaCastleTohoku: {
+    label: "Travel to Tohoku: Morioka Castle Ruins Park",
+    url: "https://www.tohokukanko.jp/en/attractions/detail_1451.html"
+  },
+  moriokaNoodlesJnto: {
+    label: "JNTO: Morioka noodles",
+    url: "https://www.japan.travel/en/sg/story/hot-and-tasty-try-3regional-noodles-winter/"
+  },
+  chusonjiJnto: {
+    label: "JNTO: Chusonji Temple",
+    url: "https://www.japan.travel/en/spot/1803/"
+  },
+  motsujiJnto: {
+    label: "JNTO: Motsuji Temple",
+    url: "https://www.japan.travel/en/spot/1800/"
+  },
+  motsujiOfficial: {
+    label: "Motsuji Temple official FAQ / access",
+    url: "https://www.motsuji.or.jp/en/site/faq.html"
+  },
+  hiraizumiLoopBus: {
+    label: "Iwate Travel: Hiraizumi loop bus Runrun",
+    url: "https://iwatetabi.jp/en/course/80760/"
+  },
   tokyo: {
     label: "GO TOKYO official guide",
     url: "https://www.gotokyo.org/en/index.html"
@@ -565,15 +605,15 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-06 01:47 JST";
-const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 页面时间为 06/07/2026 01:47；区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为“服务时间外”。同次影响地图 JSON 使用另一套枚举，所有分段 status=1，对应地图图例“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
+const checkedAt = "2026-07-06 02:11 JST";
+const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 页面原文为 As of 06/07/2026, 02:11，即 2026-07-06 02:11 JST；区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为“服务时间外”。同次影响地图 eikyo_map_status.json 共 108 个分段均为 status=1，对应地图图例“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
 const jrEastLiveNote = "本次核验 2026-07-06 01:19 JST：JR East 页面显示 Tohoku Shinkansen Normal operation；同页服务暂停栏仍列出 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
 
 const transportAudit = {
   title: "官方交通核验",
   checked: checkedAt,
   items: [
-    "JR 北海道：区域摘要此刻为服务时间外；影响地图分段文件显示无取消/30 分钟以上延误信息。",
+    "JR 北海道：区域摘要此刻为服务时间外；影响地图 108 个分段均显示无取消/30 分钟以上延误信息。",
     "JR East：东北新干线正常运行；但跨海区间仍出现个别 Hayabusa 停运记录。",
     "结论：基地链路成立；真正风险在旭川->钏路、钏路->函馆、函馆->新函馆北斗->新青森这三段。"
   ]
@@ -753,6 +793,20 @@ const routeOptimizations = [
     ],
     note: "跨海当天不要压 5 分钟换乘；给买水、上厕所、找站台留余量。",
     sources: ["shinkansen", "jreast"]
+  },
+  {
+    id: "opt-morioka-hiraizumi",
+    icon: "route",
+    title: "仙台若要北上，盛冈/平泉比硬补八户更顺",
+    meta: "探店 / 世界遗产 / 新干线",
+    verdict: "这是仙台基地的可选升级，不是第 7 个住宿基地。",
+    steps: [
+      "仙台站和盛冈站都在东北/北海道新干线主轴上；JR East 时刻页明确列出仙台往一之关、盛冈、新青森、新函馆北斗方向，以及盛冈往仙台/东京方向。",
+      "盛冈适合探店：三大面、城跡公园、中津川散步；平泉适合世界遗产和安静文化线。",
+      "如果你们只有仙台 1 晚，仍然优先松岛；如果仙台 2 晚且想北上，盛冈/平泉优先级高于从仙台折返八户。"
+    ],
+    note: "不要把盛冈、平泉、松岛、山寺塞进同一天；从仙台北上只选一条主线。",
+    sources: ["sendaiStationTimetable", "moriokaStationTimetable", "moriokaNoodlesJnto", "chusonjiJnto", "motsujiJnto"]
   },
   {
     id: "opt-seasonal-trains",
@@ -2370,6 +2424,78 @@ const outline = [
         ]
       }),
       city({
+        id: "city-morioka-hiraizumi",
+        title: "盛冈 / 平泉",
+        meta: "可选城市 / 新干线北上",
+        image: placeImages.moriokaCastle,
+        tags: ["可选城市", "探店", "世界遗产", "新干线"],
+        summary: "仙台住 2 晚时可考虑的北上支线：盛冈吃面和城市散步，平泉看中尊寺与毛越寺。",
+        sections: sections(
+          ["这条线不是新增基地，而是仙台段的可选升级：想探店和文化，就比从仙台硬补八户更合适。"],
+          ["JR East 站点时刻页显示仙台有东北/北海道新干线往一之关、盛冈、新青森、新函馆北斗方向；盛冈站也在往仙台/东京和往新青森/新函馆北斗的主轴上。"],
+          ["玩法建议：盛冈偏城市和吃饭，平泉偏世界遗产和安静庭园；一天只选一个重心，不要和松岛/山寺同日全塞。"]
+        ),
+        sources: ["sendaiStationTimetable", "moriokaStationTimetable", "moriokaNoodlesJnto", "moriokaCastleJnto", "chusonjiJnto", "motsujiJnto"],
+        children: [
+          spot({
+            id: "spot-morioka-castle",
+            title: "盛冈城跡公园 / 中津川散步",
+            meta: "可选 / 城下町散步",
+            image: placeImages.moriokaCastle,
+            tags: ["可选子目的地", "散步", "城市"],
+            summary: "石垣、河流、城下町尺度和城市咖啡，是盛冈最轻的理解方式。",
+            sections: sections(
+              ["JNTO 写明可从盛冈站坐循环巴士约 10 分钟，也可步行 15-20 分钟到岩手公园。"],
+              ["这里不是天守阁打卡，而是看保留下来的石垣、河流与城市尺度。"],
+              ["适合和三大面、咖啡、民艺/书店方向组合成半日探店线。"]
+            ),
+            sources: ["moriokaCastleJnto", "moriokaCastleTohoku", "moriokaStationTimetable"]
+          }),
+          spot({
+            id: "spot-morioka-noodles",
+            title: "盛冈三大面",
+            meta: "可选 / 探店主线",
+            image: placeImages.moriokaNoodles,
+            tags: ["可选子目的地", "餐饮", "探店"],
+            summary: "冷面、じゃじゃ面、碗子荞麦，把盛冈做成“吃得懂的城市”。",
+            sections: sections(
+              ["盛冈的探店理由非常清楚：三大面就是冷面、じゃじゃ面、碗子荞麦。"],
+              ["两个人不要一天挑战三种都吃满；选一顿正餐，再用咖啡/点心收尾更松弛。"],
+              ["如果只为了吃饭从仙台北上，要确认往返新干线和晚饭时段，不要压末班。"]
+            ),
+            sources: ["moriokaNoodlesJnto", "moriokaStationTimetable"]
+          }),
+          spot({
+            id: "spot-hiraizumi-chusonji",
+            title: "平泉中尊寺 / 金色堂",
+            meta: "可选 / 世界遗产",
+            image: placeImages.chusonji,
+            tags: ["可选子目的地", "世界遗产", "安静"],
+            summary: "森林参道、金色堂和奥州藤原氏的文化密度，适合想看安静而强的历史点。",
+            sections: sections(
+              ["JNTO 写明中尊寺是平泉 UNESCO 世界遗产的一部分，金色堂是 12 世纪建筑核心。"],
+              ["交通不是盛冈站下车即到：坐东北新干线到一之关，再换 JR 东北本线到平泉；平泉站到中尊寺约 10 分钟巴士或 30 分钟步行。"],
+              ["如果体力不稳，中尊寺和毛越寺二选一；不要把它们和山寺石阶同日叠加。"]
+            ),
+            sources: ["chusonjiJnto", "hiraizumiLoopBus"]
+          }),
+          spot({
+            id: "spot-hiraizumi-motsuji",
+            title: "毛越寺净土庭园",
+            meta: "可选 / 庭园慢看",
+            image: placeImages.motsuji,
+            tags: ["可选子目的地", "庭园", "松弛"],
+            summary: "平泉最适合慢下来的点：水面、庭园、遗址和山影。",
+            sections: sections(
+              ["JNTO 写明毛越寺可从平泉站步行约 10 分钟或开车约 3 分钟到达。"],
+              ["它更偏安静庭园，不是刺激景点；适合和中尊寺组成平泉半日到一日线。"],
+              ["若只剩低体力，毛越寺比连续爬山寺/追远海岸更符合松弛。"]
+            ),
+            sources: ["motsujiJnto", "motsujiOfficial", "hiraizumiLoopBus"]
+          })
+        ]
+      }),
+      city({
         id: "city-hachinohe-sendai",
         title: "八户（若未去）",
         meta: "可选城市 / 新干线北上",
@@ -2394,7 +2520,8 @@ const outline = [
               ["适合补东北海岸。"],
               ["末端交通需要另查。"],
               ["函馆段去过则跳过。"]
-            )
+            ),
+            sources: ["tanesashi", "hachinohe", "jreast"]
           }),
           spot({
             id: "spot-hachinohe-market",
@@ -2407,7 +2534,8 @@ const outline = [
               ["适合想看生活带的人。"],
               ["交通成本比松岛高。"],
               ["不要和东京移动日相连。"]
-            )
+            ),
+            sources: ["hachinoheFood", "hachinohe", "jreast"]
           })
         ]
       })
@@ -3708,6 +3836,51 @@ const detailGuides = {
     avoid: ["别把秋保拖到晚上太晚，回仙台巴士要先看。"],
     sources: ["akiuSatoAccess", "akiuSendai"]
   }),
+  "city-morioka-hiraizumi": guide({
+    facts: [["角色", "仙台北上可选线"], ["时间", "半日到一日"], ["交通", "东北新干线+JR支线"], ["取舍", "替代八户补线"]],
+    play: ["先选重心：盛冈是吃面、城跡、河边和咖啡；平泉是中尊寺、毛越寺和安静文化。", "如果只想轻松探店，停盛冈；如果想看世界遗产，走平泉。", "这条线的气质比八户更适合你们的“探店 + 松弛 + 有历史厚度”，但不应该变成又一堆任务。"],
+    time: ["盛冈轻线：仙台往返半日偏重。", "平泉线：仙台 -> 一之关 -> 平泉，半日偏紧，一日更舒服。", "盛冈+平泉同日可以做，但会明显变成交通日，不建议作为不累版默认。"],
+    route: ["仙台 -> 盛冈：东北/北海道新干线主轴，按 Hayabusa/Yamabiko 等具体车次查。", "平泉：先到一之关，再换 JR 东北本线到平泉；中尊寺和毛越寺依赖步行或循环巴士。", "JR East 站点时刻页确认仙台站有往一之关/盛冈/新青森/新函馆北斗方向，盛冈站也有往仙台/东京方向。"],
+    best: ["仙台住 2 晚、松岛已经定为半日或决定跳过时。", "雨天：盛冈吃面/咖啡更稳。", "晴天：平泉庭园和中尊寺参道更舒服。"],
+    avoid: ["不要和松岛、山寺同日全塞。", "不要把平泉误认为盛冈站旁；它需要一之关换乘和末端交通。", "如果只有仙台 1 晚，保留仙台市内+松岛，不加北上。"],
+    sources: ["sendaiStationTimetable", "moriokaStationTimetable", "chusonjiJnto", "motsujiJnto", "hiraizumiLoopBus"]
+  }),
+  "spot-morioka-castle": guide({
+    facts: [["角色", "盛冈城市骨架"], ["时间", "1-2小时"], ["交通", "站后步行/循环巴士"], ["适合", "低中体力"]],
+    play: ["从盛冈站进城，先看城跡公园石垣，再沿中津川/城下町方向慢走。", "它不是大景点冲刺，而是把盛冈变成有尺度、有河、有老城肌理的城市。", "结束后接一顿面或咖啡，比继续加远郊更好。"],
+    time: ["公园和石垣 45-90 分钟。", "含河边散步/咖啡 2-3 小时。"],
+    route: ["JNTO 写明从盛冈站可坐 Morioka City Loop Bus 到公园约 10 分钟，也可步行 15-20 分钟。", "Travel to Tohoku 也列出从 JR 盛冈站步行 15 分钟或巴士 10 分钟。"],
+    best: ["上午或下午光线柔和时。", "雨不大时也可走，暴雨则改站区/面店。"],
+    avoid: ["不要期待天守阁；重点是石垣、城市尺度和慢走。", "如果当天还要平泉，不要在盛冈城逛太久。"],
+    sources: ["moriokaCastleJnto", "moriokaCastleTohoku"]
+  }),
+  "spot-morioka-noodles": guide({
+    facts: [["角色", "盛冈探店核心"], ["时间", "1-2小时"], ["关键词", "冷面/じゃじゃ面/碗子荞麦"], ["体力", "低"]],
+    play: ["三大面是盛冈最不费力、最有辨识度的探店理由。", "两个人可以分工：一顿正餐选冷面或じゃじゃ面；碗子荞麦更像体验项目，别在赶车日挑战。", "吃完找咖啡/书店/民艺店坐一下，路线会更像你们自己的旅行。"],
+    time: ["普通正餐 45-90 分钟。", "排队或碗子荞麦体验另加时间。"],
+    route: ["围绕盛冈站、城跡公园和中心街区选店；先看回程新干线。"],
+    best: ["雨天、低体力、想把仙台段变得更有地方味时。"],
+    avoid: ["不要为了“三大面全制霸”吃到过撑。", "热门店排队太长就换同类型，不要牺牲返程。"],
+    sources: ["moriokaNoodlesJnto", "moriokaStationTimetable"]
+  }),
+  "spot-hiraizumi-chusonji": guide({
+    facts: [["角色", "平泉核心"], ["时间", "2-3小时"], ["交通", "一之关换乘"], ["重点", "金色堂/杉木参道"]],
+    play: ["把中尊寺当一条安静上行线：参道、杉木、殿堂、金色堂，不是只拍门口。", "它的回报在历史密度和安静感，适合从北海道广阔风景切到本州文化层。", "如果你们当天只选一个平泉点，中尊寺优先。"],
+    time: ["中尊寺本体 2-3 小时。", "从仙台往返加换乘，按半日偏重到一日处理。"],
+    route: ["东北新干线到一之关，换 JR 东北本线到平泉。", "JNTO 写明平泉站到中尊寺约 10 分钟巴士或 30 分钟步行。", "循环巴士 Runrun 可作为末端工具，实际班次和运营日当天确认。"],
+    best: ["晴天或阴天都可；大雨会影响参道体验。", "想看世界遗产而不想跑远海岸时。"],
+    avoid: ["不要把中尊寺和山寺同日叠加成双爬坡。", "不要把换乘压得过紧，地方线和循环巴士需要余量。"],
+    sources: ["chusonjiJnto", "hiraizumiLoopBus"]
+  }),
+  "spot-hiraizumi-motsuji": guide({
+    facts: [["角色", "平泉松弛点"], ["时间", "1-2小时"], ["交通", "平泉站步行"], ["重点", "净土庭园"]],
+    play: ["毛越寺适合慢下来：水面、石组、庭园遗址和山影，比刺激景点更安静。", "如果中尊寺人多或腿累，毛越寺能把平泉变成更松弛的半日。", "和中尊寺组合时，先看交通和开门时间，再决定先后顺序。"],
+    time: ["只看庭园 60-90 分钟。", "和中尊寺组合，平泉至少半日，最好一日。"],
+    route: ["JNTO 写明从平泉站步行约 10 分钟或车程约 3 分钟。", "毛越寺 FAQ 也列出平泉站步行 10 分钟、骑行 5 分钟、车程 3 分钟。"],
+    best: ["晴天有水面和山影；阴天更静。", "低体力、想从城市密度里退出来时。"],
+    avoid: ["不要把它当顺手 20 分钟打卡点；庭园需要慢看。", "若只剩很短换乘时间，删掉毛越寺，保留中尊寺或直接回仙台。"],
+    sources: ["motsujiJnto", "motsujiOfficial", "hiraizumiLoopBus"]
+  }),
   "city-hachinohe-sendai": guide({
     facts: [["角色", "若未去的补线"], ["时间", "一日"], ["交通", "新干线北上"], ["优先级", "低"]],
     play: ["仙台住 2 晚且不去松岛以外点时才考虑。"],
@@ -4060,6 +4233,11 @@ const foodTips = {
   "spot-warasse": ["WA-RASSE 附近可顺路看青森站和港口小店。", "苹果派/土产适合轻买，别增加太多行李。"],
   "spot-hirosaki-castle": ["弘前适合苹果甜品、咖啡和城下町慢走。", "樱花季餐厅排队会明显变长，先看近期评价。"],
   "city-hachinohe-hakodate": ["八户如果要加，优先市场/港口吃饭或种差海岸二选一。", "八食中心适合午饭，馆鼻朝市适合住一晚且早起。"],
+  "city-morioka-hiraizumi": ["盛冈主打三大面、咖啡、民艺/书店；平泉主打参道轻食和安静庭园。", "一天只选一个餐饮重心：盛冈吃饭，平泉慢看，不要两边都追热门店。"],
+  "spot-morioka-castle": ["城跡公园后适合接中心街咖啡、书店、民艺店或一顿面。", "如果后面还要平泉，吃饭就贴近盛冈站，不要绕远。"],
+  "spot-morioka-noodles": ["三大面里冷面/じゃじゃ面更适合普通正餐，碗子荞麦更像体验项目。", "两个人可以只选一家舒服店坐下，不需要三种都吃。"],
+  "spot-hiraizumi-chusonji": ["中尊寺参道和门前小店适合轻食、甜品和茶。", "如果还要毛越寺，午饭不要排得太重或太远。"],
+  "spot-hiraizumi-motsuji": ["毛越寺更适合慢看后接茶、轻食或回平泉站。", "店铺密度不如盛冈，别把探店期待放太高。"],
   "city-hachinohe-sendai": ["仙台侧补八户时，市场/港口吃饭要比追多个景点更合理。", "除非专门想看海岸生活带，否则优先松岛。"],
   "spot-tanesashi": ["种差海岸先看交通和天气，吃饭不要压在末端。", "可用海边咖啡/轻食作休息，但正餐最好回八户更稳。"],
   "spot-hachinohe-port": ["八户港口生活带适合市场、横丁、海鲜和地方小吃。", "如果新干线当天还要南下，就只吃一顿，不要扩成夜游。"],
@@ -4193,6 +4371,11 @@ const reviewQueries = {
   "spot-warasse": "青森 WA-RASSE 睡魔之家 苹果派",
   "spot-hirosaki-castle": "弘前城 弘前公园 苹果派 咖啡",
   "city-hachinohe-hakodate": "八户 种差海岸 八食中心",
+  "city-morioka-hiraizumi": "盛冈 平泉 中尊寺 三大面 一日游",
+  "spot-morioka-castle": "盛冈城跡公园 中津川 咖啡 书店",
+  "spot-morioka-noodles": "盛冈 三大面 冷面 じゃじゃ面 碗子荞麦",
+  "spot-hiraizumi-chusonji": "平泉 中尊寺 金色堂 交通",
+  "spot-hiraizumi-motsuji": "平泉 毛越寺 净土庭园 交通",
   "spot-tanesashi": "八户 种差海岸 八户线 交通",
   "spot-hachinohe-port": "八户 港口 横丁 市场 海鲜",
   "spot-hasshoku": "八户 八食中心 海鲜 市场",

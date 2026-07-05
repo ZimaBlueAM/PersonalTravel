@@ -47,6 +47,10 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Obihiro Butadon: https://commons.wikimedia.org/wiki/File:Butadon_of_Pancho.jpg
 - Yamadera / Risshakuji: https://en.wikipedia.org/wiki/Yamadera
 - Akiu Rairaikyo: https://commons.wikimedia.org/wiki/File:Akiu_Rairaikyo_2008B.jpg
+- Morioka Castle Ruins: https://commons.wikimedia.org/wiki/File:Bridge_-_Morioka_Castle_-_Iwate,_Japan_-_DSC03946.jpg
+- Morioka three noodles: https://commons.wikimedia.org/wiki/File:%E3%81%84%E3%82%8F%E3%81%A6%E4%B8%89%E5%A4%A7%E9%BA%BA.jpg
+- Chusonji Temple: https://commons.wikimedia.org/wiki/File:Mine_Yakushido_Hall_-_Chusonji,_Hiraizumi,_Iwate_-_DSC04835.jpg
+- Motsuji Temple: https://commons.wikimedia.org/wiki/File:General_view_-_Motsuji,_Hiraizumi,_Iwate_-_DSC04467.jpg
 - Yokohama Minato Mirai: https://en.wikipedia.org/wiki/Yokohama
 - Kamakura / Tsurugaoka Hachimangu: https://en.wikipedia.org/wiki/Kamakura
 - Nikko Yomeimon: https://commons.wikimedia.org/wiki/File:Nikko_Toshogu_Yomeimon_M3249.jpg
