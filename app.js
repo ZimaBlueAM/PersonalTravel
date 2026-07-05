@@ -1,5 +1,16 @@
 const img = (name) => `assets/places/${name}.jpg`;
 
+const placeImages = {
+  noboribetsu: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Jigokudani%2C_Noboribetsu_Onsen_on_June_11st%2C_2019.jpg/1280px-Jigokudani%2C_Noboribetsu_Onsen_on_June_11st%2C_2019.jpg",
+  lakeToya: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/130922_Lake_Toya_Toyako_Hokkaido_Japan03s3.jpg/1280px-130922_Lake_Toya_Toyako_Hokkaido_Japan03s3.jpg",
+  onuma: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Komagatake_dusk.jpg/1280px-Komagatake_dusk.jpg",
+  aomoriHirosaki: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Hirosaki-castle_Aomori_with_Sakura_blossoms.jpg",
+  yamadera: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Risshaku-ji_Kaisan-do_201706b.jpg/1280px-Risshaku-ji_Kaisan-do_201706b.jpg",
+  sakunami: img("sendai"),
+  yokohama: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Minato_Mirai.jpg/1280px-Minato_Mirai.jpg",
+  kamakura: "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg"
+};
+
 const sourceLinks = {
   operation: {
     label: "JR Hokkaido Train Operation Information",
@@ -44,6 +55,34 @@ const sourceLinks = {
   furanoCityBus: {
     label: "Furano City: Furano - Shintoku replacement buses",
     url: "https://www.city.furano.hokkaido.jp/life/docs/542998.html?cat=%2Flife%2Fkankou%2F60%2F"
+  },
+  jrNoboribetsuToyako: {
+    label: "JR Hokkaido recommended route: Noboribetsu / Toyako",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/model/spring02.html"
+  },
+  noboribetsuOfficial: {
+    label: "Noboribetsu official tourism",
+    url: "https://noboribetsu-spa.jp/en/"
+  },
+  noboribetsuJnto: {
+    label: "JNTO: Noboribetsu",
+    url: "https://www.japan.travel/en/spot/2156/"
+  },
+  lakeToyaOfficial: {
+    label: "Toyako Onsen Tourist Association: access",
+    url: "https://www.laketoya.com/en/access/"
+  },
+  lakeToyaJnto: {
+    label: "JNTO: Lake Toya",
+    url: "https://www.japan.travel/en/spot/2157/"
+  },
+  donanToyakoBus: {
+    label: "Donan Bus: Toyako Onsen - Toya Station",
+    url: "https://www.donanbus.co.jp/map/toyako_toyakoonsen/?hp_lang=en"
+  },
+  usuzan: {
+    label: "Usuzan Ropeway official access",
+    url: "https://usuzan.hokkaido.jp/en/"
   },
   sapporoNijo: {
     label: "Sapporo Travel: Nijo Fish Market",
@@ -181,6 +220,14 @@ const sourceLinks = {
     label: "Travel Hakodate: transportation",
     url: "https://www.hakodate.travel/en/information/transportation/"
   },
+  onumaJnto: {
+    label: "JNTO: Onuma Quasi-National Park",
+    url: "https://www.japan.travel/en/spot/1893/"
+  },
+  onumaHakodate: {
+    label: "Travel Hakodate: Onuma access",
+    url: "https://www.hakodate.travel/en/more-about-hakodate/winter/"
+  },
   mtHakodate: {
     label: "Hokkaido Love: Mt. Hakodate",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10095.html"
@@ -196,6 +243,18 @@ const sourceLinks = {
   hachinoheFood: {
     label: "Amazing AOMORI: Hachinohe food",
     url: "https://aomori-tourism.com/en/feature/detail_309.html"
+  },
+  warasse: {
+    label: "Amazing AOMORI: Nebuta Museum WA-RASSE",
+    url: "https://aomori-tourism.com/en/spot/detail_3698.html"
+  },
+  hirosakiCastleJnto: {
+    label: "JNTO: Hirosaki Castle",
+    url: "https://www.japan.travel/en/spot/1836/"
+  },
+  hirosakiPark: {
+    label: "Hirosaki Park official",
+    url: "https://www.hirosakipark.com/en"
   },
   hachinoheTanesashiFood: {
     label: "Visit Hachinohe: food around Tanesashi Coast",
@@ -245,9 +304,41 @@ const sourceLinks = {
     label: "Visit Miyagi: Loople Sendai access",
     url: "https://visitmiyagi.com/model_course/history-and-culture-of-sendai/"
   },
+  sendaiGettingAround: {
+    label: "Discover Sendai: getting around / JR Senzan Line",
+    url: "https://discoversendai.travel/travel-info/getting-around-sendai/"
+  },
+  yamaderaJnto: {
+    label: "JNTO: Risshakuji Temple Yamadera",
+    url: "https://www.japan.travel/en/spot/1796/"
+  },
+  sakunamiSendai: {
+    label: "Discover Sendai: Sakunami Onsen",
+    url: "https://discoversendai.travel/places/sakunami-onsen/"
+  },
+  sakunamiTohoku: {
+    label: "Travel to Tohoku: Sakunami Onsen",
+    url: "https://www.tohokukanko.jp/en/attractions/detail_1318.html"
+  },
+  nikkaMiyagikyo: {
+    label: "Nikka Whisky: Miyagikyo Distillery access",
+    url: "https://www.nikka.com/en/distilleries/miyagikyo/access/"
+  },
   tokyo: {
     label: "GO TOKYO official guide",
     url: "https://www.gotokyo.org/en/index.html"
+  },
+  kamakuraJnto: {
+    label: "JNTO: Kamakura and around",
+    url: "https://www.japan.travel/en/destinations/kanto/kanagawa/kamakura-and-around/"
+  },
+  yokohamaJnto: {
+    label: "JNTO: Minato Mirai 21",
+    url: "https://www.japan.travel/en/spot/2099/"
+  },
+  yokohamaPass: {
+    label: "JR East: Yokohama-Minatomirai Pass",
+    url: "https://www.jreast.co.jp/en/multi/pass/yokohama_minatomirai.html"
   },
   goTokyoGinza: {
     label: "GO TOKYO: Ginza",
@@ -271,9 +362,9 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-05 22:59 JST";
+const checkedAt = "2026-07-05 23:31 JST";
 const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 对特急、快速 Airport、函馆/千岁线、函馆 Liner、函馆线、石胜线、根室线、花咲线、富良野线、北海道新干线均显示无停驶/30分钟以上延误信息。出发当天仍以实时页面为准。`;
-const jrEastLiveNote = "本次核验 2026-07-05 21:58 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏出现 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
+const jrEastLiveNote = "本次核验 2026-07-05 23:27 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏仍出现 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
 
 const coreTransfers = [
   {
@@ -432,6 +523,21 @@ const routeOptimizations = [
     ],
     note: "每个弹窗里都把“最佳条件”和“别踩坑”单独列出来。",
     sources: ["capeKamuiAccess", "nikkaYoichi", "asahikawaRamen", "goTokyoGinza"]
+  },
+  {
+    id: "opt-expansion",
+    icon: "search",
+    title: "新增候选城市只做替代，不做加法",
+    meta: "登别 / 洞爷 / 大沼 / 山寺 / 横滨",
+    verdict: "新补的城市不是让行程变满，而是让坏天气或体力变化时有更好的替换。",
+    steps: [
+      "想泡温泉：用登别或作并替代一条重海岸线，不要叠加。",
+      "函馆段天气好：大沼公园比继续城市打卡更有空间感。",
+      "仙台住 2 晚：松岛和山寺二选一，除非你们明确想要一个满强度日。",
+      "东京收尾：横滨/镰仓二选一，作为远郊替代，不和涩谷/台场同日硬塞。"
+    ],
+    note: "新增候选全部在对应基地下面，点开看交通与取舍。",
+    sources: ["jrNoboribetsuToyako", "onumaJnto", "yamaderaJnto", "kamakuraJnto", "yokohamaJnto"]
   }
 ];
 
@@ -670,6 +776,94 @@ const outline = [
               ["交通不只看 JR，还要看巴士与道路条件。"],
               ["天气普通时换小樽更稳。"]
             )
+          })
+        ]
+      }),
+      city({
+        id: "city-noboribetsu",
+        title: "登别温泉",
+        meta: "可选城市 / JR+巴士温泉线",
+        image: placeImages.noboribetsu,
+        tags: ["可选城市", "温泉", "JR+巴士"],
+        summary: "如果你们想把北海道段做得更松，登别是比神威岬更稳的温泉替代。",
+        sections: sections(
+          ["登别的核心不是城市，而是火山地貌、地狱谷和温泉街。"],
+          ["JR 北海道官方推荐路线写明新千岁机场/札幌方向可到登别站，再接巴士到登别温泉；JNTO 也说明温泉街离登别站约 15 分钟巴士。"],
+          ["它适合替代神威岬或余市，不适合再叠加到同一天。"]
+        ),
+        sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto"],
+        children: [
+          spot({
+            id: "spot-jigokudani",
+            title: "登别地狱谷",
+            meta: "可选 / 火山地貌",
+            image: placeImages.noboribetsu,
+            tags: ["可选子目的地", "火山", "步行"],
+            summary: "蒸汽、硫磺色地表和谷地步道，是登别最清楚的一眼理由。",
+            sections: sections(
+              ["它给北海道段补一个完全不同于海岸和花田的火山画面。"],
+              ["登别温泉街步行可达，但冬季/雨天步道状态要看现场。"],
+              ["如果只去登别一个点，就选地狱谷。"]
+            ),
+            sources: ["noboribetsuOfficial", "noboribetsuJnto"]
+          }),
+          spot({
+            id: "spot-noboribetsu-onsen-town",
+            title: "温泉街 / 日归汤方向",
+            meta: "可选 / 恢复体力",
+            image: placeImages.noboribetsu,
+            tags: ["可选子目的地", "温泉", "低体力"],
+            summary: "真正让登别成立的是泡汤和恢复，而不是继续打卡。",
+            sections: sections(
+              ["适合把札幌段从赶路模式切成恢复模式。"],
+              ["日归汤、旅馆餐和温泉街营业时间要按当天确认。"],
+              ["泡汤后不要再安排长步行或远距离返回。"]
+            ),
+            sources: ["noboribetsuOfficial", "jrNoboribetsuToyako"]
+          })
+        ]
+      }),
+      city({
+        id: "city-lake-toya",
+        title: "洞爷湖",
+        meta: "可选城市 / JR洞爷站+巴士",
+        image: placeImages.lakeToya,
+        tags: ["可选城市", "湖景", "中等强度"],
+        summary: "洞爷湖是札幌到函馆方向最值得考虑的顺路湖区，但末端巴士必须认真查。",
+        sections: sections(
+          ["它补的是湖面、火山、温泉街和缓慢停留。"],
+          ["官方旅游协会写明从 JR 洞爷站需要道南巴士或出租车前往洞爷湖温泉；道南巴士公开页显示洞爷站-洞爷湖温泉单程约 26 分钟。"],
+          ["更适合改成中途停留或替代一条札幌远支线，不适合和登别同日硬拼。"]
+        ),
+        sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto", "jrNoboribetsuToyako"],
+        children: [
+          spot({
+            id: "spot-toyako-lakeside",
+            title: "洞爷湖温泉湖畔",
+            meta: "可选 / 湖边散步",
+            image: placeImages.lakeToya,
+            tags: ["可选子目的地", "湖景", "温泉街"],
+            summary: "湖畔散步、温泉街和夜间花火季，是洞爷湖最轻的玩法。",
+            sections: sections(
+              ["适合把行程节奏降下来。"],
+              ["JR 只到洞爷站，湖边必须接巴士/出租。"],
+              ["若末端交通不稳，宁可删掉而不是赶末班。"]
+            ),
+            sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto"]
+          }),
+          spot({
+            id: "spot-usuzan-showa",
+            title: "有珠山 / 昭和新山方向",
+            meta: "可选 / 火山视角",
+            image: placeImages.lakeToya,
+            tags: ["可选子目的地", "火山", "需查交通"],
+            summary: "如果你们想让洞爷湖不只是湖边散步，就加有珠山缆车方向。",
+            sections: sections(
+              ["缆车给湖、火山和昭和新山的高处视角。"],
+              ["有珠山官方写明营业时间季节变化；湖区内部巴士也有季节/班次限制。"],
+              ["没有稳定接驳时，只保留湖畔即可。"]
+            ),
+            sources: ["usuzan", "lakeToyaOfficial", "donanToyakoBus"]
           })
         ]
       })
@@ -1260,6 +1454,50 @@ const outline = [
         ]
       }),
       city({
+        id: "city-onuma",
+        title: "大沼公园",
+        meta: "可选城市/公园 / 函馆短线",
+        image: placeImages.onuma,
+        tags: ["可选城市", "JR短线", "湖沼"],
+        summary: "函馆天气好且有半天余量时，大沼比继续城市打卡更能补自然空间。",
+        sections: sections(
+          ["大沼看的是驹岳、湖沼、小岛和桥，空间感和函馆市区完全不同。"],
+          ["JNTO 写明从函馆站可坐特急约 20 分钟或普通列车到大沼公园站；Travel Hakodate 也建议从函馆坐 JR 前往。"],
+          ["它适合函馆住 2 晚或跨海前半日，不适合钏路长移动刚到就硬去。"]
+        ),
+        sources: ["onumaJnto", "onumaHakodate", "hakodate"],
+        children: [
+          spot({
+            id: "spot-onuma-walk",
+            title: "湖畔桥群散步",
+            meta: "可选 / 半日自然",
+            image: placeImages.onuma,
+            tags: ["可选子目的地", "散步", "晴天"],
+            summary: "步道、小桥和湖面让函馆段多一个轻自然选项。",
+            sections: sections(
+              ["适合不想再进城、但又不想跑远的人。"],
+              ["大沼公园站下车后步行接近核心区域。"],
+              ["风雨大时价值下降，可换函馆市电和朝市。"]
+            ),
+            sources: ["onumaJnto", "onumaHakodate"]
+          }),
+          spot({
+            id: "spot-onuma-dango",
+            title: "沼之家团子 / 骑行方向",
+            meta: "可选 / 店铺与轻活动",
+            image: placeImages.onuma,
+            tags: ["可选子目的地", "甜品", "骑行"],
+            summary: "大沼的好处是可以很轻：吃团子、绕湖、看驹岳。",
+            sections: sections(
+              ["如果不想走完整步道，甜品和短骑行也能完成体验。"],
+              ["租车/骑行营业和天气要当天确认。"],
+              ["不要为骑行错过返回函馆或跨海车次。"]
+            ),
+            sources: ["onumaJnto", "onumaHakodate"]
+          })
+        ]
+      }),
+      city({
         id: "city-seikan",
         hub: true,
         title: "新函馆北斗 / 新青森",
@@ -1301,6 +1539,50 @@ const outline = [
               ["只是通行时不要停太久。"]
             ),
             sources: ["jreast"]
+          })
+        ]
+      }),
+      city({
+        id: "city-aomori-hirosaki",
+        title: "青森市 / 弘前",
+        meta: "可选城市 / 跨海中途拆分",
+        image: placeImages.aomoriHirosaki,
+        tags: ["可选城市", "本州入口", "非顺手"],
+        summary: "如果不想从函馆一口气到仙台，青森/弘前可以把跨海日拆成更有内容的一段。",
+        sections: sections(
+          ["青森市补东北祭典文化，弘前补城下町和苹果产地气质。"],
+          ["青森市从新青森再接 JR/在来线到青森站；弘前城 JNTO 写明从新青森到弘前约 30 分钟特急，再从弘前站步行或巴士到城址。"],
+          ["它不是换乘顺手点；只有愿意拆一天或住一晚时才值得。"]
+        ),
+        sources: ["warasse", "hirosakiCastleJnto", "hirosakiPark", "jreast"],
+        children: [
+          spot({
+            id: "spot-warasse",
+            title: "青森 WA-RASSE 睡魔之家",
+            meta: "可选 / 祭典文化",
+            image: placeImages.aomoriHirosaki,
+            tags: ["可选子目的地", "室内", "雨天"],
+            summary: "用室内方式看青森睡魔祭的灯笼、色彩和巨大尺度。",
+            sections: sections(
+              ["Amazing AOMORI 写明 WA-RASSE 距 JR 青森站步行 2 分钟。"],
+              ["它适合跨海后天气不稳定时做文化补充。"],
+              ["如果只换乘新青森不进青森站，就不要硬加。"]
+            ),
+            sources: ["warasse"]
+          }),
+          spot({
+            id: "spot-hirosaki-castle",
+            title: "弘前城 / 弘前公园",
+            meta: "可选 / 城下町",
+            image: placeImages.aomoriHirosaki,
+            tags: ["可选子目的地", "城", "季节性"],
+            summary: "樱花季很强，非樱花季也有东北城下町尺度。",
+            sections: sections(
+              ["JNTO 写明从新青森到弘前约 30 分钟特急，再接步行或巴士到城址。"],
+              ["弘前公园官方开放时间有季节差异，冬季部分收费区关闭。"],
+              ["如果不拆住宿，弘前会让跨海日变得偏重。"]
+            ),
+            sources: ["hirosakiCastleJnto", "hirosakiPark"]
           })
         ]
       }),
@@ -1515,6 +1797,94 @@ const outline = [
               ["牡蛎季节性强，夏天不要只为了牡蛎而去。"]
             ),
             sources: ["matsushimaFood", "matsushimaSeafood", "jntoMatsushima"]
+          })
+        ]
+      }),
+      city({
+        id: "city-yamadera",
+        title: "山寺 / 立石寺",
+        meta: "可选城市 / JR仙山线",
+        image: placeImages.yamadera,
+        tags: ["可选城市", "山寺", "体力线"],
+        summary: "仙台住 2 晚时最值得考虑的内陆支线：JR 可达，景观强，但要爬。",
+        sections: sections(
+          ["山寺的价值是千级石阶、杉林、岩壁寺院和五大堂视野。"],
+          ["Discover Sendai 写明 JR 仙山线连接仙台、山形、作并温泉、山寺；JNTO 写明山寺下方寺院距 JR 山寺站步行约 7 分钟。"],
+          ["它适合替代松岛或作为仙台第二天主线，不适合跨海抵达当晚硬加。"]
+        ),
+        sources: ["sendaiGettingAround", "yamaderaJnto"],
+        children: [
+          spot({
+            id: "spot-yamadera-steps",
+            title: "千级石阶 / 五大堂",
+            meta: "可选 / 山上视野",
+            image: placeImages.yamadera,
+            tags: ["可选子目的地", "体力", "视野"],
+            summary: "真正的山寺体验在上行过程和高处视野，不在山脚拍照。",
+            sections: sections(
+              ["JNTO 写明山寺有约 1,000 级石阶，山上五大堂视野是重点。"],
+              ["需要合脚鞋、补水和留足下山时间。"],
+              ["雨天、酷热或腿累时不要硬爬。"]
+            ),
+            sources: ["yamaderaJnto"]
+          }),
+          spot({
+            id: "spot-yamadera-soba",
+            title: "山形荞麦 / 玉こんにゃく方向",
+            meta: "可选 / 山脚吃饭",
+            image: placeImages.yamadera,
+            tags: ["可选子目的地", "餐饮", "休息"],
+            summary: "爬山前后用山脚小店补能量，比赶回仙台吃饭更舒服。",
+            sections: sections(
+              ["山脚有轻食、土产和地方小吃方向，适合控制节奏。"],
+              ["先看返程 JR，再决定坐下吃多久。"],
+              ["不要饭后马上压点爬山。"]
+            ),
+            sources: ["yamaderaJnto"]
+          })
+        ]
+      }),
+      city({
+        id: "city-sakunami",
+        title: "作并温泉 / 宫城峡",
+        meta: "可选城市 / JR仙山线+接驳",
+        image: placeImages.sakunami,
+        tags: ["可选城市", "温泉", "蒸馏所"],
+        summary: "如果仙台段想恢复体力，作并温泉和宫城峡比继续城市打卡更有质感。",
+        sections: sections(
+          ["作并温泉是仙台内陆温泉线，宫城峡蒸馏所则补一个山谷里的工业空间。"],
+          ["Discover Sendai 写明从仙台站坐 JR 仙山线到作并站约 40 分钟，再有免费接驳约 5 分钟；Nikka 宫城峡官网也说明接驳会配合 JR 仙山线时刻。"],
+          ["适合作为松岛/山寺的替代，不适合一天三条支线全做。"]
+        ),
+        sources: ["sakunamiSendai", "sakunamiTohoku", "nikkaMiyagikyo", "sendaiGettingAround"],
+        children: [
+          spot({
+            id: "spot-sakunami-onsen",
+            title: "作并温泉日归汤",
+            meta: "可选 / 恢复",
+            image: placeImages.sakunami,
+            tags: ["可选子目的地", "温泉", "低体力"],
+            summary: "仙台段如果身体累，泡汤比继续加城市景点更诚实。",
+            sections: sections(
+              ["作并温泉适合把东北段节奏降下来。"],
+              ["日归开放、接驳和旅馆规则要按当天确认。"],
+              ["泡汤后不要再安排山寺石阶。"]
+            ),
+            sources: ["sakunamiSendai", "sakunamiTohoku"]
+          }),
+          spot({
+            id: "spot-nikka-miyagikyo",
+            title: "Nikka 宫城峡蒸馏所",
+            meta: "可选 / 工业与山谷",
+            image: placeImages.sakunami,
+            tags: ["可选子目的地", "蒸馏所", "需预约"],
+            summary: "如果你们喜欢余市 Nikka，宫城峡是路线后半段的呼应。",
+            sections: sections(
+              ["Nikka 官网说明从 JR 作并站到宫城峡约 10 分钟接驳，接驳随 JR 仙山线状态变化。"],
+              ["参观、试饮、商店和临时运营日必须看官网。"],
+              ["饮酒后别再安排需要赶换乘的行程。"]
+            ),
+            sources: ["nikkaMiyagikyo", "sendaiGettingAround"]
           })
         ]
       }),
@@ -1768,6 +2138,94 @@ const outline = [
             sources: ["odaibaOfficial", "odaiba", "rainbowBridgeGoodLuck"]
           })
         ]
+      }),
+      city({
+        id: "city-yokohama",
+        title: "横滨",
+        meta: "可选城市 / 东京短线",
+        image: placeImages.yokohama,
+        tags: ["可选城市", "港湾", "JR短线"],
+        summary: "如果东京想用更开阔的港湾城市收尾，横滨比继续挤涩谷更舒服。",
+        sections: sections(
+          ["横滨补的是港口、近未来天际线、海风和比东京中心更松的街区尺度。"],
+          ["JNTO 写明港未来站是 Minato Mirai 的中心轨道入口；JR East 也有 Yokohama-Minatomirai Pass 覆盖横滨/港未来区域部分 JR 与 Minatomirai Line。"],
+          ["适合替代台场或银座，不要和镰仓同日硬塞。"]
+        ),
+        sources: ["yokohamaJnto", "yokohamaPass"],
+        children: [
+          spot({
+            id: "spot-yokohama-minatomirai",
+            title: "港未来 / 樱木町",
+            meta: "可选 / 港湾天际线",
+            image: placeImages.yokohama,
+            tags: ["可选子目的地", "港湾", "夜景"],
+            summary: "横滨最清楚的画面：海边、摩天轮、塔楼和开阔步道。",
+            sections: sections(
+              ["适合傍晚到夜晚，从樱木町或港未来方向慢走。"],
+              ["比台场更像真实港湾城市，不是纯人工岛体验。"],
+              ["强风雨时改银座/东京站室内。"]
+            ),
+            sources: ["yokohamaJnto", "yokohamaPass"]
+          }),
+          spot({
+            id: "spot-yokohama-chinatown",
+            title: "中华街 / 山下公园方向",
+            meta: "可选 / 吃饭散步",
+            image: placeImages.yokohama,
+            tags: ["可选子目的地", "餐饮", "散步"],
+            summary: "用吃饭和海边散步完成横滨，不必再追很多店。",
+            sections: sections(
+              ["中华街适合午饭或晚饭，山下公园适合饭后走到海边。"],
+              ["具体店铺差异大，用评测索引二次确认。"],
+              ["不要为了横滨把东京返程前一晚拖得太晚。"]
+            ),
+            sources: ["yokohamaJnto"]
+          })
+        ]
+      }),
+      city({
+        id: "city-kamakura",
+        title: "镰仓",
+        meta: "可选城市 / JR横须贺线",
+        image: placeImages.kamakura,
+        tags: ["可选城市", "海寺", "远郊"],
+        summary: "如果东京段想要寺社、海边和小城尺度，镰仓是强替代，但体力消耗不低。",
+        sections: sections(
+          ["镰仓补的是东京没有的古都/海边混合感。"],
+          ["JNTO 写明镰仓站从东京站坐 JR 横须贺线约 55 分钟，许多景点可步行或用本地铁路连接。"],
+          ["适合留半日到一日；不要和横滨、涩谷、台场同时塞。"]
+        ),
+        sources: ["kamakuraJnto"],
+        children: [
+          spot({
+            id: "spot-kamakura-hachimangu",
+            title: "鹤冈八幡宫 / 小町通",
+            meta: "可选 / 寺社与店铺",
+            image: placeImages.kamakura,
+            tags: ["可选子目的地", "寺社", "店铺"],
+            summary: "镰仓最稳的入门组合：从车站走小町通到鹤冈八幡宫。",
+            sections: sections(
+              ["一条线完成吃饭、店铺和寺社，不需要过度换乘。"],
+              ["人多时减少排队，保留海边或长谷方向体力。"],
+              ["夏天高温时午后容易累。"]
+            ),
+            sources: ["kamakuraJnto"]
+          }),
+          spot({
+            id: "spot-kamakura-hase-enoden",
+            title: "长谷寺 / 江之电海边",
+            meta: "可选 / 海寺线",
+            image: placeImages.kamakura,
+            tags: ["可选子目的地", "海边", "本地铁路"],
+            summary: "如果你们想让镰仓更有海的味道，就走长谷/江之电方向。",
+            sections: sections(
+              ["长谷寺、大佛、江之电和海边可以组成半日线。"],
+              ["本地铁路和游客密度会增加疲劳。"],
+              ["只想轻松时，保留鹤冈八幡宫/小町通即可。"]
+            ),
+            sources: ["kamakuraJnto"]
+          })
+        ]
       })
     ]
   })
@@ -1909,6 +2367,60 @@ const detailGuides = {
     best: ["太阳出来才是主体验。"],
     avoid: ["阴雨天不要为它牺牲小樽。"],
     sources: ["capeKamui"]
+  }),
+  "city-noboribetsu": guide({
+    facts: [["角色", "温泉替代线"], ["时间", "半日-一日"], ["交通", "JR+巴士"], ["取舍", "替代神威岬"]],
+    play: ["从札幌出发时，把登别当恢复日：地狱谷散步、温泉街、日归汤。", "如果愿意拆住宿，它也可以作为札幌到函馆之间的中继点。"],
+    time: ["札幌往返按半日偏重到一日。", "地狱谷+泡汤至少 3-5 小时。"],
+    route: ["JR 到登别站后，还要坐道南巴士/接驳到登别温泉。", "JR 北海道模型路线写新千岁机场-登别站后接约 20 分钟巴士；JNTO 说明温泉街距登别站约 15 分钟巴士。"],
+    best: ["雨天、风大不适合岬角、想恢复体力时。"],
+    avoid: ["不要把登别和神威岬排同一天。", "巴士不含在部分 JR pass 内，末端费用和班次要另查。"],
+    sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto"]
+  }),
+  "spot-jigokudani": guide({
+    facts: [["角色", "登别主画面"], ["时间", "45-90分钟"], ["交通", "温泉街步行"], ["天气", "风雨慎重"]],
+    play: ["先看地狱谷主步道，再按体力决定是否延伸到大汤沼方向。", "不要把它当普通公园，硫磺味、蒸汽和坡道都会消耗体力。"],
+    time: ["主步道 45-90 分钟。", "加延伸步道则按半日处理。"],
+    route: ["从登别温泉街步行接近，JR 只到登别站。"],
+    best: ["阴天也有气氛；大雨和强风时缩短。"],
+    avoid: ["步道关闭或鞋不合适时不要硬走。"],
+    sources: ["noboribetsuOfficial", "noboribetsuJnto"]
+  }),
+  "spot-noboribetsu-onsen-town": guide({
+    facts: [["角色", "泡汤恢复"], ["时间", "2-3小时"], ["交通", "巴士到温泉街"], ["重点", "日归汤"]],
+    play: ["先定日归汤或旅馆午餐，再反推巴士回登别站。", "泡完只做轻晚饭，不再加远点。"],
+    time: ["泡汤+休息 2-3 小时。"],
+    route: ["登别站到温泉街需巴士/出租，回程末班要先看。"],
+    best: ["长支线取消日、天气不稳日、北海道前半段疲劳时。"],
+    avoid: ["泡汤后赶换乘很难受；不要把回程压太紧。"],
+    sources: ["noboribetsuOfficial", "jrNoboribetsuToyako"]
+  }),
+  "city-lake-toya": guide({
+    facts: [["角色", "湖区替代线"], ["时间", "一日/中继"], ["交通", "JR洞爷站+巴士"], ["风险", "末端班次"]],
+    play: ["最舒服是湖畔散步、温泉街、坐下看湖。", "如果想看火山视角，再加有珠山缆车，不要两边都赶。"],
+    time: ["札幌往返偏重；作为去函馆前中继更舒服。", "湖畔+午饭 3-4 小时。"],
+    route: ["JR 到洞爷站后，接道南巴士或出租到洞爷湖温泉。", "官方旅游协会和道南巴士均把 Toya Station -> Toyako Onsen 作为末端交通。"],
+    best: ["晴天、想看湖、愿意慢下来时。"],
+    avoid: ["不要把洞爷湖、登别、函馆山压成同一天。", "有珠山方向交通更脆弱，先查再加。"],
+    sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto", "jrNoboribetsuToyako"]
+  }),
+  "spot-toyako-lakeside": guide({
+    facts: [["角色", "湖畔主线"], ["时间", "1-2小时"], ["交通", "洞爷站后接驳"], ["适合", "慢停"]],
+    play: ["沿湖边慢走，选一家咖啡/甜品/旅馆餐坐下。", "如果遇到花火季，傍晚停留价值更高。"],
+    time: ["湖边散步 1 小时，含吃饭 2 小时以上。"],
+    route: ["从洞爷站到湖边需道南巴士/出租。"],
+    best: ["晴天、低风、愿意慢走。"],
+    avoid: ["不要以为洞爷站就是湖边；步行距离和行李都不友好。"],
+    sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto"]
+  }),
+  "spot-usuzan-showa": guide({
+    facts: [["角色", "火山高处视角"], ["时间", "2-3小时"], ["交通", "湖区末端"], ["季节", "需确认"]],
+    play: ["把有珠山当洞爷湖的进阶视角：湖、火山和昭和新山一起看。"],
+    time: ["缆车+展望约 2-3 小时，含接驳更久。"],
+    route: ["有珠山缆车营业时间季节变化；从湖区到缆车口还要看巴士/出租。"],
+    best: ["晴天、能见度高。"],
+    avoid: ["班次不稳时删掉，只保留湖畔。"],
+    sources: ["usuzan", "lakeToyaOfficial", "donanToyakoBus"]
   }),
   "base-asahikawa": guide({
     facts: [["节奏", "2晚中继"], ["主线", "花田/丘陵"], ["风险", "去钏路长移动"], ["交通", "JR+可能巴士"]],
@@ -2273,6 +2785,33 @@ const detailGuides = {
     avoid: ["市电不是新干线换乘；跨海仍要 Hakodate Liner 去新函馆北斗。"],
     sources: ["hakodateTransport"]
   }),
+  "city-onuma": guide({
+    facts: [["角色", "函馆近郊自然"], ["时间", "半日"], ["交通", "JR短线"], ["最佳", "晴天"]],
+    play: ["函馆住 2 晚时，用大沼把港口城市切到湖沼和驹岳。", "只做湖畔桥群、轻食和短散步，不要排成运动日。"],
+    time: ["函馆出发半日最舒服。", "湖畔散步 1-2 小时，含吃饭 3-4 小时。"],
+    route: ["从函馆站到大沼公园站，JNTO 写明特急约 20 分钟，也可坐较慢普通列车。", "大沼公园站下车后步行接近核心区域。"],
+    best: ["晴天、低风、函馆段有半天空白。"],
+    avoid: ["钏路到函馆长移动当天不要加。", "跨海当天若车次紧，也不要为了大沼压缩换乘。"],
+    sources: ["onumaJnto", "onumaHakodate", "hakodate"]
+  }),
+  "spot-onuma-walk": guide({
+    facts: [["角色", "湖畔主体验"], ["时间", "1-2小时"], ["交通", "站后步行"], ["体力", "低中"]],
+    play: ["沿桥群和湖畔慢走，看驹岳和小岛关系。", "天气好时坐下发呆比多跑一个景点更值。"],
+    time: ["短走 60 分钟，慢走 2 小时。"],
+    route: ["JR 到大沼公园站后步行。"],
+    best: ["晴天、秋色、低风。"],
+    avoid: ["雨大时湖面和山景价值下降，改函馆市内。"],
+    sources: ["onumaJnto", "onumaHakodate"]
+  }),
+  "spot-onuma-dango": guide({
+    facts: [["角色", "轻食/活动"], ["时间", "45-120分钟"], ["重点", "团子/骑行"], ["取舍", "可删"]],
+    play: ["把团子当补给点，把骑行当可选活动。", "若只想轻松，大沼不用追很多设施。"],
+    time: ["吃东西 30-45 分钟；骑行另加 1-2 小时。"],
+    route: ["围绕大沼公园站和湖畔完成。"],
+    best: ["天气稳定、时间宽松。"],
+    avoid: ["骑行会增加体力消耗，跨海前别玩太满。"],
+    sources: ["onumaJnto", "onumaHakodate"]
+  }),
   "city-seikan": guide({
     facts: [["角色", "跨海枢纽"], ["必须", "新函馆北斗"], ["时间", "半日移动"], ["风险", "具体车次"]],
     play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。"],
@@ -2299,6 +2838,33 @@ const detailGuides = {
     best: ["车次衔接稳定时。"],
     avoid: ["不要在这里拆行程，除非专门游青森。"],
     sources: ["jreast"]
+  }),
+  "city-aomori-hirosaki": guide({
+    facts: [["角色", "跨海拆分"], ["时间", "一日/住一晚"], ["交通", "新青森分叉"], ["取舍", "非顺手"]],
+    play: ["如果函馆到仙台太长，就把新青森作为分叉，选青森市或弘前。", "青森市偏室内文化，弘前偏城下町和季节景观。"],
+    time: ["青森市短停 2-4 小时。", "弘前半日到一日，住一晚更舒服。"],
+    route: ["北海道新干线到新青森后，再接在来线/特急到青森或弘前。", "JNTO 写明新青森到弘前约 30 分钟特急。"],
+    best: ["愿意拆跨海日、不想一口气到仙台时。"],
+    avoid: ["不拆住宿时不要又青森又弘前。", "新青森只是新干线站，WA-RASSE 在青森站旁，不是同一站。"],
+    sources: ["warasse", "hirosakiCastleJnto", "hirosakiPark", "jreast"]
+  }),
+  "spot-warasse": guide({
+    facts: [["角色", "青森室内文化"], ["时间", "1-2小时"], ["交通", "青森站旁"], ["适合", "雨天"]],
+    play: ["看睡魔灯笼的巨大尺度和色彩，把东北祭典文化补上。", "它比临时去远郊更稳。"],
+    time: ["1-2 小时。"],
+    route: ["Amazing AOMORI 写明从 JR 青森站步行 2 分钟。"],
+    best: ["跨海拆分日、雨天、想看文化时。"],
+    avoid: ["只在新青森换乘时不要硬加；需要进青森站。"],
+    sources: ["warasse"]
+  }),
+  "spot-hirosaki-castle": guide({
+    facts: [["角色", "城下町"], ["时间", "半日"], ["交通", "新青森->弘前"], ["季节", "樱花强"]],
+    play: ["弘前城和公园适合慢走，樱花季是高峰，非樱花季看城下町尺度。"],
+    time: ["从新青森分叉至少半日。"],
+    route: ["JNTO 写明新青森到弘前约 30 分钟特急；弘前站到城址步行约 30 分钟或坐巴士。"],
+    best: ["樱花季、秋天、愿意拆一天。"],
+    avoid: ["函馆到仙台同日直穿时不要加弘前。"],
+    sources: ["hirosakiCastleJnto", "hirosakiPark"]
   }),
   "city-hachinohe-hakodate": guide({
     facts: [["角色", "东北海岸备选"], ["时间", "半日-一日"], ["交通", "新干线+末端"], ["优先级", "低于跨海主线"]],
@@ -2434,6 +3000,60 @@ const detailGuides = {
     best: ["松岛半日中段。"],
     avoid: ["牡蛎季节性强；夏天不要只按冬季牡蛎攻略期待。"],
     sources: ["matsushimaFood", "matsushimaSeafood", "jntoMatsushima"]
+  }),
+  "city-yamadera": guide({
+    facts: [["角色", "仙山线强支线"], ["时间", "半日-一日"], ["体力", "中高"], ["交通", "JR仙山线"]],
+    play: ["把山寺当仙台段的主支线，不当顺手小景点。", "先爬山寺，再在山脚吃荞麦/小吃，下午回仙台。"],
+    time: ["仙台往返加游览通常半日以上。", "登山和高处停留 2-3 小时。"],
+    route: ["从仙台坐 JR 仙山线到山寺站；JNTO 写明下方寺院距 JR 山寺站步行约 7 分钟。"],
+    best: ["天气稳定、鞋合适、腿不累。"],
+    avoid: ["不要和松岛深度游同日硬塞。", "酷热、暴雨、膝盖不舒服时降级。"],
+    sources: ["sendaiGettingAround", "yamaderaJnto"]
+  }),
+  "spot-yamadera-steps": guide({
+    facts: [["角色", "山寺核心"], ["时间", "2-3小时"], ["体力", "爬升"], ["重点", "五大堂"]],
+    play: ["慢慢穿过杉林和石阶，到五大堂看山谷视野。", "把路上的停顿也算进体验，不要只冲顶。"],
+    time: ["上下来回和停留 2-3 小时。"],
+    route: ["JR 山寺站步行到山脚，再上山。"],
+    best: ["清晨或上午，天气不闷热。"],
+    avoid: ["雨天石阶滑；夏天正午很消耗。"],
+    sources: ["yamaderaJnto"]
+  }),
+  "spot-yamadera-soba": guide({
+    facts: [["角色", "山脚恢复"], ["时间", "45-75分钟"], ["重点", "荞麦/小吃"], ["交通", "站前周边"]],
+    play: ["爬前轻食或爬后午饭，别空腹硬上。", "玉こんにゃく、荞麦、冰品都可作为轻补给方向。"],
+    time: ["45-75 分钟，排队另算。"],
+    route: ["围绕山寺站和参道完成。"],
+    best: ["爬山前后。"],
+    avoid: ["不要吃太饱后立刻爬石阶。"],
+    sources: ["yamaderaJnto"]
+  }),
+  "city-sakunami": guide({
+    facts: [["角色", "仙台恢复线"], ["时间", "半日"], ["交通", "JR仙山线+接驳"], ["取舍", "替代山寺"]],
+    play: ["如果山寺太累，就用作并温泉和宫城峡蒸馏所做低冲击支线。", "温泉和蒸馏所二选一也成立。"],
+    time: ["半日可做一个主题。", "温泉+宫城峡会接近一日。"],
+    route: ["Discover Sendai 写明从仙台站到作并站约 40 分钟，温泉接驳约 5 分钟。", "Nikka 宫城峡接驳按 JR 仙山线时刻和服务状态调整。"],
+    best: ["雨天、腿累、想恢复时。"],
+    avoid: ["不要和山寺石阶同日全做。", "接驳和日归汤规则必须当天确认。"],
+    sources: ["sakunamiSendai", "sakunamiTohoku", "nikkaMiyagikyo", "sendaiGettingAround"]
+  }),
+  "spot-sakunami-onsen": guide({
+    facts: [["角色", "泡汤恢复"], ["时间", "2-3小时"], ["交通", "作并站接驳"], ["适合", "低体力"]],
+    play: ["把作并作为仙台段的恢复按钮。", "泡汤、休息、回仙台吃饭，不再贪更多点。"],
+    time: ["泡汤+休息 2-3 小时。"],
+    route: ["JR 作并站后需旅馆/温泉接驳或公交，规则随设施不同。"],
+    best: ["雨天、腿累、跨海后第二天。"],
+    avoid: ["日归开放不稳定，不能临时想去就默认能泡。"],
+    sources: ["sakunamiSendai", "sakunamiTohoku"]
+  }),
+  "spot-nikka-miyagikyo": guide({
+    facts: [["角色", "山谷蒸馏所"], ["时间", "1.5-3小时"], ["交通", "作并站接驳"], ["预约", "按官网"]],
+    play: ["如果余市没去或很喜欢 Nikka，可用宫城峡做后半段呼应。", "看厂区、商店和试饮规则，不要把它当普通购物点。"],
+    time: ["参观和商店 1.5-3 小时。"],
+    route: ["Nikka 官网说明 JR 作并站到蒸馏所约 10 分钟接驳，且接驳随 JR 仙山线运行状态变化。"],
+    best: ["官网开放、接驳明确、当天不赶车。"],
+    avoid: ["饮酒后不要安排紧张换乘；预约/临时运营日必须查。"],
+    sources: ["nikkaMiyagikyo", "sendaiGettingAround"]
   }),
   "city-hachinohe-sendai": guide({
     facts: [["角色", "若未去的补线"], ["时间", "一日"], ["交通", "新干线北上"], ["优先级", "低"]],
@@ -2595,6 +3215,60 @@ const detailGuides = {
     best: ["强风以外的傍晚，或雨天需要室内替代时。"],
     avoid: ["台场交通回市区需要时间，最后一天别玩到太晚。"],
     sources: ["odaibaOfficial", "odaiba", "rainbowBridgeGoodLuck"]
+  }),
+  "city-yokohama": guide({
+    facts: [["角色", "东京港湾替代"], ["时间", "半日"], ["交通", "JR/私铁短线"], ["取舍", "替代台场"]],
+    play: ["从东京/品川/涩谷方向进横滨，选港未来或中华街一条线。", "傍晚走海边，晚饭后回东京。"],
+    time: ["半日舒服，夜景线 3-5 小时。"],
+    route: ["JR East 有横滨港未来通票；JNTO 写明港未来站是核心轨道入口。", "从东京方向到横滨方式很多，按住宿站点选最少换乘。"],
+    best: ["想要开阔港湾、夜景、比东京中心松一点时。"],
+    avoid: ["不要和镰仓同日；两者会把东京收尾变成赶路。"],
+    sources: ["yokohamaJnto", "yokohamaPass"]
+  }),
+  "spot-yokohama-minatomirai": guide({
+    facts: [["角色", "横滨主画面"], ["时间", "1.5-3小时"], ["最佳", "傍晚"], ["交通", "港未来/樱木町"]],
+    play: ["从樱木町或港未来慢走到海边，看塔楼、摩天轮和港口空间。"],
+    time: ["短看 1.5 小时，含晚饭 3 小时以上。"],
+    route: ["可用港未来线或 JR 到樱木町/横滨再接入。"],
+    best: ["傍晚到夜景。"],
+    avoid: ["强风雨时改银座室内。"],
+    sources: ["yokohamaJnto", "yokohamaPass"]
+  }),
+  "spot-yokohama-chinatown": guide({
+    facts: [["角色", "吃饭散步"], ["时间", "1-2小时"], ["重点", "餐饮"], ["交通", "港湾区串联"]],
+    play: ["把中华街当饭点，再走山下公园/海边收尾。", "具体店铺用评测索引看近期口碑。"],
+    time: ["用餐+短走 1-2 小时。"],
+    route: ["和港未来、山下公园方向可串联，但不要横跳太多站。"],
+    best: ["午饭或晚饭。"],
+    avoid: ["热门店排队长时直接换店；不要拖到末班或返程前太晚。"],
+    sources: ["yokohamaJnto"]
+  }),
+  "city-kamakura": guide({
+    facts: [["角色", "东京远郊海寺"], ["时间", "半日-一日"], ["交通", "JR横须贺线"], ["体力", "中"]],
+    play: ["轻量版：小町通+鹤冈八幡宫。", "完整半日：再加长谷/江之电/海边。"],
+    time: ["东京往返半日到一日。"],
+    route: ["JNTO 写明镰仓站从东京站坐 JR 横须贺线约 55 分钟，许多景点可步行或本地铁路连接。"],
+    best: ["想看寺社、海边和小城尺度时。"],
+    avoid: ["不要和横滨、涩谷、台场同日硬塞。", "夏天高温和游客密度会放大疲劳。"],
+    sources: ["kamakuraJnto"]
+  }),
+  "spot-kamakura-hachimangu": guide({
+    facts: [["角色", "镰仓入门线"], ["时间", "2-3小时"], ["交通", "站后步行"], ["重点", "寺社+店铺"]],
+    play: ["从镰仓站走小町通，到鹤冈八幡宫，再回头找咖啡/甜点。"],
+    time: ["2-3 小时。"],
+    route: ["JR 镰仓站后步行完成。"],
+    best: ["低到中体力、第一次去镰仓。"],
+    avoid: ["小町通人多，别每家店都排。"],
+    sources: ["kamakuraJnto"]
+  }),
+  "spot-kamakura-hase-enoden": guide({
+    facts: [["角色", "海寺延展"], ["时间", "2-4小时"], ["交通", "本地铁路"], ["体力", "中高"]],
+    play: ["用江之电把长谷寺、大佛和海边串起来。", "想看海就保留这条，想轻松就删。"],
+    time: ["2-4 小时，含排队更久。"],
+    route: ["从镰仓站接本地铁路/步行到长谷方向。"],
+    best: ["晴天、愿意走路、时间足。"],
+    avoid: ["人潮和换乘会累；不要作为东京返程前夜的压轴。"],
+    sources: ["kamakuraJnto"]
   })
 };
 
@@ -2631,6 +3305,10 @@ const foodTips = {
   "city-yoichi": ["Nikka 内部餐厅和商店要按当天开放情况看；没有预约也可把余市做成轻散步。", "试饮后不要再安排紧张交通。"],
   "spot-nikka": ["Rita's Kitchen 和蒸馏所商店适合顺手解决，不要为了购物拖到末班。", "酒类购买要考虑行李和航空限制。"],
   "city-kamui": ["岬角没有稳定餐饮期待，出发前在札幌/小樽/余市补水和轻食。", "晴天跑岬角，晚饭回札幌或小樽解决更稳。"],
+  "city-noboribetsu": ["登别适合把餐饮和泡汤绑定在温泉街完成。", "日归汤、旅馆餐和温泉街小店的营业时间要出发前确认。"],
+  "spot-jigokudani": ["地狱谷本身不是吃饭点，先在温泉街补水。", "硫磺步道后更适合坐下泡汤或吃轻食。"],
+  "city-lake-toya": ["洞爷湖适合湖边咖啡、旅馆餐或温泉街简单晚饭。", "先查洞爷站回程巴士，再决定是否坐下吃久一点。"],
+  "spot-toyako-lakeside": ["湖边更适合慢餐和咖啡，不适合赶热门店。", "花火季或天气好时，晚饭后湖边散步价值更高。"],
   "base-asahikawa": ["旭川适合用拉面收住移动日；站前名店省交通，拉面村更像集合体验。", "第二天要跑美瑛/富良野时，前一晚不要排长队太久。"],
   "city-asahikawa": ["站前拉面名店适合低成本尝试，拉面村适合想比较多家风格的人。", "把吃饭和查第二天交通放在同一段时间。"],
   "spot-asahikawa-ramen": ["酱油汤底是旭川拉面的核心识别。", "选店时看当天营业、排队、离酒店距离，而不是只看排名。"],
@@ -2650,6 +3328,11 @@ const foodTips = {
   "base-hakodate": ["函馆用海鲜早饭、红砖仓库和市电慢走恢复，不要继续长移动。", "天气好再上函馆山，天气差把预算留给吃饭。"],
   "city-hakodate": ["朝市适合早饭，金森仓库适合下午，汤之川/五棱郭看体力决定。", "市电能减少腿部疲劳。"],
   "spot-hakodate-market": ["海鲜早饭适合跨海前半天；先放行李再去吃。", "价格和体验差异大，出发前看近期评价。"],
+  "city-onuma": ["大沼适合团子、咖啡和轻食，不适合安排很重的正餐。", "如果骑行或步行，先补水再出发。"],
+  "spot-onuma-dango": ["沼之家团子适合做大沼的短暂停点。", "甜品和骑行二选一即可，别把半日拉太满。"],
+  "city-aomori-hirosaki": ["青森市可看苹果、海鲜和睡魔主题店；弘前可看苹果甜品和咖啡。", "跨海拆分时，餐饮应围绕住宿站点，避免拖行李找店。"],
+  "spot-warasse": ["WA-RASSE 附近可顺路看青森站和港口小店。", "苹果派/土产适合轻买，别增加太多行李。"],
+  "spot-hirosaki-castle": ["弘前适合苹果甜品、咖啡和城下町慢走。", "樱花季餐厅排队会明显变长，先看近期评价。"],
   "city-hachinohe-hakodate": ["八户如果要加，优先市场/港口吃饭或种差海岸二选一。", "八食中心适合午饭，馆鼻朝市适合住一晚且早起。"],
   "spot-hasshoku": ["市场适合用午饭解决八户生活感。", "如果当天还要长距离新干线，不要逛太久。"],
   "spot-tatehana": ["早市更吃日期和时间，不能按普通景点处理。", "适合八户过夜，不适合跨海当天硬塞。"],
@@ -2659,11 +3342,19 @@ const foodTips = {
   "spot-sendai-zunda": ["zunda 适合做轻甜品收尾。", "在站区解决，别把甜品变成额外景点。"],
   "city-matsushima": ["松岛吃饭看牡蛎、穴子、鱼市场，但牡蛎季节性强。", "海湾散步和午饭比赶多个寺庙更舒服。"],
   "spot-matsushima-fishmarket": ["夏天不要只为牡蛎期待而去；海鲜和穴子也可作为目标。", "鱼市场、码头、瑞严寺适合步行组合。"],
+  "city-yamadera": ["山寺适合荞麦、玉こんにゃく和山脚小店。", "爬山前别吃太重，爬完再坐下更舒服。"],
+  "spot-yamadera-soba": ["山脚小店更看当天营业和排队。", "先看回程 JR，再决定是否慢慢吃。"],
+  "city-sakunami": ["作并适合温泉旅馆餐、日归汤和宫城峡商店。", "宫城峡试饮/购物要按官网规则，别影响回程。"],
+  "spot-nikka-miyagikyo": ["宫城峡商店适合看限定和小瓶，但别让购物压缩接驳时间。", "饮酒后只做轻行程。"],
   "base-tokyo": ["东京收尾用短区域吃饭，不再跨远郊。", "涩谷吃人流，银座吃室内和咖啡，台场吃海湾晚饭。"],
   "city-ginza": ["银座适合咖啡、书店、纸品和百货，不必只逛奢侈品。", "雨天优先银座，强风雨删台场。"],
   "spot-ginza-itoya": ["纸品/书店/咖啡适合两个人慢慢看。", "买东西前先确认行李空间。"],
   "city-odaiba": ["台场适合傍晚海边晚饭，也可以用商场/Miraikan 做雨天替代。", "强风时不要把海边作为唯一目标。"],
-  "spot-odaiba-gundam-miraikan": ["高达、商场、Miraikan 可作为一组雨天替代。", "当天查开放和活动，不要把台场撑成整天。"]
+  "spot-odaiba-gundam-miraikan": ["高达、商场、Miraikan 可作为一组雨天替代。", "当天查开放和活动，不要把台场撑成整天。"],
+  "city-yokohama": ["横滨适合港未来咖啡、中华街晚饭、海边散步。", "具体店铺差异很大，用地图和小红书看近期评价。"],
+  "spot-yokohama-chinatown": ["中华街适合饭点，但热门店排队长。", "选一家舒服店坐下，不必追满小吃清单。"],
+  "city-kamakura": ["镰仓适合小町通轻食、咖啡、长谷周边甜品。", "天气热时先找休息点，不要一路暴走。"],
+  "spot-kamakura-hachimangu": ["小町通店铺密集，适合边走边看。", "人多时避免每家排队，保留走到八幡宫的体力。"]
 };
 
 const reviewQueries = {
@@ -2672,6 +3363,8 @@ const reviewQueries = {
   "city-otaru": "小樽 运河 堺町通 LeTAO",
   "city-yoichi": "余市 Nikka 蒸馏所 参观",
   "city-kamui": "神威岬 积丹 交通 天气",
+  "city-noboribetsu": "登别温泉 地狱谷 日归温泉",
+  "city-lake-toya": "洞爷湖 温泉 湖畔 有珠山 交通",
   "city-asahikawa": "旭川 拉面 站前",
   "city-biei": "美瑛 拼布之路 青池 交通",
   "city-furano": "富良野 富田农场 薰衣草",
@@ -2681,13 +3374,19 @@ const reviewQueries = {
   "city-akkeshi": "厚岸 牡蛎 Conchiglie",
   "city-nemuro": "根室 纳沙布岬 花丸 本店",
   "city-hakodate": "函馆 朝市 函馆山 元町",
+  "city-onuma": "大沼公园 函馆 半日 团子",
   "city-seikan": "函馆 新函馆北斗 新青森 换乘",
+  "city-aomori-hirosaki": "青森 弘前 睡魔之家 弘前城",
   "city-hachinohe-hakodate": "八户 种差海岸 八食中心",
   "city-sendai": "仙台 牛舌 zunda 国分町",
   "city-matsushima": "松岛 牡蛎 鱼市场 瑞严寺",
+  "city-yamadera": "山寺 立石寺 仙台 一日游",
+  "city-sakunami": "作并温泉 宫城峡 Nikka 仙台",
   "city-shibuya": "涩谷 旅行 餐厅 咖啡",
   "city-ginza": "银座 Itoya Ginza Six 茑屋",
-  "city-odaiba": "台场 彩虹桥 高达 Miraikan"
+  "city-odaiba": "台场 彩虹桥 高达 Miraikan",
+  "city-yokohama": "横滨 港未来 中华街 夜景",
+  "city-kamakura": "镰仓 小町通 鹤冈八幡宫 江之电"
 };
 
 function getFoodTips(item) {

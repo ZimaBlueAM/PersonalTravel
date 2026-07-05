@@ -23,5 +23,12 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Ginza: https://en.wikipedia.org/wiki/Ginza
 - Odaiba: https://en.wikipedia.org/wiki/Odaiba
 - Shin-Aomori Station: https://commons.wikimedia.org/wiki/File:Shin-Aomori_091017-1.JPG
+- Noboribetsu Jigokudani: https://commons.wikimedia.org/wiki/File:Jigokudani,_Noboribetsu_Onsen_on_June_11st,_2019.jpg
+- Lake Toya: https://en.wikipedia.org/wiki/Lake_T%C5%8Dya
+- Onuma Quasi-National Park: https://en.wikipedia.org/wiki/%C5%8Cnuma_Quasi-National_Park
+- Hirosaki Castle: https://en.wikipedia.org/wiki/Hirosaki_Castle
+- Yamadera / Risshakuji: https://en.wikipedia.org/wiki/Yamadera
+- Yokohama Minato Mirai: https://en.wikipedia.org/wiki/Yokohama
+- Kamakura / Tsurugaoka Hachimangu: https://en.wikipedia.org/wiki/Kamakura
 
 The original long itinerary poster in `assets/source-plan.png` was provided by the site owner for personal reference.
