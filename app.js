@@ -565,16 +565,16 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-06 01:24 JST";
-const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为服务时间外；同次地图分段 JSON 全部为绿色“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
-const jrEastLiveNote = "本次核验 2026-07-06 01:23 JST：JR East 页面显示 Shinkansen 大类 Normal operation，东北新干线 Normal operation；同页服务暂停栏仍列出 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
+const checkedAt = "2026-07-06 01:47 JST";
+const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 页面时间为 06/07/2026 01:47；区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为“服务时间外”。同次影响地图 JSON 使用另一套枚举，所有分段 status=1，对应地图图例“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
+const jrEastLiveNote = "本次核验 2026-07-06 01:19 JST：JR East 页面显示 Tohoku Shinkansen Normal operation；同页服务暂停栏仍列出 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
 
 const transportAudit = {
   title: "官方交通核验",
   checked: checkedAt,
   items: [
-    "JR 北海道：区域摘要此刻为服务时间外；地图分段文件显示无取消/30 分钟以上延误信息。",
-    "JR East：新干线大类正常，东北新干线正常；但跨海区间仍出现个别 Hayabusa 停运记录。",
+    "JR 北海道：区域摘要此刻为服务时间外；影响地图分段文件显示无取消/30 分钟以上延误信息。",
+    "JR East：东北新干线正常运行；但跨海区间仍出现个别 Hayabusa 停运记录。",
     "结论：基地链路成立；真正风险在旭川->钏路、钏路->函馆、函馆->新函馆北斗->新青森这三段。"
   ]
 };
@@ -589,6 +589,9 @@ const coreTransfers = [
     time: "约 40-50 分钟",
     status: "需当天复查",
     verdict: "落地后只进城，不再叠加远支线。",
+    segments: [
+      { label: "JR", route: "新千岁机场站 -> 札幌站", time: "约 40-50 分钟", memo: "快速 Airport / 普通 JR 系统；落地日只进城。" }
+    ],
     steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
     note: "JR 北海道当前区域摘要为服务时间外；落地当天按新千岁机场-札幌具体列车再查。",
     sources: ["operation", "timetable"]
@@ -602,6 +605,9 @@ const coreTransfers = [
     time: "约 1.5 小时",
     status: "最顺主干线",
     verdict: "这是整条路线最干净的一段基地移动。",
+    segments: [
+      { label: "JR特急", route: "札幌 -> 旭川", time: "约 1.5 小时", memo: "Kamui / Lilac；官方列车指南标注全席指定。" }
+    ],
     steps: ["札幌 -> 旭川：JR 特急 Kamui / Lilac。", "JR 北海道特急全席指定；持 pass 也建议提前取指定席。"],
     note: "官方列车指南确认 Kamui / Lilac 连接札幌与旭川，信息页标注 2026 年 3 月有效。",
     sources: ["asahikawa", "reservation", "operation"]
@@ -616,6 +622,11 @@ const coreTransfers = [
     status: "需要预约/拆分判断",
     caution: true,
     verdict: "不要再写成旭川到钏路 JR 直通；公共交通要二选一。",
+    segments: [
+      { label: "推荐", route: "旭川 -> 带广", time: "North Liner 预约巴士", memo: "按乘车日预约；这是地理上更顺的穿越方式。" },
+      { label: "接续", route: "带广 -> 钏路", time: "JR Ozora 体系", memo: "按实际到达时间留换乘和晚饭缓冲。" },
+      { label: "备选", route: "旭川 -> 札幌/南千岁 -> 钏路", time: "JR-only 长绕", memo: "不直观但避开巴士预约失败风险。" }
+    ],
     steps: [
       "推荐地理逻辑：旭川 -> 带广 North Liner 预约制巴士，再接 JR 到钏路。",
       "JR-only 备选：旭川 -> 札幌/南千岁 -> 钏路，绕回主干线再坐 Ozora。",
@@ -634,6 +645,11 @@ const coreTransfers = [
     status: "极长移动日",
     caution: true,
     verdict: "JR 可拼接，但这不是观光日；强烈建议早出发或拆分。",
+    segments: [
+      { label: "JR特急", route: "钏路 -> 南千岁/札幌", time: "Ozora", memo: "长距离主干线，白天走更稳。" },
+      { label: "换乘", route: "南千岁/札幌", time: "留缓冲", memo: "不要压紧换乘；吃饭、厕所、延误都要余量。" },
+      { label: "JR特急", route: "南千岁/札幌 -> 函馆", time: "Hokuto", memo: "Hokuto 也是北海道新干线接续列车。" }
+    ],
     steps: ["钏路 -> 南千岁/札幌：特急 Ozora 主干线。", "南千岁/札幌 -> 函馆：特急 Hokuto。", "中间留足换乘、吃饭、延误缓冲。"],
     note: "JR 北海道指南确认 Ozora 连接札幌-钏路、Hokuto 连接札幌-函馆；两个系统拼起来才是钏路到函馆。",
     sources: ["obihiro", "hakodate", "operation", "reservation"]
@@ -647,6 +663,11 @@ const coreTransfers = [
     time: "约 3.5-4.5 小时",
     status: "跨海换乘",
     verdict: "真实链路是函馆站 -> 新函馆北斗 -> 新青森 -> 仙台。",
+    segments: [
+      { label: "1", route: "函馆站 -> 新函馆北斗", time: "Hakodate Liner 15-22 分钟", memo: "函馆站不是新干线站；官方写 16 往复/日。" },
+      { label: "2", route: "新函馆北斗 -> 新青森", time: "北海道新干线", memo: "这才是青函隧道跨海段；按 Hayabusa/Hayate 车次查。" },
+      { label: "3", route: "新青森 -> 仙台", time: "东北新干线", memo: "本州侧主干线；当前 JR East 显示东北新干线正常。" }
+    ],
     steps: [
       "函馆 -> 新函馆北斗：Hakodate Liner，约 15-22 分钟。",
       "新函馆北斗 -> 新青森：北海道新干线，经青函隧道。",
@@ -664,6 +685,9 @@ const coreTransfers = [
     time: "约 1.5-2 小时",
     status: "本州主干线",
     verdict: "最后一跳很顺，但到东京后体力消耗来自人流。",
+    segments: [
+      { label: "JR新干线", route: "仙台 -> 东京", time: "约 1.5-2 小时", memo: "东北新干线主干线；到东京后只做市内短点。" }
+    ],
     steps: ["仙台 -> 东京：东北新干线直达。", "到达东京后只做市内短点，不再扩张远郊。"],
     note: "JR East 当前页面显示东北新干线 Normal operation；仍以出发当天实时状态为准。",
     sources: ["jreast"]
@@ -1810,10 +1834,11 @@ const outline = [
             tags: ["可选子目的地", "核心"],
             summary: "函馆最清楚的空间画面。",
             sections: sections(
-              ["城市夹在两片海之间，上山后结构很清楚。"],
-              ["受天气、风和能见度影响。"],
-              ["天气不好就不要硬上。"]
-            )
+              ["函馆山海拔 334 米，核心不是“夜景打卡”，而是看清城市被函馆湾和津轻海峡夹在一条狭长陆地上。"],
+              ["Travel Hakodate 说明函馆山缆车从山麓到山顶观景台约 3 分钟；Hokkaido Love 页面也列出观景台季节性开放时间和车辆管制信息。"],
+              ["日落前上山、灯亮后撤；大雾、大风或低云时直接降级成元町/金森仓库和晚饭。"]
+            ),
+            sources: ["mtHakodate", "hakodateTransport"]
           }),
           spot({
             id: "spot-motomachi",
@@ -1823,10 +1848,11 @@ const outline = [
             tags: ["可选子目的地", "散步"],
             summary: "坡道、教堂、红砖仓库组成港口城市质地。",
             sections: sections(
-              ["函馆适合慢走。"],
-              ["和函馆山、港区自然串联。"],
-              ["不要赶点。"]
-            )
+              ["元町看的是开港城市的混合质地：坡道、教堂、旧领事馆、红砖仓库和港区视线。"],
+              ["Travel Hakodate 写明市电覆盖函馆站、元町、Bay Area、五棱郭、汤之川等主要点；用市电接近，再步行坡道。"],
+              ["这条线适合白天或傍晚，不适合拖行李；雨天可以缩短成市电 + 红砖仓库室内。"]
+            ),
+            sources: ["motomachi", "hakodateTravel", "hakodateTransport"]
           }),
           spot({
             id: "spot-hakodate-market",
@@ -1911,11 +1937,11 @@ const outline = [
         tags: ["枢纽城市", "青函隧道", "必须强调"],
         summary: "这是北海道到本州的真实铁路关节。",
         sections: sections(
-          ["它解释整条路线从岛屿到本州的转换。"],
-          ["JR Hokkaido 写明 Hakodate Liner 连接函馆与新函馆北斗，约 15-22 分钟、每天 16 往复。", "新函馆北斗到新青森走北海道新干线，经青函隧道；不能写成函馆站直达新青森。", jrEastLiveNote],
-          ["跨海当天按具体车次查。不要把换乘时间压到极限。"]
+          ["它解释整条路线从岛屿到本州的转换：函馆是城市站，新函馆北斗才是新干线站，新青森才是本州侧新干线节点。"],
+          ["JR Hokkaido 写明 Hakodate Liner 连接函馆与新函馆北斗，约 15-22 分钟、每天 16 往复；Travel Hakodate 也写明这一段约 20 分钟、配合新干线时刻运行。", "新函馆北斗到新青森走北海道新干线，经青函隧道；不能写成函馆站直达新青森。", jrEastLiveNote],
+          ["跨海当天按具体 Hayabusa/Hayate 车次查。建议把换乘当成正式移动，不要压 5 分钟极限。"]
         ),
-        sources: ["shinkansen", "jreast"],
+        sources: ["shinkansen", "hakodateTransport", "jreast"],
         children: [
           spot({
             id: "spot-seikan-tunnel",
@@ -1925,11 +1951,11 @@ const outline = [
             tags: ["可选子目的地", "跨海"],
             summary: "海底铁路把北海道和本州接起来。",
             sections: sections(
-              ["地理意义大于车窗风景。"],
-              ["坐新干线通过，过程很平静。"],
-              ["提前确认指定席和换乘站。"]
+              ["它的价值是地理意义，不是车窗风景：你们从北海道岛屿系统切换到本州主干线系统。"],
+              ["体验方式就是坐北海道新干线通过；真正需要操作的是函馆站到新函馆北斗的 Hakodate Liner 接续。"],
+              ["提前确认指定席、换乘站台、厕所/买水余量；跨海当天不要再插青森/八户临时点。"]
             ),
-            sources: ["shinkansen", "jreast"]
+            sources: ["shinkansen", "hakodateTransport", "jreast"]
           }),
           spot({
             id: "spot-shin-aomori",
@@ -1939,9 +1965,9 @@ const outline = [
             tags: ["可选子目的地", "换乘"],
             summary: "本州侧的新干线节点。",
             sections: sections(
-              ["它主要是换乘节点，不是景点。"],
-              ["可继续去八户、仙台、东京方向。"],
-              ["只是通行时不要停太久。"]
+              ["它主要是换乘节点，不是景点；新青森站和青森站不是同一个生活/观光中心。"],
+              ["如果只是跨海去仙台，就在这里换东北新干线继续南下；如果想看 WA-RASSE，要另外进青森站。"],
+              ["停留只留买水、厕所和找站台的余量，不要把它变成拖行李探索。"]
             ),
             sources: ["jreast"]
           })
@@ -1999,11 +2025,11 @@ const outline = [
         tags: ["可选城市", "东北海岸"],
         summary: "如果想补东北海岸，可作为新干线侧支线。",
         sections: sections(
-          ["八户更日常、更北方，和松岛的景观型海湾不同。"],
-          ["从函馆侧前往要先走新函馆北斗-新青森新干线体系再南下，不是普通短支线。", jrEastLiveNote],
-          ["若后面要去松岛，八户可以跳过。"]
+          ["八户更日常、更北方，和松岛的景观型海湾不同：它是港口生活、市场和三陆北端海岸。"],
+          ["从函馆侧前往要先走函馆 -> 新函馆北斗 -> 新青森的新干线体系再南下，不是普通短支线；种差海岸还要从八户站接 JR 八户线约 33 分钟再步行。", jrEastLiveNote],
+          ["若后面要去松岛，八户可以跳过；除非你们明确想要“东北海岸生活带”，否则不要为了完整而加。"]
         ),
-        sources: ["jreast", "shinkansen"],
+        sources: ["jreast", "shinkansen", "tanesashi", "hachinohe", "hachinoheFood"],
         children: [
           spot({
             id: "spot-tanesashi",
@@ -2013,10 +2039,11 @@ const outline = [
             tags: ["可选子目的地", "海岸"],
             summary: "草地、岩岸和海风混合的三陆北端画面。",
             sections: sections(
-              ["比普通海滩更有地形感。"],
-              ["末端交通和天气需要查。"],
-              ["有完整半天再去。"]
-            )
+              ["这里不是普通沙滩：官方写有延伸到水边的天然草地、鸣砂、广阔草坪和花草，2013 年被纳入三陆复兴国立公园。"],
+              ["Amazing AOMORI 写明从 JR 八户站坐 JR 八户线约 33 分钟，再步行 5 分钟到种差海岸；也有 One Coin Bus Umineko-go 连接鲛站到种差海岸站方向。"],
+              ["有完整半天、天气稳定、风不太大再去；跨海同日只建议选八户市场/吃饭或种差海岸其一。"]
+            ),
+            sources: ["tanesashi", "hachinohe"]
           }),
           spot({
             id: "spot-hachinohe-port",
@@ -2026,10 +2053,11 @@ const outline = [
             tags: ["可选子目的地", "生活感"],
             summary: "补一段东北海岸的日常感。",
             sections: sections(
-              ["它更生活化，不是观光型海湾。"],
-              ["交通成本比松岛高。"],
-              ["时间紧就留给松岛。"]
-            )
+              ["它更生活化，不是观光型海湾：市场、港口、横丁和地方食物比景点更重要。"],
+              ["八户官方旅游站把早市、种差、蕪岛、横丁等作为高频入口；Amazing AOMORI 也把八户写成食物、港口和文化混合的海岸城市。"],
+              ["交通成本比松岛高。时间紧就留给松岛；八户只有在你们愿意为东北日常感多花半天时才成立。"]
+            ),
+            sources: ["hachinohe", "hachinoheFood"]
           }),
           spot({
             id: "spot-hasshoku",
@@ -2087,11 +2115,11 @@ const outline = [
         tags: ["枢纽城市", "东北核心"],
         summary: "跨海后落地、补给、吃饭的城市。",
         sections: sections(
-          ["仙台让路线从北海道切回本州城市系统。"],
-          ["仙台位于东北新干线主干线上；本次 JR East 状态显示东北新干线 Normal operation。"],
-          ["第一晚不要再加松岛或八户。"]
+          ["仙台让路线从北海道切回本州城市系统：城市足够大，交通足够顺，但不像东京那样马上把体力抽干。"],
+          ["Discover Sendai 写明仙台是东北最大城市，从东京坐新干线约 90 分钟；本次 JR East 状态显示东北新干线 Normal operation。"],
+          ["第一晚不要再加松岛或八户。站区、青叶通、牛舌或 zunda 就够了。"]
         ),
-        sources: ["jreast"],
+        sources: ["jreast", "sendai", "jntoSendai"],
         children: [
           spot({
             id: "spot-sendai-station",
@@ -2115,10 +2143,11 @@ const outline = [
             tags: ["可选子目的地", "晚饭"],
             summary: "用一顿饭完成仙台第一晚。",
             sections: sections(
-              ["长距离移动后，餐厅比景点重要。"],
-              ["市内完成即可。"],
-              ["第二天再支线。"]
-            )
+              ["长距离移动后，餐厅比景点重要；牛舌是仙台最省脑子的地方食物锚点。"],
+              ["优先站区或酒店附近，排队太长就换店，不要为了名店把跨海后的睡眠赔进去。"],
+              ["第二天再支线：松岛、山寺、秋保、作并只能按体力选，不要第一晚提前透支。"]
+            ),
+            sources: ["sendai", "jntoSendai"]
           }),
           spot({
             id: "spot-sendai-zunda",
@@ -2158,11 +2187,11 @@ const outline = [
         tags: ["可选城市", "日本三景"],
         summary: "仙台最轻、回报最高的海湾支线。",
         sections: sections(
-          ["松岛短时间就能给出清楚的岛屿海湾结构。"],
-          ["仙台到松岛方向通常用 JR 仙石线/东北本线相关站点；这是本州普通支线，出发前按站点查。"],
-          ["天气一般也可去；不要排成满满一整天。"]
+          ["松岛短时间就能给出清楚的岛屿海湾结构，是仙台段最稳的半日支线。"],
+          ["松岛官方写明：仙台坐 JR 仙石线到松岛海岸站约 40 分钟最简单；东北本线到松岛站约 25 分钟，但到海岸区域还要步行 15-20 分钟。"],
+          ["天气一般也可去；海湾散步 + 游船/瑞严寺二选一 + 午饭，比排成满满一整天更适合你们。"]
         ),
-        sources: ["jreast"],
+        sources: ["matsushima", "jntoMatsushima", "zuiganji"],
         children: [
           spot({
             id: "spot-matsushima-bay",
@@ -2172,10 +2201,11 @@ const outline = [
             tags: ["可选子目的地", "核心"],
             summary: "海上小岛形成独特结构。",
             sections: sections(
-              ["这是松岛主画面。"],
-              ["可步行、看海湾或坐游船。"],
-              ["留时间发呆。"]
-            )
+              ["这是松岛主画面：官方写松岛湾有 260 多个松覆小岛，是日本三景之一。"],
+              ["玩法先岸边慢走，再决定游船；JNTO 提到可坐观光船，也可走桥到小岛。"],
+              ["留时间发呆。不要为了船票把海岸散步压没。"]
+            ),
+            sources: ["matsushima", "jntoMatsushima"]
           }),
           spot({
             id: "spot-zuiganji",
@@ -2185,10 +2215,11 @@ const outline = [
             tags: ["可选子目的地", "二选一"],
             summary: "文化点和海湾视角二选一也够。",
             sections: sections(
-              ["瑞严寺补文化，游船补空间视角。"],
-              ["两者都做也可以，但不要赶。"],
-              ["和仙台晚饭组合舒服。"]
-            )
+              ["瑞严寺补文化，游船补空间视角；时间短时二选一就够。"],
+              ["瑞严寺官网写明本堂和库里是国宝，伊达政宗重建，建筑完成于 1609 年；从 JR 松岛海岸站步行约 10 分钟。"],
+              ["雨天或风大时优先瑞严寺；天气好、你们更想看空间时优先海湾/游船。"]
+            ),
+            sources: ["zuiganji", "matsushima"]
           }),
           spot({
             id: "spot-matsushima-fishmarket",
@@ -3345,22 +3376,22 @@ const detailGuides = {
     sources: ["hakodateTravel", "mtHakodate", "motomachi"]
   }),
   "spot-hakodate-night": guide({
-    facts: [["角色", "函馆主画面"], ["时间", "1.5-2.5小时"], ["最佳", "能见度"], ["风险", "风/雾"]],
-    play: ["日落前到，等城市灯亮，看到夹海地形即可撤。"],
-    time: ["含上下山 1.5-2.5 小时。"],
-    route: ["上山方式按当日运营确认。"],
-    best: ["晴朗、低云少。"],
-    avoid: ["大雾天不要浪费体力。"],
-    sources: ["mtHakodate"]
+    facts: [["角色", "函馆主画面"], ["时间", "1.5-2.5小时"], ["高度", "334米"], ["风险", "风/雾"]],
+    play: ["日落前到，先看白天的函馆湾和津轻海峡夹城结构，再等城市灯亮。", "拍完主视角就撤，不要在山顶吹风硬耗。"],
+    time: ["含上下山 1.5-2.5 小时。", "如果排队长或低云多，直接降级为元町/红砖仓库夜散步。"],
+    route: ["Travel Hakodate 写明函馆山缆车山麓到山顶约 3 分钟；交通和道路管制按当天官方运营查。"],
+    best: ["晴朗、低云少、风不大、日落前后。"],
+    avoid: ["大雾天不要浪费体力。", "钏路长移动刚到、还没吃饭时不要硬上山。"],
+    sources: ["mtHakodate", "hakodateTransport"]
   }),
   "spot-motomachi": guide({
     facts: [["角色", "港口坡道"], ["时间", "1.5-3小时"], ["交通", "步行"], ["适合", "白天"]],
-    play: ["从坡道、教堂、旧建筑慢慢走到金森仓库。"],
+    play: ["从市电站接近元町，慢慢走坡道、教堂、旧领事馆和金森仓库。", "把它当港口城市散步，不要当建筑打卡清单。"],
     time: ["1.5-3 小时。"],
-    route: ["市内步行串联，坡道多。"],
-    best: ["下午到傍晚。"],
-    avoid: ["行李日不要拖箱走坡。"],
-    sources: ["motomachi", "hakodateTravel"]
+    route: ["Travel Hakodate 写明市电覆盖函馆站、元町、Bay Area、五棱郭、汤之川等主要点；元町内部坡道多，最后靠步行。"],
+    best: ["下午到傍晚。", "函馆山天气不稳时，它是更稳的替代。"],
+    avoid: ["行李日不要拖箱走坡。", "雨雪天缩短路线，优先红砖仓库室内。"],
+    sources: ["motomachi", "hakodateTravel", "hakodateTransport"]
   }),
   "spot-hakodate-market": guide({
     facts: [["角色", "函馆早饭"], ["时间", "1小时"], ["区域", "函馆站旁"], ["适合", "跨海前"]],
@@ -3409,25 +3440,25 @@ const detailGuides = {
   }),
   "city-seikan": guide({
     facts: [["角色", "跨海枢纽"], ["必须", "新函馆北斗"], ["时间", "半日移动"], ["风险", "具体车次"]],
-    play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。"],
+    play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。", "如果想加青森/弘前，必须主动拆成中途停留，不要临时塞。"],
     time: ["函馆到仙台约 3.5-4.5 小时含换乘。"],
-    route: ["函馆 -> 新函馆北斗 -> 新青森 -> 仙台。"],
-    best: ["白天跨海更不焦虑。"],
-    avoid: ["不要写成函馆站直达新青森。"],
-    sources: ["shinkansen", "jreast"]
+    route: ["函馆 -> 新函馆北斗 -> 新青森 -> 仙台。", "JR Hokkaido 写 Hakodate Liner 15-22 分钟、16 往复/日；Travel Hakodate 也写约 20 分钟并配合新干线时刻。"],
+    best: ["白天跨海更不焦虑。", "换乘余量足、指定席已确认时。"],
+    avoid: ["不要写成函馆站直达新青森。", "不要把新青森误当成青森市区。"],
+    sources: ["shinkansen", "hakodateTransport", "jreast"]
   }),
   "spot-seikan-tunnel": guide({
     facts: [["角色", "海底铁路"], ["时间", "车程中"], ["体验", "地理意义"], ["交通", "新干线"]],
-    play: ["把它理解成北海道到本州的切换，而不是观景段。"],
+    play: ["把它理解成北海道到本州的切换，而不是观景段。", "坐定后看路线图和换乘信息，比盯窗外更有意义。"],
     time: ["随新干线通过。"],
-    route: ["新函馆北斗到新青森区间经过青函隧道。"],
-    best: ["坐定后看路线图即可。"],
-    avoid: ["不要期待海底有风景。"],
-    sources: ["shinkansen", "jreast"]
+    route: ["新函馆北斗到新青森区间经过青函隧道。", "当天按 Hayabusa/Hayate 具体车次确认，因为 JR East 页面仍保留个别跨海车次停运记录。"],
+    best: ["坐定后确认下一段新青森换乘。"],
+    avoid: ["不要期待海底有风景。", "不要跨海日再安排需要末端巴士的远点。"],
+    sources: ["shinkansen", "hakodateTransport", "jreast"]
   }),
   "spot-shin-aomori": guide({
     facts: [["角色", "本州入口"], ["时间", "换乘"], ["交通", "新干线"], ["取舍", "不停留"]],
-    play: ["只做换乘和买水，不做旅游点。"],
+    play: ["只做换乘和买水，不做旅游点。", "想看 WA-RASSE 或青森港口，要另接到青森站，不要把新青森当青森市区。"],
     time: ["换乘缓冲 15-30 分钟以上更舒服。"],
     route: ["新函馆北斗来车后继续东北新干线南下。"],
     best: ["车次衔接稳定时。"],
@@ -3463,30 +3494,30 @@ const detailGuides = {
   }),
   "city-hachinohe-hakodate": guide({
     facts: [["角色", "东北海岸备选"], ["时间", "半日-一日"], ["交通", "新干线+末端"], ["优先级", "低于跨海主线"]],
-    play: ["只有函馆到仙台之间想补一段海岸时才加。"],
-    time: ["至少半日，舒服要一日。"],
-    route: ["需经新干线体系，不是函馆普通短支线。"],
-    best: ["晴天、有完整余量。"],
-    avoid: ["松岛已安排时可跳过。"],
-    sources: ["hachinohe", "tanesashi", "jreast"]
+    play: ["只有函馆到仙台之间想补一段海岸生活时才加。", "优先二选一：种差海岸看自然，或市场/港口吃饭看日常。"],
+    time: ["至少半日，舒服要一日。", "跨海主线同日只适合短吃饭，不适合海岸深走。"],
+    route: ["需经新干线体系，不是函馆普通短支线。", "种差海岸还要从八户站接 JR 八户线约 33 分钟，再步行约 5 分钟。"],
+    best: ["晴天、有完整余量、确实想看三陆北端。"],
+    avoid: ["松岛已安排时可跳过。", "不要把它夹在函馆到仙台的紧换乘日里。"],
+    sources: ["hachinohe", "hachinoheFood", "tanesashi", "jreast"]
   }),
   "spot-tanesashi": guide({
-    facts: [["角色", "草地岩岸"], ["时间", "2-4小时"], ["交通", "JR八户线/末端"], ["最佳", "晴天"]],
-    play: ["看天然草地、岩岸、海风，不要只停一个停车点。"],
-    time: ["2-4 小时。"],
-    route: ["从八户侧接近，末端交通查八户线/巴士。"],
-    best: ["晴天、低风。"],
-    avoid: ["阴雨大风时删。"],
+    facts: [["角色", "草地岩岸"], ["时间", "2-4小时"], ["交通", "JR八户线+步行"], ["最佳", "晴天"]],
+    play: ["看天然草地、岩岸、海风和三陆复兴国立公园的海岸线，不要只停一个停车点。", "天气好时慢走一段海岸步道；没体力时只做信息中心和近岸。"],
+    time: ["2-4 小时。", "如果从新干线站往返，要把八户线和末端等待都算进去。"],
+    route: ["Amazing AOMORI 写明从 JR 八户站坐 JR 八户线 33 分钟，再步行 5 分钟到种差海岸。", "也可查 One Coin Bus Umineko-go，从 JR 鲛站到 JR 种差海岸站方向。"],
+    best: ["晴天、低风、海雾不重。"],
+    avoid: ["阴雨大风时删。", "不要跨海日为了它牺牲仙台抵达时间。"],
     sources: ["tanesashi", "hachinohe"]
   }),
   "spot-hachinohe-port": guide({
     facts: [["角色", "港口生活"], ["时间", "1-2小时"], ["适合", "吃饭"], ["交通", "市内/短接驳"]],
-    play: ["用市场或港口吃饭补东北生活感。"],
-    time: ["1-2 小时。"],
-    route: ["八户市内短交通。"],
-    best: ["上午市场或午饭。"],
-    avoid: ["不要为它打乱新干线主线。"],
-    sources: ["hachinohe"]
+    play: ["用市场、港口或横丁吃饭补东北生活感。", "它的回报在“坐下来吃”和观察日常，不在多跑景点。"],
+    time: ["1-2 小时。", "若加八食中心或馆鼻朝市，另看营业/开市日。"],
+    route: ["八户市内短交通；不是新干线站内点。"],
+    best: ["上午市场、午饭或八户过夜时。"],
+    avoid: ["不要为它打乱新干线主线。", "若只是想看好看的海，优先松岛或种差。"],
+    sources: ["hachinohe", "hachinoheFood"]
   }),
   "spot-hasshoku": guide({
     facts: [["角色", "八户市场"], ["时间", "1-2小时"], ["适合", "午饭"], ["交通", "市内接驳"]],
@@ -3517,12 +3548,12 @@ const detailGuides = {
   }),
   "city-sendai": guide({
     facts: [["角色", "东北核心"], ["时间", "半日"], ["重点", "站区+牛舌"], ["交通", "新干线"]],
-    play: ["站区、青叶通、晚饭足够。", "用牛舌完成东北落地感。"],
+    play: ["站区、青叶通、晚饭足够。", "用牛舌或 zunda 完成东北落地感，不急着再跑支线。"],
     time: ["2-4 小时。"],
-    route: ["仙台站是东北新干线主站。"],
-    best: ["到达傍晚。"],
-    avoid: ["不要把仙台排成城市打卡清单。"],
-    sources: ["sendai", "jntoSendai"]
+    route: ["仙台站是东北新干线主站。", "Discover Sendai 写明东京到仙台新干线约 90 分钟；你们从北面来也是进入本州主干线。"],
+    best: ["到达傍晚。", "跨海后需要恢复时。"],
+    avoid: ["不要把仙台排成城市打卡清单。", "第一晚不要再跑松岛/秋保/山寺。"],
+    sources: ["sendai", "jntoSendai", "jreast"]
   }),
   "spot-sendai-station": guide({
     facts: [["角色", "城市骨架"], ["时间", "1小时"], ["适合", "抵达"], ["交通", "站区"]],
@@ -3535,12 +3566,12 @@ const detailGuides = {
   }),
   "spot-gyutan": guide({
     facts: [["角色", "地方食物"], ["时间", "1小时"], ["适合", "长途后"], ["区域", "站周边"]],
-    play: ["选站周边店，吃完回酒店。"],
+    play: ["选站周边店，吃完回酒店。", "把它当移动日结束按钮，不要用它开启夜间奔波。"],
     time: ["排队加用餐 1-1.5 小时。"],
-    route: ["仙台站周边餐厅密集。"],
-    best: ["跨海抵达晚饭。"],
-    avoid: ["不要为了名店排到过累。"],
-    sources: ["jntoSendai"]
+    route: ["仙台站周边餐厅密集，按住宿位置选近的。"],
+    best: ["跨海抵达晚饭。", "天气差或体力低时。"],
+    avoid: ["不要为了名店排到过累。", "不想排队时用 zunda + 简单晚饭替代。"],
+    sources: ["sendai", "jntoSendai"]
   }),
   "spot-sendai-zunda": guide({
     facts: [["角色", "甜品收尾"], ["时间", "20-45分钟"], ["区域", "站区"], ["体力", "低"]],
@@ -3562,29 +3593,29 @@ const detailGuides = {
   }),
   "city-matsushima": guide({
     facts: [["角色", "仙台最佳支线"], ["时间", "半日"], ["交通", "JR普通支线"], ["重点", "海湾岛屿"]],
-    play: ["海湾散步+游船/瑞严寺二选一。", "下午回仙台吃饭，不要赶一整天。"],
+    play: ["海湾散步 + 游船/瑞严寺二选一。", "下午回仙台吃饭，不要赶一整天。", "如果想探店，就把鱼市场、牡蛎/穴子、小吃放在海岸区域完成。"],
     time: ["3-5 小时。"],
-    route: ["仙台到松岛方向可用 JR 仙石线/东北本线相关站，具体到站按当天查。"],
-    best: ["晴天更漂亮，阴天也可。"],
-    avoid: ["不要同时把八户也塞进仙台段。"],
+    route: ["松岛官方写明仙台坐 JR 仙石线到松岛海岸站约 40 分钟，这是去海岸区域最简单方式。", "JR 东北本线到松岛站约 25 分钟，但到 Kaigan 海岸区域还要步行 15-20 分钟。"],
+    best: ["晴天更漂亮，阴天也可。", "仙台住 2 晚时最舒服。"],
+    avoid: ["不要同时把八户也塞进仙台段。", "不要坐到松岛站后误以为景点就在站口。"],
     sources: ["matsushima", "jntoMatsushima", "zuiganji"]
   }),
   "spot-matsushima-bay": guide({
     facts: [["角色", "日本三景"], ["时间", "1-2小时"], ["交通", "步行/游船"], ["最佳", "晴/薄云"]],
-    play: ["先在岸边看岛屿结构，再决定是否坐船。"],
+    play: ["先在岸边看 260 多个松覆小岛的层次，再决定是否坐船。", "可以走桥到近岸小岛，或把游船作为海湾视角补充。"],
     time: ["岸边 1 小时，含游船 2 小时以上。"],
-    route: ["从松岛海岸/松岛区域步行串联。"],
-    best: ["有光时岛屿层次清楚。"],
-    avoid: ["不要赶船赶到没有散步时间。"],
+    route: ["从松岛海岸区域步行串联；仙石线松岛海岸站最省心。"],
+    best: ["有光时岛屿层次清楚。", "低风、薄云或晴天。"],
+    avoid: ["不要赶船赶到没有散步时间。", "风大时游船体验会下降，可改瑞严寺。"],
     sources: ["matsushima", "jntoMatsushima"]
   }),
   "spot-zuiganji": guide({
     facts: [["角色", "文化补充"], ["时间", "1-2小时"], ["适合", "雨天"], ["取舍", "和游船二选一也可"]],
-    play: ["如果想降节奏，瑞严寺比继续追海景更稳。"],
+    play: ["如果想降节奏，瑞严寺比继续追海景更稳。", "看建筑、庭院和伊达政宗相关的历史线，雨天也成立。"],
     time: ["1-2 小时。"],
-    route: ["和松岛湾步行串联。"],
-    best: ["雨天或想看文化时。"],
-    avoid: ["时间短时不要寺和船都赶。"],
+    route: ["瑞严寺官网写明从 JR 松岛海岸站步行约 10 分钟，从 JR 松岛站步行约 25 分钟。"],
+    best: ["雨天或想看文化时。", "游船风大、海边体感差时。"],
+    avoid: ["时间短时不要寺和船都赶。", "临近关门时不要硬进。"],
     sources: ["zuiganji", "matsushima"]
   }),
   "spot-matsushima-fishmarket": guide({
@@ -3970,6 +4001,8 @@ const foodTips = {
   "spot-usuzan-showa": ["有珠山/昭和新山方向先解决交通和缆车，餐饮只做附属。", "湖畔或温泉街更适合正餐，缆车方向不要拖到回程巴士后。"],
   "base-asahikawa": ["旭川适合用拉面收住移动日；站前名店省交通，拉面村更像集合体验。", "第二天要跑美瑛/富良野时，前一晚不要排长队太久。"],
   "city-asahikawa": ["站前拉面名店适合低成本尝试，拉面村适合想比较多家风格的人。", "把吃饭和查第二天交通放在同一段时间。"],
+  "spot-asahikawa-station": ["旭川站周边适合拉面、便利店补给、药妆和咖啡，移动日不要跑远。", "站前吃完就回酒店查第二天支线交通。"],
+  "spot-asahikawa-walk": ["城市散步只配轻食和咖啡，不要把旭川排成大城市探店。", "想认真吃就回站前或拉面村方向。"],
   "spot-asahikawa-ramen": ["酱油汤底是旭川拉面的核心识别。", "选店时看当天营业、排队、离酒店距离，而不是只看排名。"],
   "city-biei": ["美瑛内部餐饮和交通都分散，午饭不要压到很晚。", "有包车/租车时可更灵活；公交玩法要先定吃饭点。"],
   "spot-patchwork": ["拼布之路不是餐饮区，出发前在美瑛站周边或便利店补水和轻食。", "骑行/包车日把吃饭当恢复点，不要为了餐厅偏离回站路线。"],
@@ -3985,9 +4018,12 @@ const foodTips = {
   "spot-sounkyo-gorge": ["瀑布方向先补水和轻食，不要指望步道上有稳定餐饮。", "看完回温泉街坐下休息更符合松弛目标。"],
   "spot-daisetsuzan-ropeway": ["缆车日要先准备水和轻食，山上不要把餐饮当核心。", "如果只想探店，层云峡温泉街比缆车更适合。"],
   "city-obihiro-asahikawa": ["带广如果纳入，豚丼、甜点和六花亭方向是最清楚的探店理由。", "但它应作为移动日/中继，不要为了吃饭破坏花田日。"],
+  "spot-tokachi-plain": ["十胜平原不是吃饭点，车窗/平原体验前先在站区补给。", "如果落到带广，就用豚丼和甜点收束。"],
+  "spot-obihiro-food": ["带广吃饭最清楚的关键词是豚丼、六花亭、十胜甜点。", "把吃饭当中继奖励，不要为了远店破坏换乘。"],
   "base-kushiro": ["钏路的关键词是炉端、海鲜、港口傍晚。", "长移动到达后，幣舞桥和炉端比继续跑湿原更合理。"],
   "city-kushiro": ["MOO 岸壁炉端适合傍晚，但仍要确认营业和天气。", "港口边吃饭后直接回酒店，第二天再跑湿原或根室。"],
   "spot-kushiro-marsh": ["湿原不是餐饮点，先在钏路站/便利店补水和轻食。", "湿原日的正餐放回钏路市内，避免为了吃饭错过巴士或 JR。"],
+  "spot-kushiro-norokko": ["Norokko 日先按列车时刻吃饭，车上不要指望正餐。", "回钏路后再接炉端或港口晚饭更稳。"],
   "spot-nusamai": ["幣舞桥适合接炉端、海鲜居酒屋或 MOO，不要为了名店跨太远。", "日落后直接吃饭回酒店，是长移动后的最佳节奏。"],
   "spot-moo-robata": ["适合选当天看着新鲜的海鲜和贝类，不要点太复杂。", "风雨天确认是否开放和座位安排。"],
   "city-lake-akan": ["阿寒湖适合温泉旅馆餐、湖畔咖啡、Ainu Kotan 工艺店和餐厅。", "比起追名店，更重要的是查回程巴士和店铺/演出当天开放。"],
@@ -3996,6 +4032,7 @@ const foodTips = {
   "spot-lake-akan-bus": ["这不是探店点，但决定你们有没有余力探店。", "如果返程巴士不漂亮，就不要把晚饭压在阿寒湖。"],
   "city-kawayu-mashu": ["川汤适合温泉街咖啡、旅馆餐、轻食和土产，不适合追大城市餐厅。", "摩周湖天气不稳时，把探店和泡汤作为兜底。"],
   "spot-kawayu-iozan": ["硫磺山方向先看火山地貌，再回温泉街坐下。", "温泉设施、咖啡和土产营业时间比店名更重要。"],
+  "spot-lake-mashu": ["摩周湖展望方向不要压正餐，先查巴士/天气再决定停留。", "天气不好时回川汤温泉街喝咖啡或泡汤比硬等雾散更好。"],
   "city-akkeshi": ["厚岸最清楚的吃法是牡蛎；Conchiglie / 道之站方向适合和海湾同日。", "先定回程花咲线，再决定午饭时长。"],
   "spot-aikappu": ["爱冠岬本身不是吃饭点，吃饭放在 Conchiglie 或厚岸站周边。", "风大时不要为了岬角牺牲一顿稳的牡蛎午饭。"],
   "spot-akkeshi-bay": ["海湾体验和牡蛎最好绑定，不需要单独追复杂餐厅。", "如果天气普通，找能看海湾的餐厅/道之站比硬走岬角更舒服。"],
@@ -4005,43 +4042,71 @@ const foodTips = {
   "spot-nemuro-line": ["花咲线车窗日要准备水和轻食，别把正餐压在短换乘。", "到根室后若时间紧，买轻食比排队更稳。"],
   "spot-nemuro-hanamaru": ["花丸本店适合作为根室市区吃饭方向，但排队和营业要当天查。", "如果回程紧，宁可买轻食也别冒末班风险。"],
   "city-obihiro-kushiro": ["钏路侧带广适合豚丼、甜点、六花亭和站周边轻探店。", "如果只是中继，吃一顿就好，不要再加远郊牧场。"],
+  "spot-obihiro-window": ["农田铁路车窗日带水和轻食，别把正餐卡在短换乘。", "到带广或钏路后再吃地方餐更舒服。"],
+  "spot-obihiro-stay": ["如果带广停留，豚丼和甜点是主线，不要贪远郊牧场。", "站周边轻探店比包车追点更符合不累版。"],
   "base-hakodate": ["函馆用海鲜早饭、红砖仓库和市电慢走恢复，不要继续长移动。", "天气好再上函馆山，天气差把预算留给吃饭。"],
   "city-seikan": ["跨海换乘日只做站内便当、咖啡、买水和厕所，不安排探店。", "新函馆北斗/新青森都是交通节点，别拖着行李找远餐厅。"],
   "city-hakodate": ["朝市适合早饭，金森仓库适合下午，汤之川/五棱郭看体力决定。", "市电能减少腿部疲劳。"],
+  "spot-hakodate-night": ["函馆山前后更适合把晚饭放在山下/元町/函馆站区域，不要饿着上山排队。", "山顶只当观景点，风大时尽快下山坐下吃饭。"],
+  "spot-motomachi": ["元町/金森仓库适合咖啡、甜品、土产和轻晚饭。", "坡道多，先休息再走；不要为了店铺拖着箱子上坡。"],
   "spot-hakodate-market": ["海鲜早饭适合跨海前半天；先放行李再去吃。", "价格和体验差异大，出发前看近期评价。"],
+  "spot-hakodate-tram": ["市电慢线适合串咖啡、红砖仓库、朝市和五棱郭周边。", "买一日券前先看今天会坐几段，别为了用券而绕路。"],
   "city-onuma": ["大沼适合团子、咖啡和轻食，不适合安排很重的正餐。", "如果骑行或步行，先补水再出发。"],
+  "spot-onuma-walk": ["湖畔桥群散步前先补水，结束后再吃团子或咖啡。", "风雨天不要为了步道牺牲函馆市内稳餐。"],
   "spot-onuma-dango": ["沼之家团子适合做大沼的短暂停点。", "甜品和骑行二选一即可，别把半日拉太满。"],
+  "spot-seikan-tunnel": ["青函隧道本身不安排餐饮，只准备站内便当、水和咖啡。", "跨海前吃太重会影响换乘，跨海后到仙台再正式吃饭。"],
+  "spot-shin-aomori": ["新青森只做买水、便当、厕所和换乘。", "想吃青森海鲜或苹果甜品，需要主动进青森站/市区。"],
   "city-aomori-hirosaki": ["青森市可看苹果、海鲜和睡魔主题店；弘前可看苹果甜品和咖啡。", "跨海拆分时，餐饮应围绕住宿站点，避免拖行李找店。"],
   "spot-warasse": ["WA-RASSE 附近可顺路看青森站和港口小店。", "苹果派/土产适合轻买，别增加太多行李。"],
   "spot-hirosaki-castle": ["弘前适合苹果甜品、咖啡和城下町慢走。", "樱花季餐厅排队会明显变长，先看近期评价。"],
   "city-hachinohe-hakodate": ["八户如果要加，优先市场/港口吃饭或种差海岸二选一。", "八食中心适合午饭，馆鼻朝市适合住一晚且早起。"],
   "city-hachinohe-sendai": ["仙台侧补八户时，市场/港口吃饭要比追多个景点更合理。", "除非专门想看海岸生活带，否则优先松岛。"],
+  "spot-tanesashi": ["种差海岸先看交通和天气，吃饭不要压在末端。", "可用海边咖啡/轻食作休息，但正餐最好回八户更稳。"],
+  "spot-hachinohe-port": ["八户港口生活带适合市场、横丁、海鲜和地方小吃。", "如果新干线当天还要南下，就只吃一顿，不要扩成夜游。"],
+  "spot-hachinohe-coast-sendai": ["从仙台补种差海岸时，餐饮只做海边轻食或回八户/仙台。", "不要为了吃饭错过新干线返程。"],
+  "spot-hachinohe-market": ["八户市场/港口适合作为午饭目标，不适合硬凑成全天探店。", "从仙台往返时，吃饭点要贴近车站或返程动线。"],
   "spot-hasshoku": ["市场适合用午饭解决八户生活感。", "如果当天还要长距离新干线，不要逛太久。"],
   "spot-tatehana": ["早市更吃日期和时间，不能按普通景点处理。", "适合八户过夜，不适合跨海当天硬塞。"],
   "base-sendai": ["仙台第一晚：牛舌或 zunda，别再跑远。", "松岛日可以把海鲜午饭放在海湾附近。"],
   "city-sendai": ["牛舌通、站区甜品、国分町分别对应低/中/高体力夜晚。", "跨海抵达晚就只吃站区。"],
+  "spot-sendai-station": ["仙台站最适合牛舌、zunda、便当和补给，移动日晚餐就地解决。", "不要为了吃饭再跨到远区。"],
   "spot-gyutan": ["站内牛舌街最省交通，但排队要看当日。", "不必为名店排到影响睡眠。"],
   "spot-sendai-zunda": ["zunda 适合做轻甜品收尾。", "在站区解决，别把甜品变成额外景点。"],
+  "spot-kokubuncho": ["国分町适合已经入住且体力还可以的晚上。", "选一家舒服店坐下，不做夜生活扫街。"],
   "city-matsushima": ["松岛吃饭看牡蛎、穴子、鱼市场，但牡蛎季节性强。", "海湾散步和午饭比赶多个寺庙更舒服。"],
+  "spot-matsushima-bay": ["海湾散步前后适合鱼市场、穴子、海鲜小吃或冬季牡蛎。", "不要为了游船赶到没时间吃午饭。"],
+  "spot-zuiganji": ["瑞严寺周边可和海湾午饭、鱼市场或小吃串联。", "寺内参观前后保持轻食，别把文化点夹在饥饿状态里。"],
   "spot-matsushima-fishmarket": ["夏天不要只为牡蛎期待而去；海鲜和穴子也可作为目标。", "鱼市场、码头、瑞严寺适合步行组合。"],
   "city-yamadera": ["山寺适合荞麦、玉こんにゃく和山脚小店。", "爬山前别吃太重，爬完再坐下更舒服。"],
+  "spot-yamadera-steps": ["石阶前后以轻食、补水和山脚小吃为主。", "爬完再吃荞麦更舒服，别吃太饱再上山。"],
   "spot-yamadera-soba": ["山脚小店更看当天营业和排队。", "先看回程 JR，再决定是否慢慢吃。"],
   "city-sakunami": ["作并适合温泉旅馆餐、日归汤和宫城峡商店。", "宫城峡试饮/购物要按官网规则，别影响回程。"],
+  "spot-sakunami-onsen": ["作并日归汤适合旅馆餐、咖啡或轻食，不适合临时追名店。", "泡汤后只做低强度吃饭，别再赶山寺。"],
   "spot-nikka-miyagikyo": ["宫城峡商店适合看限定和小瓶，但别让购物压缩接驳时间。", "饮酒后只做轻行程。"],
   "city-akiu": ["秋保适合咖啡、足汤、日归汤和温泉街小店，是仙台段最松弛的探店线。", "比起追名店，更重要的是查当天营业和回仙台巴士。"],
   "spot-rairaikyo": ["磊磊峡本身不是吃饭点，适合前后接咖啡、足汤或日归汤。", "雨后注意湿滑，别为了多走错过休息。"],
   "spot-akiu-sato": ["秋保里中心适合作为信息、足汤、土产和短休息锚点。", "具体咖啡/日归汤用近期评价确认，不要只看旧攻略。"],
   "base-tokyo": ["东京收尾用短区域吃饭，不再跨远郊。", "涩谷吃人流，银座吃室内和咖啡，台场吃海湾晚饭。"],
   "city-tokyo": ["东京市区优先围绕酒店/到达站吃饭，不要第一晚跨三四个区。", "东京站、上野、新宿各自都能解决晚饭和补给。"],
+  "spot-tokyo-station": ["东京站/上野方向适合站内便当、咖啡、伴手礼和短晚饭。", "新干线到达后不要再跨城找餐厅。"],
+  "spot-urban-density": ["城市高密度观察适合边走边找咖啡或小店坐下。", "人流疲劳出现就立刻结束，不补偿式多走。"],
   "city-shibuya": ["涩谷适合咖啡、甜品、唱片/杂货和短餐饮，但人流会消耗体力。", "探店要选一两个锚点，不要在涩谷无限漂。"],
+  "spot-shibuya-crossing": ["涩谷路口只短看，餐饮放到背街咖啡/甜品/唱片店方向。", "不要站在最拥挤位置消耗太久。"],
+  "spot-shibuya-view": ["高处看人流前后安排一间坐得住的咖啡或甜品。", "预约/排队太久就删，不要为了俯视牺牲收尾节奏。"],
   "city-ginza": ["银座适合咖啡、书店、纸品和百货，不必只逛奢侈品。", "雨天优先银座，强风雨删台场。"],
+  "spot-ginza-chuo": ["中央通适合百货、咖啡、和菓子和橱窗慢走。", "周末步行者天国更适合低体力闲逛。"],
+  "spot-ginza-cafe": ["银座咖啡和百货适合整理照片、买伴手礼和坐下恢复。", "别把咖啡日扩成购物任务。"],
   "spot-ginza-itoya": ["纸品/书店/咖啡适合两个人慢慢看。", "买东西前先确认行李空间。"],
   "city-odaiba": ["台场适合傍晚海边晚饭，也可以用商场/Miraikan 做雨天替代。", "强风时不要把海边作为唯一目标。"],
+  "spot-odaiba-beach": ["台场海滨适合傍晚散步后就近晚饭。", "风大或太热时改商场/室内。"],
+  "spot-rainbow-bridge": ["彩虹桥视角适合晚饭前后短看，不适合作为独立重景点。", "夜景受风和天气影响，强风时删。"],
   "spot-odaiba-gundam-miraikan": ["高达、商场、Miraikan 可作为一组雨天替代。", "当天查开放和活动，不要把台场撑成整天。"],
   "city-yokohama": ["横滨适合港未来咖啡、中华街晚饭、海边散步。", "具体店铺差异很大，用地图和小红书看近期评价。"],
+  "spot-yokohama-minatomirai": ["港未来适合海边咖啡、商场晚饭和夜景散步。", "强风雨时不要硬走海边，改室内商场。"],
   "spot-yokohama-chinatown": ["中华街适合饭点，但热门店排队长。", "选一家舒服店坐下，不必追满小吃清单。"],
   "city-kamakura": ["镰仓适合小町通轻食、咖啡、长谷周边甜品。", "天气热时先找休息点，不要一路暴走。"],
   "spot-kamakura-hachimangu": ["小町通店铺密集，适合边走边看。", "人多时避免每家排队，保留走到八幡宫的体力。"],
+  "spot-kamakura-hase-enoden": ["长谷/江之电海边适合甜品、咖啡和轻午饭。", "游客密度高时，少排队，多留海边步行体力。"],
   "city-nikko": ["日光探店不应压过交通：车站周边、社寺区轻食、羊羹/土产即可。", "若上中禅寺湖，先看回程巴士再决定是否坐下吃饭。"],
   "spot-nikko-toshogu": ["东照宫方向适合轻食和土产，不适合追复杂餐厅。", "社寺区人多时先完成参观，再找安静店休息。"],
   "spot-nikko-chuzenji": ["湖区适合简单午饭、咖啡和湖边休息。", "回程巴士时间比餐厅排名更重要。"]
@@ -4069,6 +4134,9 @@ const reviewQueries = {
   "city-lake-toya": "洞爷湖 温泉 湖畔 有珠山 交通",
   "spot-toyako-lakeside": "洞爷湖 湖畔 温泉街 咖啡 花火",
   "spot-usuzan-showa": "有珠山 昭和新山 缆车 洞爷湖 交通",
+  "spot-asahikawa-station": "旭川站 周边 拉面 咖啡",
+  "spot-asahikawa-walk": "旭川 城市散步 常磐公园 咖啡",
+  "spot-asahikawa-ramen": "旭川拉面村 旭川站前 拉面",
   "city-asahikawa": "旭川 拉面 站前",
   "city-biei": "美瑛 拼布之路 青池 交通",
   "spot-patchwork": "美瑛 拼布之路 电动自行车 包车",
@@ -4084,6 +4152,8 @@ const reviewQueries = {
   "spot-sounkyo-gorge": "层云峡 银河瀑布 流星瀑布",
   "spot-daisetsuzan-ropeway": "层云峡 黑岳 缆车 天气",
   "city-obihiro-asahikawa": "带广 十胜 豚丼 六花亭",
+  "spot-tokachi-plain": "十胜平原 带广 车窗 农田",
+  "spot-obihiro-food": "带广 豚丼 六花亭 甜点",
   "city-kushiro": "钏路 炉端 幣舞桥",
   "spot-kushiro-marsh": "钏路湿原 展望台 交通 巴士",
   "spot-nusamai": "钏路 幣舞桥 炉端 MOO",
@@ -4106,17 +4176,46 @@ const reviewQueries = {
   "spot-nemuro-line": "花咲线 钏路 根室 车窗",
   "spot-nemuro-hanamaru": "根室 花丸 本店 花咲蟹",
   "city-obihiro-kushiro": "带广 豚丼 六花亭 十胜",
+  "spot-obihiro-window": "带广 钏路 Ozora 农田车窗",
+  "spot-obihiro-stay": "带广 十胜平原 豚丼 甜点",
   "city-hakodate": "函馆 朝市 函馆山 元町",
+  "spot-hakodate-night": "函馆山 夜景 缆车 天气",
+  "spot-motomachi": "函馆 元町 金森仓库 咖啡",
+  "spot-hakodate-market": "函馆朝市 海鲜 早餐",
+  "spot-hakodate-tram": "函馆市电 一日券 元町 五棱郭",
   "city-onuma": "大沼公园 函馆 半日 团子",
+  "spot-onuma-walk": "大沼公园 散步 驹岳 半日",
+  "spot-onuma-dango": "大沼 沼之家 团子 骑行",
   "city-seikan": "函馆 新函馆北斗 新青森 换乘",
+  "spot-seikan-tunnel": "青函隧道 北海道新干线 体验",
+  "spot-shin-aomori": "新青森站 换乘 青森站 区别",
   "city-aomori-hirosaki": "青森 弘前 睡魔之家 弘前城",
+  "spot-warasse": "青森 WA-RASSE 睡魔之家 苹果派",
+  "spot-hirosaki-castle": "弘前城 弘前公园 苹果派 咖啡",
   "city-hachinohe-hakodate": "八户 种差海岸 八食中心",
+  "spot-tanesashi": "八户 种差海岸 八户线 交通",
+  "spot-hachinohe-port": "八户 港口 横丁 市场 海鲜",
+  "spot-hasshoku": "八户 八食中心 海鲜 市场",
+  "spot-tatehana": "八户 馆鼻岸壁朝市 开市",
   "city-hachinohe-sendai": "仙台 八户 八食中心 种差海岸",
+  "spot-hachinohe-coast-sendai": "八户 种差海岸 仙台 往返",
+  "spot-hachinohe-market": "八户 市场 港口 仙台 往返",
   "city-sendai": "仙台 牛舌 zunda 国分町",
+  "spot-sendai-station": "仙台站 青叶通 牛舌 zunda",
+  "spot-gyutan": "仙台 牛舌 站内 排队",
+  "spot-sendai-zunda": "仙台 zunda 甜品 站内",
+  "spot-kokubuncho": "仙台 国分町 居酒屋 夜晚",
   "base-sendai": "仙台 牛舌 松岛 山寺 作并 秋保",
   "city-matsushima": "松岛 牡蛎 鱼市场 瑞严寺",
+  "spot-matsushima-bay": "松岛湾 游船 日本三景 松岛海岸",
+  "spot-zuiganji": "松岛 瑞严寺 游船 二选一",
+  "spot-matsushima-fishmarket": "松岛 鱼市场 牡蛎 穴子",
   "city-yamadera": "山寺 立石寺 仙台 一日游",
+  "spot-yamadera-steps": "山寺 立石寺 石阶 五大堂",
+  "spot-yamadera-soba": "山寺 荞麦 玉こんにゃく 仙台",
   "city-sakunami": "作并温泉 宫城峡 Nikka 仙台",
+  "spot-sakunami-onsen": "作并温泉 日归汤 仙台",
+  "spot-nikka-miyagikyo": "宫城峡 Nikka 蒸馏所 预约",
   "city-akiu": "秋保温泉 磊磊峡 日归温泉 咖啡",
   "spot-rairaikyo": "秋保 磊磊峡 散步",
   "spot-akiu-sato": "秋保里中心 足汤 咖啡",
@@ -4125,10 +4224,24 @@ const reviewQueries = {
   "base-hakodate": "函馆 朝市 函馆山 红砖仓库",
   "base-tokyo": "东京 收尾 探店 旅行",
   "city-tokyo": "东京站 上野 新宿 晚饭 咖啡",
+  "spot-tokyo-station": "东京站 上野 站内 美食 咖啡",
+  "spot-urban-density": "东京 城市散步 高密度 咖啡",
+  "spot-shibuya-crossing": "涩谷 Scramble 路口 咖啡",
+  "spot-shibuya-view": "涩谷 高处 俯瞰 预约",
   "city-ginza": "银座 Itoya Ginza Six 茑屋",
+  "spot-ginza-chuo": "银座 中央通 和光 咖啡 百货",
+  "spot-ginza-cafe": "银座 咖啡 百货 甜品",
+  "spot-ginza-itoya": "银座 伊东屋 Ginza Six 茑屋",
   "city-odaiba": "台场 彩虹桥 高达 Miraikan",
+  "spot-odaiba-beach": "台场 海滨 傍晚 餐厅",
+  "spot-rainbow-bridge": "台场 彩虹桥 夜景",
+  "spot-odaiba-gundam-miraikan": "台场 独角兽高达 Miraikan 商场",
   "city-yokohama": "横滨 港未来 中华街 夜景",
+  "spot-yokohama-minatomirai": "横滨 港未来 樱木町 夜景 咖啡",
+  "spot-yokohama-chinatown": "横滨 中华街 山下公园 美食",
   "city-kamakura": "镰仓 小町通 鹤冈八幡宫 江之电",
+  "spot-kamakura-hachimangu": "镰仓 小町通 鹤冈八幡宫 咖啡",
+  "spot-kamakura-hase-enoden": "镰仓 长谷寺 江之电 海边 咖啡",
   "city-nikko": "日光 东照宫 中禅寺湖 东京 一日游",
   "spot-nikko-toshogu": "日光 东照宫 神桥 美食",
   "spot-nikko-chuzenji": "日光 中禅寺湖 华严瀑布 公交"
@@ -4219,6 +4332,23 @@ function renderSources(sources = [], title = "依据") {
       <h3>${escapeHtml(title)}</h3>
       <ul>${links}</ul>
     </section>
+  `;
+}
+
+function renderTransferSegments(segments = []) {
+  if (!segments.length) return "";
+  return `
+    <div class="transfer-segments" aria-label="公共交通分段">
+      ${segments.map((segment) => `
+        <div class="transfer-segment">
+          <span>${escapeHtml(segment.label)}</span>
+          <div>
+            <strong>${escapeHtml(segment.route)}</strong>
+            <small>${escapeHtml(segment.time)} · ${escapeHtml(segment.memo)}</small>
+          </div>
+        </div>
+      `).join("")}
+    </div>
   `;
 }
 
@@ -4333,6 +4463,7 @@ function renderTransfers() {
           </summary>
           <div class="transfer-main">
             <p class="transfer-verdict">${escapeHtml(transfer.verdict)}</p>
+            ${renderTransferSegments(transfer.segments)}
             <ol class="transfer-steps">
               ${transfer.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
             </ol>

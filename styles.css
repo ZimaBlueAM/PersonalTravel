@@ -362,6 +362,58 @@ img {
   font-weight: 800;
 }
 
+.transfer-segments {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 10px;
+}
+
+.transfer-segment {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  padding: 8px;
+  background: #fafbf8;
+}
+
+.transfer-segment > span {
+  display: inline-grid;
+  min-height: 28px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.is-caution .transfer-segment > span {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.transfer-segment strong,
+.transfer-segment small {
+  display: block;
+  min-width: 0;
+}
+
+.transfer-segment strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.transfer-segment small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .transfer-steps,
 .optimization-steps {
   display: grid;
