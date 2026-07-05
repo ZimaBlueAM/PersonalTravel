@@ -30,6 +30,9 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Sounkyo Ginga Falls: https://commons.wikimedia.org/wiki/Category:Ginga_Falls
 - Lake Mashu: https://commons.wikimedia.org/wiki/File:Lake_Mashu.jpg
 - Mount Io / Atosanupuri: https://commons.wikimedia.org/wiki/File:Iou-zan_hokkaido01.jpg
+- Lake Akan: https://commons.wikimedia.org/wiki/File:Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg
+- Lake Akan promenade: https://commons.wikimedia.org/wiki/File:Promenade_of_lake_akan_2017.jpg
+- Akanko Ainu Kotan: https://commons.wikimedia.org/wiki/File:Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg
 - Odori Park / Sapporo TV Tower: https://commons.wikimedia.org/wiki/File:Odori_park_at_Sapporo_TV_tower.jpg
 - Tanukikoji Shopping Arcade: https://commons.wikimedia.org/wiki/File:Tanukikoji_01.jpg
 - Asahikawa Heiwa Street Shopping Park: https://commons.wikimedia.org/wiki/File:Asahikawa_city_Heiwa_street_shopping_park.jpg

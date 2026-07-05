@@ -8,6 +8,9 @@ const placeImages = {
   sounkyo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ginga_Falls_of_Sounkyo_-_panoramio.jpg",
   kawayuMashu: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Lake_Mashu.jpg",
   iozan: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Iou-zan_hokkaido01.jpg",
+  lakeAkan: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg/1280px-Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg",
+  lakeAkanPromenade: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Promenade_of_lake_akan_2017.jpg/1280px-Promenade_of_lake_akan_2017.jpg",
+  ainuKotan: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg/1280px-Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg",
   odori: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Odori_park_at_Sapporo_TV_tower.jpg/1280px-Odori_park_at_Sapporo_TV_tower.jpg",
   tanukikoji: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tanukikoji_01.jpg/1280px-Tanukikoji_01.jpg",
   asahikawaStation: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Asahikawa_city_Heiwa_street_shopping_park.jpg/1280px-Asahikawa_city_Heiwa_street_shopping_park.jpg",
@@ -257,6 +260,26 @@ const sourceLinks = {
   akanMashuAccess: {
     label: "Akan-Mashu National Park: how to get there",
     url: "https://www.japan.travel/national-parks/parks/akan-mashu/how-to-get-there/"
+  },
+  lakeAkanOfficial: {
+    label: "Kushiro / Lake Akan official: Lake Akan feature",
+    url: "https://en.kushiro-lakeakan.com/overview/overview_category/charm-in-lakeakan-en/"
+  },
+  lakeAkanBus: {
+    label: "Eastern Hokkaido Transport: Kushiro - Akanko Onsen bus",
+    url: "https://transport-eh.info/airport-bus/akanko-onsen/en/"
+  },
+  akankoAinuAccess: {
+    label: "Akanko Ainu Kotan: access",
+    url: "https://www.akanainu.jp/en/access/"
+  },
+  akankoAinuAbout: {
+    label: "Akanko Ainu Kotan: about",
+    url: "https://www.akanainu.jp/en/about/"
+  },
+  hokkaidoAinuKotan: {
+    label: "Hokkaido Love: Lake Akan Ainu Kotan",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10122.html"
   },
   hakodateTravel: {
     label: "Travel Hakodate official guide",
@@ -617,13 +640,13 @@ const routeOptimizations = [
     verdict: "新补的城市不是让行程变满，而是让坏天气或体力变化时有更好的替换。",
     steps: [
       "想泡温泉：用登别或作并替代一条重海岸线，不要叠加。",
-      "想要世界边缘：用层云峡、川汤/摩周、日光湖区替代普通城市逛街。",
+      "想要世界边缘：用层云峡、阿寒湖、川汤/摩周、日光湖区替代普通城市逛街。",
       "函馆段天气好：大沼公园比继续城市打卡更有空间感。",
       "仙台住 2 晚：松岛、山寺、作并、秋保四选一到二，不要全做。",
       "东京收尾：横滨/镰仓/日光三选一，作为替代，不和涩谷/台场同日硬塞。"
     ],
     note: "新增候选全部在对应基地下面，点开看交通与取舍。",
-    sources: ["jrNoboribetsuToyako", "sounkyoTaisetsu", "akanMashuAccess", "akiuSendai", "nikkoJnto", "kamakuraJnto", "yokohamaJnto"]
+    sources: ["jrNoboribetsuToyako", "sounkyoTaisetsu", "lakeAkanOfficial", "lakeAkanBus", "akanMashuAccess", "akiuSendai", "nikkoJnto", "kamakuraJnto", "yokohamaJnto"]
   }
 ];
 
@@ -1268,11 +1291,11 @@ const outline = [
     meta: "东北海道核心 / 建议2晚",
     image: img("kushiro"),
     tags: ["基地", "东北海道", "长线慎排"],
-    summary: "第三基地。湿原、海雾、根室最东端都从这里展开。",
+    summary: "第三基地。湿原、阿寒湖、海雾、根室最东端都从这里展开。",
     sections: sections(
       ["钏路让东北海道真正进入路线。"],
       ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；最新 JR 北海道区域级摘要显示有运行影响信息，长移动日必须按 Ozora / 换乘站车次再查。"],
-      ["钏路必须住下来。不要从别的基地当天来回硬刷。"],
+      ["钏路必须住下来。阿寒湖、根室、厚岸和湿原都不适合从别的基地当天硬刷。"],
       [{ title: "下一基地", items: ["钏路 -> 函馆：JR 可拼接，但极长，通常经札幌/南千岁再接 Hokuto。最好拆分或考虑飞行。"] }]
     ),
     sources: ["operation", "obihiro", "hakodate"],
@@ -1345,6 +1368,64 @@ const outline = [
               ["旺季或天气差时提前确认营业和席位。"]
             ),
             sources: ["mooRobata", "kushiroRobata", "kushiroRobataOfficial"]
+          })
+        ]
+      }),
+      city({
+        id: "city-lake-akan",
+        title: "阿寒湖温泉",
+        meta: "可选城市 / 巴士线",
+        image: placeImages.lakeAkan,
+        tags: ["可选城市", "温泉", "湖景", "阿伊努文化", "非JR"],
+        summary: "钏路段最适合“松弛+世界边缘”的替代线：湖、温泉街、Ainu Kotan 和短步行。",
+        sections: sections(
+          ["阿寒湖把东北海道从港口和湿原切到火山湖、温泉、森林和阿伊努文化。"],
+          ["公共交通不是 JR 直达；Akanko Ainu Kotan 官方写明从 JR 钏路站坐本地巴士约 1 小时 45 分钟，交通页也列出 30 Akan Line / Akan Airport Liner 到阿寒湖温泉。"],
+          ["适合替代根室或川汤/摩周重线；如果你们想恢复体力，住湖边一晚比当天来回更舒服。"]
+        ),
+        sources: ["lakeAkanOfficial", "lakeAkanBus", "akankoAinuAccess", "akanMashuAccess"],
+        children: [
+          spot({
+            id: "spot-lake-akan-lakeside",
+            title: "阿寒湖畔与温泉街",
+            meta: "可选 / 湖畔恢复",
+            image: placeImages.lakeAkanPromenade,
+            tags: ["可选子目的地", "湖景", "温泉", "低体力"],
+            summary: "用湖边散步、温泉和坐下休息，把东北海道节奏降下来。",
+            sections: sections(
+              ["官方专题把阿寒湖和温泉、marimo、湖区自然放在同一组；这里适合慢慢看水面和雄阿寒岳。"],
+              ["到达后主要靠步行串湖畔、温泉街和游客中心；巴士回钏路的时间要先锁。"],
+              ["雨天也能做温泉街和室内休息；晴天再加湖畔散步或游船。"]
+            ),
+            sources: ["lakeAkanOfficial", "lakeAkanBus"]
+          }),
+          spot({
+            id: "spot-akanko-ainu-kotan",
+            title: "阿寒湖 Ainu Kotan",
+            meta: "可选 / 文化与店铺",
+            image: placeImages.ainuKotan,
+            tags: ["可选子目的地", "阿伊努文化", "店铺", "餐饮"],
+            summary: "比普通土产街更有地方性：工艺店、餐厅、剧场和木雕声音构成阿寒湖的核心体验。",
+            sections: sections(
+              ["Akanko Ainu Kotan 官方写明这里有工艺店、餐厅、Ainu 文化专用室内剧场、博物馆和画廊。"],
+              ["Hokkaido Love 写明它位于阿寒湖温泉街，街上有 30 多家店铺和餐厅，是北海道最大的阿伊努聚落。"],
+              ["适合两个人慢慢看木雕、刺绣、剧场时间和晚饭；但请把它当文化空间，不要只当购物点。"]
+            ),
+            sources: ["akankoAinuAbout", "akankoAinuAccess", "hokkaidoAinuKotan"]
+          }),
+          spot({
+            id: "spot-lake-akan-bus",
+            title: "钏路到阿寒湖巴士",
+            meta: "可选 / 交通关键",
+            image: placeImages.lakeAkan,
+            tags: ["可选子目的地", "巴士", "交通"],
+            summary: "这条线成败不在 JR，而在巴士班次、座位、回程和是否带行李。",
+            sections: sections(
+              ["Eastern Hokkaido Transport 写明从钏路站巴士总站 15 号站牌搭 30 Akan Line；30 Akan Line 不需预约，但座位有限。"],
+              ["同页写明 Akan Airport Liner 座位有限，建议提前购买 QR 票；30 Akan Line 到 Lake Akan Bus Center，机场线会停部分温泉酒店。"],
+              ["如果当天往返，先定回程；如果带行李，优先住阿寒湖或把行李留钏路，不要拖箱临时转店。"]
+            ),
+            sources: ["lakeAkanBus", "akankoAinuAccess"]
           })
         ]
       }),
@@ -2942,6 +3023,42 @@ const detailGuides = {
     avoid: ["天气差或客流大时提前确认；不要吃完继续跑远点。"],
     sources: ["mooRobata", "kushiroRobata", "kushiroRobataOfficial"]
   }),
+  "city-lake-akan": guide({
+    facts: [["角色", "湖畔温泉替代"], ["时间", "半日-一晚"], ["交通", "钏路巴士"], ["取舍", "替代根室/摩周"]],
+    play: ["把阿寒湖当东北海道的恢复按钮：湖畔散步、温泉街、Ainu Kotan、晚饭。", "如果想要世界边缘感，就看火山湖和森林边界；如果想松弛，就住湖边泡汤。"],
+    time: ["钏路往返至少半日偏紧；住一晚最舒服。", "湖畔+Ainu Kotan+晚饭 3-5 小时，泡汤另算。"],
+    route: ["不是 JR 直达；Akanko Ainu Kotan 官方写明 JR 钏路站坐本地巴士约 1 小时 45 分钟。", "Eastern Hokkaido Transport 写明从钏路站巴士总站 15 号站牌坐 30 Akan Line 到 Lake Akan Bus Center，另有 Akan Airport Liner 停部分温泉酒店。"],
+    best: ["钏路段想恢复、天气普通但不想只待市区、或想看阿伊努文化时。"],
+    avoid: ["不要和根室/纳沙布岬同日。", "当天往返必须先锁回程；带行李时优先住湖边或寄放。"],
+    sources: ["lakeAkanOfficial", "lakeAkanBus", "akankoAinuAccess", "akanMashuAccess"]
+  }),
+  "spot-lake-akan-lakeside": guide({
+    facts: [["角色", "湖畔恢复"], ["时间", "1-3小时"], ["适合", "低体力"], ["交通", "温泉街步行"]],
+    play: ["沿湖边和温泉街慢走，看湖面、雄阿寒岳和温泉街尺度。", "晴天加游船或更长散步，雨天就把重点放在温泉、咖啡和室内休息。"],
+    time: ["短散步 45-90 分钟；含温泉和坐下休息 2-3 小时。"],
+    route: ["巴士到 Lake Akan Bus Center 或温泉酒店后，湖畔核心区域主要步行。"],
+    best: ["长移动后的第二天、风不大、想恢复。"],
+    avoid: ["不要为了湖畔散步压缩返程巴士；风雨大时缩短湖边。"],
+    sources: ["lakeAkanOfficial", "lakeAkanBus"]
+  }),
+  "spot-akanko-ainu-kotan": guide({
+    facts: [["角色", "文化与店铺"], ["时间", "1.5-3小时"], ["重点", "工艺/剧场"], ["区域", "温泉街旁"]],
+    play: ["慢慢看木雕、刺绣、工艺店和餐厅，再按当天演出时间决定是否进剧场。", "两个人可以分头看店，再在 Kotan 内部或温泉街找晚饭。"],
+    time: ["只看街区 1-1.5 小时；含餐厅或演出 2-3 小时以上。"],
+    route: ["位于阿寒湖温泉街旁；从巴士中心或酒店步行衔接，离开前先看回程巴士。"],
+    best: ["雨天、夜晚、想探店且希望目的地有地方文化时。"],
+    avoid: ["不要把它当普通纪念品街匆匆扫过。", "演出、博物馆和店铺营业要看当天开放。"],
+    sources: ["akankoAinuAbout", "akankoAinuAccess", "hokkaidoAinuKotan"]
+  }),
+  "spot-lake-akan-bus": guide({
+    facts: [["角色", "成败交通"], ["时间", "约1小时45分"], ["预约", "看线路"], ["风险", "班次/座位"]],
+    play: ["先把交通当成目的地门槛处理：去程、回程、行李、晚饭时间全部倒推。", "如果班次不漂亮，就不要硬加阿寒湖。"],
+    time: ["单程约 1 小时 45 分钟量级，等车和步行另算。"],
+    route: ["30 Akan Line 从钏路站巴士总站 15 号站牌出发到 Lake Akan Bus Center，官方交通页写明不需预约但座位有限。", "Akan Airport Liner 也可用，但部分班次/停靠更偏机场和温泉酒店，官方建议提前购买 QR 票。"],
+    best: ["住阿寒湖一晚、或钏路住 3 晚且留出完整半天以上。"],
+    avoid: ["不要把它和花咲线根室、厚岸牡蛎、湿原 Norokko 混成同一天。"],
+    sources: ["lakeAkanBus", "akankoAinuAccess"]
+  }),
   "city-kawayu-mashu": guide({
     facts: [["角色", "火山湖温泉替代"], ["时间", "一日"], ["交通", "JR钏网线+巴士"], ["风险", "公共交通有限"]],
     play: ["把川汤/摩周当东北海道的内陆火山线：摩周湖看边界感，川汤温泉和硫磺山负责兜住天气。", "如果你们想松弛，就偏温泉；想世界边缘，就偏摩周湖展望。"],
@@ -3717,6 +3834,10 @@ const foodTips = {
   "base-kushiro": ["钏路的关键词是炉端、海鲜、港口傍晚。", "长移动到达后，幣舞桥和炉端比继续跑湿原更合理。"],
   "city-kushiro": ["MOO 岸壁炉端适合傍晚，但仍要确认营业和天气。", "港口边吃饭后直接回酒店，第二天再跑湿原或根室。"],
   "spot-moo-robata": ["适合选当天看着新鲜的海鲜和贝类，不要点太复杂。", "风雨天确认是否开放和座位安排。"],
+  "city-lake-akan": ["阿寒湖适合温泉旅馆餐、湖畔咖啡、Ainu Kotan 工艺店和餐厅。", "比起追名店，更重要的是查回程巴士和店铺/演出当天开放。"],
+  "spot-lake-akan-lakeside": ["湖畔散步后坐下喝东西或泡汤，比继续加远点更符合松弛。", "若住湖边，晚饭优先看旅馆餐或温泉街步行范围。"],
+  "spot-akanko-ainu-kotan": ["Ainu Kotan 的重点是工艺、剧场和地方餐饮，不要只当土产街。", "购买木雕/工艺品前考虑行李重量和易碎。"],
+  "spot-lake-akan-bus": ["这不是探店点，但决定你们有没有余力探店。", "如果返程巴士不漂亮，就不要把晚饭压在阿寒湖。"],
   "city-kawayu-mashu": ["川汤适合温泉街咖啡、旅馆餐、轻食和土产，不适合追大城市餐厅。", "摩周湖天气不稳时，把探店和泡汤作为兜底。"],
   "spot-kawayu-iozan": ["硫磺山方向先看火山地貌，再回温泉街坐下。", "温泉设施、咖啡和土产营业时间比店名更重要。"],
   "city-akkeshi": ["厚岸最清楚的吃法是牡蛎；Conchiglie / 道之站方向适合和海湾同日。", "先定回程花咲线，再决定午饭时长。"],
@@ -3786,6 +3907,10 @@ const reviewQueries = {
   "city-kushiro": "钏路 炉端 幣舞桥",
   "spot-kushiro-norokko": "钏路湿原 Norokko",
   "base-kushiro": "钏路 炉端 湿原 旅行",
+  "city-lake-akan": "阿寒湖温泉 Ainu Kotan 巴士 旅行",
+  "spot-lake-akan-lakeside": "阿寒湖 湖畔 温泉 旅行",
+  "spot-akanko-ainu-kotan": "阿寒湖 Ainu Kotan 工艺店 餐厅",
+  "spot-lake-akan-bus": "钏路 阿寒湖 巴士 交通",
   "city-kawayu-mashu": "川汤温泉 摩周湖 硫磺山 交通",
   "spot-lake-mashu": "摩周湖 展望台 雾 交通",
   "spot-kawayu-iozan": "川汤温泉 硫磺山 日归温泉",
