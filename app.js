@@ -36,12 +36,209 @@ const sourceLinks = {
   jreast: {
     label: "JR East: Shinkansen train status",
     url: "https://traininfo.jreast.co.jp/train_info/e/shinkansen.aspx"
+  },
+  northliner: {
+    label: "Japan Bus Online: North Liner Asahikawa - Obihiro",
+    url: "https://japanbusonline.com/en/CourseSearch/10100340001"
+  },
+  furanoCityBus: {
+    label: "Furano City: Furano - Shintoku replacement buses",
+    url: "https://www.city.furano.hokkaido.jp/life/docs/542998.html?cat=%2Flife%2Fkankou%2F60%2F"
+  },
+  otaruCanal: {
+    label: "Hokkaido Love: Otaru Canal",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10040.html"
+  },
+  otaruDay: {
+    label: "JNTO: A day out in Otaru",
+    url: "https://www.japan.travel/en/uk/inspiration/a-day-out-in-otaru/"
+  },
+  nikkaYoichi: {
+    label: "Nikka Whisky: Hokkaido Yoichi Distillery",
+    url: "https://www.nikka.com/en/distilleries/yoichi/"
+  },
+  jntoNikka: {
+    label: "JNTO: Nikka Whisky Yoichi Distillery",
+    url: "https://www.japan.travel/en/spot/1928/"
+  },
+  capeKamui: {
+    label: "Hokkaido Love: Cape Kamui",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10342.html"
+  },
+  biei: {
+    label: "Biei Tourism Association",
+    url: "https://www.biei-hokkaido.jp/en/"
+  },
+  bluePond: {
+    label: "JNTO: Blue Pond",
+    url: "https://www.japan.travel/en/spot/1889/"
+  },
+  farmTomita: {
+    label: "Farm Tomita official website",
+    url: "https://www.farm-tomita.co.jp/en/"
+  },
+  farmTomitaHokkaido: {
+    label: "Hokkaido Love: Farm Tomita",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10174.html"
+  },
+  kushiro: {
+    label: "Kushiro / Lake Akan official travel guide",
+    url: "https://en.kushiro-lakeakan.com/"
+  },
+  akkeshiGuide: {
+    label: "Akkeshi town guidebook",
+    url: "https://www.akkeshi-town.jp/file/contents/2798/46569/guidebook_English.pdf"
+  },
+  nosappu: {
+    label: "JNTO: Cape Nosappu",
+    url: "https://www.japan.travel/en/spot/2146/"
+  },
+  eastHokkaido: {
+    label: "East Hokkaido: Kushiro / Nemuro access",
+    url: "https://easthokkaido.com/en/winter-highlight-kushiro/"
+  },
+  hakodateTravel: {
+    label: "Travel Hakodate official guide",
+    url: "https://www.hakodate.travel/en/"
+  },
+  mtHakodate: {
+    label: "Hokkaido Love: Mt. Hakodate",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10095.html"
+  },
+  motomachi: {
+    label: "JNTO: Motomachi Hakodate",
+    url: "https://www.japan.travel/en/spot/1902/"
+  },
+  hachinohe: {
+    label: "Visit Hachinohe official guide",
+    url: "https://visithachinohe.com/en/"
+  },
+  tanesashi: {
+    label: "Amazing AOMORI: Tanesashi Coast",
+    url: "https://aomori-tourism.com/en/spot/detail_30.html"
+  },
+  matsushima: {
+    label: "Matsushima official tourism",
+    url: "https://www.matsushima-kanko.com/en/"
+  },
+  jntoMatsushima: {
+    label: "JNTO: Matsushima",
+    url: "https://www.japan.travel/en/spot/2127/"
+  },
+  zuiganji: {
+    label: "Zuiganji Temple official website",
+    url: "https://www.zuiganji.or.jp/english/"
+  },
+  sendai: {
+    label: "Discover Sendai official guide",
+    url: "https://discoversendai.travel/"
+  },
+  jntoSendai: {
+    label: "JNTO: Sendai",
+    url: "https://www.japan.travel/en/destinations/tohoku/miyagi/sendai-area/"
+  },
+  tokyo: {
+    label: "GO TOKYO official guide",
+    url: "https://www.gotokyo.org/en/index.html"
+  },
+  odaiba: {
+    label: "GO TOKYO: Odaiba",
+    url: "https://www.gotokyo.org/en/destinations/southern-tokyo/odaiba/index.html"
+  },
+  rainbowBridge: {
+    label: "Minato City: Rainbow Bridge",
+    url: "https://visit-minato-city.tokyo/en/places/700"
   }
 };
 
-const checkedAt = "2026-07-05 20:46 JST";
+const checkedAt = "2026-07-05 22:41 JST";
 const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道运行信息 JSON 对特急、快速 Airport、函馆/千岁线、函馆 Liner、函馆线、石胜线、根室线、花咲线、富良野线、北海道新干线均显示无停驶/30分钟以上延误信息。出发当天仍以实时页面为准。`;
-const jrEastLiveNote = "本次核验 2026-07-05 20:44 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏出现个别 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
+const jrEastLiveNote = "本次核验 2026-07-05 21:58 JST：JR East 页面显示东北新干线 Normal operation；同页服务暂停栏出现 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体车次再查。";
+
+const coreTransfers = [
+  {
+    id: "transfer-arrival",
+    icon: "train",
+    from: "新千岁 CTS",
+    to: "札幌基地",
+    time: "约 40-50 分钟",
+    status: "正常核验",
+    verdict: "落地后只进城，不再叠加远支线。",
+    steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
+    note: "JR 北海道实时核验显示 Airport 与札幌区域相关线路无停驶/30分钟以上延误信息。",
+    sources: ["operation", "timetable"]
+  },
+  {
+    id: "transfer-sapporo-asahikawa",
+    icon: "train",
+    from: "札幌基地",
+    to: "旭川基地",
+    time: "约 1.5 小时",
+    status: "最顺主干线",
+    verdict: "这是整条路线最干净的一段基地移动。",
+    steps: ["札幌 -> 旭川：JR 特急 Kamui / Lilac。", "JR 北海道特急全席指定；持 pass 也建议提前取指定席。"],
+    note: "官方列车指南确认 Kamui / Lilac 连接札幌与旭川，信息页标注 2026 年 3 月有效。",
+    sources: ["asahikawa", "reservation", "operation"]
+  },
+  {
+    id: "transfer-asahikawa-kushiro",
+    icon: "bus",
+    from: "旭川基地",
+    to: "钏路基地",
+    time: "约 6-9 小时",
+    status: "长移动日",
+    caution: true,
+    verdict: "不要再写成旭川到钏路 JR 直通；公共交通要二选一。",
+    steps: [
+      "推荐地理逻辑：旭川 -> 带广 North Liner 预约制巴士，再接 JR 到钏路。",
+      "JR-only 备选：旭川 -> 札幌/南千岁 -> 钏路，绕回主干线再坐 Ozora。",
+      "富良野 -> 新得铁路已废止，不能从富良野一路 JR 直插十胜。"
+    ],
+    note: "North Liner 公开订票页显示旭川-带广经富良野/新得 5 往复，另有三国峠方向 1 往复；实际班次以乘车日为准。",
+    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation"]
+  },
+  {
+    id: "transfer-kushiro-hakodate",
+    icon: "train",
+    from: "钏路基地",
+    to: "函馆基地",
+    time: "约 8-10 小时",
+    status: "极长移动日",
+    caution: true,
+    verdict: "JR 可拼接，但这不是观光日；强烈建议早出发或拆分。",
+    steps: ["钏路 -> 南千岁/札幌：特急 Ozora 主干线。", "南千岁/札幌 -> 函馆：特急 Hokuto。", "中间留足换乘、吃饭、延误缓冲。"],
+    note: "JR 北海道指南确认 Ozora 连接札幌-钏路、Hokuto 连接札幌-函馆；两个系统拼起来才是钏路到函馆。",
+    sources: ["obihiro", "hakodate", "operation", "reservation"]
+  },
+  {
+    id: "transfer-hakodate-sendai",
+    icon: "train",
+    from: "函馆基地",
+    to: "仙台基地",
+    time: "约 3.5-4.5 小时",
+    status: "跨海换乘",
+    verdict: "真实链路是函馆站 -> 新函馆北斗 -> 新青森 -> 仙台。",
+    steps: [
+      "函馆 -> 新函馆北斗：Hakodate Liner，约 15-22 分钟。",
+      "新函馆北斗 -> 新青森：北海道新干线，经青函隧道。",
+      "新青森 -> 仙台：东北新干线。"
+    ],
+    note: "JR East 当前显示东北新干线整体正常，但服务暂停栏列出个别跨海车次停运；跨海日必须查具体 Hayabusa/Hayate 车次。",
+    sources: ["shinkansen", "jreast"]
+  },
+  {
+    id: "transfer-sendai-tokyo",
+    icon: "train",
+    from: "仙台基地",
+    to: "东京基地",
+    time: "约 1.5-2 小时",
+    status: "本州主干线",
+    verdict: "最后一跳很顺，但到东京后体力消耗来自人流。",
+    steps: ["仙台 -> 东京：东北新干线直达。", "到达东京后只做市内短点，不再扩张远郊。"],
+    note: "JR East 当前页面显示东北新干线 Normal operation；仍以出发当天实时状态为准。",
+    sources: ["jreast"]
+  }
+];
 
 function sections(why, traffic, decision, extra = []) {
   return [
@@ -1101,6 +1298,663 @@ const outline = [
   })
 ];
 
+function guide({ facts = [], play = [], time = [], route = [], best = [], avoid = [], sources = [] }) {
+  return { facts, play, time, route, best, avoid, sources };
+}
+
+const detailGuides = {
+  "base-sapporo": guide({
+    facts: [["节奏", "4晚恢复+西海岸支线"], ["优先级", "住宿/补给/短线"], ["体力", "低到中"], ["风险", "神威岬天气"]],
+    play: ["把札幌当生活基地，不要当景点清单。", "第 1 天落地只做市内，第 2-3 天按天气选小樽/余市/神威岬。", "留一晚给洗衣、超市、药妆和临时调整。"],
+    time: ["札幌市内：2-4 小时即可恢复。", "小樽：半日到傍晚。", "神威岬：整日，不能塞进落地日。"],
+    route: ["CTS 到札幌走快速 Airport 系统。", "札幌到旭川走 Kamui / Lilac，是本路线最顺的基地移动。"],
+    best: ["雨天：狸小路、商场、札幌市内。", "晴天：小樽傍晚或神威岬整日。", "风大：不要跑岬角。"],
+    avoid: ["不要把神威岬、小樽、余市硬塞同一天。", "不要用 JR 正常来推断神威岬末端交通正常。"],
+    sources: ["operation", "asahikawa", "otaruCanal", "capeKamui"]
+  }),
+  "city-sapporo": guide({
+    facts: [["角色", "西北海道枢纽"], ["怎么玩", "吃饭+补给+短散步"], ["时间", "2-5小时"], ["疲劳", "最低"]],
+    play: ["到达日只建立方向感：札幌站、大通、薄野三点够用。", "把晚饭和便利店补给安排在同一条步行线。"],
+    time: ["落地日：入住后 2 小时散步。", "支线返回日：只保留晚饭。"],
+    route: ["机场到市区依赖 JR Airport；市内用短距离交通即可。"],
+    best: ["雨天友好。", "晚上适合薄野和狸小路。"],
+    avoid: ["不要第一晚就试图补完整札幌景点。"],
+    sources: ["operation"]
+  }),
+  "spot-odori": guide({
+    facts: [["角色", "城市中轴"], ["时间", "30-60分钟"], ["适合", "落地后"], ["交通", "市内短线"]],
+    play: ["从大通公园慢走到电视塔，确认札幌的东西向城市轴。", "只拍一张方向感照片即可。"],
+    time: ["30 分钟看结构，1 小时慢走。"],
+    route: ["从札幌站步行或市内短交通到达。"],
+    best: ["傍晚光线柔和。", "雨天可缩短。"],
+    avoid: ["不要把它当大景点排半天。"]
+  }),
+  "spot-susukino": guide({
+    facts: [["角色", "晚饭恢复"], ["时间", "1-2小时"], ["适合", "长线后"], ["交通", "市内短线"]],
+    play: ["先吃饭，再穿狸小路补给。", "只做一条街区，不要夜里继续换区。"],
+    time: ["晚饭 1 小时，补给 30 分钟。"],
+    route: ["从札幌站或大通方向短距离抵达。"],
+    best: ["雨天和低体力日很适合。"],
+    avoid: ["不要在这里继续加第二个夜景点。"]
+  }),
+  "city-otaru": guide({
+    facts: [["角色", "札幌短支线"], ["时间", "半日"], ["适合", "轻松日"], ["交通", "JR短线"]],
+    play: ["下午去运河，傍晚看灯，再吃海鲜或甜品。", "如果体力足，运河后接堺町通；体力弱，只做运河。"],
+    time: ["紧凑：3-4 小时。", "舒服：半日到夜晚。"],
+    route: ["札幌到小樽是 JR 函馆线方向短线，出发当天查班次。"],
+    best: ["傍晚和夜色比正午更值得。", "雨天也能逛仓库和室内店。"],
+    avoid: ["不要和神威岬绑成赶路日。"],
+    sources: ["otaruCanal", "otaruDay", "operation"]
+  }),
+  "spot-otaru-canal": guide({
+    facts: [["角色", "小樽主画面"], ["时间", "45-90分钟"], ["最佳", "黄昏"], ["交通", "站后步行"]],
+    play: ["从浅草桥附近开始，沿水面慢走，等灯亮。", "一边看旧仓库和水面反射，一边决定是否吃晚饭再回札幌。"],
+    time: ["只看：45 分钟。", "含晚饭：2 小时以上。"],
+    route: ["从小樽站步行可达。"],
+    best: ["傍晚灯光和水面最稳。"],
+    avoid: ["正午匆匆打卡会显得很普通。"],
+    sources: ["otaruCanal"]
+  }),
+  "spot-sakaimachi": guide({
+    facts: [["角色", "慢逛街区"], ["时间", "1-2小时"], ["适合", "雨天"], ["交通", "步行串联"]],
+    play: ["从运河自然切到堺町通，看玻璃、甜品、旧商家立面。", "只挑 2-3 家店，不要逛成商场任务。"],
+    time: ["1 小时轻逛，2 小时含咖啡。"],
+    route: ["从小樽运河步行串联。"],
+    best: ["下午和雨天更舒服。"],
+    avoid: ["人多时不要每家店都排队。"],
+    sources: ["otaruDay"]
+  }),
+  "city-yoichi": guide({
+    facts: [["角色", "工业+小城"], ["时间", "半日"], ["重点", "Nikka"], ["交通", "经小樽JR"]],
+    play: ["把 Nikka 当主目的地，街区散步当留白。", "若没有参观预约，也可以看厂区外部、博物馆和商店开放部分。"],
+    time: ["Nikka 参观 1.5-2.5 小时。", "含往返札幌：半日以上。"],
+    route: ["札幌到余市通常经小樽，班次少于小樽线。"],
+    best: ["喜欢工业空间、威士忌、安静小城时值得。"],
+    avoid: ["不要和神威岬同日硬排，除非包车且体力充足。"],
+    sources: ["nikkaYoichi", "jntoNikka", "operation"]
+  }),
+  "spot-nikka": guide({
+    facts: [["角色", "余市核心"], ["时间", "1.5-2.5小时"], ["预约", "按官网"], ["交通", "站后步行"]],
+    play: ["看红砖厂房、蒸馏器、仓库和品牌历史。", "参观后再决定是否试饮和买小瓶，不要把它变成购物点。"],
+    time: ["短看 1 小时，完整参观 2 小时左右。"],
+    route: ["JR 到余市站后短步行。"],
+    best: ["晴雨都可。"],
+    avoid: ["官网 closed dates 和预约规则要先查。"],
+    sources: ["nikkaYoichi", "jntoNikka"]
+  }),
+  "spot-yoichi-walk": guide({
+    facts: [["角色", "留白"], ["时间", "30-60分钟"], ["适合", "Nikka后"], ["交通", "步行"]],
+    play: ["沿余市川或站周边走一圈，把节奏放慢。"],
+    time: ["30 分钟就够。"],
+    route: ["和 Nikka 同日步行完成。"],
+    best: ["天气好时加，不好就删。"],
+    avoid: ["不要为它单独开一天。"]
+  }),
+  "city-kamui": guide({
+    facts: [["角色", "西海岸重体验"], ["时间", "整日"], ["风险", "风雨/末端巴士"], ["交通", "非JR直达"]],
+    play: ["只在晴天把它升级为当天主线。", "早出发，到岬角步道后慢走，不再贪其他远点。"],
+    time: ["从札幌出发通常按整日处理。", "岬角本身 1-2 小时。"],
+    route: ["JR 只能负责到小樽/余市方向，末端依赖巴士、包车或自驾。"],
+    best: ["晴天、低风、能见度好。"],
+    avoid: ["风雨天直接降级，不要和末班交通赌博。"],
+    sources: ["capeKamui", "operation"]
+  }),
+  "spot-kamui-path": guide({
+    facts: [["角色", "断崖步行"], ["时间", "60-120分钟"], ["体力", "中"], ["天气", "强依赖"]],
+    play: ["把步道当核心体验：海色、风、坡度、灯塔都要慢慢看。"],
+    time: ["步道往返和停留 1-2 小时。"],
+    route: ["到岬角后步行，开放状况看现场。"],
+    best: ["晴天海色最强。"],
+    avoid: ["大风、雨、关闭时不要硬走。"],
+    sources: ["capeKamui"]
+  }),
+  "spot-shakotan-blue": guide({
+    facts: [["角色", "海色"], ["时间", "30-60分钟"], ["最佳", "晴天"], ["取舍", "阴天降级"]],
+    play: ["不要追很多点，只找一个开阔视角看海色。"],
+    time: ["30 分钟看海，1 小时拍照和休息。"],
+    route: ["末端交通以公路为主。"],
+    best: ["太阳出来才是主体验。"],
+    avoid: ["阴雨天不要为它牺牲小樽。"],
+    sources: ["capeKamui"]
+  }),
+  "base-asahikawa": guide({
+    facts: [["节奏", "2晚中继"], ["主线", "花田/丘陵"], ["风险", "去钏路长移动"], ["交通", "JR+可能巴士"]],
+    play: ["把旭川当花田与丘陵的前进基地。", "美瑛和富良野二选一或轻串联，移动日前一晚早点睡。"],
+    time: ["旭川市内半天足够。", "美瑛/富良野各半日到一日。"],
+    route: ["札幌到旭川走特急 Kamui/Lilac。", "旭川到钏路不顺，建议把下一天定义为移动日。"],
+    best: ["7月花田期价值最高。"],
+    avoid: ["不要把带广当旭川 JR 直通半日支线。"],
+    sources: ["asahikawa", "furanoClosed", "northliner"]
+  }),
+  "city-asahikawa": guide({
+    facts: [["角色", "中北海道枢纽"], ["时间", "半日"], ["适合", "入住恢复"], ["交通", "JR主线"]],
+    play: ["站区吃饭、补给、整理第二天花田交通。", "如果到达早，可以轻散步，不必硬凑景点。"],
+    time: ["2-4 小时足够。"],
+    route: ["从札幌到旭川为 JR 主干线。"],
+    best: ["移动日和天气普通日。"],
+    avoid: ["不要刚到旭川立刻冲远点。"],
+    sources: ["asahikawa"]
+  }),
+  "spot-asahikawa-station": guide({
+    facts: [["角色", "补给"], ["时间", "1小时"], ["适合", "移动日"], ["交通", "站内外"]],
+    play: ["吃饭、买水、查第二天班次，完成后早点休息。"],
+    time: ["1 小时即可。"],
+    route: ["围绕旭川站完成。"],
+    best: ["任何天气。"],
+    avoid: ["不要给它设计复杂路线。"]
+  }),
+  "spot-asahikawa-walk": guide({
+    facts: [["角色", "城市缓冲"], ["时间", "1-2小时"], ["适合", "低压力"], ["交通", "步行"]],
+    play: ["选酒店附近一条街散步，吃完就回。"],
+    time: ["晚饭前后 1-2 小时。"],
+    route: ["不离开市区。"],
+    best: ["移动后。"],
+    avoid: ["不要替代美瑛/富良野主日。"]
+  }),
+  "city-biei": guide({
+    facts: [["角色", "丘陵农田"], ["时间", "半日-一日"], ["交通", "末端需规划"], ["最佳", "晴天"]],
+    play: ["先决定玩法：公交少点、骑行、包车或租车。", "只追一条路线：拼布之路或青池方向，不要两边乱切。"],
+    time: ["拼布之路半日。", "拼布+青池接近一日。"],
+    route: ["旭川到美瑛走富良野线；美瑛内部点位分散。"],
+    best: ["晴天、能见度高、云影明显。"],
+    avoid: ["不要到站后才想怎么去各个树和池。"],
+    sources: ["biei", "bluePond", "operation"]
+  }),
+  "spot-patchwork": guide({
+    facts: [["角色", "美瑛主结构"], ["时间", "2-4小时"], ["交通", "点位分散"], ["最佳", "晴天"]],
+    play: ["把农田、坡路、树和远山当一个整体看。", "少下车，多留完整视野。"],
+    time: ["骑行/包车 2-4 小时。"],
+    route: ["公共交通有限，需提前选交通方式。"],
+    best: ["上午或傍晚光线更有层次。"],
+    avoid: ["不要为了单棵树到处追点。"],
+    sources: ["biei"]
+  }),
+  "spot-blue-pond": guide({
+    facts: [["角色", "颜色奇观"], ["时间", "45-90分钟"], ["交通", "需查班次"], ["最佳", "晴/薄云"]],
+    play: ["把它当美瑛的第二主题：颜色和枯木。", "如果人多，短看后撤，不必久留。"],
+    time: ["现场 45-90 分钟。"],
+    route: ["在白金温泉方向，末端交通不能临时赌。"],
+    best: ["有光但不过曝时。"],
+    avoid: ["阴雨或大客流时性价比下降。"],
+    sources: ["bluePond", "biei"]
+  }),
+  "city-furano": guide({
+    facts: [["角色", "7月主视觉"], ["时间", "半日-一日"], ["交通", "富良野线"], ["风险", "不能直去新得"]],
+    play: ["用富田农场做主点，周边花田做延展。", "如果和美瑛同日，严格减少停留点。"],
+    time: ["富田农场半日。", "富良野+中富良野一日更舒服。"],
+    route: ["旭川到富良野走富良野线；富良野-新得铁路已废止。"],
+    best: ["7月薰衣草季，早到避人流。"],
+    avoid: ["不要从富良野继续按 JR 直通带广。"],
+    sources: ["farmTomita", "farmTomitaHokkaido", "furanoClosed"]
+  }),
+  "spot-farm-tomita": guide({
+    facts: [["角色", "薰衣草核心"], ["时间", "1.5-3小时"], ["官网", "有实时/时间"], ["最佳", "早晨"]],
+    play: ["先看主花田，再吃薰衣草冰淇淋或休息。", "人多时减少拍照执念，保留感受。"],
+    time: ["现场 1.5-3 小时。"],
+    route: ["按官网 access 与当天交通确认。"],
+    best: ["7月、清晨、晴或薄云。"],
+    avoid: ["官网开放时间外不可进入。"],
+    sources: ["farmTomita", "farmTomitaHokkaido"]
+  }),
+  "spot-nakafurano": guide({
+    facts: [["角色", "坡面远山"], ["时间", "1-2小时"], ["适合", "富田后延展"], ["交通", "末端查"]],
+    play: ["看花田如何贴着坡面和远山展开。"],
+    time: ["1-2 小时即可。"],
+    route: ["和富田农场邻近但仍要确认末端交通。"],
+    best: ["晴天、山体能见度高。"],
+    avoid: ["如果富田已经很累，就删掉。"],
+    sources: ["farmTomitaHokkaido"]
+  }),
+  "city-obihiro-asahikawa": guide({
+    facts: [["角色", "十胜备选"], ["交通", "非JR直通"], ["时间", "移动日"], ["风险", "绕行"]],
+    play: ["如果真想看十胜，把它作为移动日的一部分，而不是旭川支线。"],
+    time: ["旭川到带广公交约半日量级，继续钏路则整日。"],
+    route: ["可用 North Liner 预约巴士；JR-only 需绕札幌/南千岁。"],
+    best: ["想看农业平原，且愿意牺牲一天移动。"],
+    avoid: ["不要把富良野-带广写成 JR 顺路。"],
+    sources: ["northliner", "furanoCityBus", "furanoClosed"]
+  }),
+  "spot-tokachi-plain": guide({
+    facts: [["角色", "平原尺度"], ["时间", "车窗/半日"], ["适合", "顺路"], ["交通", "带广侧"]],
+    play: ["重点不是打卡，而是看地平线、农田和长直线。"],
+    time: ["车窗即可；下车半日更松。"],
+    route: ["更适合带广停留或钏路侧顺路。"],
+    best: ["晴天能见度高。"],
+    avoid: ["不要为它牺牲根室或花田主线。"]
+  }),
+  "spot-obihiro-food": guide({
+    facts: [["角色", "生活补给"], ["时间", "1小时"], ["重点", "豚丼"], ["适合", "长移动后"]],
+    play: ["到带广后先吃饭，把交通疲劳收住。"],
+    time: ["1 小时左右。"],
+    route: ["围绕带广站完成。"],
+    best: ["移动日中段或到达后。"],
+    avoid: ["吃完不要继续加远点。"]
+  }),
+  "base-kushiro": guide({
+    facts: [["节奏", "2晚东北海道"], ["主线", "湿原/海岸/最东端"], ["交通", "花咲线+末端巴士"], ["风险", "长线"]],
+    play: ["钏路必须住下，不能当天来回硬刷。", "一天湿原或市内，一天厚岸/根室二选一。"],
+    time: ["钏路市内半日。", "根室/纳沙布岬整日。"],
+    route: ["从札幌/带广方向依赖 Ozora；根室方向走花咲线。"],
+    best: ["海雾、湿原、低密度就是这里的主题。"],
+    avoid: ["不要把根室和湿原排同一天。"],
+    sources: ["kushiro", "eastHokkaido", "operation"]
+  }),
+  "city-kushiro": guide({
+    facts: [["角色", "东北海道枢纽"], ["时间", "半日"], ["适合", "抵达日"], ["交通", "根室/花咲线"]],
+    play: ["抵达后只做幣舞桥、港口、晚饭。", "第二天再去湿原或根室。"],
+    time: ["2-4 小时足够。"],
+    route: ["钏路站是花咲线/根室方向起点。"],
+    best: ["傍晚。"],
+    avoid: ["长移动后不要冲远郊。"],
+    sources: ["kushiro", "operation"]
+  }),
+  "spot-kushiro-marsh": guide({
+    facts: [["角色", "湿原核心"], ["时间", "半日"], ["交通", "展望点末端"], ["最佳", "晴/薄雾"]],
+    play: ["选择一个展望点，专心看曲流、湿地和低平空间。"],
+    time: ["半日最稳。"],
+    route: ["JR 只能解决部分接近，展望点末端交通要查。"],
+    best: ["晴天层次清楚，薄雾也有气质。"],
+    avoid: ["不要和根室最东端同日。"],
+    sources: ["kushiro"]
+  }),
+  "spot-nusamai": guide({
+    facts: [["角色", "钏路傍晚"], ["时间", "1-2小时"], ["适合", "抵达日"], ["交通", "市内"]],
+    play: ["傍晚到幣舞桥，看港口光线，再吃炉端或海鲜。"],
+    time: ["1-2 小时。"],
+    route: ["市内短距离完成。"],
+    best: ["日落前后。"],
+    avoid: ["天气差时缩短，留体力。"],
+    sources: ["kushiro"]
+  }),
+  "city-akkeshi": guide({
+    facts: [["角色", "轻一点东海岸"], ["时间", "半日-一日"], ["交通", "花咲线"], ["重点", "海雾/海湾"]],
+    play: ["把厚岸当根室的轻量替代：海湾、岬角、吃饭。"],
+    time: ["半日到一日，取决于班次。"],
+    route: ["钏路到厚岸走花咲线方向，班次要提前锁定。"],
+    best: ["海雾天也有味道。"],
+    avoid: ["不要错过回程班次。"],
+    sources: ["akkeshiGuide", "operation"]
+  }),
+  "spot-aikappu": guide({
+    facts: [["角色", "岬角海湾"], ["时间", "1小时"], ["交通", "末端查"], ["最佳", "低风"]],
+    play: ["看厚岸湾的曲线和海雾，不要追过多点。"],
+    time: ["现场约 1 小时。"],
+    route: ["厚岸站后末端交通提前查。"],
+    best: ["低风、能见度适中。"],
+    avoid: ["风雨大时不必硬上。"],
+    sources: ["akkeshiGuide"]
+  }),
+  "spot-akkeshi-bay": guide({
+    facts: [["角色", "渔业生活感"], ["时间", "1-2小时"], ["适合", "低压力"], ["交通", "站周边/短接驳"]],
+    play: ["看海湾、吃本地东西，把它当生活环境体验。"],
+    time: ["1-2 小时。"],
+    route: ["和爱冠岬同日即可。"],
+    best: ["天气普通也可。"],
+    avoid: ["不要排成景点打卡。"],
+    sources: ["akkeshiGuide"]
+  }),
+  "city-nemuro": guide({
+    facts: [["角色", "最东端重体验"], ["时间", "整日"], ["交通", "JR+巴士/出租"], ["风险", "班次+天气"]],
+    play: ["把坐车过程也当旅行内容。", "到根室后只做纳沙布岬这一件大事。"],
+    time: ["从钏路往返按整日。"],
+    route: ["钏路到根室走花咲线；根室站到纳沙布岬还需巴士或出租。"],
+    best: ["晴天或有边界感的海雾天。"],
+    avoid: ["不要和湿原或厚岸深度游同日。"],
+    sources: ["nosappu", "eastHokkaido", "operation"]
+  }),
+  "spot-nosappu": guide({
+    facts: [["角色", "日本最东端"], ["时间", "1-2小时"], ["交通", "根室后接驳"], ["最佳", "低风"]],
+    play: ["看灯塔、海面、边界感和地理尽头。", "拍照后留 20 分钟安静站着，比多跑一个点更值。"],
+    time: ["现场 1-2 小时。"],
+    route: ["根室站后需巴士或出租。"],
+    best: ["低风、能见度好。"],
+    avoid: ["回程末班前必须撤。"],
+    sources: ["nosappu", "eastHokkaido"]
+  }),
+  "spot-nemuro-line": guide({
+    facts: [["角色", "铁路尽头感"], ["时间", "车程本身"], ["适合", "喜欢车窗"], ["交通", "花咲线"]],
+    play: ["不要只等到达，车窗里的低密度就是体验。"],
+    time: ["随钏路-根室车程发生。"],
+    route: ["花咲线班次稀疏，先锁回程。"],
+    best: ["白天有光时。"],
+    avoid: ["不喜欢长车程则改厚岸。"],
+    sources: ["operation", "timetable"]
+  }),
+  "city-obihiro-kushiro": guide({
+    facts: [["角色", "十胜顺路点"], ["时间", "半日-一日"], ["交通", "Ozora体系"], ["取舍", "可跳过"]],
+    play: ["如果从钏路西移或需要缓冲，可用带广补十胜平原。"],
+    time: ["短停 2-4 小时，独立停留 1 晚更好。"],
+    route: ["钏路-带广在札幌-钏路 Ozora 主干线上。"],
+    best: ["天气好、想看农业尺度时。"],
+    avoid: ["疲劳时跳过，不影响主线。"],
+    sources: ["obihiro", "operation"]
+  }),
+  "spot-obihiro-window": guide({
+    facts: [["角色", "车窗平原"], ["时间", "车程"], ["适合", "顺路"], ["交通", "JR主干"]],
+    play: ["坐车时专心看农田、直线和地平线。"],
+    time: ["车程本身。"],
+    route: ["钏路-带广或带广-札幌方向。"],
+    best: ["白天。"],
+    avoid: ["夜间车窗价值低。"]
+  }),
+  "spot-obihiro-stay": guide({
+    facts: [["角色", "空间补充"], ["时间", "半日"], ["适合", "独立停"], ["交通", "带广站周边"]],
+    play: ["少看景点，多看平原城市尺度。"],
+    time: ["半日即可。"],
+    route: ["带广站作为中心。"],
+    best: ["天气晴朗。"],
+    avoid: ["时间紧时直接删。"]
+  }),
+  "base-hakodate": guide({
+    facts: [["节奏", "1-2晚"], ["角色", "跨海前停顿"], ["交通", "Hokuto+Liner"], ["风险", "长线后疲劳"]],
+    play: ["从钏路到达后先住下，第二天再跨海。", "函馆只抓夜景、元町、港区三件事。"],
+    time: ["函馆市内半日到一日。", "跨海日另算。"],
+    route: ["函馆站不是新干线站，跨海必须去新函馆北斗。"],
+    best: ["天气好上函馆山；天气普通做元町和仓库。"],
+    avoid: ["不要钏路长移动后继续冲仙台。"],
+    sources: ["hakodateTravel", "hakodate", "shinkansen"]
+  }),
+  "city-hakodate": guide({
+    facts: [["角色", "港口基地"], ["时间", "半日-一日"], ["重点", "夜景/坡道"], ["交通", "市内+Liner"]],
+    play: ["白天元町和金森仓库，傍晚看是否上函馆山。"],
+    time: ["半日核心，一日舒服。"],
+    route: ["跨海前从函馆站坐 Hakodate Liner 到新函馆北斗。"],
+    best: ["能见度好时上山。"],
+    avoid: ["天气差不要硬等夜景。"],
+    sources: ["hakodateTravel", "mtHakodate", "motomachi"]
+  }),
+  "spot-hakodate-night": guide({
+    facts: [["角色", "函馆主画面"], ["时间", "1.5-2.5小时"], ["最佳", "能见度"], ["风险", "风/雾"]],
+    play: ["日落前到，等城市灯亮，看到夹海地形即可撤。"],
+    time: ["含上下山 1.5-2.5 小时。"],
+    route: ["上山方式按当日运营确认。"],
+    best: ["晴朗、低云少。"],
+    avoid: ["大雾天不要浪费体力。"],
+    sources: ["mtHakodate"]
+  }),
+  "spot-motomachi": guide({
+    facts: [["角色", "港口坡道"], ["时间", "1.5-3小时"], ["交通", "步行"], ["适合", "白天"]],
+    play: ["从坡道、教堂、旧建筑慢慢走到金森仓库。"],
+    time: ["1.5-3 小时。"],
+    route: ["市内步行串联，坡道多。"],
+    best: ["下午到傍晚。"],
+    avoid: ["行李日不要拖箱走坡。"],
+    sources: ["motomachi", "hakodateTravel"]
+  }),
+  "city-seikan": guide({
+    facts: [["角色", "跨海枢纽"], ["必须", "新函馆北斗"], ["时间", "半日移动"], ["风险", "具体车次"]],
+    play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。"],
+    time: ["函馆到仙台约 3.5-4.5 小时含换乘。"],
+    route: ["函馆 -> 新函馆北斗 -> 新青森 -> 仙台。"],
+    best: ["白天跨海更不焦虑。"],
+    avoid: ["不要写成函馆站直达新青森。"],
+    sources: ["shinkansen", "jreast"]
+  }),
+  "spot-seikan-tunnel": guide({
+    facts: [["角色", "海底铁路"], ["时间", "车程中"], ["体验", "地理意义"], ["交通", "新干线"]],
+    play: ["把它理解成北海道到本州的切换，而不是观景段。"],
+    time: ["随新干线通过。"],
+    route: ["新函馆北斗到新青森区间经过青函隧道。"],
+    best: ["坐定后看路线图即可。"],
+    avoid: ["不要期待海底有风景。"],
+    sources: ["shinkansen", "jreast"]
+  }),
+  "spot-shin-aomori": guide({
+    facts: [["角色", "本州入口"], ["时间", "换乘"], ["交通", "新干线"], ["取舍", "不停留"]],
+    play: ["只做换乘和买水，不做旅游点。"],
+    time: ["换乘缓冲 15-30 分钟以上更舒服。"],
+    route: ["新函馆北斗来车后继续东北新干线南下。"],
+    best: ["车次衔接稳定时。"],
+    avoid: ["不要在这里拆行程，除非专门游青森。"],
+    sources: ["jreast"]
+  }),
+  "city-hachinohe-hakodate": guide({
+    facts: [["角色", "东北海岸备选"], ["时间", "半日-一日"], ["交通", "新干线+末端"], ["优先级", "低于跨海主线"]],
+    play: ["只有函馆到仙台之间想补一段海岸时才加。"],
+    time: ["至少半日，舒服要一日。"],
+    route: ["需经新干线体系，不是函馆普通短支线。"],
+    best: ["晴天、有完整余量。"],
+    avoid: ["松岛已安排时可跳过。"],
+    sources: ["hachinohe", "tanesashi", "jreast"]
+  }),
+  "spot-tanesashi": guide({
+    facts: [["角色", "草地岩岸"], ["时间", "2-4小时"], ["交通", "JR八户线/末端"], ["最佳", "晴天"]],
+    play: ["看天然草地、岩岸、海风，不要只停一个停车点。"],
+    time: ["2-4 小时。"],
+    route: ["从八户侧接近，末端交通查八户线/巴士。"],
+    best: ["晴天、低风。"],
+    avoid: ["阴雨大风时删。"],
+    sources: ["tanesashi", "hachinohe"]
+  }),
+  "spot-hachinohe-port": guide({
+    facts: [["角色", "港口生活"], ["时间", "1-2小时"], ["适合", "吃饭"], ["交通", "市内/短接驳"]],
+    play: ["用市场或港口吃饭补东北生活感。"],
+    time: ["1-2 小时。"],
+    route: ["八户市内短交通。"],
+    best: ["上午市场或午饭。"],
+    avoid: ["不要为它打乱新干线主线。"],
+    sources: ["hachinohe"]
+  }),
+  "base-sendai": guide({
+    facts: [["节奏", "1-2晚"], ["角色", "本州缓冲"], ["主线", "松岛"], ["交通", "东北新干线"]],
+    play: ["跨海抵达只住下吃饭。", "第二天松岛半日，再回仙台收尾。"],
+    time: ["仙台市内 2-4 小时。", "松岛半日。"],
+    route: ["函馆到仙台经新函馆北斗、新青森、东北新干线。"],
+    best: ["把它当节奏恢复站。"],
+    avoid: ["第一晚不要再跑松岛。"],
+    sources: ["sendai", "jntoSendai", "jreast"]
+  }),
+  "city-sendai": guide({
+    facts: [["角色", "东北核心"], ["时间", "半日"], ["重点", "站区+牛舌"], ["交通", "新干线"]],
+    play: ["站区、青叶通、晚饭足够。", "用牛舌完成东北落地感。"],
+    time: ["2-4 小时。"],
+    route: ["仙台站是东北新干线主站。"],
+    best: ["到达傍晚。"],
+    avoid: ["不要把仙台排成城市打卡清单。"],
+    sources: ["sendai", "jntoSendai"]
+  }),
+  "spot-sendai-station": guide({
+    facts: [["角色", "城市骨架"], ["时间", "1小时"], ["适合", "抵达"], ["交通", "站区"]],
+    play: ["站内外完成吃饭、买水、确认第二天松岛交通。"],
+    time: ["1 小时即可。"],
+    route: ["围绕仙台站。"],
+    best: ["抵达日。"],
+    avoid: ["别把它扩成购物日。"],
+    sources: ["sendai"]
+  }),
+  "spot-gyutan": guide({
+    facts: [["角色", "地方食物"], ["时间", "1小时"], ["适合", "长途后"], ["区域", "站周边"]],
+    play: ["选站周边店，吃完回酒店。"],
+    time: ["排队加用餐 1-1.5 小时。"],
+    route: ["仙台站周边餐厅密集。"],
+    best: ["跨海抵达晚饭。"],
+    avoid: ["不要为了名店排到过累。"],
+    sources: ["jntoSendai"]
+  }),
+  "city-matsushima": guide({
+    facts: [["角色", "仙台最佳支线"], ["时间", "半日"], ["交通", "JR普通支线"], ["重点", "海湾岛屿"]],
+    play: ["海湾散步+游船/瑞严寺二选一。", "下午回仙台吃饭，不要赶一整天。"],
+    time: ["3-5 小时。"],
+    route: ["仙台到松岛方向可用 JR 仙石线/东北本线相关站，具体到站按当天查。"],
+    best: ["晴天更漂亮，阴天也可。"],
+    avoid: ["不要同时把八户也塞进仙台段。"],
+    sources: ["matsushima", "jntoMatsushima", "zuiganji"]
+  }),
+  "spot-matsushima-bay": guide({
+    facts: [["角色", "日本三景"], ["时间", "1-2小时"], ["交通", "步行/游船"], ["最佳", "晴/薄云"]],
+    play: ["先在岸边看岛屿结构，再决定是否坐船。"],
+    time: ["岸边 1 小时，含游船 2 小时以上。"],
+    route: ["从松岛海岸/松岛区域步行串联。"],
+    best: ["有光时岛屿层次清楚。"],
+    avoid: ["不要赶船赶到没有散步时间。"],
+    sources: ["matsushima", "jntoMatsushima"]
+  }),
+  "spot-zuiganji": guide({
+    facts: [["角色", "文化补充"], ["时间", "1-2小时"], ["适合", "雨天"], ["取舍", "和游船二选一也可"]],
+    play: ["如果想降节奏，瑞严寺比继续追海景更稳。"],
+    time: ["1-2 小时。"],
+    route: ["和松岛湾步行串联。"],
+    best: ["雨天或想看文化时。"],
+    avoid: ["时间短时不要寺和船都赶。"],
+    sources: ["zuiganji", "matsushima"]
+  }),
+  "city-hachinohe-sendai": guide({
+    facts: [["角色", "若未去的补线"], ["时间", "一日"], ["交通", "新干线北上"], ["优先级", "低"]],
+    play: ["仙台住 2 晚且不去松岛以外点时才考虑。"],
+    time: ["一日往返才不赶。"],
+    route: ["仙台到八户需东北新干线北上。"],
+    best: ["海岸天气好。"],
+    avoid: ["一般优先松岛。"],
+    sources: ["hachinohe", "tanesashi", "jreast"]
+  }),
+  "spot-hachinohe-coast-sendai": guide({
+    facts: [["角色", "三陆北端"], ["时间", "半日"], ["交通", "八户侧末端"], ["适合", "海岸控"]],
+    play: ["只选种差海岸核心段，不把八户全城排满。"],
+    time: ["半日。"],
+    route: ["新干线到八户后再接末端交通。"],
+    best: ["晴天。"],
+    avoid: ["东京移动日前不要加。"],
+    sources: ["tanesashi"]
+  }),
+  "spot-hachinohe-market": guide({
+    facts: [["角色", "市场生活"], ["时间", "1-2小时"], ["适合", "早午"], ["交通", "市内"]],
+    play: ["把它当吃饭和生活观察，不当景点清单。"],
+    time: ["1-2 小时。"],
+    route: ["八户市内短交通。"],
+    best: ["上午或午饭。"],
+    avoid: ["如果只想看风景，优先海岸。"],
+    sources: ["hachinohe"]
+  }),
+  "base-tokyo": guide({
+    facts: [["节奏", "终点收尾"], ["主线", "市内短点"], ["交通", "东北新干线"], ["风险", "人流"]],
+    play: ["到达日只入住和短散步。", "涩谷、银座、台场三选一到两个，不要全刷。"],
+    time: ["每个区域 2-4 小时。"],
+    route: ["仙台到东京走东北新干线；市内按当天住宿选线。"],
+    best: ["用低强度城市反差结束旅行。"],
+    avoid: ["不要最后两天再加远郊。"],
+    sources: ["tokyo", "jreast"]
+  }),
+  "city-tokyo": guide({
+    facts: [["角色", "终点枢纽"], ["时间", "半日"], ["重点", "入住/返程"], ["交通", "站区"]],
+    play: ["围绕酒店和返程站点活动，减少跨城。"],
+    time: ["到达晚 2 小时，完整半日也够。"],
+    route: ["东京站/上野/新宿按住宿和返程选择。"],
+    best: ["长线后低强度。"],
+    avoid: ["不要第一晚冲涩谷+台场。"],
+    sources: ["tokyo"]
+  }),
+  "spot-tokyo-station": guide({
+    facts: [["角色", "交通商业"], ["时间", "1-2小时"], ["适合", "新干线后"], ["交通", "站内外"]],
+    play: ["看站房、吃饭、买伴手礼，结束即可。"],
+    time: ["1-2 小时。"],
+    route: ["新干线到达后顺路。"],
+    best: ["到达日。"],
+    avoid: ["行李未放好前不要走太远。"],
+    sources: ["tokyo"]
+  }),
+  "spot-urban-density": guide({
+    facts: [["角色", "反差体验"], ["时间", "30-90分钟"], ["适合", "低体力"], ["交通", "步行"]],
+    play: ["不追景点，观察车站、人流、便利店和街区密度。"],
+    time: ["30-90 分钟。"],
+    route: ["酒店附近完成即可。"],
+    best: ["刚到东京时。"],
+    avoid: ["不要把它变成跨区散步。"]
+  }),
+  "city-shibuya": guide({
+    facts: [["角色", "人流峰值"], ["时间", "2-3小时"], ["交通", "市内"], ["体力", "中高消耗"]],
+    play: ["路口+高处视角二选一或短串联。", "看完就撤到安静餐厅。"],
+    time: ["2-3 小时。"],
+    route: ["市内交通方便，但出站和人流消耗大。"],
+    best: ["傍晚到夜晚。"],
+    avoid: ["低体力日不要久逛。"],
+    sources: ["tokyo"]
+  }),
+  "spot-shibuya-crossing": guide({
+    facts: [["角色", "人流交叉"], ["时间", "20-45分钟"], ["最佳", "傍晚"], ["体力", "消耗大"]],
+    play: ["地面走一次，再找边缘位置看几轮人流。"],
+    time: ["20-45 分钟。"],
+    route: ["涩谷站出站后即到。"],
+    best: ["傍晚屏幕和人流都强。"],
+    avoid: ["不要在路口中心停留拍照影响通行。"],
+    sources: ["tokyo"]
+  }),
+  "spot-shibuya-view": guide({
+    facts: [["角色", "俯视结构"], ["时间", "1-2小时"], ["预约", "按当天"], ["适合", "短时高回报"]],
+    play: ["从高处把人流和路网看成结构。"],
+    time: ["含排队/预约 1-2 小时。"],
+    route: ["按具体观景点预约与入口走。"],
+    best: ["傍晚到夜景。"],
+    avoid: ["没预约或排队过长就放弃。"],
+    sources: ["tokyo"]
+  }),
+  "city-ginza": guide({
+    facts: [["角色", "雨天商业"], ["时间", "2-4小时"], ["交通", "市内"], ["体力", "低中"]],
+    play: ["中央通、百货、咖啡三件事即可。"],
+    time: ["2-4 小时。"],
+    route: ["市内交通密集，适合返程前。"],
+    best: ["雨天、低体力、买东西。"],
+    avoid: ["不要同时安排涩谷大逛。"],
+    sources: ["tokyo"]
+  }),
+  "spot-ginza-chuo": guide({
+    facts: [["角色", "银座街景"], ["时间", "45-90分钟"], ["适合", "散步"], ["交通", "步行"]],
+    play: ["沿中央通看街景和建筑立面。"],
+    time: ["45-90 分钟。"],
+    route: ["银座站周边步行。"],
+    best: ["下午或夜间灯光。"],
+    avoid: ["不要为拍照站在车流边缘。"],
+    sources: ["tokyo"]
+  }),
+  "spot-ginza-cafe": guide({
+    facts: [["角色", "收尾休息"], ["时间", "1-2小时"], ["适合", "雨天"], ["交通", "室内"]],
+    play: ["选百货或咖啡，把旅行尾声放慢。"],
+    time: ["1-2 小时。"],
+    route: ["中央通周边室内完成。"],
+    best: ["雨天和返程前。"],
+    avoid: ["不要买到行李超载。"],
+    sources: ["tokyo"]
+  }),
+  "city-odaiba": guide({
+    facts: [["角色", "人工海岸"], ["时间", "2-4小时"], ["最佳", "傍晚"], ["交通", "市内非JR单线"]],
+    play: ["海滨散步、彩虹桥视角、晚饭三选二。"],
+    time: ["2-4 小时。"],
+    route: ["常用临海交通系统，按酒店位置查。"],
+    best: ["傍晚到夜景。"],
+    avoid: ["台风/强风/大雨时删。"],
+    sources: ["odaiba", "rainbowBridge", "tokyo"]
+  }),
+  "spot-odaiba-beach": guide({
+    facts: [["角色", "海风天际线"], ["时间", "45-90分钟"], ["最佳", "傍晚"], ["交通", "步行"]],
+    play: ["沿海滨慢走，看桥、海湾和东京天际线。"],
+    time: ["45-90 分钟。"],
+    route: ["台场区域步行完成。"],
+    best: ["日落前后。"],
+    avoid: ["强风雨天不要去海边。"],
+    sources: ["odaiba"]
+  }),
+  "spot-rainbow-bridge": guide({
+    facts: [["角色", "海湾夜景"], ["时间", "30-90分钟"], ["交通", "步行/海鸥线"], ["最佳", "夜晚"]],
+    play: ["从台场侧看桥，或用交通工具经过桥面获取视角。"],
+    time: ["看景 30 分钟，步行桥面约 30 分钟级别。"],
+    route: ["彩虹桥连接芝浦和台场，具体步道开放以当天为准。"],
+    best: ["夜景和低风。"],
+    avoid: ["天气恶劣时不要走桥。"],
+    sources: ["rainbowBridge", "odaiba"]
+  })
+};
+
+function getGuide(item) {
+  return detailGuides[item.id] || guide({
+    facts: [["层级", kindLabels[item.type] || "目的地"], ["节奏", item.optional ? "可选" : "主线"], ["体力", "按当天调整"], ["交通", "点开审计"]],
+    play: [`先判断它在路线里的角色：${item.summary}`],
+    time: ["先按 1-3 小时估算，若涉及跨城或末端交通则升级为半日。"],
+    route: item.sections.find((section) => section.title === "交通审计")?.items || ["以当天官方时刻和现场状态为准。"],
+    best: ["天气、体力、班次三者都合适时再加。"],
+    avoid: ["不要为了打卡破坏基地移动节奏。"],
+    sources: item.sources || []
+  });
+}
+
 const kindLabels = {
   base: "基地",
   city: "城市",
@@ -1114,12 +1968,14 @@ const levelLabels = {
 };
 
 const outlineTree = document.querySelector("#outlineTree");
+const transferList = document.querySelector("#transferList");
 const modal = document.querySelector("#detailModal");
 const modalSheet = modal.querySelector(".modal-sheet");
 const modalImage = document.querySelector("#modalImage");
 const modalKind = document.querySelector("#modalKind");
 const modalTitle = document.querySelector("#modalTitle");
 const modalSummary = document.querySelector("#modalSummary");
+const modalFacts = document.querySelector("#modalFacts");
 const modalTags = document.querySelector("#modalTags");
 const modalSections = document.querySelector("#modalSections");
 
@@ -1144,9 +2000,14 @@ function renderTags(tags = []) {
   return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
 }
 
-function renderSources(sources = []) {
-  if (!sources.length) return "";
-  const links = sources
+function unique(values = []) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function renderSources(sources = [], title = "依据") {
+  const keys = unique(sources);
+  if (!keys.length) return "";
+  const links = keys
     .map((key) => sourceLinks[key])
     .filter(Boolean)
     .map((source) => `<li><a href="${source.url}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a></li>`)
@@ -1154,14 +2015,30 @@ function renderSources(sources = []) {
 
   return `
     <section class="source-links">
-      <h3>依据</h3>
+      <h3>${escapeHtml(title)}</h3>
       <ul>${links}</ul>
     </section>
   `;
 }
 
+function renderFacts(guideData) {
+  return guideData.facts
+    .slice(0, 4)
+    .map(([label, value]) => `<div class="modal-fact"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`)
+    .join("");
+}
+
 function renderDetailSections(item) {
-  const body = item.sections
+  const guideData = getGuide(item);
+  const guideSections = [
+    { title: "怎么玩", items: guideData.play },
+    { title: "时间预算", items: guideData.time },
+    { title: "交通要点", items: guideData.route },
+    { title: "最佳条件", items: guideData.best },
+    { title: "别踩坑", items: guideData.avoid }
+  ];
+  const allSections = [...guideSections, ...item.sections];
+  const body = allSections
     .map(
       (section) => `
         <section>
@@ -1174,7 +2051,38 @@ function renderDetailSections(item) {
     )
     .join("");
 
-  return body + renderSources(item.sources);
+  return body + renderSources([...(item.sources || []), ...(guideData.sources || [])]);
+}
+
+function icon(name) {
+  return `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+}
+
+function renderTransfers() {
+  transferList.innerHTML = coreTransfers
+    .map(
+      (transfer) => `
+        <details class="transfer-card${transfer.caution ? " is-caution" : ""}">
+          <summary class="transfer-summary">
+            <span class="transfer-icon" aria-hidden="true">${icon(transfer.icon || "route")}</span>
+            <div class="transfer-route">
+              <strong>${escapeHtml(transfer.from)} -> ${escapeHtml(transfer.to)}</strong>
+              <small>${escapeHtml(transfer.status)} / ${escapeHtml(transfer.time)}</small>
+            </div>
+            <span class="transfer-disclosure" aria-hidden="true">${icon("plus")}</span>
+          </summary>
+          <div class="transfer-main">
+            <p class="transfer-verdict">${escapeHtml(transfer.verdict)}</p>
+            <ol class="transfer-steps">
+              ${transfer.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
+            </ol>
+            <p class="transfer-note">${escapeHtml(transfer.note)}</p>
+            ${renderSources(transfer.sources, "交通依据")}
+          </div>
+        </details>
+      `
+    )
+    .join("");
 }
 
 function renderNode(item, level = 1) {
@@ -1189,7 +2097,7 @@ function renderNode(item, level = 1) {
       <div class="tree-row">
         ${
           hasChildren
-            ? `<button class="toggle-button" type="button" data-toggle-id="${item.id}" aria-expanded="${expanded}" aria-label="${expanded ? "收起" : "展开"}${escapeHtml(item.title)}">${expanded ? "−" : "+"}</button>`
+            ? `<button class="toggle-button" type="button" data-toggle-id="${item.id}" aria-expanded="${expanded}" aria-label="${expanded ? "收起" : "展开"}${escapeHtml(item.title)}">${icon(expanded ? "minus" : "plus")}</button>`
             : `<span class="toggle-placeholder" aria-hidden="true"></span>`
         }
         <button class="name-button" type="button" data-detail-id="${item.id}">
@@ -1217,6 +2125,7 @@ function openDetail(id) {
   modalKind.textContent = item.hub ? `${kindLabels[item.type]} / 枢纽` : kindLabels[item.type];
   modalTitle.textContent = item.title;
   modalSummary.textContent = item.summary;
+  modalFacts.innerHTML = renderFacts(getGuide(item));
   modalTags.innerHTML = renderTags(item.tags);
   modalSections.innerHTML = renderDetailSections(item);
 
@@ -1267,4 +2176,5 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+renderTransfers();
 renderOutline();
