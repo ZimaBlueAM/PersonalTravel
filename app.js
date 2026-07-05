@@ -135,9 +135,25 @@ const sourceLinks = {
     label: "JNTO: A day out in Otaru",
     url: "https://www.japan.travel/en/uk/inspiration/a-day-out-in-otaru/"
   },
+  otaruSakaimachi: {
+    label: "Otaru Sakaimachi guide / local shops",
+    url: "https://unga-plus.com/en/blogs/otaru/2608987"
+  },
+  otaruCanalCruise: {
+    label: "Otaru Canal Cruise official",
+    url: "https://otaru.cc/en/"
+  },
   nikkaYoichi: {
     label: "Nikka Whisky: Hokkaido Yoichi Distillery",
     url: "https://www.nikka.com/en/distilleries/yoichi/"
+  },
+  nikkaVisit: {
+    label: "Nikka Yoichi: how to enjoy / visitor facilities",
+    url: "https://www.nikka.com/en/distilleries/yoichi/visit/"
+  },
+  nikkaReservation: {
+    label: "Nikka Yoichi: reservations",
+    url: "https://distillery.nikka.com/eng/yoichi/reservation"
   },
   jntoNikka: {
     label: "JNTO: Nikka Whisky Yoichi Distillery",
@@ -150,6 +166,22 @@ const sourceLinks = {
   capeKamuiAccess: {
     label: "Good Luck Trip: Cape Kamui access",
     url: "https://www.gltjp.com/en/directory/item/14829/"
+  },
+  chuoShakotanTour: {
+    label: "Hokkaido Chuo Bus: All of Shakotan tour",
+    url: "https://teikan.chuo-bus.co.jp/en/course/289"
+  },
+  shakotanTownBus: {
+    label: "Shakotan town community bus",
+    url: "https://www.town.shakotan.lg.jp/contents/post-148.html"
+  },
+  shakotanBusToday: {
+    label: "Shakotan Tourism: community bus daily operation",
+    url: "https://www.kanko-shakotan.jp/%E7%A9%8D%E4%B8%B9%E7%94%BA%E7%94%9F%E6%B4%BB%E4%BA%A4%E9%80%9A%E3%83%90%E3%82%B9%E6%98%8E%E6%97%A5%E3%81%AE%E9%81%8B%E8%A1%8C/"
+  },
+  takimotokanAccess: {
+    label: "Dai-ichi Takimotokan: Noboribetsu access",
+    url: "https://takimotokan.co.jp/en/access/"
   },
   biei: {
     label: "Biei Tourism Association",
@@ -856,7 +888,7 @@ const outline = [
           ["札幌-小樽属于 JR 函馆线方向短程移动；本次 JR 北海道区域摘要处于服务时间外，出发前按札幌区域和函馆线车次再查。", "它是可选城市，不影响主线南下。"],
           ["体力一般时优先小樽，不要硬上神威岬。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "otaruCanal", "otaruSakaimachi"],
         children: [
           spot({
             id: "spot-otaru-canal",
@@ -866,10 +898,11 @@ const outline = [
             tags: ["可选子目的地", "核心画面"],
             summary: "仓库、水面和灯光构成小樽最直接的画面。",
             sections: sections(
-              ["傍晚到夜晚最有氛围。"],
-              ["从小樽站步行可达。"],
-              ["小樽只选一个点时，选运河。"]
-            )
+              ["傍晚到夜晚最有氛围；Hokkaido Love 写明运河长约 1,140 米、沿线有旧石仓库和 63 盏煤气灯。"],
+              ["从小樽站步行可达；若想更轻松，可把 35-40 分钟 Canal Cruise 作为坐着看运河的替代玩法。"],
+              ["小樽只选一个点时，选运河；但正午只拍一张会很普通，最好留到黄昏。"]
+            ),
+            sources: ["otaruCanal", "otaruCanalCruise"]
           }),
           spot({
             id: "spot-sakaimachi",
@@ -879,10 +912,11 @@ const outline = [
             tags: ["可选子目的地", "玻璃与甜品"],
             summary: "旧建筑、甜品和玻璃街区串成轻松步行线。",
             sections: sections(
-              ["这里适合不赶路地慢逛。"],
-              ["与小樽运河自然串联。"],
-              ["不要排成任务清单，留时间吃东西。"]
-            )
+              ["这里适合不赶路地慢逛；本地街区指南把堺町通定位为小樽代表性的购物和美食街，集中北一硝子、LeTAO、音乐盒和历史建筑。"],
+              ["与小樽运河自然串联，按步行街区处理，不需要额外交通。"],
+              ["不要排成任务清单，留时间吃东西；只选 2-3 个店铺锚点就够。"]
+            ),
+            sources: ["otaruSakaimachi", "otaruDay"]
           }),
           spot({
             id: "spot-otaru-glass-dessert",
@@ -896,7 +930,7 @@ const outline = [
               ["从运河和堺町通步行串联，不需要额外 JR。"],
               ["人多时只选一家坐下休息，别每家都排。"]
             ),
-            sources: ["otaruDay", "otaruCanal"]
+            sources: ["otaruDay", "otaruCanal", "otaruSakaimachi"]
           })
         ]
       }),
@@ -909,10 +943,10 @@ const outline = [
         summary: "比小樽更安静，核心是 Nikka 威士忌蒸馏所。",
         sections: sections(
           ["余市适合看红砖厂房、蒸馏器和小城尺度。"],
-          ["札幌到余市通常经小樽方向，JR 可达但班次比札幌-小樽少，必须查当天时刻。", jrHokkaidoLiveNote],
+          ["札幌到余市通常经小樽方向，JR 可达但班次比札幌-小樽少，必须查当天时刻。", "Nikka 余市官网把玩法分成预约导览和无需预约的 Casual Visit；导览需预约，且官网写明导览仅日语。", jrHokkaidoLiveNote],
           ["适合小樽之外的安静日，不适合和神威岬硬塞满。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "nikkaYoichi", "nikkaVisit", "nikkaReservation"],
         children: [
           spot({
             id: "spot-nikka",
@@ -923,9 +957,10 @@ const outline = [
             summary: "红砖、蒸馏器、厂区尺度，是余市的主理由。",
             sections: sections(
               ["这里的价值不是单纯买酒，而是看工业空间和小城共存。"],
-              ["从余市站可步行到达；内部参观、试饮和预约以当天官方规则为准。"],
-              ["若没有预约，也可以只做外部和街区散步。"]
-            )
+              ["从余市站可步行到达；官网写明导览需要提前预约，Casual Visit 可看 Nikka Museum、付费 tasting bar、商店和 Rita's Kitchen。"],
+              ["若没有导览预约，也可以只做博物馆、商店、餐厅和街区散步；但 closed dates 与最后点单时间要出发前查。"]
+            ),
+            sources: ["nikkaYoichi", "nikkaVisit", "nikkaReservation", "jntoNikka"]
           }),
           spot({
             id: "spot-yoichi-walk",
@@ -952,10 +987,10 @@ const outline = [
         summary: "札幌段最重的海岸选择。风景强，交通也最麻烦。",
         sections: sections(
           ["它的回报是日本海断崖、海色和尽头感。"],
-          ["神威岬不能按 JR 直达处理，通常要 JR 到小樽/余市方向后接巴士或其他公路交通。", "JR 状态正常不等于这条支线一定顺，巴士班次、季节和天气才是决定因素。"],
-          ["只在晴天、风不大、体力足时选。它是整日支线，不是顺手加点。"]
+          ["神威岬不能按 JR 直达处理。最省心是中央巴士定期观光巴士；自由行则要查小樽/美国方向巴士、积丹町生活交通巴士、预约运行和当天运行公告。", "JR 状态正常不等于这条支线一定顺，巴士班次、季节、预约和天气才是决定因素。"],
+          ["只在晴天、风不大、体力足时选。它是整日支线，不是顺手加点；如果交通链不漂亮，直接降级小樽或登别。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday"],
         children: [
           spot({
             id: "spot-kamui-path",
@@ -965,10 +1000,11 @@ const outline = [
             tags: ["可选子目的地", "天气依赖"],
             summary: "沿海岬步行到日本海尽头。",
             sections: sections(
-              ["身体参与感强，风、坡度、海色都决定体验。"],
-              ["步道开放与否、风雨情况要当天查。"],
-              ["当天不要再安排远支线。"]
-            )
+              ["身体参与感强，风、坡度、海色都决定体验；中央巴士线路介绍写明岬角步道约 770 米通向尽头。"],
+              ["步道开放与否、风雨情况要当天查；Hokkaido Love 标注这里是 80 米级断崖和 300 度海景。"],
+              ["当天不要再安排远支线，回札幌后只吃饭。"]
+            ),
+            sources: ["capeKamui", "chuoShakotanTour"]
           }),
           spot({
             id: "spot-shakotan-blue",
@@ -978,10 +1014,11 @@ const outline = [
             tags: ["可选子目的地", "晴天优先"],
             summary: "晴天海色很强，阴雨天价值明显下降。",
             sections: sections(
-              ["它是这条支线的视觉核心。"],
-              ["交通不只看 JR，还要看巴士与道路条件。"],
-              ["天气普通时换小樽更稳。"]
-            )
+              ["它是这条支线的视觉核心；阴雨天海色会大幅降级。"],
+              ["交通不只看 JR，还要看巴士、预约运行、道路条件和观光巴士是否发车。"],
+              ["天气普通时换小樽更稳；想保留海岸但降低风险，可只跟定期观光巴士。"]
+            ),
+            sources: ["capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday"]
           })
         ]
       }),
@@ -994,10 +1031,10 @@ const outline = [
         summary: "如果你们想把北海道段做得更松，登别是比神威岬更稳的温泉替代。",
         sections: sections(
           ["登别的核心不是城市，而是火山地貌、地狱谷和温泉街。"],
-          ["JR 北海道官方推荐路线写明新千岁机场/札幌方向可到登别站，再接巴士到登别温泉；JNTO 也说明温泉街离登别站约 15 分钟巴士。"],
+          ["JR 北海道官方推荐路线写明新千岁机场/札幌方向可到登别站，再接巴士到登别温泉；JNTO 也说明温泉街离登别站约 15 分钟巴士。", "Dai-ichi Takimotokan 交通页也把登别站到登别温泉写成道南巴士约 15 分钟、出租约 13 分钟。"],
           ["它适合替代神威岬或余市，不适合再叠加到同一天。"]
         ),
-        sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto"],
+        sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto", "takimotokanAccess"],
         children: [
           spot({
             id: "spot-jigokudani",
@@ -1022,10 +1059,10 @@ const outline = [
             summary: "真正让登别成立的是泡汤和恢复，而不是继续打卡。",
             sections: sections(
               ["适合把札幌段从赶路模式切成恢复模式。"],
-              ["日归汤、旅馆餐和温泉街营业时间要按当天确认。"],
+              ["日归汤、旅馆餐和温泉街营业时间要按当天确认；登别站到温泉街末端巴士不是 JR，一定要单独查。"],
               ["泡汤后不要再安排长步行或远距离返回。"]
             ),
-            sources: ["noboribetsuOfficial", "jrNoboribetsuToyako"]
+            sources: ["noboribetsuOfficial", "jrNoboribetsuToyako", "takimotokanAccess"]
           })
         ]
       }),
@@ -2742,57 +2779,57 @@ const detailGuides = {
   }),
   "city-otaru": guide({
     facts: [["角色", "札幌短支线"], ["时间", "半日"], ["适合", "轻松日"], ["交通", "JR短线"]],
-    play: ["下午去运河，傍晚看灯，再吃海鲜或甜品。", "如果体力足，运河后接堺町通；体力弱，只做运河。"],
+    play: ["下午去运河，傍晚看灯，再吃海鲜或甜品。", "如果体力足，运河后接堺町通；体力弱，只做运河。", "你们的重点不是把小樽扫完，而是让札幌段有一个低风险、可坐下、可慢逛的港口日。"],
     time: ["紧凑：3-4 小时。", "舒服：半日到夜晚。"],
     route: ["札幌到小樽是 JR 函馆线方向短线，出发当天查班次。"],
     best: ["傍晚和夜色比正午更值得。", "雨天也能逛仓库和室内店。"],
     avoid: ["不要和神威岬绑成赶路日。"],
-    sources: ["otaruCanal", "otaruDay", "operation"]
+    sources: ["otaruCanal", "otaruDay", "otaruSakaimachi", "otaruCanalCruise", "operation"]
   }),
   "spot-otaru-canal": guide({
     facts: [["角色", "小樽主画面"], ["时间", "45-90分钟"], ["最佳", "黄昏"], ["交通", "站后步行"]],
-    play: ["从浅草桥附近开始，沿水面慢走，等灯亮。", "一边看旧仓库和水面反射，一边决定是否吃晚饭再回札幌。"],
+    play: ["从浅草桥附近开始，沿水面慢走，等灯亮。", "一边看旧仓库和水面反射，一边决定是否吃晚饭再回札幌。", "如果腿累，用 Canal Cruise 代替一部分步行；官方游船写明约 35-40 分钟。"],
     time: ["只看：45 分钟。", "含晚饭：2 小时以上。"],
     route: ["从小樽站步行可达。"],
     best: ["傍晚灯光和水面最稳。"],
     avoid: ["正午匆匆打卡会显得很普通。"],
-    sources: ["otaruCanal"]
+    sources: ["otaruCanal", "otaruCanalCruise"]
   }),
   "spot-sakaimachi": guide({
     facts: [["角色", "慢逛街区"], ["时间", "1-2小时"], ["适合", "雨天"], ["交通", "步行串联"]],
-    play: ["从运河自然切到堺町通，看玻璃、甜品、旧商家立面。", "只挑 2-3 家店，不要逛成商场任务。"],
+    play: ["从运河自然切到堺町通，看玻璃、甜品、旧商家立面。", "只挑 2-3 家店，不要逛成商场任务。", "堺町通适合把北一硝子、LeTAO、音乐盒和海鲜小吃当成“锚点”，不是每家都进。"],
     time: ["1 小时轻逛，2 小时含咖啡。"],
     route: ["从小樽运河步行串联。"],
     best: ["下午和雨天更舒服。"],
     avoid: ["人多时不要每家店都排队。"],
-    sources: ["otaruDay"]
+    sources: ["otaruDay", "otaruSakaimachi"]
   }),
   "spot-otaru-glass-dessert": guide({
     facts: [["角色", "慢逛休息"], ["时间", "1-2小时"], ["适合", "雨天"], ["交通", "步行"]],
-    play: ["把北一硝子方向当旧商街质感，把 LeTAO 方向当坐下休息。", "只选一到两家店，保留运河傍晚。"],
+    play: ["把北一硝子方向当旧商街质感，把 LeTAO 方向当坐下休息。", "只选一到两家店，保留运河傍晚。", "甜品和玻璃店的价值是降低节奏：买小件、坐下、等黄昏，不要被排队牵着走。"],
     time: ["短逛 45 分钟。", "含甜品 1.5-2 小时。"],
     route: ["和堺町通、运河步行串联。"],
     best: ["下午、雨天、低体力日。"],
     avoid: ["易碎品别买太多。", "热门甜品排队很长时直接换店。"],
-    sources: ["otaruDay", "otaruCanal"]
+    sources: ["otaruDay", "otaruCanal", "otaruSakaimachi"]
   }),
   "city-yoichi": guide({
     facts: [["角色", "工业+小城"], ["时间", "半日"], ["重点", "Nikka"], ["交通", "经小樽JR"]],
-    play: ["把 Nikka 当主目的地，街区散步当留白。", "若没有参观预约，也可以看厂区外部、博物馆和商店开放部分。"],
+    play: ["把 Nikka 当主目的地，街区散步当留白。", "若没有参观预约，也可以看厂区外部、博物馆和商店开放部分。", "官网把 Casual Visit、Nikka Museum、Tasting Bar、Distillery Shop 和 Rita's Kitchen 分开列出，所以没有导览也不是白跑。"],
     time: ["Nikka 参观 1.5-2.5 小时。", "含往返札幌：半日以上。"],
-    route: ["札幌到余市通常经小樽，班次少于小樽线。"],
+    route: ["札幌到余市通常经小樽，班次少于小樽线。", "导览预约和 JR 回程要一起看，别把预约时间压在短换乘后。"],
     best: ["喜欢工业空间、威士忌、安静小城时值得。"],
     avoid: ["不要和神威岬同日硬排，除非包车且体力充足。"],
-    sources: ["nikkaYoichi", "jntoNikka", "operation"]
+    sources: ["nikkaYoichi", "nikkaVisit", "nikkaReservation", "jntoNikka", "operation"]
   }),
   "spot-nikka": guide({
     facts: [["角色", "余市核心"], ["时间", "1.5-2.5小时"], ["预约", "按官网"], ["交通", "站后步行"]],
-    play: ["看红砖厂房、蒸馏器、仓库和品牌历史。", "参观后再决定是否试饮和买小瓶，不要把它变成购物点。"],
+    play: ["看红砖厂房、蒸馏器、仓库和品牌历史。", "参观后再决定是否试饮和买小瓶，不要把它变成购物点。", "官网写明导览需预约且为日语；不预约时走博物馆、付费 tasting bar、商店、Rita's Kitchen 这条轻线。"],
     time: ["短看 1 小时，完整参观 2 小时左右。"],
-    route: ["JR 到余市站后短步行。"],
+    route: ["JR 到余市站后短步行。", "Rita's Kitchen 与 tasting bar 有最后点单时间，先看官网再决定午饭是否放这里。"],
     best: ["晴雨都可。"],
     avoid: ["官网 closed dates 和预约规则要先查。"],
-    sources: ["nikkaYoichi", "jntoNikka"]
+    sources: ["nikkaYoichi", "nikkaVisit", "nikkaReservation", "jntoNikka"]
   }),
   "spot-yoichi-walk": guide({
     facts: [["角色", "留白"], ["时间", "30-60分钟"], ["适合", "Nikka后"], ["交通", "步行"]],
@@ -2801,43 +2838,43 @@ const detailGuides = {
     route: ["和 Nikka 同日步行完成；JR 回札幌/小樽的时刻先查好。"],
     best: ["天气好时加，不好就删。"],
     avoid: ["不要为它单独开一天。"],
-    sources: ["nikkaYoichi", "jntoNikka", "operation"]
+    sources: ["nikkaYoichi", "nikkaVisit", "jntoNikka", "operation"]
   }),
   "city-kamui": guide({
     facts: [["角色", "西海岸重体验"], ["时间", "整日"], ["风险", "风雨/末端巴士"], ["交通", "非JR直达"]],
     play: ["只在晴天把它升级为当天主线。", "早出发，到岬角步道后慢走，不再贪其他远点。"],
     time: ["从札幌出发通常按整日处理。", "岬角本身 1-2 小时。"],
-    route: ["JR 只能负责到小樽/余市方向，末端依赖巴士、包车或自驾。"],
+    route: ["JR 只能负责到小樽/余市方向，末端依赖巴士、包车或自驾。", "低风险方案是中央巴士定期观光巴士；自由行方案要查美国方向巴士、积丹町生活交通巴士、预约运行和当天运行公告。"],
     best: ["晴天、低风、能见度好。"],
     avoid: ["风雨天直接降级，不要和末班交通赌博。"],
-    sources: ["capeKamui", "operation"]
+    sources: ["capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday", "operation"]
   }),
   "spot-kamui-path": guide({
     facts: [["角色", "断崖步行"], ["时间", "60-120分钟"], ["体力", "中"], ["天气", "强依赖"]],
-    play: ["把步道当核心体验：海色、风、坡度、灯塔都要慢慢看。"],
-    time: ["步道往返和停留 1-2 小时。"],
-    route: ["到岬角后步行，开放状况看现场。"],
+    play: ["把步道当核心体验：海色、风、坡度、灯塔都要慢慢看。", "中央巴士线路介绍写明岬角步道约 770 米，不适合用赶路心态完成。"],
+    time: ["步道往返和停留 1-2 小时；从札幌往返按整日处理。"],
+    route: ["到岬角后步行，开放状况看现场。", "自由行末端要查积丹町生活交通巴士和当天运行公告；观光巴士则按当天课程发车规则。"],
     best: ["晴天海色最强。"],
     avoid: ["大风、雨、关闭时不要硬走。"],
-    sources: ["capeKamui"]
+    sources: ["capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday"]
   }),
   "spot-shakotan-blue": guide({
     facts: [["角色", "海色"], ["时间", "30-60分钟"], ["最佳", "晴天"], ["取舍", "阴天降级"]],
-    play: ["不要追很多点，只找一个开阔视角看海色。"],
+    play: ["不要追很多点，只找一个开阔视角看海色。", "如果想同时看岛武意海岸/玻璃船/海鲜丼，定期观光巴士比自己拼公共交通更松。"],
     time: ["30 分钟看海，1 小时拍照和休息。"],
-    route: ["末端交通以公路为主。"],
+    route: ["末端交通以公路为主；天气、海况和运行日都会影响体验。"],
     best: ["太阳出来才是主体验。"],
     avoid: ["阴雨天不要为它牺牲小樽。"],
-    sources: ["capeKamui"]
+    sources: ["capeKamui", "chuoShakotanTour", "shakotanTownBus"]
   }),
   "city-noboribetsu": guide({
     facts: [["角色", "温泉替代线"], ["时间", "半日-一日"], ["交通", "JR+巴士"], ["取舍", "替代神威岬"]],
     play: ["从札幌出发时，把登别当恢复日：地狱谷散步、温泉街、日归汤。", "如果愿意拆住宿，它也可以作为札幌到函馆之间的中继点。"],
     time: ["札幌往返按半日偏重到一日。", "地狱谷+泡汤至少 3-5 小时。"],
-    route: ["JR 到登别站后，还要坐道南巴士/接驳到登别温泉。", "JR 北海道模型路线写新千岁机场-登别站后接约 20 分钟巴士；JNTO 说明温泉街距登别站约 15 分钟巴士。"],
+    route: ["JR 到登别站后，还要坐道南巴士/接驳到登别温泉。", "JR 北海道模型路线写新千岁机场-登别站后接约 20 分钟巴士；JNTO 说明温泉街距登别站约 15 分钟巴士。", "Dai-ichi Takimotokan 交通页也写登别站到温泉区道南巴士约 15 分钟、出租约 13 分钟。"],
     best: ["雨天、风大不适合岬角、想恢复体力时。"],
     avoid: ["不要把登别和神威岬排同一天。", "巴士不含在部分 JR pass 内，末端费用和班次要另查。"],
-    sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto"]
+    sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto", "takimotokanAccess"]
   }),
   "spot-jigokudani": guide({
     facts: [["角色", "登别主画面"], ["时间", "45-90分钟"], ["交通", "温泉街步行"], ["天气", "风雨慎重"]],
@@ -2852,16 +2889,16 @@ const detailGuides = {
     facts: [["角色", "泡汤恢复"], ["时间", "2-3小时"], ["交通", "巴士到温泉街"], ["重点", "日归汤"]],
     play: ["先定日归汤或旅馆午餐，再反推巴士回登别站。", "泡完只做轻晚饭，不再加远点。"],
     time: ["泡汤+休息 2-3 小时。"],
-    route: ["登别站到温泉街需巴士/出租，回程末班要先看。"],
+    route: ["登别站到温泉街需巴士/出租；Dai-ichi Takimotokan 交通页写道南巴士约 15 分钟、出租约 13 分钟。", "回程末班要先看；直达札幌/机场的高速巴士多为预约制，若临时改线不要默认有座。"],
     best: ["长支线取消日、天气不稳日、北海道前半段疲劳时。"],
     avoid: ["泡汤后赶换乘很难受；不要把回程压太紧。"],
-    sources: ["noboribetsuOfficial", "jrNoboribetsuToyako"]
+    sources: ["noboribetsuOfficial", "jrNoboribetsuToyako", "takimotokanAccess"]
   }),
   "city-lake-toya": guide({
     facts: [["角色", "湖区替代线"], ["时间", "一日/中继"], ["交通", "JR洞爷站+巴士"], ["风险", "末端班次"]],
     play: ["最舒服是湖畔散步、温泉街、坐下看湖。", "如果想看火山视角，再加有珠山缆车，不要两边都赶。"],
     time: ["札幌往返偏重；作为去函馆前中继更舒服。", "湖畔+午饭 3-4 小时。"],
-    route: ["JR 到洞爷站后，接道南巴士或出租到洞爷湖温泉。", "官方旅游协会和道南巴士均把 Toya Station -> Toyako Onsen 作为末端交通。"],
+    route: ["JR 到洞爷站后，接道南巴士或出租到洞爷湖温泉。", "官方旅游协会写 JR 洞爷站到湖区需道南巴士或出租；从札幌有预约制巴士约 2小时45分，洞爷站到湖区约 20 分钟。"],
     best: ["晴天、想看湖、愿意慢下来时。"],
     avoid: ["不要把洞爷湖、登别、函馆山压成同一天。", "有珠山方向交通更脆弱，先查再加。"],
     sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto", "jrNoboribetsuToyako"]
@@ -3912,16 +3949,25 @@ const levelLabels = {
 const foodTips = {
   "base-sapporo": ["札幌段优先把拉面、海鲜市场、便利店补给和药妆放在同一晚解决。", "二条市场适合早饭或看海鲜，薄野/狸小路适合雨天晚饭。"],
   "city-sapporo": ["低体力时选酒店附近拉面或汤咖喱，不必跨城追店。", "二条市场更适合早去；晚上用薄野和狸小路收尾。"],
+  "spot-odori": ["大通公园不是正餐点，适合接电视塔周边咖啡或回札幌站/薄野吃饭。", "落地后只做短散步，别为了餐厅绕远。"],
+  "spot-susukino": ["薄野/狸小路适合拉面、汤咖喱、居酒屋和便利店补给。", "雨天优先有屋顶的狸小路，排队太长就换邻近店。"],
   "spot-sapporo-food": ["二条市场看海鲜，拉面街看札幌味噌拉面的集中度。", "先看近期评价和排队，再决定具体店名。"],
   "city-otaru": ["小樽吃法不必复杂：运河附近海鲜、堺町通甜品、玻璃店慢逛即可。", "LeTAO、北一硝子方向适合雨天或下午休息。"],
+  "spot-otaru-canal": ["运河周边适合海鲜饭、寿司、咖啡或晚饭后散步。", "如果想坐下看小樽，不要只在桥上拍照就走。"],
+  "spot-sakaimachi": ["堺町通适合 LeTAO、北一硝子、音乐盒、蒲鉾/小吃和咖啡。", "只选少数锚点慢逛，不要把甜品街走成任务。"],
   "spot-otaru-glass-dessert": ["把甜品店当休息点，不要每家都排。", "玻璃店适合买小件，注意行李重量和易碎。"],
   "city-yoichi": ["Nikka 内部餐厅和商店要按当天开放情况看；没有预约也可把余市做成轻散步。", "试饮后不要再安排紧张交通。"],
   "spot-nikka": ["Rita's Kitchen 和蒸馏所商店适合顺手解决，不要为了购物拖到末班。", "酒类购买要考虑行李和航空限制。"],
+  "spot-yoichi-walk": ["余市街区只做轻补给或咖啡，不要期待大城市探店密度。", "如果 Nikka 内部餐厅开放，优先在蒸馏所解决。"],
   "city-kamui": ["岬角没有稳定餐饮期待，出发前在札幌/小樽/余市补水和轻食。", "晴天跑岬角，晚饭回札幌或小樽解决更稳。"],
+  "spot-kamui-path": ["神威岬步道前先准备水和轻食，现场不适合把吃饭当核心。", "跟定期观光巴士时按包含午餐/停留时间安排，不要临时脱队找餐厅。"],
+  "spot-shakotan-blue": ["积丹海岸的吃饭重点通常是海鲜丼/海胆季，但要看季节和交通。", "公共交通玩法不要为了餐厅错过末端回程。"],
   "city-noboribetsu": ["登别适合把餐饮和泡汤绑定在温泉街完成。", "日归汤、旅馆餐和温泉街小店的营业时间要出发前确认。"],
   "spot-jigokudani": ["地狱谷本身不是吃饭点，先在温泉街补水。", "硫磺步道后更适合坐下泡汤或吃轻食。"],
+  "spot-noboribetsu-onsen-town": ["温泉街适合日归汤、旅馆餐、冰淇淋/咖啡和土产。", "泡汤后只做轻晚饭，别再赶远路。"],
   "city-lake-toya": ["洞爷湖适合湖边咖啡、旅馆餐或温泉街简单晚饭。", "先查洞爷站回程巴士，再决定是否坐下吃久一点。"],
   "spot-toyako-lakeside": ["湖边更适合慢餐和咖啡，不适合赶热门店。", "花火季或天气好时，晚饭后湖边散步价值更高。"],
+  "spot-usuzan-showa": ["有珠山/昭和新山方向先解决交通和缆车，餐饮只做附属。", "湖畔或温泉街更适合正餐，缆车方向不要拖到回程巴士后。"],
   "base-asahikawa": ["旭川适合用拉面收住移动日；站前名店省交通，拉面村更像集合体验。", "第二天要跑美瑛/富良野时，前一晚不要排长队太久。"],
   "city-asahikawa": ["站前拉面名店适合低成本尝试，拉面村适合想比较多家风格的人。", "把吃饭和查第二天交通放在同一段时间。"],
   "spot-asahikawa-ramen": ["酱油汤底是旭川拉面的核心识别。", "选店时看当天营业、排队、离酒店距离，而不是只看排名。"],
@@ -4004,12 +4050,25 @@ const foodTips = {
 const reviewQueries = {
   "base-sapporo": "札幌 美食 旅行 攻略",
   "city-sapporo": "札幌 二条市场 薄野 汤咖喱 拉面",
+  "spot-odori": "札幌 大通公园 电视塔 咖啡",
+  "spot-susukino": "札幌 薄野 狸小路 拉面 汤咖喱",
   "spot-sapporo-food": "札幌 二条市场 拉面 横丁",
   "city-otaru": "小樽 运河 堺町通 LeTAO",
+  "spot-otaru-canal": "小樽 运河 夜景 Canal Cruise 海鲜",
+  "spot-sakaimachi": "小樽 堺町通 北一硝子 LeTAO 音乐盒",
+  "spot-otaru-glass-dessert": "小樽 北一硝子 LeTAO 甜品 堺町通",
   "city-yoichi": "余市 Nikka 蒸馏所 参观",
+  "spot-nikka": "余市 Nikka 蒸馏所 预约 Rita's Kitchen",
+  "spot-yoichi-walk": "余市 Nikka 周边 散步 咖啡",
   "city-kamui": "神威岬 积丹 交通 天气",
+  "spot-kamui-path": "神威岬 步道 积丹 交通 天气",
+  "spot-shakotan-blue": "积丹蓝 海岸 岛武意海岸 海鲜丼 交通",
   "city-noboribetsu": "登别温泉 地狱谷 日归温泉",
+  "spot-jigokudani": "登别 地狱谷 步道 温泉街",
+  "spot-noboribetsu-onsen-town": "登别温泉 日归汤 温泉街 餐厅",
   "city-lake-toya": "洞爷湖 温泉 湖畔 有珠山 交通",
+  "spot-toyako-lakeside": "洞爷湖 湖畔 温泉街 咖啡 花火",
+  "spot-usuzan-showa": "有珠山 昭和新山 缆车 洞爷湖 交通",
   "city-asahikawa": "旭川 拉面 站前",
   "city-biei": "美瑛 拼布之路 青池 交通",
   "spot-patchwork": "美瑛 拼布之路 电动自行车 包车",
