@@ -12,6 +12,9 @@ Most place images are downloaded from Wikimedia Commons / Wikipedia thumbnails a
 - Nikka Whisky Yoichi Distillery: https://commons.wikimedia.org/wiki/File:130823Nikka_Wisky_Yoichi_Distillery_Hokkaido_Japan02s3.jpg
 - Cape Kamui: https://en.wikipedia.org/wiki/Cape_Kamui
 - Biei: https://en.wikipedia.org/wiki/Biei,_Hokkaido
+- Biei Patchwork Road: https://commons.wikimedia.org/wiki/File:140724_Biei_Hokkaido_Japan01s8.jpg
+- Shirogane Blue Pond: https://commons.wikimedia.org/wiki/File:Hokkaido_-_Biei,_blue_pond_(9962205026).jpg
+- Shikisai-no-Oka: https://commons.wikimedia.org/wiki/File:140726_Shikisai-no-oka_Biei_Hokkaido_Japan01n.jpg
 - Furano / Farm Tomita: https://commons.wikimedia.org/wiki/File:Furano_Lavender_FarmTomita.jpg
 - Obihiro: https://en.wikipedia.org/wiki/Obihiro
 - Akkeshi / Cape Aikappu: https://commons.wikimedia.org/wiki/File:Cape_Aikappu.JPG

@@ -11,6 +11,10 @@ const placeImages = {
   lakeAkan: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg/1280px-Lake_Akan_Kushiro_Hokkaido_Japan01s3.jpg",
   lakeAkanPromenade: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Promenade_of_lake_akan_2017.jpg/1280px-Promenade_of_lake_akan_2017.jpg",
   ainuKotan: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg/1280px-Ainu_Kotan_Akan_Kushiro_Hokkaido_Japan22s.jpg",
+  bieiPatchwork: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/140724_Biei_Hokkaido_Japan01s8.jpg/1280px-140724_Biei_Hokkaido_Japan01s8.jpg",
+  bieiBluePond: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Hokkaido_-_Biei%2C_blue_pond_%289962205026%29.jpg/1280px-Hokkaido_-_Biei%2C_blue_pond_%289962205026%29.jpg",
+  shikisai: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/140726_Shikisai-no-oka_Biei_Hokkaido_Japan01n.jpg/1280px-140726_Shikisai-no-oka_Biei_Hokkaido_Japan01n.jpg",
+  farmTomita: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Furano_Lavender_FarmTomita.jpg/1280px-Furano_Lavender_FarmTomita.jpg",
   odori: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Odori_park_at_Sapporo_TV_tower.jpg/1280px-Odori_park_at_Sapporo_TV_tower.jpg",
   tanukikoji: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tanukikoji_01.jpg/1280px-Tanukikoji_01.jpg",
   asahikawaStation: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Asahikawa_city_Heiwa_street_shopping_park.jpg/1280px-Asahikawa_city_Heiwa_street_shopping_park.jpg",
@@ -145,6 +149,14 @@ const sourceLinks = {
     label: "Biei Tourism Association",
     url: "https://www.biei-hokkaido.jp/en/"
   },
+  bieiJnto: {
+    label: "JNTO: Biei",
+    url: "https://www.japan.travel/en/spot/1890/"
+  },
+  patchworkRoadGltjp: {
+    label: "Good Luck Trip: Patchwork Road",
+    url: "https://www.gltjp.com/en/directory/item/15893/"
+  },
   bluePondBiei: {
     label: "Biei Tourism Association: Shirogane Blue Pond",
     url: "https://www.biei-hokkaido.jp/en/facility/shirogane-blue-pond"
@@ -169,6 +181,18 @@ const sourceLinks = {
     label: "Farm Tomita official website",
     url: "https://www.farm-tomita.co.jp/en/"
   },
+  farmTomitaAccess: {
+    label: "Farm Tomita: access",
+    url: "https://www.farm-tomita.co.jp/en/access/"
+  },
+  farmTomitaStation: {
+    label: "Farm Tomita: Lavender Farm Station",
+    url: "https://www.farm-tomita.co.jp/en/access/station.asp"
+  },
+  farmTomitaJnto: {
+    label: "JNTO: Farm Tomita",
+    url: "https://www.japan.travel/en/spot/546/"
+  },
   farmTomitaEast: {
     label: "Farm Tomita: Lavender East",
     url: "https://www.farm-tomita.co.jp/en/east/"
@@ -176,6 +200,18 @@ const sourceLinks = {
   farmTomitaHokkaido: {
     label: "Hokkaido Love: Farm Tomita",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10174.html"
+  },
+  shikisaiOfficial: {
+    label: "Shikisai-no-oka official",
+    url: "https://www.shikisainooka.jp/en/"
+  },
+  shikisaiJnto: {
+    label: "JNTO: Shikisai no Oka",
+    url: "https://www.japan.travel/en/spot/1876/"
+  },
+  shikisaiHokkaido: {
+    label: "Hokkaido Love: Shikisai-no-Oka",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_10363.html"
   },
   asahikawaRamen: {
     label: "Hokkaido Love: Asahikawa Ramen Village",
@@ -463,6 +499,7 @@ const coreTransfers = [
   {
     id: "transfer-arrival",
     icon: "train",
+    mode: "JR Airport",
     from: "新千岁 CTS",
     to: "札幌基地",
     time: "约 40-50 分钟",
@@ -475,6 +512,7 @@ const coreTransfers = [
   {
     id: "transfer-sapporo-asahikawa",
     icon: "train",
+    mode: "JR 特急",
     from: "札幌基地",
     to: "旭川基地",
     time: "约 1.5 小时",
@@ -487,10 +525,11 @@ const coreTransfers = [
   {
     id: "transfer-asahikawa-kushiro",
     icon: "bus",
+    mode: "巴士 + JR / JR-only 备选",
     from: "旭川基地",
     to: "钏路基地",
     time: "约 6-9 小时",
-    status: "长移动日",
+    status: "需要预约/拆分判断",
     caution: true,
     verdict: "不要再写成旭川到钏路 JR 直通；公共交通要二选一。",
     steps: [
@@ -504,6 +543,7 @@ const coreTransfers = [
   {
     id: "transfer-kushiro-hakodate",
     icon: "train",
+    mode: "JR 特急拼接",
     from: "钏路基地",
     to: "函馆基地",
     time: "约 8-10 小时",
@@ -517,6 +557,7 @@ const coreTransfers = [
   {
     id: "transfer-hakodate-sendai",
     icon: "train",
+    mode: "Liner + 新干线",
     from: "函馆基地",
     to: "仙台基地",
     time: "约 3.5-4.5 小时",
@@ -533,6 +574,7 @@ const coreTransfers = [
   {
     id: "transfer-sendai-tokyo",
     icon: "train",
+    mode: "东北新干线",
     from: "仙台基地",
     to: "东京基地",
     time: "约 1.5-2 小时",
@@ -1059,7 +1101,7 @@ const outline = [
         id: "city-biei",
         title: "美瑛",
         meta: "可选城市 / 富良野线短支线",
-        image: img("biei"),
+        image: placeImages.bieiPatchwork,
         tags: ["可选城市", "丘陵农田"],
         summary: "看丘陵农田、拼布色块和缓坡道路。",
         sections: sections(
@@ -1067,39 +1109,41 @@ const outline = [
           ["旭川-美瑛属于富良野线方向；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "美瑛内部移动不全靠 JR，公交/包车/租车/骑行要提前决定。"],
           ["晴天价值高；天气普通就做短线。"]
         ),
-        sources: ["operation", "timetable"],
+        sources: ["operation", "timetable", "bieiJnto"],
         children: [
           spot({
             id: "spot-patchwork",
             title: "拼布之路",
             meta: "可选 / 丘陵农田",
-            image: img("biei"),
+            image: placeImages.bieiPatchwork,
             tags: ["可选子目的地", "核心"],
             summary: "农田、道路和丘陵形成清楚的空间图案。",
             sections: sections(
               ["这是美瑛最有识别度的画面。"],
               ["点位之间距离不短，公共交通需查班次。"],
               ["晴天优先。"]
-            )
+            ),
+            sources: ["biei", "patchworkRoadGltjp"]
           }),
           spot({
             id: "spot-blue-pond",
             title: "青池方向",
             meta: "可选 / 需查班次",
-            image: img("biei"),
+            image: placeImages.bieiBluePond,
             tags: ["可选子目的地", "进阶"],
             summary: "从农田结构切到颜色奇观。",
             sections: sections(
               ["青池和拼布之路不是同一种美。"],
               ["公共交通班次有限，不能临时硬加。"],
               ["体力一般时可以放弃。"]
-            )
+            ),
+            sources: ["bluePondBiei", "bluePond"]
           }),
           spot({
             id: "spot-shikisai",
             title: "四季彩之丘",
             meta: "可选 / 花田丘陵",
-            image: img("biei"),
+            image: placeImages.shikisai,
             tags: ["可选子目的地", "花田", "晴天"],
             summary: "比拼布之路更直接的花田画面，适合想要颜色更满的一站。",
             sections: sections(
@@ -1107,7 +1151,7 @@ const outline = [
               ["美瑛内部点位分散，必须和拼布之路/青池取舍。"],
               ["晴天好看，人多时停留不要过长。"]
             ),
-            sources: ["biei"]
+            sources: ["shikisaiOfficial", "shikisaiJnto", "shikisaiHokkaido"]
           }),
           spot({
             id: "spot-shirahige",
@@ -1129,7 +1173,7 @@ const outline = [
         id: "city-furano",
         title: "富良野",
         meta: "可选城市 / 富良野线",
-        image: img("furano"),
+        image: placeImages.farmTomita,
         tags: ["可选城市", "7月花田"],
         summary: "7月主视觉。花田、缓坡和远山构成北海道夏天。",
         sections: sections(
@@ -1137,33 +1181,35 @@ const outline = [
           ["旭川-富良野走富良野线；最新 JR 北海道区域级摘要显示有运行影响信息，出发前按富良野线具体班次再查。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
           ["可和美瑛同日，但不要接带广。"]
         ),
-        sources: ["operation", "furanoClosed"],
+        sources: ["operation", "furanoClosed", "jrFuranoBiei"],
         children: [
           spot({
             id: "spot-farm-tomita",
             title: "富田农场",
             meta: "可选 / 薰衣草主视觉",
-            image: img("furano"),
+            image: placeImages.farmTomita,
             tags: ["可选子目的地", "核心"],
             summary: "富良野最稳的花田主画面。",
             sections: sections(
               ["哪怕人多，它仍然是富良野最清楚的画面。"],
               ["旺季要早点出发。"],
               ["天气好时优先级高。"]
-            )
+            ),
+            sources: ["farmTomita", "farmTomitaAccess", "farmTomitaStation", "farmTomitaJnto"]
           }),
           spot({
             id: "spot-nakafurano",
             title: "中富良野花田",
             meta: "可选 / 坡面与远山",
-            image: img("furano"),
+            image: placeImages.farmTomita,
             tags: ["可选子目的地", "延展"],
             summary: "看花田坡面和远山关系。",
             sections: sections(
               ["它让富良野不只是单个花田，而是地形体验。"],
               ["与富田农场相近，仍需查末端交通。"],
               ["体力一般时二选一。"]
-            )
+            ),
+            sources: ["farmTomita", "farmTomitaHokkaido"]
           }),
           spot({
             id: "spot-furano-norokko",
@@ -2827,39 +2873,39 @@ const detailGuides = {
   }),
   "city-biei": guide({
     facts: [["角色", "丘陵农田"], ["时间", "半日-一日"], ["交通", "末端需规划"], ["最佳", "晴天"]],
-    play: ["先决定玩法：公交少点、骑行、包车或租车。", "只追一条路线：拼布之路或青池方向，不要两边乱切。"],
-    time: ["拼布之路半日。", "拼布+青池接近一日。"],
-    route: ["旭川到美瑛走富良野线；美瑛内部点位分散。"],
+    play: ["先决定交通玩法：JR 只负责把你带到美瑛/美马牛，真正的风景在站外分散点。", "只追一条路线：拼布之路看丘陵农田，或青池/白金温泉方向看颜色奇观，不要两边乱切。"],
+    time: ["拼布之路半日。", "拼布+青池接近一日，且更适合包车/租车/有明确巴士方案。"],
+    route: ["JNTO 写明美瑛可从旭川、富良野方向用火车、巴士、汽车进入；但美瑛内部景点并不等于 JR 到站即达。", "从旭川到美瑛走 JR 富良野线；到站前就要决定骑行、打车、包车、路线巴士或只做站周边短线。"],
     best: ["晴天、能见度高、云影明显。"],
-    avoid: ["不要到站后才想怎么去各个树和池。"],
-    sources: ["biei", "bluePond", "operation"]
+    avoid: ["不要到站后才想怎么去各个树和池。", "如果当天还要富田农场，最多选美瑛一个主题。"],
+    sources: ["biei", "bieiJnto", "bluePondBiei", "operation"]
   }),
   "spot-patchwork": guide({
     facts: [["角色", "美瑛主结构"], ["时间", "2-4小时"], ["交通", "点位分散"], ["最佳", "晴天"]],
-    play: ["把农田、坡路、树和远山当一个整体看。", "少下车，多留完整视野。"],
-    time: ["骑行/包车 2-4 小时。"],
-    route: ["公共交通有限，需提前选交通方式。"],
+    play: ["把农田、坡路、树和远山当一个整体看。", "这不是“找一棵树拍照”的点，而是丘陵农业景观：少下车，多留完整视野。"],
+    time: ["骑行/包车 2-4 小时。", "只短看一两个展望点也可以，不必补齐所有树。"],
+    route: ["Patchwork Road 是美瑛站外的丘陵区域，公共交通弱；现实选择是电助力自行车、包车/出租、租车或观光巴士。", "天气热或下雨时不要骑行硬撑。"],
     best: ["上午或傍晚光线更有层次。"],
-    avoid: ["不要为了单棵树到处追点。"],
-    sources: ["biei"]
+    avoid: ["不要为了单棵树到处追点。", "农地和私有地边界要尊重，不要进田。"],
+    sources: ["biei", "patchworkRoadGltjp"]
   }),
   "spot-blue-pond": guide({
     facts: [["角色", "颜色奇观"], ["时间", "45-90分钟"], ["交通", "需查班次"], ["最佳", "晴/薄云"]],
-    play: ["把它当美瑛的第二主题：颜色和枯木。", "如果人多，短看后撤，不必久留。"],
-    time: ["现场 45-90 分钟。"],
-    route: ["在白金温泉方向，末端交通不能临时赌。"],
+    play: ["把它当美瑛的第二主题：蓝色水面、枯木和白金温泉方向的火山水系。", "如果人多，短看后撤，不必久留。"],
+    time: ["现场 45-90 分钟。", "含巴士等待和白须瀑布会变成半日。"],
+    route: ["Biei Tourism 写明青池距美瑛约 20 分钟车程或路线巴士，可从 JR 旭川站或 JR 美瑛站搭 Dohoku Bus。", "JNTO 提醒去青池的巴士往返少，必须提前到站并锁回程。"],
     best: ["有光但不过曝时。"],
-    avoid: ["阴雨或大客流时性价比下降。"],
-    sources: ["bluePond", "biei"]
+    avoid: ["阴雨或大客流时性价比下降。", "不要把青池、拼布之路、四季彩之丘和富田农场都压进同一天。"],
+    sources: ["bluePondBiei", "bluePond", "jrFuranoBiei"]
   }),
   "spot-shikisai": guide({
     facts: [["角色", "花田色块"], ["时间", "1-2小时"], ["交通", "末端规划"], ["最佳", "晴天"]],
-    play: ["把它当美瑛的颜色补充，不要再追太多树。", "如果富良野也排花田，美瑛当天就减少花田重复。"],
+    play: ["把它当美瑛的颜色补充：大面积条带花田铺在丘陵上，和拼布之路的农田结构不同。", "如果富良野也排花田，美瑛当天就减少花田重复。"],
     time: ["现场 1-2 小时。"],
-    route: ["美瑛内部交通分散，和拼布之路/青池一起规划。"],
+    route: ["JNTO 写明可坐 JR 富良野线到美马牛站后步行约 25 分钟，或到美瑛站后打车约 12 分钟。", "官方页面写四季彩之丘约 15 公顷；面积大但不是非走满不可。"],
     best: ["晴天、花期、能见度高。"],
-    avoid: ["不要和青池、拼布之路、富良野全部硬塞同一天。"],
-    sources: ["biei"]
+    avoid: ["不要和青池、拼布之路、富良野全部硬塞同一天。", "酷热日 25 分钟步行很消耗，宁可缩短现场停留。"],
+    sources: ["shikisaiOfficial", "shikisaiJnto", "shikisaiHokkaido"]
   }),
   "spot-shirahige": guide({
     facts: [["角色", "青池同线"], ["时间", "45-90分钟"], ["交通", "白金温泉方向"], ["取舍", "可删"]],
@@ -2872,39 +2918,39 @@ const detailGuides = {
   }),
   "city-furano": guide({
     facts: [["角色", "7月主视觉"], ["时间", "半日-一日"], ["交通", "富良野线"], ["风险", "不能直去新得"]],
-    play: ["用富田农场做主点，周边花田做延展。", "如果和美瑛同日，严格减少停留点。"],
-    time: ["富田农场半日。", "富良野+中富良野一日更舒服。"],
-    route: ["旭川到富良野走富良野线；富良野-新得铁路已废止。"],
+    play: ["用富田农场做主点，周边花田只做延展。", "如果和美瑛同日，严格减少停留点：美瑛一个主题 + 富田农场即可。"],
+    time: ["富田农场半日。", "富良野+中富良野一日更舒服；想松弛就别再接带广。"],
+    route: ["旭川到富良野走 JR 富良野线；富良野-新得铁路已于 2024-04-01 废止，不能继续按 JR 直通十胜/带广。", "JR 北海道 2026 页面显示富良野・美瑛 Norokko 为最后一年，最终运行日为 2026-09-23，日期和座位要提前查。"],
     best: ["7月薰衣草季，早到避人流。"],
-    avoid: ["不要从富良野继续按 JR 直通带广。"],
-    sources: ["farmTomita", "farmTomitaHokkaido", "furanoClosed"]
+    avoid: ["不要从富良野继续按 JR 直通带广。", "花田日不要把午饭放在很远的店，先保证回程车。"],
+    sources: ["farmTomita", "farmTomitaHokkaido", "furanoClosed", "jrFuranoBiei"]
   }),
   "spot-farm-tomita": guide({
     facts: [["角色", "薰衣草核心"], ["时间", "1.5-3小时"], ["官网", "有实时/时间"], ["最佳", "早晨"]],
-    play: ["先看主花田，再吃薰衣草冰淇淋或休息。", "人多时减少拍照执念，保留感受。"],
-    time: ["现场 1.5-3 小时。"],
-    route: ["按官网 access 与当天交通确认。"],
+    play: ["先看主花田，再吃薰衣草冰淇淋或休息。", "它是富良野最稳的主画面，人多时减少拍照执念，保留感受。"],
+    time: ["现场 1.5-3 小时。", "含吃东西和买小物可到半日。"],
+    route: ["Farm Tomita 官网写明夏季特别列车 Furano-Biei Norokko 会停 Lavender Farm Station，并建议公共交通游客在该站下车。", "JNTO 写明 6-8 月特殊 Norokko-go 会停季节性 Lavender Farm Station，步行约 7 分钟到花田。"],
     best: ["7月、清晨、晴或薄云。"],
-    avoid: ["官网开放时间外不可进入。"],
-    sources: ["farmTomita", "farmTomitaHokkaido"]
+    avoid: ["官网开放时间外不可进入。", "如果没有合适 Norokko/普通列车，不要为了富田农场牺牲返程。"],
+    sources: ["farmTomita", "farmTomitaAccess", "farmTomitaStation", "farmTomitaJnto", "farmTomitaHokkaido"]
   }),
   "spot-nakafurano": guide({
     facts: [["角色", "坡面远山"], ["时间", "1-2小时"], ["适合", "富田后延展"], ["交通", "末端查"]],
-    play: ["看花田如何贴着坡面和远山展开。"],
+    play: ["看花田如何贴着坡面和远山展开。", "如果富田农场已经满足，就把中富良野当轻延展而不是第二个任务。"],
     time: ["1-2 小时即可。"],
-    route: ["和富田农场邻近但仍要确认末端交通。"],
+    route: ["和富田农场邻近，但仍要按 JR 富良野线、Lavender Farm Station/中富良野站以及步行距离确认。"],
     best: ["晴天、山体能见度高。"],
     avoid: ["如果富田已经很累，就删掉。"],
-    sources: ["farmTomitaHokkaido"]
+    sources: ["farmTomita", "farmTomitaAccess", "farmTomitaHokkaido"]
   }),
   "spot-furano-norokko": guide({
     facts: [["角色", "车窗体验"], ["时间", "随车次"], ["运营", "季节性"], ["座位", "需确认"]],
     play: ["把它当富良野/美瑛花田日的慢速骨架。", "坐车本身看田野、花田和远山，不要只把它当交通。"],
     time: ["按具体车次反推全天。", "不要把午饭压在短换乘之间。"],
-    route: ["JR 北海道 2026 年观光列车集中在 6-9 月，Norokko 需要票券/座位确认。"],
+    route: ["JR 北海道页面写明 2026 年富良野・美瑛 Norokko 运行到 2026-09-23 后结束，基本票价外还需指定席费用。", "Farm Tomita 的 Lavender Farm Station 是 Norokko 夏季临时停靠点；如果当天车次不合适，就用普通列车/巴士/包车替代。"],
     best: ["运营日、白天、有指定席。"],
     avoid: ["没有合适车次就不要硬嵌；普通列车或巴士也可以完成旅行。"],
-    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026"]
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "farmTomitaStation"]
   }),
   "spot-lavender-east": guide({
     facts: [["角色", "薰衣草延展"], ["时间", "1小时"], ["2026", "6/20-7/20"], ["取舍", "可删"]],
@@ -3822,11 +3868,15 @@ const foodTips = {
   "city-asahikawa": ["站前拉面名店适合低成本尝试，拉面村适合想比较多家风格的人。", "把吃饭和查第二天交通放在同一段时间。"],
   "spot-asahikawa-ramen": ["酱油汤底是旭川拉面的核心识别。", "选店时看当天营业、排队、离酒店距离，而不是只看排名。"],
   "city-biei": ["美瑛内部餐饮和交通都分散，午饭不要压到很晚。", "有包车/租车时可更灵活；公交玩法要先定吃饭点。"],
+  "spot-patchwork": ["拼布之路不是餐饮区，出发前在美瑛站周边或便利店补水和轻食。", "骑行/包车日把吃饭当恢复点，不要为了餐厅偏离回站路线。"],
+  "spot-blue-pond": ["青池现场停留短，餐饮不要寄托在池边。", "若顺白金温泉方向，先看回程巴士，再决定是否坐下吃饭或泡汤。"],
   "spot-shikisai": ["适合搭配简单午饭，不要为了花田继续横跳太多点。", "人多时把它当颜色补充，停留短一点。"],
   "spot-shirahige": ["青池/白金温泉方向要先看回程班次，再决定是否坐下吃饭。", "天气差时不要把午饭地点放得太偏。"],
   "city-furano": ["富良野花田日适合轻食、冰淇淋和早出发，正餐不要排得太远。", "富田农场周边人多，提前准备备选餐厅。"],
   "spot-farm-tomita": ["薰衣草冰淇淋和农场内轻食适合短休息。", "先看花田，再吃东西，避免高温下排队消耗。"],
+  "spot-nakafurano": ["中富良野适合把咖啡、甜品或农场轻食作为短休息。", "若要去离站远的店，先确认回程列车和步行距离。"],
   "spot-furano-norokko": ["观光列车当天不要把午饭卡在换乘间隙。", "有指定席时按列车时刻反推吃饭和花田停留。"],
+  "spot-lavender-east": ["Lavender East 是延展点，饮食和购物不要超过主花田。", "先查开放期和交通，再决定是否把轻食留在富田农场本区。"],
   "city-sounkyo": ["层云峡适合温泉街简单晚饭、旅馆餐或咖啡，不适合追复杂餐厅。", "先查回旭川巴士，再决定是否坐下吃久一点。"],
   "spot-sounkyo-gorge": ["瀑布方向先补水和轻食，不要指望步道上有稳定餐饮。", "看完回温泉街坐下休息更符合松弛目标。"],
   "spot-daisetsuzan-ropeway": ["缆车日要先准备水和轻食，山上不要把餐饮当核心。", "如果只想探店，层云峡温泉街比缆车更适合。"],
@@ -3898,8 +3948,15 @@ const reviewQueries = {
   "city-lake-toya": "洞爷湖 温泉 湖畔 有珠山 交通",
   "city-asahikawa": "旭川 拉面 站前",
   "city-biei": "美瑛 拼布之路 青池 交通",
+  "spot-patchwork": "美瑛 拼布之路 电动自行车 包车",
+  "spot-blue-pond": "美瑛 青池 巴士 白金温泉",
+  "spot-shikisai": "四季彩之丘 美瑛 交通 花田",
+  "spot-shirahige": "白须瀑布 白金温泉 青池 巴士",
   "city-furano": "富良野 富田农场 薰衣草",
+  "spot-farm-tomita": "富田农场 薰衣草 交通 冰淇淋",
+  "spot-nakafurano": "中富良野 花田 富田农场 交通",
   "spot-furano-norokko": "富良野 美瑛 Norokko 观光列车",
+  "spot-lavender-east": "Lavender East 富田农场 2026 开放",
   "city-sounkyo": "层云峡 温泉 银河瀑布 旭川 巴士",
   "spot-sounkyo-gorge": "层云峡 银河瀑布 流星瀑布",
   "spot-daisetsuzan-ropeway": "层云峡 黑岳 缆车 天气",
@@ -4123,7 +4180,7 @@ function renderTransfers() {
             <span class="transfer-icon" aria-hidden="true">${icon(transfer.icon || "route")}</span>
             <div class="transfer-route">
               <strong>${escapeHtml(transfer.from)} -> ${escapeHtml(transfer.to)}</strong>
-              <small>${escapeHtml(transfer.status)} / ${escapeHtml(transfer.time)}</small>
+              <small>${escapeHtml(transfer.mode)} / ${escapeHtml(transfer.status)} / ${escapeHtml(transfer.time)}</small>
             </div>
             <span class="transfer-disclosure" aria-hidden="true">${icon("plus")}</span>
           </summary>
