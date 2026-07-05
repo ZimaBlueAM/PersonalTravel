@@ -8,6 +8,11 @@ const placeImages = {
   sounkyo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ginga_Falls_of_Sounkyo_-_panoramio.jpg",
   kawayuMashu: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Lake_Mashu.jpg",
   iozan: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Iou-zan_hokkaido01.jpg",
+  odori: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Odori_park_at_Sapporo_TV_tower.jpg/1280px-Odori_park_at_Sapporo_TV_tower.jpg",
+  tanukikoji: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tanukikoji_01.jpg/1280px-Tanukikoji_01.jpg",
+  asahikawaStation: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Asahikawa_city_Heiwa_street_shopping_park.jpg/1280px-Asahikawa_city_Heiwa_street_shopping_park.jpg",
+  asahikawaKaimono: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Asahikawa_city_Heiwa_street_shopping_park.jpg/1280px-Asahikawa_city_Heiwa_street_shopping_park.jpg",
+  butadon: "https://upload.wikimedia.org/wikipedia/commons/8/81/Butadon_of_Pancho.jpg",
   yamadera: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Risshaku-ji_Kaisan-do_201706b.jpg/1280px-Risshaku-ji_Kaisan-do_201706b.jpg",
   sakunami: img("sendai"),
   akiu: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Akiu_Rairaikyo_2008B.jpg",
@@ -97,6 +102,18 @@ const sourceLinks = {
     label: "JNTO: Sapporo Ramen Street",
     url: "https://www.japan.travel/en/ph/story/ramen-street-japan/"
   },
+  odoriParkOfficial: {
+    label: "Odori Park official guide",
+    url: "https://odori-park.jp/en/"
+  },
+  odoriParkJnto: {
+    label: "JNTO: Odori Park",
+    url: "https://www.japan.travel/en/spot/1927/"
+  },
+  tanukikojiOfficial: {
+    label: "Sapporo Travel: Tanukikoji Shopping Arcade",
+    url: "https://www.sapporo.travel/en/spot/facility/tanukikoji_shopping_arcade/"
+  },
   otaruCanal: {
     label: "Hokkaido Love: Otaru Canal",
     url: "https://www.visit-hokkaido.jp/en/spot/detail_10040.html"
@@ -164,6 +181,14 @@ const sourceLinks = {
   asahikawaRamenStation: {
     label: "Taisetsu Kamui: Asahikawa ramen around station",
     url: "https://taisetsu-kamui.jp/en/features/29869"
+  },
+  obihiroJnto: {
+    label: "JNTO: Obihiro",
+    url: "https://www.japan.travel/en/spot/2144/"
+  },
+  tokachiButadon: {
+    label: "Hokkaido Love: Tokachi Butadon",
+    url: "https://www.visit-hokkaido.jp/en/spot/detail_12868.html"
   },
   sounkyoTaisetsu: {
     label: "Heart of Hokkaido: Sounkyo Onsen",
@@ -574,7 +599,7 @@ const routeOptimizations = [
     id: "opt-weather",
     icon: "route",
     title: "晴天给岬角和花田，雨天给城市和吃饭",
-    meta: "执行规则",
+    meta: "天气取舍",
     verdict: "不累版的核心不是少玩，而是把好天气留给正确对象。",
     steps: [
       "神威岬、纳沙布岬、函馆山、种差海岸都强依赖天气和风。",
@@ -662,27 +687,29 @@ const outline = [
             id: "spot-odori",
             title: "大通公园与电视塔",
             meta: "可选 / 城市方向感",
-            image: img("sapporo"),
+            image: placeImages.odori,
             tags: ["可选子目的地", "散步"],
             summary: "用最轻的方式建立札幌方向感。",
             sections: sections(
               ["大通公园和电视塔能快速给出札幌的城市轴线。"],
               ["市内步行或地铁即可，不依赖长距离 JR。"],
               ["落地后、雨天、长支线回来后适合放这里。"]
-            )
+            ),
+            sources: ["odoriParkOfficial", "odoriParkJnto"]
           }),
           spot({
             id: "spot-susukino",
             title: "薄野与狸小路",
             meta: "可选 / 晚饭补给",
-            image: img("sapporo"),
+            image: placeImages.tanukikoji,
             tags: ["可选子目的地", "夜晚"],
             summary: "用晚饭和步行完成城市恢复。",
             sections: sections(
               ["薄野适合吃饭，狸小路适合遮雨和补给。"],
               ["市内短交通，不占用 JR 规划。"],
               ["远支线回来后只做这里，不再加景点。"]
-            )
+            ),
+            sources: ["tanukikojiOfficial", "sapporoRamen"]
           }),
           spot({
             id: "spot-sapporo-food",
@@ -794,7 +821,8 @@ const outline = [
               ["余市街区比小樽更松，适合恢复。"],
               ["和蒸馏所同日即可。"],
               ["不需要单独为它拆一天。"]
-            )
+            ),
+            sources: ["nikkaYoichi", "jntoNikka"]
           })
         ]
       }),
@@ -964,27 +992,29 @@ const outline = [
             id: "spot-asahikawa-station",
             title: "旭川站周边",
             meta: "可选 / 补给",
-            image: img("asahikawa"),
+            image: placeImages.asahikawaStation,
             tags: ["可选子目的地", "恢复"],
             summary: "吃饭、洗衣、买东西，把体力留给花田日。",
             sections: sections(
               ["这是功能性停留，不是打卡景点。"],
               ["站周边最省交通成本。"],
               ["换基地日适合只做这里。"]
-            )
+            ),
+            sources: ["asahikawa", "asahikawaRamenStation"]
           }),
           spot({
             id: "spot-asahikawa-walk",
             title: "旭川城市散步",
             meta: "可选 / 缓冲",
-            image: img("asahikawa"),
+            image: placeImages.asahikawaKaimono,
             tags: ["可选子目的地", "低压力"],
             summary: "比札幌更松的城市节奏。",
             sections: sections(
               ["它的价值是降低密度和疲劳。"],
               ["市内短交通或步行即可。"],
               ["不要给它安排任务感。"]
-            )
+            ),
+            sources: ["asahikawaRamenStation"]
           }),
           spot({
             id: "spot-asahikawa-ramen",
@@ -1211,20 +1241,22 @@ const outline = [
               ["它和美瑛的丘陵完全不同。"],
               ["更适合带广停留或钏路侧顺路。"],
               ["不要为它牺牲富良野花田日。"]
-            )
+            ),
+            sources: ["obihiroJnto", "obihiro"]
           }),
           spot({
             id: "spot-obihiro-food",
             title: "带广本地吃饭",
             meta: "可选 / 豚丼",
-            image: img("obihiro"),
-            tags: ["可选子目的地", "生活感"],
-            summary: "用吃饭完成一个生活化停留。",
+            image: placeImages.butadon,
+            tags: ["可选子目的地", "生活感", "餐饮"],
+            summary: "用豚丼和十胜甜点完成一个生活化停留。",
             sections: sections(
-              ["带广不需要堆很多景点。"],
-              ["到达后吃饭比继续赶路重要。"],
-              ["长移动日可只保留这一项。"]
-            )
+              ["Hokkaido Love 把豚丼写成带广/十胜代表性食物；这是带广最清楚的探店理由。"],
+              ["到达后围绕带广站吃饭，比继续赶远郊更符合松弛。"],
+              ["长移动日可只保留这一项，六花亭/甜点方向作为饭后轻补充。"]
+            ),
+            sources: ["tokachiButadon", "obihiroJnto"]
           })
         ]
       })
@@ -1497,7 +1529,8 @@ const outline = [
               ["不一定要下很多点。"],
               ["适合从钏路西移时顺路看。"],
               ["不要牺牲根室恢复日。"]
-            )
+            ),
+            sources: ["obihiro", "obihiroJnto"]
           }),
           spot({
             id: "spot-obihiro-stay",
@@ -1510,7 +1543,8 @@ const outline = [
               ["它解释为什么北海道不能乱排。"],
               ["更适合顺路或独立停留。"],
               ["时间紧可跳过。"]
-            )
+            ),
+            sources: ["obihiroJnto", "tokachiButadon"]
           })
         ]
       })
@@ -1848,7 +1882,8 @@ const outline = [
               ["站区和青叶通能完成城市落地。"],
               ["不需要长交通。"],
               ["换乘日留在市区。"]
-            )
+            ),
+            sources: ["sendai", "jntoSendai"]
           }),
           spot({
             id: "spot-gyutan",
@@ -2164,7 +2199,8 @@ const outline = [
               ["能快速感受到东京作为终点的密度。"],
               ["新干线到达后顺路完成。"],
               ["不要第一晚排太满。"]
-            )
+            ),
+            sources: ["tokyo"]
           }),
           spot({
             id: "spot-urban-density",
@@ -2177,7 +2213,8 @@ const outline = [
               ["人流、车站和商业会突然变密。"],
               ["散步和吃饭即可完成。"],
               ["低体力时尤其适合。"]
-            )
+            ),
+            sources: ["tokyo"]
           })
         ]
       }),
@@ -2493,19 +2530,21 @@ const detailGuides = {
   }),
   "spot-odori": guide({
     facts: [["角色", "城市中轴"], ["时间", "30-60分钟"], ["适合", "落地后"], ["交通", "市内短线"]],
-    play: ["从大通公园慢走到电视塔，确认札幌的东西向城市轴。", "只拍一张方向感照片即可。"],
+    play: ["从大通公园慢走到电视塔，确认札幌东西向城市轴和城市尺度。", "Odori 官方写它东西向延伸约 1.5km；你们只取东端到电视塔这一小段就够。"],
     time: ["30 分钟看结构，1 小时慢走。"],
-    route: ["从札幌站步行或市内短交通到达。"],
+    route: ["JNTO 写从新千岁机场到札幌站后，可转南北线/东丰线到大通，也可从札幌站步行约 10 分钟。", "它不是 JR 目的地，是落地后最轻的市内方向感点。"],
     best: ["傍晚光线柔和。", "雨天可缩短。"],
-    avoid: ["不要把它当大景点排半天。"]
+    avoid: ["不要把它当大景点排半天。"],
+    sources: ["odoriParkOfficial", "odoriParkJnto"]
   }),
   "spot-susukino": guide({
     facts: [["角色", "晚饭恢复"], ["时间", "1-2小时"], ["适合", "长线后"], ["交通", "市内短线"]],
-    play: ["先吃饭，再穿狸小路补给。", "只做一条街区，不要夜里继续换区。"],
+    play: ["先吃饭，再穿狸小路补给。", "Sapporo Travel 写狸小路约 1km、约 200 店且有屋顶；雨天和低体力都很稳。"],
     time: ["晚饭 1 小时，补给 30 分钟。"],
-    route: ["从札幌站或大通方向短距离抵达。"],
+    route: ["从札幌站/大通/薄野方向用地铁或步行短接，不占 JR 主线。", "具体店铺只看当天营业和排队，别为了名店横穿城市。"],
     best: ["雨天和低体力日很适合。"],
-    avoid: ["不要在这里继续加第二个夜景点。"]
+    avoid: ["不要在这里继续加第二个夜景点。"],
+    sources: ["tanukikojiOfficial", "sapporoRamen"]
   }),
   "spot-sapporo-food": guide({
     facts: [["角色", "恢复吃饭"], ["时间", "1-2小时"], ["区域", "二条/薄野"], ["适合", "雨天"]],
@@ -2572,11 +2611,12 @@ const detailGuides = {
   }),
   "spot-yoichi-walk": guide({
     facts: [["角色", "留白"], ["时间", "30-60分钟"], ["适合", "Nikka后"], ["交通", "步行"]],
-    play: ["沿余市川或站周边走一圈，把节奏放慢。"],
+    play: ["沿余市川或站周边走一圈，把节奏放慢。", "它只服务于 Nikka 余市蒸馏所后的恢复，不是单独目的地。"],
     time: ["30 分钟就够。"],
-    route: ["和 Nikka 同日步行完成。"],
+    route: ["和 Nikka 同日步行完成；JR 回札幌/小樽的时刻先查好。"],
     best: ["天气好时加，不好就删。"],
-    avoid: ["不要为它单独开一天。"]
+    avoid: ["不要为它单独开一天。"],
+    sources: ["nikkaYoichi", "jntoNikka", "operation"]
   }),
   "city-kamui": guide({
     facts: [["角色", "西海岸重体验"], ["时间", "整日"], ["风险", "风雨/末端巴士"], ["交通", "非JR直达"]],
@@ -2679,19 +2719,21 @@ const detailGuides = {
   }),
   "spot-asahikawa-station": guide({
     facts: [["角色", "补给"], ["时间", "1小时"], ["适合", "移动日"], ["交通", "站内外"]],
-    play: ["吃饭、买水、查第二天班次，完成后早点休息。"],
-    time: ["1 小时即可。"],
-    route: ["围绕旭川站完成。"],
+    play: ["吃饭、买水、查第二天班次，完成后早点休息。", "Taisetsu Kamui 的站周边拉面清单集中在旭川站/买物公园方向，很适合移动日不折腾地吃饭。"],
+    time: ["1 小时即可；若顺便晚饭，按 1.5 小时。"],
+    route: ["围绕旭川站完成，不再加远点。", "换基地当天只需确认第二天富良野线、巴士或包车时间。"],
     best: ["任何天气。"],
-    avoid: ["不要给它设计复杂路线。"]
+    avoid: ["不要给它设计复杂路线。"],
+    sources: ["asahikawa", "asahikawaRamenStation"]
   }),
   "spot-asahikawa-walk": guide({
     facts: [["角色", "城市缓冲"], ["时间", "1-2小时"], ["适合", "低压力"], ["交通", "步行"]],
-    play: ["选酒店附近一条街散步，吃完就回。"],
+    play: ["选酒店附近或买物公园方向一条街散步，吃完就回。", "它的价值是把旭川变成可停住的生活基地，而不是只当换乘机器。"],
     time: ["晚饭前后 1-2 小时。"],
-    route: ["不离开市区。"],
+    route: ["不离开市区；站前、买物公园、拉面店三者择一到二。"],
     best: ["移动后。"],
-    avoid: ["不要替代美瑛/富良野主日。"]
+    avoid: ["不要替代美瑛/富良野主日。"],
+    sources: ["asahikawaRamenStation"]
   }),
   "spot-asahikawa-ramen": guide({
     facts: [["角色", "移动日主餐"], ["时间", "1-1.5小时"], ["重点", "酱油拉面"], ["交通", "站前/巴士"]],
@@ -2830,19 +2872,21 @@ const detailGuides = {
   }),
   "spot-tokachi-plain": guide({
     facts: [["角色", "平原尺度"], ["时间", "车窗/半日"], ["适合", "顺路"], ["交通", "带广侧"]],
-    play: ["重点不是打卡，而是看地平线、农田和长直线。"],
+    play: ["重点不是打卡，而是看地平线、农田和长直线。", "JNTO 把十胜写成北海道农业腹地，带广的意义就是这个大尺度。"],
     time: ["车窗即可；下车半日更松。"],
-    route: ["更适合带广停留或钏路侧顺路。"],
+    route: ["更适合带广停留或钏路侧顺路。", "从旭川侧硬切会变成长移动，不是花田日的附属点。"],
     best: ["晴天能见度高。"],
-    avoid: ["不要为它牺牲根室或花田主线。"]
+    avoid: ["不要为它牺牲根室或花田主线。"],
+    sources: ["obihiroJnto", "obihiro"]
   }),
   "spot-obihiro-food": guide({
     facts: [["角色", "生活补给"], ["时间", "1小时"], ["重点", "豚丼"], ["适合", "长移动后"]],
-    play: ["到带广后先吃饭，把交通疲劳收住。"],
-    time: ["1 小时左右。"],
-    route: ["围绕带广站完成。"],
+    play: ["到带广后先吃豚丼，把交通疲劳收住。", "Hokkaido Love 写豚丼是带广代表食物；你们可以把它当探店主理由，而不是再加远景点。"],
+    time: ["1 小时左右；热门店排队另算。"],
+    route: ["围绕带广站或打车短接完成。", "吃完直接继续移动或回酒店，别为了“来都来了”再加郊外点。"],
     best: ["移动日中段或到达后。"],
-    avoid: ["吃完不要继续加远点。"]
+    avoid: ["吃完不要继续加远点。"],
+    sources: ["tokachiButadon", "obihiroJnto"]
   }),
   "base-kushiro": guide({
     facts: [["节奏", "2晚东北海道"], ["主线", "湿原/海岸/最东端"], ["交通", "花咲线+末端巴士"], ["风险", "长线"]],
@@ -3008,19 +3052,21 @@ const detailGuides = {
   }),
   "spot-obihiro-window": guide({
     facts: [["角色", "车窗平原"], ["时间", "车程"], ["适合", "顺路"], ["交通", "JR主干"]],
-    play: ["坐车时专心看农田、直线和地平线。"],
+    play: ["坐车时专心看农田、直线和地平线。", "它是“世界很大”的车窗体验，不需要额外景点包装。"],
     time: ["车程本身。"],
-    route: ["钏路-带广或带广-札幌方向。"],
+    route: ["钏路-带广或带广-札幌方向；当天按 Ozora / Tokachi 车次复核。"],
     best: ["白天。"],
-    avoid: ["夜间车窗价值低。"]
+    avoid: ["夜间车窗价值低。"],
+    sources: ["obihiro", "obihiroJnto"]
   }),
   "spot-obihiro-stay": guide({
     facts: [["角色", "空间补充"], ["时间", "半日"], ["适合", "独立停"], ["交通", "带广站周边"]],
-    play: ["少看景点，多看平原城市尺度。"],
+    play: ["少看景点，多看平原城市尺度。", "若你们需要恢复，豚丼、甜点和站周边比远郊牧场更实际。"],
     time: ["半日即可。"],
-    route: ["带广站作为中心。"],
+    route: ["带广站作为中心；只在作为中继或顺路点时保留。"],
     best: ["天气晴朗。"],
-    avoid: ["时间紧时直接删。"]
+    avoid: ["时间紧时直接删。"],
+    sources: ["obihiroJnto", "tokachiButadon"]
   }),
   "base-hakodate": guide({
     facts: [["节奏", "1-2晚"], ["角色", "跨海前停顿"], ["交通", "Hokuto+Liner"], ["风险", "长线后疲劳"]],
@@ -3222,12 +3268,12 @@ const detailGuides = {
   }),
   "spot-sendai-station": guide({
     facts: [["角色", "城市骨架"], ["时间", "1小时"], ["适合", "抵达"], ["交通", "站区"]],
-    play: ["站内外完成吃饭、买水、确认第二天松岛交通。"],
-    time: ["1 小时即可。"],
-    route: ["围绕仙台站。"],
+    play: ["站内外完成吃饭、买水、确认第二天松岛交通。", "它是跨海后的恢复锚点，不是购物任务。"],
+    time: ["1 小时即可；含晚饭 2 小时。"],
+    route: ["围绕仙台站和青叶通，不再跑远。", "第二天去松岛/秋保/山寺前，先把 JR 或巴士时刻确认好。"],
     best: ["抵达日。"],
     avoid: ["别把它扩成购物日。"],
-    sources: ["sendai"]
+    sources: ["sendai", "jntoSendai"]
   }),
   "spot-gyutan": guide({
     facts: [["角色", "地方食物"], ["时间", "1小时"], ["适合", "长途后"], ["区域", "站周边"]],
@@ -3429,11 +3475,12 @@ const detailGuides = {
   }),
   "spot-urban-density": guide({
     facts: [["角色", "反差体验"], ["时间", "30-90分钟"], ["适合", "低体力"], ["交通", "步行"]],
-    play: ["不追景点，观察车站、人流、便利店和街区密度。"],
+    play: ["不追景点，观察车站、人流、便利店和街区密度。", "从北海道一路到东京，密度突变本身就是路线的终点体验。"],
     time: ["30-90 分钟。"],
-    route: ["酒店附近完成即可。"],
+    route: ["酒店附近或到达站附近完成即可；不跨区。"],
     best: ["刚到东京时。"],
-    avoid: ["不要把它变成跨区散步。"]
+    avoid: ["不要把它变成跨区散步。"],
+    sources: ["tokyo"]
   }),
   "city-shibuya": guide({
     facts: [["角色", "人流峰值"], ["时间", "2-3小时"], ["交通", "市内"], ["体力", "中高消耗"]],
