@@ -122,10 +122,11 @@ img {
 .transport-board,
 .optimization-board,
 .outline-board {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper);
-  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 }
 
 .transport-board,
@@ -477,6 +478,7 @@ img {
 
 .outline-tree {
   display: grid;
+  background: var(--paper);
 }
 
 .focus-strip {
@@ -486,7 +488,7 @@ img {
   overscroll-behavior-inline: contain;
   padding: 10px 14px;
   border-bottom: 1px solid var(--soft-line);
-  background: #fbfcfa;
+  background: var(--paper);
   scrollbar-width: none;
 }
 
@@ -642,7 +644,8 @@ img {
 
 .level-1 > .tree-row {
   min-height: 66px;
-  background: var(--forest-soft);
+  border-left: 4px solid #dcebe3;
+  background: #f8fbf8;
 }
 
 .level-1 > .tree-row .toggle-button,
