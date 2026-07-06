@@ -519,9 +519,17 @@ const sourceLinks = {
     label: "JR East: Sendai Station Shinkansen timetable",
     url: "https://timetables.jreast.co.jp/en/timetable/list0913.html"
   },
+  jreastTimetableTop: {
+    label: "JR East: Timetable top",
+    url: "https://timetables.jreast.co.jp/en/"
+  },
   moriokaStationTimetable: {
     label: "JR East: Morioka Station Shinkansen timetable",
     url: "https://timetables.jreast.co.jp/en/timetable/list1565.html"
+  },
+  jrHokkaidoNorikae: {
+    label: "JR Hokkaido: timetable search top",
+    url: "https://jrhokkaidonorikae.com/pc/en/index.html"
   },
   moriokaCastleJnto: {
     label: "JNTO: Iwate Park / Morioka Castle Ruins",
@@ -634,7 +642,7 @@ const coreTransfers = [
     ],
     steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
     note: "JR 北海道当前区域摘要为服务时间外；落地当天按新千岁机场-札幌具体列车再查。",
-    sources: ["operation", "timetable"]
+    sources: ["operation", "timetable", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-sapporo-asahikawa",
@@ -650,7 +658,7 @@ const coreTransfers = [
     ],
     steps: ["札幌 -> 旭川：JR 特急 Kamui / Lilac。", "JR 北海道特急全席指定；持 pass 也建议提前取指定席。"],
     note: "官方列车指南确认 Kamui / Lilac 连接札幌与旭川，信息页标注 2026 年 3 月有效。",
-    sources: ["asahikawa", "reservation", "operation"]
+    sources: ["asahikawa", "reservation", "operation", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-asahikawa-kushiro",
@@ -673,7 +681,7 @@ const coreTransfers = [
       "富良野 -> 新得铁路已废止，不能从富良野一路 JR 直插十胜。"
     ],
     note: "North Liner 公开订票页显示旭川-带广经富良野/新得 5 往复，另有三国峠方向 1 往复；实际班次以乘车日为准。",
-    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation"]
+    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-kushiro-hakodate",
@@ -692,7 +700,7 @@ const coreTransfers = [
     ],
     steps: ["钏路 -> 南千岁/札幌：特急 Ozora 主干线。", "南千岁/札幌 -> 函馆：特急 Hokuto。", "中间留足换乘、吃饭、延误缓冲。"],
     note: "JR 北海道指南确认 Ozora 连接札幌-钏路、Hokuto 连接札幌-函馆；两个系统拼起来才是钏路到函馆。",
-    sources: ["obihiro", "hakodate", "operation", "reservation"]
+    sources: ["obihiro", "hakodate", "operation", "reservation", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-hakodate-sendai",
@@ -714,7 +722,7 @@ const coreTransfers = [
       "新青森 -> 仙台：东北新干线。"
     ],
     note: "JR East 当前显示东北新干线整体正常，但服务暂停栏列出个别跨海车次停运；跨海日必须查具体 Hayabusa/Hayate 车次。",
-    sources: ["shinkansen", "jreast"]
+    sources: ["shinkansen", "jreast", "jreastTimetableTop", "sendaiStationTimetable"]
   },
   {
     id: "transfer-sendai-tokyo",
@@ -730,7 +738,7 @@ const coreTransfers = [
     ],
     steps: ["仙台 -> 东京：东北新干线直达。", "到达东京后只做市内短点，不再扩张远郊。"],
     note: "JR East 当前页面显示东北新干线 Normal operation；仍以出发当天实时状态为准。",
-    sources: ["jreast"]
+    sources: ["jreast", "jreastTimetableTop", "sendaiStationTimetable"]
   }
 ];
 
@@ -4441,6 +4449,110 @@ function getReviewQuery(item) {
   return reviewQueries[item.id] || `${item.title} ${item.meta || ""}`;
 }
 
+const transportSourceMatchers = [
+  /timetable/i,
+  /route map/i,
+  /train guide/i,
+  /train status/i,
+  /operation/i,
+  /reservation/i,
+  /access/i,
+  /shinkansen/i,
+  /\bbus\b/i,
+  /\bline\b/i,
+  /\bpass\b/i
+];
+
+const hokkaidoTimetableSeeds = new Set([
+  "operation",
+  "timetable",
+  "reservation",
+  "asahikawa",
+  "obihiro",
+  "hakodate",
+  "shinkansen",
+  "northliner",
+  "furanoCityBus",
+  "jrNoboribetsuToyako",
+  "lakeToyaOfficial",
+  "donanToyakoBus",
+  "usuzan",
+  "chuoShakotanTour",
+  "shakotanTownBus",
+  "shakotanBusToday",
+  "sounkyoVisitorAccess",
+  "sounkyoTaisetsu",
+  "kushiroShitsugenAccess",
+  "akanBusWetland",
+  "lakeAkanBus",
+  "akankoAinuAccess",
+  "kawayuVisitor",
+  "jrHokkaidoNorikae"
+]);
+
+const eastTimetableSeeds = new Set([
+  "jreast",
+  "jreastTimetableTop",
+  "sendaiStationTimetable",
+  "moriokaStationTimetable",
+  "sendaiGettingAround",
+  "hiraizumiLoopBus",
+  "yokohamaPass",
+  "jrTokyoWidePass",
+  "nikkoOfficialAccess",
+  "nikkoNationalParkAccess"
+]);
+
+function hasAnySeed(keys, seeds) {
+  return keys.some((key) => seeds.has(key));
+}
+
+function getTransitSourceKeys(item, guideData) {
+  const keys = unique([...(item.sources || []), ...(guideData.sources || [])]);
+  const matched = keys.filter((key) => {
+    const source = sourceLinks[key];
+    const label = source?.label || "";
+    return transportSourceMatchers.some((matcher) => matcher.test(label));
+  });
+
+  if (hasAnySeed(keys, hokkaidoTimetableSeeds)) {
+    matched.unshift("jrHokkaidoNorikae");
+  }
+
+  if (hasAnySeed(keys, eastTimetableSeeds)) {
+    matched.unshift("jreastTimetableTop");
+  }
+
+  return unique(matched);
+}
+
+function getFirstTimeTips(item, guideData) {
+  const text = [item.title, item.meta, item.summary, ...(guideData.route || []), ...(guideData.play || []), ...(guideData.best || []), ...(guideData.avoid || [])].join(" ");
+  const tips = [];
+
+  if (/JR|新干线|巴士|接驳|车站|站区|换乘|末班|班次|指定席|时刻表/.test(text)) {
+    tips.push("先把车站名、出口和回程最后一班车记住，陌生地方最怕临时找不到回头路。");
+  }
+  if (/巴士|接驳|非JR|末端|岬|海岸|湖|峡谷|山岳|瀑布|温泉|远郊|世界遗产/.test(text)) {
+    tips.push("下车点和上车点不一定是一个地方，去程时顺手把回程站牌拍一下。");
+  }
+  if (/天气|风|雾|雨|晴天|能见度/.test(text)) {
+    tips.push("天气一差就直接降级，不要让远景点抢掉整天的体力和回程。");
+  }
+  if (/排队|预约|营业|开放|商店|市场|餐厅/.test(text)) {
+    tips.push("先确认营业、预约和排队长度，再决定要不要在当地坐久一点。");
+  }
+  if (/城市|站区|酒店/.test(text)) {
+    tips.push("在城市里优先走“酒店 - 车站 - 第一个目的地”这条最短线，别一开始横跳太多区。");
+  }
+
+  if (!tips.length) {
+    tips.push("到了先确认厕所、补水点和回程方式，别把路走得太满。");
+  }
+
+  return unique(tips).slice(0, 4);
+}
+
 function renderReviewLinks(item) {
   const query = getReviewQuery(item);
   const links = [
@@ -4586,9 +4698,13 @@ function getPrecheck(item, guideData) {
 
 function renderDetailSections(item) {
   const guideData = getGuide(item);
+  const transitSources = getTransitSourceKeys(item, guideData);
+  const allSourceKeys = unique([...(item.sources || []), ...(guideData.sources || [])]);
+  const remainingSources = allSourceKeys.filter((key) => !transitSources.includes(key));
   const guideSections = [
     { title: "适合你们吗", items: getTasteFit(item) },
     { title: "出发前查", items: getPrecheck(item, guideData) },
+    { title: "第一次来这里", items: getFirstTimeTips(item, guideData) },
     { title: "怎么玩", items: guideData.play },
     { title: "时间预算", items: guideData.time },
     { title: "交通要点", items: guideData.route },
@@ -4610,7 +4726,7 @@ function renderDetailSections(item) {
     )
     .join("");
 
-  return body + renderReviewLinks(item) + renderSources([...(item.sources || []), ...(guideData.sources || [])]);
+  return body + renderSources(transitSources, "时刻表 / 交通入口") + renderReviewLinks(item) + renderSources(remainingSources, "依据");
 }
 
 function icon(name) {
