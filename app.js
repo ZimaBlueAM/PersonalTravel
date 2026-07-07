@@ -67,6 +67,26 @@ const sourceLinks = {
     label: "JR Hokkaido: Airport line",
     url: "https://www.jrhokkaido.co.jp/global/english/travel/airport.html"
   },
+  jalDomesticTimetable: {
+    label: "JAL: Domestic Flights Timetable",
+    url: "https://www.jal.co.jp/jp/en/dom/route/time/"
+  },
+  jalDomesticReservation: {
+    label: "JAL: Domestic Flight Booking",
+    url: "https://www.jal.co.jp/en/dom/module/"
+  },
+  jalDomesticConnection: {
+    label: "JAL: Same-day Domestic Connections",
+    url: "https://www.jal.co.jp/jp/en/dom/boarding/onto/"
+  },
+  jalDomesticStatus: {
+    label: "JAL: Domestic Flight Status",
+    url: "https://www.jal.co.jp/jp/en/flight-status/dom/"
+  },
+  yamatoHandsFree: {
+    label: "Yamato: Hands-Free Travel",
+    url: "https://www.kuronekoyamato.co.jp/en/"
+  },
   jrKitaca: {
     label: "JR Hokkaido: Kitaca usable area",
     url: "https://www.jrhokkaido.co.jp/global/english/ticket/kitaca/index.html"
@@ -1007,6 +1027,79 @@ const routeOptimizations = [
     ],
     note: "新增候选全部在对应基地下面，点开看交通与取舍。",
     sources: ["jrNoboribetsuToyako", "sounkyoTaisetsu", "lakeAkanOfficial", "lakeAkanBus", "akanMashuAccess", "akiuSendai", "nikkoJnto", "kamakuraJnto", "yokohamaJnto"]
+  }
+];
+
+const longMoveComfort = [
+  {
+    id: "comfort-move-day",
+    icon: "clock",
+    title: "超过 3 小时就当移动日",
+    meta: "JR / 公交都一样",
+    verdict: "一旦单程超过 3 小时，我会把这天直接定义成移动日，不再往里塞景点。",
+    steps: [
+      "午饭贴近车站或途中，不再追远店。",
+      "到站后只留酒店、晚饭、洗澡和睡觉。",
+      "如果你们已经觉得烦，说明不是体力问题，是日程太满。"
+    ],
+    note: "移动日不是浪费，是把后面的每一天保住。",
+    sources: ["reservation", "jrInfoDesk"]
+  },
+  {
+    id: "comfort-flight",
+    icon: "plane",
+    title: "超过 5 小时先查飞机",
+    meta: "别把长线都当 JR 义务",
+    verdict: "如果门到门能明显省体力，我会优先查飞机，而不是继续硬坐。",
+    steps: [
+      "先看 JAL 国内时刻表，确认有没有合适航班。",
+      "机场段用 JR / 机场线 / 市内交通接起来，别把转车压太紧。",
+      "天气差或价差过大时，再回到 JR 方案。"
+    ],
+    note: "JAL 官方还有同日联程和国内航班状态页，适合出发前再核对一次。",
+    sources: ["jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus", "jrAirport"]
+  },
+  {
+    id: "comfort-luggage",
+    icon: "suitcase",
+    title: "大箱子先寄出去",
+    meta: "旅行会立刻轻一截",
+    verdict: "当你们要坐长段 JR、再转巴士、再走坡路时，寄行李通常比硬拖舒服得多。",
+    steps: [
+      "下一基地前一天把大箱子寄出去。",
+      "车上只带充电、证件、外套、洗漱包和一晚换洗。",
+      "到站后直接去酒店，不要先找店再搬箱子。"
+    ],
+    note: "Yamato 的 Hands-Free Travel 是官方入口，适合把长移动日做轻。",
+    sources: ["yamatoHandsFree"]
+  },
+  {
+    id: "comfort-split-night",
+    icon: "home",
+    title: "不舒服就拆成一晚中继",
+    meta: "尤其适合北海道大跳跃",
+    verdict: "旭川 -> 钏路、钏路 -> 函馆、函馆 -> 仙台这类段，如果一想到就累，就该拆成两天。",
+    steps: [
+      "把带广、札幌、南千岁、新函馆北斗这类点当中继，不当终点。",
+      "中继夜只吃饭、洗澡、睡觉，第二天再继续。",
+      "删一个景点，通常比硬撑整天更值。"
+    ],
+    note: "短一点的日子，往往比多玩一个点更值得。",
+    sources: ["northliner", "obihiro", "hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
+  },
+  {
+    id: "comfort-seikan",
+    icon: "train",
+    title: "青函当天只做链路",
+    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 仙台",
+    verdict: "跨海这天我会把它当搬家日，不会在中间硬塞任何游玩。",
+    steps: [
+      "函馆站先坐 Hakodate Liner 到新函馆北斗。",
+      "真正跨海的是北海道新干线到新青森。",
+      "到本州后只接下一段车或酒店，不追夜景。"
+    ],
+    note: "官方时刻表和 JR East 状态页都要按车次查，别压极限换乘。",
+    sources: ["shinkansen", "jreast", "jreastTimetableTop", "reservation"]
   }
 ];
 
@@ -5086,6 +5179,7 @@ const filterButtons = document.querySelectorAll("[data-filter]");
 const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
 const busTransferList = document.querySelector("#busTransferList");
+const comfortList = document.querySelector("#comfortList");
 const optimizationList = document.querySelector("#optimizationList");
 const adultPlaybookList = document.querySelector("#adultPlaybook");
 const adultRoutePlanList = document.querySelector("#adultRoutePlan");
@@ -5233,11 +5327,84 @@ function getPrecheck(item, guideData) {
   return checks;
 }
 
+function estimateDurationMinutes(text = "") {
+  const source = String(text);
+  if (/整日|全天/.test(source)) return 600;
+
+  let minutes = 0;
+  const patterns = [
+    /(\d+(?:\.\d+)?)\s*(?:-|~|～|—|至)\s*(\d+(?:\.\d+)?)\s*(?:小时|h)/gi,
+    /(\d+(?:\.\d+)?)\s*(?:小时|h)/gi,
+    /(\d+)\s*(?:-|~|～|—|至)\s*(\d+)\s*分钟/gi,
+    /(\d+)\s*分钟/gi
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of source.matchAll(pattern)) {
+      if (pattern.source.includes("小时|h")) {
+        const endValue = Number(match[2] || match[1]);
+        if (Number.isFinite(endValue)) minutes = Math.max(minutes, endValue * 60);
+      } else {
+        const endValue = Number(match[2] || match[1]);
+        if (Number.isFinite(endValue)) minutes = Math.max(minutes, endValue);
+      }
+    }
+  }
+
+  return minutes;
+}
+
+function getMoveComfortTips(item, guideData) {
+  const routeText = [item.title, item.meta, ...(guideData.time || []), ...(guideData.route || []), ...(guideData.avoid || []), ...(guideData.best || [])].join(" ");
+  const minutes = estimateDurationMinutes(routeText);
+  const needsComfort = minutes >= 180 || /跨海|整日|长移动|长线/.test(routeText);
+  if (!needsComfort) return [];
+
+  const tips = [];
+  tips.push("单程超过 3 小时：我会把这天改成移动日，不再塞景点。");
+  if (minutes >= 300 || /跨海/.test(routeText)) {
+    tips.push("如果门到门能明显省体力，就先查飞机，或把这一跳拆成一晚中继。");
+  }
+  if (/行李|箱|搬家/.test(routeText) || minutes >= 240) {
+    tips.push("大箱子先寄到下一基地，车上只留一晚需要的东西。");
+  }
+  if (/函馆|新函馆北斗|新青森/.test(routeText)) {
+    tips.push("青函当天只做链路，不追景点，也不要压极限换乘。");
+  }
+  if (/旭川|带广|钏路/.test(routeText)) {
+    tips.push("旭川 -> 带广 -> 钏路这类段，通常最适合只保移动和晚饭。");
+  }
+
+  return unique(tips).slice(0, 4);
+}
+
+function getMoveComfortSources(item, guideData) {
+  const routeText = [item.title, item.meta, ...(guideData.time || []), ...(guideData.route || []), ...(guideData.avoid || [])].join(" ");
+  const minutes = estimateDurationMinutes(routeText);
+  const sources = [];
+
+  if (minutes >= 180) {
+    sources.push("reservation", "jrInfoDesk");
+  }
+  if (minutes >= 300 || /跨海/.test(routeText)) {
+    sources.push("jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus", "jrAirport");
+  }
+  if (minutes >= 240 || /行李|箱|搬家/.test(routeText)) {
+    sources.push("yamatoHandsFree");
+  }
+  if (/函馆|新函馆北斗|新青森|青函/.test(routeText)) {
+    sources.push("shinkansen", "jreast", "jreastTimetableTop");
+  }
+
+  return unique(sources);
+}
+
 function renderDetailSections(item) {
   const guideData = getGuide(item);
   const transitSources = getTransitSourceKeys(item, guideData);
   const transportSources = transitSources.slice(0, 6);
-  const allSourceKeys = unique([...(item.sources || []), ...(guideData.sources || [])]);
+  const comfortSources = getMoveComfortSources(item, guideData);
+  const allSourceKeys = unique([...(item.sources || []), ...(guideData.sources || []), ...comfortSources]);
   const remainingSources = allSourceKeys.filter((key) => !transportSources.includes(key));
   const guideSections = [
     { title: "适合你们吗", items: getTasteFit(item) },
@@ -5251,7 +5418,12 @@ function renderDetailSections(item) {
     { title: "店铺 / 餐厅方向", items: getFoodTips(item) },
     { title: "别踩坑", items: guideData.avoid }
   ];
-  const allSections = [...guideSections, ...item.sections];
+  const longMoveItems = getMoveComfortTips(item, guideData);
+  if (longMoveItems.length) {
+    const transportIndex = guideSections.findIndex((section) => section.title === "交通要点");
+    guideSections.splice(Math.max(transportIndex + 1, 0), 0, { title: "长移动减负", items: longMoveItems });
+  }
+  const allSections = [...guideSections, ...item.sections].filter((section) => section.items?.length);
   const renderedSections = allSections
     .map(
       (section) => `
@@ -5351,6 +5523,11 @@ function renderTransfers() {
 function renderBusTransfers() {
   if (!busTransferList) return;
   busTransferList.innerHTML = renderTransferCards(coreBusTransfers);
+}
+
+function renderLongMoveComfort() {
+  if (!comfortList) return;
+  comfortList.innerHTML = renderDecisionCards(longMoveComfort);
 }
 
 function renderOptimizations() {
@@ -5507,6 +5684,7 @@ document.addEventListener("keydown", (event) => {
 renderTransportAudit();
 renderTransfers();
 renderBusTransfers();
+renderLongMoveComfort();
 renderAdultPlaybook();
 renderAdultRoutePlan();
 renderOptimizations();

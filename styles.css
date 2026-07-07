@@ -121,6 +121,7 @@ img {
 
 .transport-board,
 .bus-board,
+.comfort-board,
 .optimization-board,
 .adult-board,
 .outline-board {
@@ -133,6 +134,7 @@ img {
 
 .transport-board,
 .bus-board,
+.comfort-board,
 .optimization-board,
 .adult-board {
   margin-bottom: 14px;
@@ -145,6 +147,7 @@ img {
 #outline,
 #transport-title,
 #bus-title,
+#comfort-title,
 #adult-title,
 #optimization-title {
   scroll-margin-top: 18px;
