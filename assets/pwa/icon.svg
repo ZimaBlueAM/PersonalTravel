@@ -1,13 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
-  <title>Personal Travel PWA Icon</title>
-  <desc>Minimal route-outline icon for the travel planner app.</desc>
-  <rect x="40" y="40" width="944" height="944" rx="210" fill="#ffffff" stroke="#d9ded8" stroke-width="14" />
-  <rect x="116" y="116" width="792" height="792" rx="178" fill="#f7f7f5" />
-  <path d="M244 324h252" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" />
-  <path d="M244 420h208" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" opacity="0.9" />
-  <path d="M244 516h164" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" opacity="0.82" />
-  <path d="M254 676h248c110 0 202-72 244-168" fill="none" stroke="#24614f" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="760" cy="484" r="34" fill="#245c92" />
-  <circle cx="254" cy="676" r="28" fill="#24614f" />
-  <path d="M784 470 730 486 766 522" fill="none" stroke="#f7f7f5" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  <title>Travel Route PWA Icon</title>
+  <desc>Minimal route-and-stop icon for the travel planner app.</desc>
+  <rect x="40" y="40" width="944" height="944" rx="212" fill="#ffffff" stroke="#d9ded8" stroke-width="14" />
+  <rect x="116" y="116" width="792" height="792" rx="180" fill="#f7f7f5" />
+  <path
+    d="M214 682C286 655 322 625 362 586C406 541 447 514 500 493"
+    fill="none"
+    stroke="#e7ece7"
+    stroke-width="50"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M214 682C286 655 322 625 362 586C406 541 447 514 500 493"
+    fill="none"
+    stroke="#245c92"
+    stroke-width="36"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M500 493C548 474 585 446 622 409C662 369 709 346 781 389"
+    fill="none"
+    stroke="#e7ece7"
+    stroke-width="50"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M500 493C548 474 585 446 622 409C662 369 709 346 781 389"
+    fill="none"
+    stroke="#24614f"
+    stroke-width="36"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle cx="214" cy="682" r="44" fill="#245c92" />
+  <circle cx="214" cy="682" r="20" fill="#f7f7f5" />
+
+  <circle cx="500" cy="493" r="32" fill="#a15d1f" />
+  <circle cx="500" cy="493" r="13" fill="#f7f7f5" />
+
+  <circle cx="622" cy="409" r="24" fill="#245c92" />
+  <circle cx="622" cy="409" r="10" fill="#f7f7f5" />
+
+  <path
+    d="M781 337c30 0 54 24 54 54 0 46-54 96-54 96s-54-50-54-96c0-30 24-54 54-54Z"
+    fill="#24614f"
+  />
+  <circle cx="781" cy="391" r="17" fill="#f7f7f5" />
+  <path
+    d="M767 391h28M781 377v28"
+    fill="none"
+    stroke="#f7f7f5"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M307 308h112M307 360h168"
+    fill="none"
+    stroke="#245c92"
+    stroke-width="22"
+    stroke-linecap="round"
+    opacity="0.15"
+  />
 </svg>
