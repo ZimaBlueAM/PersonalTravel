@@ -51,6 +51,26 @@ const sourceLinks = {
     label: "JR Hokkaido Train Reservation",
     url: "https://www.jrhokkaido.co.jp/global/english/ticket/reservation/index.html"
   },
+  jrRailPass: {
+    label: "JR Hokkaido: Rail passes & Tickets",
+    url: "https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html"
+  },
+  jrUsage: {
+    label: "JR Hokkaido: How to Use JR Hokkaido",
+    url: "https://www.jrhokkaido.co.jp/global/english/ticket/usage/index.html"
+  },
+  jrInfoDesk: {
+    label: "JR Hokkaido: JR Information Desk",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/info.html"
+  },
+  jrAirport: {
+    label: "JR Hokkaido: Airport line",
+    url: "https://www.jrhokkaido.co.jp/global/english/travel/airport.html"
+  },
+  jrKitaca: {
+    label: "JR Hokkaido: Kitaca usable area",
+    url: "https://www.jrhokkaido.co.jp/global/english/ticket/kitaca/index.html"
+  },
   asahikawa: {
     label: "JR Hokkaido: Sapporo - Asahikawa",
     url: "https://www.jrhokkaido.co.jp/global/english/train/guide/asahikawa.html"
@@ -62,6 +82,14 @@ const sourceLinks = {
   hakodate: {
     label: "JR Hokkaido: Sapporo - Hakodate",
     url: "https://www.jrhokkaido.co.jp/global/english/train/guide/hakodate.html"
+  },
+  jrEastSouthHokkaidoRailPass: {
+    label: "JR East: JR East-South Hokkaido Rail Pass",
+    url: "https://www.jreast.co.jp/en/multi/pass/easthokkaido.html"
+  },
+  jrTohokuSouthHokkaidoRailPass: {
+    label: "JR East: JR Tohoku-South Hokkaido Rail Pass",
+    url: "https://www.jreast.co.jp/en/multi/pass/tohokuhokkaido.html"
   },
   shinkansen: {
     label: "JR Hokkaido: Hokkaido Shinkansen / Hakodate Liner",
@@ -519,6 +547,10 @@ const sourceLinks = {
     label: "JR East: Sendai Station Shinkansen timetable",
     url: "https://timetables.jreast.co.jp/en/timetable/list0913.html"
   },
+  jrEastServiceCenterSendai: {
+    label: "JR East Travel Service Center (Sendai)",
+    url: "https://www.jreast.co.jp/en/multi/customer_support/service_center_sendai.html"
+  },
   jreastTimetableTop: {
     label: "JR East: Timetable top",
     url: "https://timetables.jreast.co.jp/en/"
@@ -526,6 +558,10 @@ const sourceLinks = {
   moriokaStationTimetable: {
     label: "JR East: Morioka Station Shinkansen timetable",
     url: "https://timetables.jreast.co.jp/en/timetable/list1565.html"
+  },
+  matsushimaStationTimetable: {
+    label: "JR East: Matsushima Station timetable",
+    url: "https://timetables.jreast.co.jp/en/timetable/list1439.html"
   },
   jrHokkaidoNorikae: {
     label: "JR Hokkaido: timetable search top",
@@ -591,6 +627,10 @@ const sourceLinks = {
     label: "JR East: JR TOKYO Wide Pass",
     url: "https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html"
   },
+  tokyoStationTimetable: {
+    label: "JR East: Tokyo Station timetable",
+    url: "https://timetables.jreast.co.jp/en/timetable/list1039.html"
+  },
   goTokyoGinza: {
     label: "GO TOKYO: Ginza",
     url: "https://www.gotokyo.org/en/destinations/central-tokyo/ginza/index.html"
@@ -613,17 +653,18 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-06 02:11 JST";
-const jrHokkaidoLiveNote = `本次核验 ${checkedAt}：JR 北海道 top_en.json 页面原文为 As of 06/07/2026, 02:11，即 2026-07-06 02:11 JST；区域摘要对札幌/机场、道央、道南、道北、道东、北海道新干线均返回 2，官方脚本含义为“服务时间外”。同次影响地图 eikyo_map_status.json 共 108 个分段均为 status=1，对应地图图例“无取消/30 分钟以上延误信息”。因此路线结构可行，但出发日必须按具体线路、车次和替代交通再查。`;
-const jrEastLiveNote = "本次核验 2026-07-06 01:19 JST：JR East 页面显示 Tohoku Shinkansen Normal operation；同页服务暂停栏仍列出 07/05 Hayabusa 39 在新青森-新函馆北斗区间停运信息，所以跨海当天必须按具体 Hayabusa/Hayate 车次再查。";
+const checkedAt = "2026-07-07 官方复核";
+const jrHokkaidoLiveNote = "本次核验：JR 北海道运转信息页当前给札幌/机场、中央、道南、道北、道东、北海道新干线都显示“无取消/30 分钟以上延误信息”。路线结构成立，但出发当天仍要按具体车次、站台和替代交通再查。";
+const jrEastLiveNote = "本次核验 2026-07-07 17:23 JST：JR East Shinkansen 页面显示 Tohoku Shinkansen Normal operation，且当前没有停运信息。跨海当天还是要按具体 Hayabusa/Hayate 车次再查。";
 
 const transportAudit = {
   title: "官方交通核验",
   checked: checkedAt,
   items: [
-    "JR 北海道：区域摘要此刻为服务时间外；影响地图 108 个分段均显示无取消/30 分钟以上延误信息。",
-    "JR East：东北新干线正常运行；但跨海区间仍出现个别 Hayabusa 停运记录。",
-    "结论：基地链路成立；真正风险在旭川->钏路、钏路->函馆、函馆->新函馆北斗->新青森这三段。"
+    "JR 北海道：当前区域页都显示“无取消/30 分钟以上延误信息”。",
+    "JR Hokkaido 规则很硬：所有特急都要指定席或空席票，Furano Biei / Kushiro Shitsugen Norokko 也都要单独预约。",
+    "Kitaca 只在札幌-旭川和函馆两个区间内好用，Otaru 以西、富良野、登别、洞爷、钏路、根室这些地方都别默认能刷。",
+    "JR East：东北新干线当前正常运行；跨海还是要按函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京这条链路查。"
   ]
 };
 
@@ -642,7 +683,7 @@ const coreTransfers = [
     ],
     steps: ["新千岁机场站 -> 札幌站：快速 Airport / 普通 JR 系统。", "到札幌后先入住、补给、吃饭。"],
     note: "JR 北海道当前区域摘要为服务时间外；落地当天按新千岁机场-札幌具体列车再查。",
-    sources: ["operation", "timetable", "jrHokkaidoNorikae"]
+    sources: ["operation", "timetable", "jrAirport", "jrInfoDesk", "jrKitaca", "jrUsage", "jrRailPass", "reservation", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-sapporo-asahikawa",
@@ -658,7 +699,7 @@ const coreTransfers = [
     ],
     steps: ["札幌 -> 旭川：JR 特急 Kamui / Lilac。", "JR 北海道特急全席指定；持 pass 也建议提前取指定席。"],
     note: "官方列车指南确认 Kamui / Lilac 连接札幌与旭川，信息页标注 2026 年 3 月有效。",
-    sources: ["asahikawa", "reservation", "operation", "jrHokkaidoNorikae"]
+    sources: ["asahikawa", "reservation", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-asahikawa-kushiro",
@@ -681,7 +722,7 @@ const coreTransfers = [
       "富良野 -> 新得铁路已废止，不能从富良野一路 JR 直插十胜。"
     ],
     note: "North Liner 公开订票页显示旭川-带广经富良野/新得 5 往复，另有三国峠方向 1 往复；实际班次以乘车日为准。",
-    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation", "jrHokkaidoNorikae"]
+    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-kushiro-hakodate",
@@ -700,7 +741,7 @@ const coreTransfers = [
     ],
     steps: ["钏路 -> 南千岁/札幌：特急 Ozora 主干线。", "南千岁/札幌 -> 函馆：特急 Hokuto。", "中间留足换乘、吃饭、延误缓冲。"],
     note: "JR 北海道指南确认 Ozora 连接札幌-钏路、Hokuto 连接札幌-函馆；两个系统拼起来才是钏路到函馆。",
-    sources: ["obihiro", "hakodate", "operation", "reservation", "jrHokkaidoNorikae"]
+    sources: ["obihiro", "hakodate", "operation", "reservation", "jrUsage", "jrRailPass", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-hakodate-sendai",
@@ -722,7 +763,7 @@ const coreTransfers = [
       "新青森 -> 仙台：东北新干线。"
     ],
     note: "JR East 当前显示东北新干线整体正常，但服务暂停栏列出个别跨海车次停运；跨海日必须查具体 Hayabusa/Hayate 车次。",
-    sources: ["shinkansen", "jreast", "jreastTimetableTop", "sendaiStationTimetable"]
+    sources: ["shinkansen", "jreast", "jreastTimetableTop", "sendaiStationTimetable", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "reservation"]
   },
   {
     id: "transfer-sendai-tokyo",
@@ -738,7 +779,114 @@ const coreTransfers = [
     ],
     steps: ["仙台 -> 东京：东北新干线直达。", "到达东京后只做市内短点，不再扩张远郊。"],
     note: "JR East 当前页面显示东北新干线 Normal operation；仍以出发当天实时状态为准。",
-    sources: ["jreast", "jreastTimetableTop", "sendaiStationTimetable"]
+    sources: ["jreast", "jreastTimetableTop", "sendaiStationTimetable", "tokyoStationTimetable", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "jrTokyoWidePass", "reservation"]
+  }
+];
+
+const coreBusTransfers = [
+  {
+    id: "bus-sapporo-noboribetsu",
+    icon: "bus",
+    mode: "JR + 巴士",
+    from: "札幌基地",
+    to: "登别温泉",
+    time: "JR 到登别站后再接约 15 分钟巴士",
+    status: "Pass 不含末端巴士",
+    verdict: "登别是温泉恢复线，不要把巴士当成附属小事。",
+    caution: true,
+    segments: [
+      { label: "JR", route: "札幌 -> 登别站", time: "特急直达", memo: "全席指定，先订座。" },
+      { label: "Bus", route: "登别站 -> 登别温泉街", time: "约 15 分钟", memo: "道南巴士或出租；末班要先查。" }
+    ],
+    steps: [
+      "先坐 JR 到登别站，再换道南巴士进温泉街。",
+      "Sapporo-Noboribetsu Area Pass 不含 JR Hokkaido Bus。"
+    ],
+    note: "JR Hokkaido 推荐路线写明从新千岁机场 / 札幌可到登别站，再接巴士到温泉街。",
+    sources: ["jrNoboribetsuToyako", "noboribetsuOfficial", "noboribetsuJnto", "takimotokanAccess", "jrRailPass", "reservation"]
+  },
+  {
+    id: "bus-sapporo-toya",
+    icon: "bus",
+    mode: "JR + 巴士",
+    from: "札幌基地",
+    to: "洞爷湖温泉",
+    time: "JR 到洞爷站后再接约 20-26 分钟巴士",
+    status: "适合中继停留",
+    verdict: "湖区终点不在站前，先接受一次末端接驳。",
+    caution: true,
+    segments: [
+      { label: "JR", route: "札幌 -> 洞爷站", time: "特急直达", memo: "先把座位订好。" },
+      { label: "Bus", route: "洞爷站 -> 洞爷湖温泉", time: "约 20-26 分钟", memo: "道南巴士或出租；不要默认步行可到。" }
+    ],
+    steps: [
+      "先坐 JR 到洞爷站，再接道南巴士进湖区。",
+      "如果末端班次不漂亮，就把洞爷湖改成中继或直接删掉。"
+    ],
+    note: "官方旅游协会写明从 JR 洞爷站需要道南巴士或出租车前往洞爷湖温泉。",
+    sources: ["lakeToyaOfficial", "donanToyakoBus", "lakeToyaJnto", "jrNoboribetsuToyako", "jrRailPass", "reservation"]
+  },
+  {
+    id: "bus-asahikawa-kushiro",
+    icon: "bus",
+    mode: "预约巴士 + JR",
+    from: "旭川基地",
+    to: "钏路基地",
+    time: "整日",
+    status: "需要预约 / 拆分判断",
+    verdict: "North Liner 是关键穿越，错过就要绕回札幌。",
+    caution: true,
+    segments: [
+      { label: "Bus", route: "旭川 -> 带广", time: "North Liner 预约巴士", memo: "按乘车日预约；是地理上更顺的穿越方式。" },
+      { label: "JR", route: "带广 -> 钏路", time: "Ozora / Tokachi", memo: "按实际到达时间留换乘和晚饭缓冲。" }
+    ],
+    steps: [
+      "推荐地理逻辑：旭川 -> 带广 North Liner，再接 JR 到钏路。",
+      "JR-only 也能绕回主干线，但会明显变长。"
+    ],
+    note: "North Liner 公开订票页显示旭川-带广有固定往复；这段更适合当移动日，不要硬塞观光。",
+    sources: ["northliner", "obihiro", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
+  },
+  {
+    id: "bus-kushiro-akan",
+    icon: "bus",
+    mode: "巴士",
+    from: "钏路基地",
+    to: "阿寒湖温泉",
+    time: "约 75-80 分钟",
+    status: "座位有限 / 回程先看",
+    verdict: "这条线比 JR 更像地方交通，先把回程定住。",
+    caution: true,
+    segments: [
+      { label: "Bus", route: "钏路站巴士总站 -> 阿寒湖巴士中心", time: "约 75-80 分钟", memo: "Akan Airport Liner / 30 Akan Line；座位有限。" }
+    ],
+    steps: [
+      "从钏路站巴士总站出发，再进阿寒湖温泉街。",
+      "如果天气普通，阿寒湖优先保留回程，不要把晚饭压太晚。"
+    ],
+    note: "Akan Bus 官方页写明有阿寒湖与釧路机场/釧路站之间的直达与区域巴士，且部分班次座位有限。",
+    sources: ["lakeAkanBus", "akankoAinuAccess", "akanMashuAccess", "lakeAkanOfficial", "jrRailPass"]
+  },
+  {
+    id: "bus-kushiro-nosappu",
+    icon: "bus",
+    mode: "JR + 巴士",
+    from: "钏路基地",
+    to: "根室 / 纳沙布岬",
+    time: "JR + 末端巴士，整日",
+    status: "长线尽头",
+    verdict: "先定花咲线回程，再决定岬角停留。",
+    caution: true,
+    segments: [
+      { label: "JR", route: "钏路 -> 根室", time: "花咲线", memo: "回程班次少，先锁定。" },
+      { label: "Bus", route: "根室站 -> 纳沙布岬", time: "约 45-47 分钟", memo: "末端巴士或出租；不要默认能顺手赶回。" }
+    ],
+    steps: [
+      "先把花咲线回程锁住，再决定要不要加纳沙布岬。",
+      "岬角如果天气一般，就让它变成可删点，不要把整天压满。"
+    ],
+    note: "JNTO 给出的公共交通量级是钏路站到根室站约 2 小时 40 分钟，再从根室站接巴士到岬角。",
+    sources: ["nosappu", "nemuroKotsu", "visitNemuroHanasaki", "hokkaidoHanasakiPlan", "jrRailPass", "reservation"]
   }
 ];
 
@@ -4507,6 +4655,12 @@ function hasAnySeed(keys, seeds) {
   return keys.some((key) => seeds.has(key));
 }
 
+function appendIfDefined(target, ...keys) {
+  for (const key of keys.flat()) {
+    if (sourceLinks[key]) target.push(key);
+  }
+}
+
 function getTransitSourceKeys(item, guideData) {
   const keys = unique([...(item.sources || []), ...(guideData.sources || [])]);
   const matched = keys.filter((key) => {
@@ -4514,16 +4668,70 @@ function getTransitSourceKeys(item, guideData) {
     const label = source?.label || "";
     return transportSourceMatchers.some((matcher) => matcher.test(label));
   });
+  const text = [item.title, item.meta, item.summary, ...(guideData.route || []), ...(guideData.play || []), ...(guideData.best || []), ...(guideData.avoid || [])].join(" ");
+  const suggested = [];
+
+  if (/(札幌|新千岁|新千歳|CTS|Sapporo|New Chitose)/i.test(text)) {
+    appendIfDefined(suggested, "jrAirport", "jrInfoDesk", "jrKitaca", "jrUsage", "jrRailPass", "reservation");
+  }
+  if (/(小樽|Otaru|余市|Yoichi)/i.test(text)) {
+    appendIfDefined(suggested, "jrKitaca", "jrUsage", "jrRailPass", "reservation");
+  }
+  if (/(登别|登別|洞爷|洞爺|Toya|Muroran|室蘭)/i.test(text)) {
+    appendIfDefined(suggested, "jrUsage", "jrRailPass", "jrNoboribetsuToyako", "reservation");
+  }
+  if (/(旭川|Asahikawa|美瑛|Biei|富良野|Furano|Lavender)/i.test(text)) {
+    appendIfDefined(suggested, "jrUsage", "jrRailPass", "jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "reservation");
+    if (/(旭川|Asahikawa)/i.test(text)) appendIfDefined(suggested, "asahikawa");
+  }
+  if (/(函馆|函館|Hakodate|新函館北斗|新函馆北斗|新青森|青函|Seikan|Hokuto)/i.test(text)) {
+    appendIfDefined(
+      suggested,
+      "jrEastSouthHokkaidoRailPass",
+      "jrTohokuSouthHokkaidoRailPass",
+      "jrUsage",
+      "jrRailPass",
+      "hakodate",
+      "shinkansen",
+      "reservation"
+    );
+  }
+  if (/(釧路|Kushiro|阿寒|Akan|摩周|Mashu|根室|Nemuro|厚岸|Akkeshi)/i.test(text)) {
+    appendIfDefined(suggested, "jrUsage", "jrRailPass", "kushiroNorokko", "jrNorokkoGuide", "kushiroShitsugenAccess", "akanBusWetland", "reservation");
+  }
+  if (/(仙台|Sendai)/i.test(text)) {
+    appendIfDefined(
+      suggested,
+      "jrEastServiceCenterSendai",
+      "sendaiStationTimetable",
+      "sendaiGettingAround",
+      "jrEastSouthHokkaidoRailPass",
+      "jrTohokuSouthHokkaidoRailPass",
+      "jreastTimetableTop"
+    );
+  }
+  if (/(松岛|松島|Matsushima)/i.test(text)) {
+    appendIfDefined(suggested, "matsushimaStationTimetable");
+  }
+  if (/(盛冈|盛岡|Morioka|平泉|Hiraizumi)/i.test(text)) {
+    appendIfDefined(suggested, "moriokaStationTimetable", "hiraizumiLoopBus");
+  }
+  if (/(东京|东京站|Tokyo|涩谷|Shibuya|银座|Ginza|台场|Odaiba|横滨|Yokohama|镰仓|Kamakura|日光|Nikko)/i.test(text)) {
+    appendIfDefined(suggested, "tokyoStationTimetable", "jrTokyoWidePass", "jreastTimetableTop");
+  }
+  if (/(JR|新干线|巴士|接驳|车站|站区|换乘|末班|班次|指定席|时刻表)/.test(text)) {
+    appendIfDefined(suggested, "jrUsage", "reservation");
+  }
 
   if (hasAnySeed(keys, hokkaidoTimetableSeeds)) {
-    matched.unshift("jrHokkaidoNorikae");
+    suggested.unshift("jrHokkaidoNorikae");
   }
 
   if (hasAnySeed(keys, eastTimetableSeeds)) {
-    matched.unshift("jreastTimetableTop");
+    suggested.unshift("jreastTimetableTop");
   }
 
-  return unique(matched);
+  return unique([...suggested, ...matched]);
 }
 
 function getFirstTimeTips(item, guideData) {
@@ -4547,11 +4755,38 @@ function getFirstTimeTips(item, guideData) {
     tips.push("景点一旦离开主入口，回头找路会比你想的更花时间。");
   }
 
+  if (/(札幌|新千岁|新千歳|CTS)/i.test(text)) {
+    tips.push("札幌和新千岁换票、问路、领 pass 时，先找 JR Information Desk，别在站里边走边猜。");
+    tips.push("如果是新千岁机场出发或落地，先把机场站和札幌站的官方时刻表一起看完。");
+  }
+  if (/(小樽|Otaru|余市|Yoichi)/i.test(text)) {
+    tips.push("小樽以西别默认还能刷 IC 卡；去余市、Kutchan、Niseko 前先把票买好。");
+  }
+  if (/(登别|登別|洞爷|洞爺|Toya)/i.test(text)) {
+    tips.push("登别和洞爷都要接受一次 JR 之后的末端巴士/接驳，不要把站名当终点。");
+  }
+  if (/(旭川|Asahikawa|美瑛|Biei|富良野|Furano|Lavender)/i.test(text)) {
+    tips.push("富良野线和观光列车很季节性，6-9 月才是主窗口，而且 Norokko / Lavender Express 都要指定席。");
+  }
+  if (/(函馆|函館|Hakodate|新函館北斗|新函馆北斗|青函|Seikan|新青森)/i.test(text)) {
+    tips.push("函馆去本州一定是函馆站 -> 新函馆北斗 -> 新青森，不要把函馆站当新干线站。");
+  }
+  if (/(仙台|Sendai|松岛|松島|Matsushima|平泉|Hiraizumi|盛冈|盛岡|Morioka)/i.test(text)) {
+    tips.push("松岛先分清 Matsushima Station 和 Matsushimakaigan；平泉和盛冈都要先把回程时刻看好。");
+  }
+  if (/日光|Nikko/i.test(text)) {
+    tips.push("日光区内基本靠巴士，先定回程再决定要不要加中禅寺湖。");
+  }
+  if (/(台场|台場|Odaiba|横滨|横浜|Yokohama|镰仓|鎌倉|Kamakura)/i.test(text)) {
+    tips.push("东京收尾段尽量靠地铁或私铁小范围移动，风大或下雨就把海边改成室内。");
+  }
+
   if (/JR|新干线|巴士|接驳|车站|站区|换乘|末班|班次|指定席|时刻表/.test(text)) {
     tips.push("查当天去程和回程班次，按车次查，不要只看区间时间。");
   }
   if (/巴士|接驳|非JR|末端|岬|海岸|湖|峡谷|山岳|瀑布|温泉|远郊|世界遗产/.test(text)) {
     tips.push("下车点和上车点不一定是一个地方，去程时顺手把回程站牌拍一下。");
+    tips.push("如果巴士座位少或需要预约，先锁回程，再决定要不要继续加点。");
   }
   if (/天气|风|雾|雨|晴天|能见度/.test(text)) {
     tips.push("天气一差就直接降级，不要让远景点抢掉整天的体力和回程。");
@@ -4567,7 +4802,7 @@ function getFirstTimeTips(item, guideData) {
     tips.push("到了先确认厕所、补水点和回程方式，别把路走得太满。");
   }
 
-  return unique(tips).slice(0, 4);
+  return unique(tips).slice(0, 6);
 }
 
 function renderReviewLinks(item) {
@@ -4593,6 +4828,7 @@ const outlineTree = document.querySelector("#outlineTree");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
+const busTransferList = document.querySelector("#busTransferList");
 const optimizationList = document.querySelector("#optimizationList");
 const modal = document.querySelector("#detailModal");
 const modalSheet = modal.querySelector(".modal-sheet");
@@ -4697,8 +4933,33 @@ function getPrecheck(item, guideData) {
   if (guideData.check.length) return guideData.check;
   const text = matchText(item);
   const checks = [];
+  if (/(札幌|新千岁|新千歳|CTS)/i.test(text)) {
+    checks.push("不确定就先去 JR Information Desk，票券和换票问题都能在那里问。");
+    checks.push("先查新千岁机场和札幌之间的官方时刻表，行李多时把换乘口一起看。");
+  }
+  if (/(小樽|Otaru|余市|Yoichi)/i.test(text)) {
+    checks.push("确认 Otaru 之后是否还在同一个 IC 区间，别默认一路都能刷卡。");
+  }
+  if (/(函馆|函館|Hakodate|新函館北斗|新函馆北斗|青函|Seikan|新青森)/i.test(text)) {
+    checks.push("跨海日先把 Hakodate Liner 和新干线衔接查到分钟级，别把换乘压太紧。");
+  }
+  if (/(旭川|Asahikawa|美瑛|Biei|富良野|Furano|Lavender)/i.test(text)) {
+    checks.push("先确认观光列车是否运营、是否需要指定席，以及 Lavender Farm Station 是否在季节内。");
+  }
+  if (/(仙台|Sendai|松岛|松島|Matsushima|平泉|Hiraizumi|盛冈|盛岡|Morioka)/i.test(text)) {
+    checks.push("先区分 Matsushima Station 和 Matsushimakaigan；平泉和盛冈都要先看回程班次。");
+  }
+  if (/(仙台|Sendai)/i.test(text)) {
+    checks.push("仙台站 3 楼的 JR East Travel Service Center 可以换票、取 pass，也能顺手问清楚站内路线。");
+  }
+  if (/日光|Nikko/i.test(text)) {
+    checks.push("日光先查去程之外的回程巴士，不然很容易把湖区拖到太晚。");
+  }
   if (/JR|新干线|巴士|接驳|末端|非JR|交通|车次|指定席|长线|直通|换乘/.test(text + " " + guideData.route.join(" "))) {
     checks.push("查当天去程/回程班次，尤其是末端巴士、接驳、指定席和末班。");
+  }
+  if (/巴士|接驳/.test(text)) {
+    checks.push("先确认这段是不是预约制、是否有座位数限制，以及回程末班是否足够早。");
   }
   if (/天气|晴天|雨天|岬|海岸|湖景|峡谷|山岳|瀑布|花田|夜景|风/.test(text)) {
     checks.push("查天气、风、能见度；不满足就按弹窗里的取舍降级。");
@@ -4716,8 +4977,9 @@ function getPrecheck(item, guideData) {
 function renderDetailSections(item) {
   const guideData = getGuide(item);
   const transitSources = getTransitSourceKeys(item, guideData);
+  const transportSources = transitSources.slice(0, 6);
   const allSourceKeys = unique([...(item.sources || []), ...(guideData.sources || [])]);
-  const remainingSources = allSourceKeys.filter((key) => !transitSources.includes(key));
+  const remainingSources = allSourceKeys.filter((key) => !transportSources.includes(key));
   const guideSections = [
     { title: "适合你们吗", items: getTasteFit(item) },
     { title: "出发前查", items: getPrecheck(item, guideData) },
@@ -4742,7 +5004,7 @@ function renderDetailSections(item) {
       `
     );
   const transportInsertIndex = guideSections.findIndex((section) => section.title === "交通要点") + 1;
-  const transportBlock = transitSources.length ? renderSources(transitSources, "时刻表 / 交通入口") : "";
+  const transportBlock = transportSources.length ? renderSources(transportSources, "时刻表 / 交通入口") : "";
   const body = renderedSections.slice(0, transportInsertIndex).join("") + transportBlock + renderedSections.slice(transportInsertIndex).join("");
 
   return body + renderReviewLinks(item) + renderSources(remainingSources, "依据");
@@ -4762,8 +5024,8 @@ function renderTransportAudit() {
   `;
 }
 
-function renderTransfers() {
-  transferList.innerHTML = coreTransfers
+function renderTransferCards(items = []) {
+  return items
     .map(
       (transfer) => `
         <details class="transfer-card${transfer.caution ? " is-caution" : ""}">
@@ -4792,6 +5054,16 @@ function renderTransfers() {
       `
     )
     .join("");
+}
+
+function renderTransfers() {
+  if (!transferList) return;
+  transferList.innerHTML = renderTransferCards(coreTransfers);
+}
+
+function renderBusTransfers() {
+  if (!busTransferList) return;
+  busTransferList.innerHTML = renderTransferCards(coreBusTransfers);
 }
 
 function renderOptimizations() {
@@ -4959,6 +5231,7 @@ document.addEventListener("keydown", (event) => {
 
 renderTransportAudit();
 renderTransfers();
+renderBusTransfers();
 renderOptimizations();
 updateFilterButtons();
 renderOutline();

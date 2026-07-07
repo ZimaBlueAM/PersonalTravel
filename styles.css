@@ -120,6 +120,7 @@ img {
 }
 
 .transport-board,
+.bus-board,
 .optimization-board,
 .outline-board {
   border-top: 1px solid var(--line);
@@ -130,6 +131,7 @@ img {
 }
 
 .transport-board,
+.bus-board,
 .optimization-board {
   margin-bottom: 14px;
 }
