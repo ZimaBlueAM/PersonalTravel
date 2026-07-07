@@ -83,6 +83,26 @@ const sourceLinks = {
     label: "JAL: Domestic Flight Status",
     url: "https://www.jal.co.jp/jp/en/flight-status/dom/"
   },
+  anaDomesticTimetable: {
+    label: "ANA: Timetable / Route Map",
+    url: "https://www.ana.co.jp/en/jp/guide/plan/airinfo/"
+  },
+  anaSapporoKushiro: {
+    label: "ANA: Flights from Sapporo to Kushiro",
+    url: "https://www.ana.co.jp/en-jp/flights-from-sapporo-to-kushiro"
+  },
+  anaKushiroSapporo: {
+    label: "ANA: Flights from Kushiro to Sapporo",
+    url: "https://www.ana.co.jp/en-jp/flights-from-kushiro-to-sapporo"
+  },
+  anaSapporoHakodate: {
+    label: "ANA: Flights from Sapporo to Hakodate",
+    url: "https://www.ana.co.jp/en-jp/flights-from-sapporo-to-hakodate"
+  },
+  anaHakodateSapporo: {
+    label: "ANA: Flights from Hakodate to Sapporo",
+    url: "https://www.ana.co.jp/en-jp/flights-from-hakodate-to-sapporo"
+  },
   yamatoHandsFree: {
     label: "Yamato: Hands-Free Travel",
     url: "https://www.kuronekoyamato.co.jp/en/"
@@ -684,7 +704,8 @@ const transportAudit = {
     "JR 北海道：当前区域页都显示“无取消/30 分钟以上延误信息”。",
     "JR Hokkaido 规则很硬：所有特急都要指定席或空席票，Furano Biei / Kushiro Shitsugen Norokko 也都要单独预约。",
     "Kitaca 只在札幌-旭川和函馆两个区间内好用，Otaru 以西、富良野、登别、洞爷、钏路、根室这些地方都别默认能刷。",
-    "JR East：东北新干线当前正常运行；跨海还是要按函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京这条链路查。"
+    "JR East：东北新干线当前正常运行；跨海还是要按函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京这条链路查。",
+    "东北海道和南北海道的长跳跃不该写成舒服直连；更顺的做法通常是先回札幌，再用飞机或拆天接续。"
   ]
 };
 
@@ -723,45 +744,49 @@ const coreTransfers = [
   },
   {
     id: "transfer-asahikawa-kushiro",
-    icon: "bus",
-    mode: "巴士 + JR / JR-only 备选",
+    icon: "plane",
+    mode: "JR + 飞机接力 / 陆路备选",
     from: "旭川基地",
     to: "钏路基地",
-    time: "约 6-9 小时",
-    status: "需要预约/拆分判断",
+    time: "约 3-5 小时（飞行接力）/ 6-9 小时（陆路）",
+    status: "建议拆两天",
     caution: true,
-    verdict: "不要再写成旭川到钏路 JR 直通；公共交通要二选一。",
+    verdict: "别把旭川到钏路写成舒服直通；最顺手的做法是先回札幌，再飞钏路。",
     segments: [
-      { label: "推荐", route: "旭川 -> 带广", time: "North Liner 预约巴士", memo: "按乘车日预约；这是地理上更顺的穿越方式。" },
-      { label: "接续", route: "带广 -> 钏路", time: "JR Ozora 体系", memo: "按实际到达时间留换乘和晚饭缓冲。" },
-      { label: "备选", route: "旭川 -> 札幌/南千岁 -> 钏路", time: "JR-only 长绕", memo: "不直观但避开巴士预约失败风险。" }
+      { label: "推荐", route: "旭川 -> 札幌", time: "JR 特急", memo: "先回主干线，不在东北海道硬穿。" },
+      { label: "推荐", route: "札幌 -> 钏路", time: "ANA 国内线", memo: "把最累的一跳交给飞机，体力和行李都轻很多。" },
+      { label: "备选", route: "旭川 -> 带广 -> 钏路", time: "North Liner + JR", memo: "保留陆路感，但仍然是整日移动日。" }
     ],
     steps: [
-      "推荐地理逻辑：旭川 -> 带广 North Liner 预约制巴士，再接 JR 到钏路。",
-      "JR-only 备选：旭川 -> 札幌/南千岁 -> 钏路，绕回主干线再坐 Ozora。",
-      "富良野 -> 新得铁路已废止，不能从富良野一路 JR 直插十胜。"
+      "舒服版：旭川 -> 札幌 -> 钏路，把札幌当空中接力点。",
+      "想保留陆路感：旭川 -> 带广 -> 钏路，但这天仍然要按移动日看待。",
+      "如果已经觉得累，就把钏路前后拆成两天，不要硬连。"
     ],
-    note: "North Liner 公开订票页显示旭川-带广经富良野/新得 5 往复，另有三国峠方向 1 往复；实际班次以乘车日为准。",
-    sources: ["northliner", "furanoClosed", "furanoCityBus", "obihiro", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
+    note: "ANA 官方路线页能查到札幌-钏路；旭川-钏路如果硬连，体感很容易过长。",
+    sources: ["asahikawa", "obihiro", "northliner", "anaDomesticTimetable", "anaSapporoKushiro", "anaKushiroSapporo", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-kushiro-hakodate",
-    icon: "train",
-    mode: "JR 特急拼接",
+    icon: "plane",
+    mode: "飞机 + JR / 分两天更舒服",
     from: "钏路基地",
     to: "函馆基地",
-    time: "约 8-10 小时",
-    status: "极长移动日",
+    time: "约 4-6 小时（飞行+中继）/ 8-10 小时（硬连）",
+    status: "建议分开",
     caution: true,
-    verdict: "JR 可拼接，但这不是观光日；强烈建议早出发或拆分。",
+    verdict: "钏路到函馆不要同日硬扛；更舒服的做法是先飞札幌，再接函馆。",
     segments: [
-      { label: "JR特急", route: "钏路 -> 南千岁/札幌", time: "Ozora", memo: "长距离主干线，白天走更稳。" },
-      { label: "换乘", route: "南千岁/札幌", time: "留缓冲", memo: "不要压紧换乘；吃饭、厕所、延误都要余量。" },
-      { label: "JR特急", route: "南千岁/札幌 -> 函馆", time: "Hokuto", memo: "Hokuto 也是北海道新干线接续列车。" }
+      { label: "推荐", route: "钏路 -> 札幌", time: "ANA 国内线", memo: "先把东北海道最重的一跳砍掉。" },
+      { label: "推荐", route: "札幌 -> 函馆", time: "ANA 国内线 / JR Hokuto", memo: "第二跳再接函馆；最好在札幌住一晚。" },
+      { label: "备选", route: "钏路 -> 札幌 -> 函馆", time: "飞 + 飞 / 飞 + JR", memo: "适合保体力，不适合同日观光。" }
     ],
-    steps: ["钏路 -> 南千岁/札幌：特急 Ozora 主干线。", "南千岁/札幌 -> 函馆：特急 Hokuto。", "中间留足换乘、吃饭、延误缓冲。"],
-    note: "JR 北海道指南确认 Ozora 连接札幌-钏路、Hokuto 连接札幌-函馆；两个系统拼起来才是钏路到函馆。",
-    sources: ["obihiro", "hakodate", "operation", "reservation", "jrUsage", "jrRailPass", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "jrHokkaidoNorikae"]
+    steps: [
+      "舒服版：钏路 -> 札幌，最好在札幌住一晚。",
+      "第二跳再去函馆：札幌 -> 函馆，飞或 JR 都行，看时间和体力。",
+      "如果一定要同日到函馆，那天就只当转场，不安排景点。"
+    ],
+    note: "ANA 官方路线页能查到札幌-钏路和札幌-函馆；钏路 -> 函馆更适合经札幌拆开。",
+    sources: ["anaDomesticTimetable", "anaKushiroSapporo", "anaSapporoKushiro", "anaSapporoHakodate", "anaHakodateSapporo", "hakodate", "reservation", "jrUsage", "jrHokkaidoNorikae"]
   },
   {
     id: "transfer-hakodate-sendai",
@@ -852,19 +877,20 @@ const coreBusTransfers = [
     mode: "预约巴士 + JR",
     from: "旭川基地",
     to: "钏路基地",
-    time: "整日",
-    status: "需要预约 / 拆分判断",
-    verdict: "North Liner 是关键穿越，错过就要绕回札幌。",
+    time: "整日 / 陆路备选",
+    status: "不建议同日观光",
+    verdict: "这是保留陆路感的版本，不是舒服版；只在你们想走十胜时用。",
     caution: true,
     segments: [
       { label: "Bus", route: "旭川 -> 带广", time: "North Liner 预约巴士", memo: "按乘车日预约；是地理上更顺的穿越方式。" },
       { label: "JR", route: "带广 -> 钏路", time: "Ozora / Tokachi", memo: "按实际到达时间留换乘和晚饭缓冲。" }
     ],
     steps: [
-      "推荐地理逻辑：旭川 -> 带广 North Liner，再接 JR 到钏路。",
-      "JR-only 也能绕回主干线，但会明显变长。"
+      "这条线只适合陆路移动日，不适合塞观光。",
+      "先锁 North Liner 班次，再决定是否继续接 JR 到钏路。",
+      "如果你们更想舒服，直接改成札幌飞行接力。"
     ],
-    note: "North Liner 公开订票页显示旭川-带广有固定往复；这段更适合当移动日，不要硬塞观光。",
+    note: "North Liner 公开订票页显示旭川-带广有固定往复；如果你们想省体力，优先看飞行接力。",
     sources: ["northliner", "obihiro", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
   },
   {
@@ -943,17 +969,32 @@ const routeOptimizations = [
   {
     id: "opt-asahikawa-kushiro",
     icon: "alert",
-    title: "旭川到钏路必须当长移动日",
+    title: "旭川到钏路先拆两段",
     meta: "最容易排错的一段",
     caution: true,
-    verdict: "不要把旭川 -> 富良野 -> 带广 -> 钏路写成顺直 JR。",
+    verdict: "不要把旭川 -> 富良野 -> 带广 -> 钏路写成顺直 JR；舒服版通常要先回札幌。",
     steps: [
       "2024-04-01 起富良野-新得铁路事业废止，不能用这段 JR 穿越到十胜。",
-      "公共交通可选：North Liner 巴士到带广，再接 JR 去钏路。",
-      "JR-only 可走旭川 -> 札幌/南千岁 -> 钏路，但绕路且很长。"
+      "舒服版：旭川 -> 札幌 -> 钏路，札幌做飞机接力点。",
+      "陆路版：North Liner 到带广，再接 JR 去钏路，但仍然算移动日。"
     ],
-    note: "如果想舒服，带广要么删掉，要么作为中继停留，不要塞进观光日。",
-    sources: ["furanoClosed", "furanoCityBus", "northliner", "obihiro"]
+    note: "如果想舒服，带广要么删掉，要么只做中继停留，不要塞进观光日。",
+    sources: ["furanoClosed", "northliner", "obihiro", "anaDomesticTimetable", "anaSapporoKushiro"]
+  },
+  {
+    id: "opt-kushiro-hakodate",
+    icon: "plane",
+    title: "钏路到函馆分两天更像旅行",
+    meta: "体力优先",
+    caution: true,
+    verdict: "钏路 -> 函馆如果硬走 JR，会把一天压得太满；更舒服的是先飞札幌，再分段去函馆。",
+    steps: [
+      "先飞钏路 -> 札幌，把最重的一跳砍掉。",
+      "第二段再接札幌 -> 函馆，最好在札幌住一晚。",
+      "如果一定同日到函馆，就把那天当纯转场。"
+    ],
+    note: "这条线的价值不是省钱，而是别把旅行变成熬车。",
+    sources: ["anaDomesticTimetable", "anaKushiroSapporo", "anaSapporoKushiro", "anaSapporoHakodate", "anaHakodateSapporo", "hakodate"]
   },
   {
     id: "opt-seikan",
@@ -1052,12 +1093,26 @@ const longMoveComfort = [
     meta: "别把长线都当 JR 义务",
     verdict: "如果门到门能明显省体力，我会优先查飞机，而不是继续硬坐。",
     steps: [
-      "先看 JAL 国内时刻表，确认有没有合适航班。",
+      "先看 ANA / JAL 国内时刻表，确认有没有合适航班。",
       "机场段用 JR / 机场线 / 市内交通接起来，别把转车压太紧。",
       "天气差或价差过大时，再回到 JR 方案。"
     ],
-    note: "JAL 官方还有同日联程和国内航班状态页，适合出发前再核对一次。",
-    sources: ["jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus", "jrAirport"]
+    note: "ANA 和 JAL 都有国内航班时刻 / 预订 / 状态页，适合出发前再核对一次。",
+    sources: ["anaDomesticTimetable", "jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus", "jrAirport"]
+  },
+  {
+    id: "comfort-sapporo-hub",
+    icon: "home",
+    title: "札幌当接力枢纽",
+    meta: "旭川→钏路 / 钏路→函馆",
+    verdict: "东北海道和南北海道的大跳跃，舒服版通常都要经札幌拆开，而不是硬扛一条长 JR。",
+    steps: [
+      "旭川 -> 札幌 -> 钏路：先回主干线，再飞钏路。",
+      "钏路 -> 札幌 -> 函馆：先把最重的一跳砍掉，再决定第二段。",
+      "如果你们只想少折腾，札幌住一晚往往比硬跑整天更值。"
+    ],
+    note: "这不是偷懒，是把体力换回旅行质量。",
+    sources: ["anaDomesticTimetable", "anaSapporoKushiro", "anaKushiroSapporo", "anaSapporoHakodate", "anaHakodateSapporo", "asahikawa", "hakodate"]
   },
   {
     id: "comfort-luggage",
@@ -3493,10 +3548,10 @@ const detailGuides = {
     facts: [["节奏", "2晚中继"], ["主线", "花田/丘陵"], ["风险", "去钏路长移动"], ["交通", "JR+可能巴士"]],
     play: ["把旭川当花田与丘陵的前进基地。", "美瑛和富良野二选一或轻串联，移动日前一晚早点睡。"],
     time: ["旭川市内半天足够。", "美瑛/富良野各半日到一日。"],
-    route: ["札幌到旭川走特急 Kamui/Lilac。", "旭川到钏路不顺，建议把下一天定义为移动日。"],
+    route: ["札幌到旭川走特急 Kamui/Lilac。", "旭川到钏路不顺，舒服版通常先回札幌，再飞钏路，或拆成旭川 -> 带广 -> 钏路两天。"],
     best: ["7月花田期价值最高。"],
-    avoid: ["不要把带广当旭川 JR 直通半日支线。"],
-    sources: ["asahikawa", "furanoClosed", "northliner"]
+    avoid: ["不要把带广当旭川 JR 直通半日支线。", "不要把旭川 -> 钏路写成同日轻松移动。"],
+    sources: ["asahikawa", "furanoClosed", "northliner", "anaDomesticTimetable", "anaSapporoKushiro"]
   }),
   "city-asahikawa": guide({
     facts: [["角色", "中北海道枢纽"], ["时间", "半日"], ["适合", "入住恢复"], ["交通", "JR主线"]],
@@ -3682,10 +3737,10 @@ const detailGuides = {
     facts: [["节奏", "2晚东北海道"], ["主线", "湿原/海岸/最东端"], ["交通", "花咲线+末端巴士"], ["风险", "长线"]],
     play: ["钏路必须住下，不能当天来回硬刷。", "2 晚时只选两件：湿原/Norokko、厚岸牡蛎、阿寒湖、根室最东端。根室一旦保留，其它远线就要让路。"],
     time: ["钏路市内半日。", "厚岸半日到一日；根室/纳沙布岬整日；阿寒湖住一晚最舒服。"],
-    route: ["从札幌/带广方向依赖 Ozora；根室/厚岸方向走花咲线；阿寒湖靠巴士，川汤靠 JR 钏网线再接巴士。"],
-    best: ["海雾、湿原、低密度就是这里的主题。"],
-    avoid: ["不要把根室和湿原排同一天。", "不要把阿寒湖当 JR 支线；它是巴士线或住一晚线。"],
-    sources: ["kushiro", "eastHokkaido", "operation", "kushiroShitsugenAccess", "lakeAkanBus"]
+    route: ["从札幌/带广方向依赖 Ozora；根室/厚岸方向走花咲线；阿寒湖靠巴士，川汤靠 JR 钏网线再接巴士。", "钏路到函馆更舒服通常是先飞札幌，再接函馆，不建议把钏路当长串转场起点。"],
+    best: ["海雾、湿原、低密度就是这里的主题。", "如果下一跳太累，就先飞札幌。"],
+    avoid: ["不要把根室和湿原排同一天。", "不要把阿寒湖当 JR 支线；它是巴士线或住一晚线。", "不要把钏路 -> 函馆写成舒服一日线。"],
+    sources: ["kushiro", "eastHokkaido", "operation", "kushiroShitsugenAccess", "lakeAkanBus", "anaDomesticTimetable", "anaKushiroSapporo", "anaSapporoHakodate"]
   }),
   "city-kushiro": guide({
     facts: [["角色", "东北海道枢纽"], ["时间", "半日"], ["适合", "抵达日"], ["交通", "根室/花咲线"]],
@@ -3898,7 +3953,7 @@ const detailGuides = {
     facts: [["节奏", "1-2晚"], ["角色", "跨海前停顿"], ["交通", "Hokuto+Liner"], ["风险", "长线后疲劳"]],
     play: ["从钏路到达后先住下，第二天再跨海。", "函馆只抓夜景、元町、港区三件事。"],
     time: ["函馆市内半日到一日。", "跨海日另算。"],
-    route: ["函馆站不是新干线站，跨海必须去新函馆北斗。"],
+    route: ["函馆站不是新干线站，跨海必须去新函馆北斗。", "如果前一段来自钏路，最好先在札幌分拆，不要把钏路的长移动直接拖到函馆。"],
     best: ["天气好上函馆山；天气普通做元町和仓库。"],
     avoid: ["不要钏路长移动后继续冲仙台。"],
     sources: ["hakodateTravel", "hakodate", "shinkansen"]
@@ -5034,6 +5089,15 @@ function getTransitSourceKeys(item, guideData) {
     appendIfDefined(suggested, "jrUsage", "jrRailPass", "jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "reservation");
     if (/(旭川|Asahikawa)/i.test(text)) appendIfDefined(suggested, "asahikawa");
   }
+  if (/(飞机|航班|飞行|航空|ANA|JAL|airport)/i.test(text)) {
+    appendIfDefined(suggested, "anaDomesticTimetable", "jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus");
+  }
+  if (/(札幌|Sapporo).*(钏路|Kushiro)|(钏路|Kushiro).*(札幌|Sapporo)/i.test(text)) {
+    appendIfDefined(suggested, "anaSapporoKushiro", "anaKushiroSapporo");
+  }
+  if (/(札幌|Sapporo).*(函馆|Hakodate)|(函馆|Hakodate).*(札幌|Sapporo)/i.test(text)) {
+    appendIfDefined(suggested, "anaSapporoHakodate", "anaHakodateSapporo");
+  }
   if (/(函馆|函館|Hakodate|新函館北斗|新函馆北斗|新青森|青函|Seikan|Hokuto)/i.test(text)) {
     appendIfDefined(
       suggested,
@@ -5558,7 +5622,7 @@ const filterMatchers = {
   relaxed: (item) => /低体力|轻松|恢复|温泉|咖啡|甜品|散步|雨天|补给|晚饭/.test(matchText(item)),
   edge: (item) => /最东端|岬|海岸|湖景|峡谷|山岳|瀑布|跨海|断裂|东北海道|边界|世界遗产/.test(matchText(item)),
   food: (item) => /餐饮|店铺|甜品|咖啡|炉端|牡蛎|寿司|拉面|市场|商业|探店|纸品|书店/.test(matchText(item)),
-  transport: (item) => /交通风险|非JR|末端|长线慎排|需预约|需查|换乘|新干线|巴士|接驳|指定席|直通/.test(matchText(item))
+  transport: (item) => /交通风险|非JR|末端|长线慎排|需预约|需查|换乘|新干线|巴士|接驳|指定席|直通|飞机|航班|航空/.test(matchText(item))
 };
 
 function filterOutlineItems(items) {
