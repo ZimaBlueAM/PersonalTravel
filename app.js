@@ -5547,6 +5547,14 @@ function renderAdultRoutePlan() {
 
 const filterMatchers = {
   all: () => true,
+  recommended: (item) => {
+    const text = matchText(item);
+    return (
+      item.type === "base" ||
+      item.hub ||
+      /核心|重点|必去|推荐|低体力|恢复|松弛|温泉|世界遗产|新干线|青函|跨海|花田|海岸|港口|日本三景|最东端|观光列车|探店|晴天|夜景|交通关键|长线/.test(text)
+    );
+  },
   relaxed: (item) => /低体力|轻松|恢复|温泉|咖啡|甜品|散步|雨天|补给|晚饭/.test(matchText(item)),
   edge: (item) => /最东端|岬|海岸|湖景|峡谷|山岳|瀑布|跨海|断裂|东北海道|边界|世界遗产/.test(matchText(item)),
   food: (item) => /餐饮|店铺|甜品|咖啡|炉端|牡蛎|寿司|拉面|市场|商业|探店|纸品|书店/.test(matchText(item)),
