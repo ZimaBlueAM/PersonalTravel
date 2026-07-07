@@ -4529,9 +4529,26 @@ function getTransitSourceKeys(item, guideData) {
 function getFirstTimeTips(item, guideData) {
   const text = [item.title, item.meta, item.summary, ...(guideData.route || []), ...(guideData.play || []), ...(guideData.best || []), ...(guideData.avoid || [])].join(" ");
   const tips = [];
+  const isBase = item.type === "base";
+  const isHubCity = item.type === "city" && item.hub;
+  const isCity = item.type === "city";
+
+  if (isBase) {
+    tips.push("到基地先把行李放下，再决定今天只做市内还是继续出门。");
+    tips.push("把回程的站名、站台和最后一班时间拍下来，晚上不要临时改线。");
+  } else if (isHubCity) {
+    tips.push("枢纽城市先找车站、酒店和主入口，别一上来横穿整座城。");
+    tips.push("如果要接公交，去程顺手拍回程站牌，免得返程时找不到上车点。");
+  } else if (isCity) {
+    tips.push("先确认车站、酒店和最常用的出口方向，再决定是不是要继续往外走。");
+    tips.push("城市里如果要坐公交，去程顺手拍回程站牌和发车口。");
+  } else {
+    tips.push("先确认入口、步道和回程点是不是同一个地方。");
+    tips.push("景点一旦离开主入口，回头找路会比你想的更花时间。");
+  }
 
   if (/JR|新干线|巴士|接驳|车站|站区|换乘|末班|班次|指定席|时刻表/.test(text)) {
-    tips.push("先把车站名、出口和回程最后一班车记住，陌生地方最怕临时找不到回头路。");
+    tips.push("查当天去程和回程班次，按车次查，不要只看区间时间。");
   }
   if (/巴士|接驳|非JR|末端|岬|海岸|湖|峡谷|山岳|瀑布|温泉|远郊|世界遗产/.test(text)) {
     tips.push("下车点和上车点不一定是一个地方，去程时顺手把回程站牌拍一下。");
@@ -4542,8 +4559,8 @@ function getFirstTimeTips(item, guideData) {
   if (/排队|预约|营业|开放|商店|市场|餐厅/.test(text)) {
     tips.push("先确认营业、预约和排队长度，再决定要不要在当地坐久一点。");
   }
-  if (/城市|站区|酒店/.test(text)) {
-    tips.push("在城市里优先走“酒店 - 车站 - 第一个目的地”这条最短线，别一开始横跳太多区。");
+  if (/酒店|住宿|城市|站区/.test(text) && !isBase) {
+    tips.push("优先走“酒店 - 车站 - 第一个目的地”这条最短线，别一开始横跳太多区。");
   }
 
   if (!tips.length) {
@@ -4713,7 +4730,7 @@ function renderDetailSections(item) {
     { title: "别踩坑", items: guideData.avoid }
   ];
   const allSections = [...guideSections, ...item.sections];
-  const body = allSections
+  const renderedSections = allSections
     .map(
       (section) => `
         <section>
@@ -4723,10 +4740,12 @@ function renderDetailSections(item) {
           </ul>
         </section>
       `
-    )
-    .join("");
+    );
+  const transportInsertIndex = guideSections.findIndex((section) => section.title === "交通要点") + 1;
+  const transportBlock = transitSources.length ? renderSources(transitSources, "时刻表 / 交通入口") : "";
+  const body = renderedSections.slice(0, transportInsertIndex).join("") + transportBlock + renderedSections.slice(transportInsertIndex).join("");
 
-  return body + renderSources(transitSources, "时刻表 / 交通入口") + renderReviewLinks(item) + renderSources(remainingSources, "依据");
+  return body + renderReviewLinks(item) + renderSources(remainingSources, "依据");
 }
 
 function icon(name) {
@@ -4762,12 +4781,12 @@ function renderTransfers() {
           </summary>
           <div class="transfer-main">
             <p class="transfer-verdict">${escapeHtml(transfer.verdict)}</p>
+            ${renderSources(transfer.sources, "时刻表 / 交通入口")}
             ${renderTransferSegments(transfer.segments)}
             <ol class="transfer-steps">
               ${transfer.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
             </ol>
             <p class="transfer-note">${escapeHtml(transfer.note)}</p>
-            ${renderSources(transfer.sources, "交通依据")}
           </div>
         </details>
       `

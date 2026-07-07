@@ -471,9 +471,23 @@ img {
   display: grid;
   gap: 5px;
   margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
+  padding: 0;
+  list-style: none;
+}
+
+.transfer-card .source-links a,
+.optimization-card .source-links a {
+  display: block;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  background: #fafbf8;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
   font-size: 12px;
+  line-height: 1.4;
 }
 
 .outline-tree {
