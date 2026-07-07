@@ -1010,6 +1010,93 @@ const routeOptimizations = [
   }
 ];
 
+const adultPlaybook = [
+  {
+    id: "adult-base-priority",
+    icon: "home",
+    title: "先保基地，再选景点",
+    meta: "6基地的成年版用法",
+    verdict: "我会把基地当睡觉、洗衣、补给和换乘壳，不把基地本身当成要刷满的景点。",
+    steps: [
+      "札幌、旭川、钏路、函馆、仙台、东京各自只承担一个主功能。",
+      "城市和子目的地都只从基地里辐射出去，不单独升级成住宿点。",
+      "如果某天还在犹豫要不要加点，大概率就是那天该留白。"
+    ],
+    note: "这样行李、晚饭和第二天状态都会更稳。",
+    sources: ["operation", "asahikawa", "hakodate", "jreast"]
+  },
+  {
+    id: "adult-long-move",
+    icon: "clock",
+    title: "长移动日只移动",
+    meta: "先把体力和时刻表对齐",
+    verdict: "旭川→钏路、钏路→函馆、函馆→仙台这些日子，我会默认不再塞新景点。",
+    steps: [
+      "长线当天只做车站、午饭、厕所、补水和必要的换乘。",
+      "到站后最多再留一个晚饭或泡汤，不再扩张。",
+      "如果班次让你们觉得赶，说明目标定多了。"
+    ],
+    note: "长移动日的价值是把路线从赶路变成平稳到达。",
+    sources: ["northliner", "obihiro", "hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
+  },
+  {
+    id: "adult-cross-sea",
+    icon: "train",
+    title: "跨海只认一条链路",
+    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京",
+    verdict: "海底隧道这段我会按真实换乘拆开，不会把函馆站想成新干线站。",
+    steps: [
+      "函馆站先坐 Hakodate Liner 到新函馆北斗。",
+      "真正跨海的是新函馆北斗到新青森这段北海道新干线。",
+      "跨到本州后只接下一段新干线或酒店，不在中途加观光。"
+    ],
+    note: "这天最重要的不是多玩，而是把换乘留够余量。",
+    sources: ["shinkansen", "hakodate", "jreast", "jreastTimetableTop", "reservation"]
+  },
+  {
+    id: "adult-weather",
+    icon: "compass",
+    title: "自然景只在好天气开",
+    meta: "岬角 / 湖 / 湿原 / 山岳",
+    verdict: "神威岬、纳沙布岬、函馆山、摩周湖这类点，我会按天气决定去不去。",
+    steps: [
+      "晴天把自然景当主菜，风雨天把城市和吃饭当主菜。",
+      "海风大、能见度差、云压下来时，直接删，不做将就版。",
+      "雨天留给小樽、札幌、函馆市内、仙台站区和东京室内。"
+    ],
+    note: "成熟的做法不是硬扛，而是把好天气留给最值得的地方。",
+    sources: ["capeKamui", "nosappu", "mtHakodate", "akanMashuAccess", "otaruCanal", "goTokyoGinza"]
+  },
+  {
+    id: "adult-city-choice",
+    icon: "route",
+    title: "本州只留一条郊外线",
+    meta: "仙台 / 东京都要有边界",
+    verdict: "仙台我会在松岛和平泉里二选一，东京我会在横滨、镰仓、日光里只选一条。",
+    steps: [
+      "仙台住 2 晚时，松岛半日最稳，想要历史厚度再换平泉。",
+      "东京尾声想出城，只保一条郊外线，别把横滨、镰仓、日光都想拿下。",
+      "如果只是想恢复，就把一天留给市内吃饭和散步。"
+    ],
+    note: "这会让东京收尾不至于变成第二次长途旅行。",
+    sources: ["matsushima", "hiraizumiLoopBus", "kamakuraJnto", "yokohamaJnto", "nikkoOfficialAccess", "jrTokyoWidePass"]
+  },
+  {
+    id: "adult-food-rest",
+    icon: "cup",
+    title: "饭和睡眠要留白",
+    meta: "旅行真正的发动机",
+    verdict: "每个基地我会只留一顿好饭和一个明确的睡眠点，不把晚饭和返程压在一起。",
+    steps: [
+      "札幌、函馆、仙台、东京都适合用一顿好饭收束长线。",
+      "登别、洞爷、阿寒、川汤这种地方能住则住，不住就别硬拉。",
+      "晚到的那天，不再追夜景第二轮。"
+    ],
+    note: "体力一旦被保住，后面每个点都会更像旅行而不是任务。",
+    sources: ["jrNoboribetsuToyako", "lakeToyaOfficial", "matsushimaSeafood", "sendai", "tokyo"]
+  }
+];
+
 function sections(why, traffic, decision, extra = []) {
   return [
     { title: "为什么看", items: why },
@@ -4593,6 +4680,103 @@ function getFoodTips(item) {
   ];
 }
 
+function getAdultPlay(item, guideData) {
+  const text = matchText(item);
+  const tips = [];
+  const add = (...entries) => {
+    entries.forEach((entry) => {
+      if (entry) tips.push(entry);
+    });
+  };
+
+  switch (item.id) {
+    case "base-sapporo":
+      add(
+        "札幌我会当恢复底盘，落地日只做市内和晚饭，不把神威岬塞进同一天。",
+        "小樽和余市二选一，神威岬只有晴天、低风、体力足时才加。"
+      );
+      break;
+    case "base-asahikawa":
+      add(
+        "旭川我会把美瑛和富良野拆开，晚上回城吃饭睡觉。",
+        "带广只当长移动的中继，不把它误写成旭川的顺路半日线。"
+      );
+      break;
+    case "base-kushiro":
+      add(
+        "钏路我会只保湿原、阿寒、根室里的一个主线，晚饭收在炉端或港口。",
+        "如果要去根室，阿寒湖和厚岸就让路，不做三线全收。"
+      );
+      break;
+    case "base-hakodate":
+      add(
+        "函馆我会把海鲜早餐、函馆山和跨海前夜分开，不把这座城塞成冲刺日。",
+        "跨海当天只搬家，不额外加大沼、元町或新青森市内。"
+      );
+      break;
+    case "base-sendai":
+      add(
+        "仙台我会在松岛和平泉里二选一，仙台市内自己留给牛舌、zunda 和恢复。",
+        "如果只住一晚，就把它当缓冲站，不再向北硬追。"
+      );
+      break;
+    case "base-tokyo":
+      add(
+        "东京我会只选横滨、镰仓、日光里的一条郊外线，剩下时间留给市内和吃饭。",
+        "如果只是想收尾，那就把东京当一段慢一点的城市生活，不再追第二个大景点。"
+      );
+      break;
+    case "city-seikan":
+      add(
+        "跨海换乘日我会只做站内便当、买水、厕所和候车，不安排探店。",
+        "函馆站 -> 新函馆北斗 -> 新青森 -> 仙台/东京，这条链路就是全部。"
+      );
+      break;
+    default:
+      break;
+  }
+
+  if (item.type === "base" && !tips.length) {
+    add(
+      "这个基地我会当睡觉和换乘的壳，不把它升级成全天景点。",
+      "最多抓一个主体验，再留一顿饭和一段散步。"
+    );
+  }
+
+  if (item.type === "city" && !tips.length) {
+    add(
+      "这座城市我会只选 1-2 个锚点，再配一顿饭和一段步行。",
+      item.hub ? "它主要承担交通和节奏，不再额外升级成全天景点。" : "它是基地的补充，不是要全刷的清单。"
+    );
+  }
+
+  if (item.type === "spot" && !tips.length) {
+    add(
+      "这个点我会只做一个核心动作，不把周边全部扫完。",
+      "如果它需要天气、巴士或体力配合，那就把回程先锁住。"
+    );
+  }
+
+  if (/函馆|Hakodate|新函馆北斗|新青森|青函|Seikan/.test(text)) {
+    add("跨海段我会按换乘拆开，留够找站台和买水的余量。");
+  }
+  if (/岬|海岸|湖|山|湿原|摩周|纳沙布|神威|函馆山/.test(text)) {
+    add("这类自然景我会看天气，不合适就删，不做将就版。");
+  }
+  if (/温泉|泡汤/.test(text)) {
+    add("能住一晚就不要硬做当天往返，泡汤更像恢复，不像任务。");
+  }
+  if (/JR|新干线|巴士|接驳|末端|指定席|花咲线/.test(`${text} ${guideData.route.join(" ")}`)) {
+    add("交通我会先看去程和回程时刻，再决定景点长度。");
+  }
+
+  if (!tips.length) {
+    add("先判断它是不是今天必须去的点，再决定要不要走。");
+  }
+
+  return unique(tips).slice(0, 5);
+}
+
 function getReviewQuery(item) {
   return reviewQueries[item.id] || `${item.title} ${item.meta || ""}`;
 }
@@ -4830,6 +5014,7 @@ const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
 const busTransferList = document.querySelector("#busTransferList");
 const optimizationList = document.querySelector("#optimizationList");
+const adultPlaybookList = document.querySelector("#adultPlaybook");
 const modal = document.querySelector("#detailModal");
 const modalSheet = modal.querySelector(".modal-sheet");
 const modalImage = document.querySelector("#modalImage");
@@ -4985,6 +5170,7 @@ function renderDetailSections(item) {
     { title: "出发前查", items: getPrecheck(item, guideData) },
     { title: "第一次来这里", items: getFirstTimeTips(item, guideData) },
     { title: "怎么玩", items: guideData.play },
+    { title: "32岁会怎么走", items: getAdultPlay(item, guideData) },
     { title: "时间预算", items: guideData.time },
     { title: "交通要点", items: guideData.route },
     { title: "最佳条件", items: guideData.best },
@@ -5056,18 +5242,8 @@ function renderTransferCards(items = []) {
     .join("");
 }
 
-function renderTransfers() {
-  if (!transferList) return;
-  transferList.innerHTML = renderTransferCards(coreTransfers);
-}
-
-function renderBusTransfers() {
-  if (!busTransferList) return;
-  busTransferList.innerHTML = renderTransferCards(coreBusTransfers);
-}
-
-function renderOptimizations() {
-  optimizationList.innerHTML = routeOptimizations
+function renderDecisionCards(items = []) {
+  return items
     .map(
       (item) => `
         <details class="optimization-card${item.caution ? " is-caution" : ""}">
@@ -5091,6 +5267,26 @@ function renderOptimizations() {
       `
     )
     .join("");
+}
+
+function renderTransfers() {
+  if (!transferList) return;
+  transferList.innerHTML = renderTransferCards(coreTransfers);
+}
+
+function renderBusTransfers() {
+  if (!busTransferList) return;
+  busTransferList.innerHTML = renderTransferCards(coreBusTransfers);
+}
+
+function renderOptimizations() {
+  if (!optimizationList) return;
+  optimizationList.innerHTML = renderDecisionCards(routeOptimizations);
+}
+
+function renderAdultPlaybook() {
+  if (!adultPlaybookList) return;
+  adultPlaybookList.innerHTML = renderDecisionCards(adultPlaybook);
 }
 
 const filterMatchers = {
@@ -5232,6 +5428,7 @@ document.addEventListener("keydown", (event) => {
 renderTransportAudit();
 renderTransfers();
 renderBusTransfers();
+renderAdultPlaybook();
 renderOptimizations();
 updateFilterButtons();
 renderOutline();
