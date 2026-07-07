@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title>Personal Travel PWA Icon</title>
+  <desc>Minimal route-outline icon for the travel planner app.</desc>
+  <rect x="40" y="40" width="944" height="944" rx="210" fill="#ffffff" stroke="#d9ded8" stroke-width="14" />
+  <rect x="116" y="116" width="792" height="792" rx="178" fill="#f7f7f5" />
+  <path d="M244 324h252" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" />
+  <path d="M244 420h208" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" opacity="0.9" />
+  <path d="M244 516h164" fill="none" stroke="#245c92" stroke-width="28" stroke-linecap="round" opacity="0.82" />
+  <path d="M254 676h248c110 0 202-72 244-168" fill="none" stroke="#24614f" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="760" cy="484" r="34" fill="#245c92" />
+  <circle cx="254" cy="676" r="28" fill="#24614f" />
+  <path d="M784 470 730 486 766 522" fill="none" stroke="#f7f7f5" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
