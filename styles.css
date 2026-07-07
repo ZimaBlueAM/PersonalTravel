@@ -204,6 +204,16 @@ img {
   display: grid;
 }
 
+.adult-divider {
+  border-top: 1px solid var(--soft-line);
+  padding: 12px 14px 10px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  background: #fbfcfa;
+}
+
 .transport-audit {
   display: grid;
   gap: 7px;
@@ -945,6 +955,10 @@ img {
   .transfer-main,
   .optimization-main {
     padding-inline: 84px 18px;
+  }
+
+  .adult-divider {
+    padding-inline: 18px;
   }
 
   .tree-row {

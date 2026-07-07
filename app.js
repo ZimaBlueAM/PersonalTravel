@@ -1097,6 +1097,79 @@ const adultPlaybook = [
   }
 ];
 
+const adultRoutePlan = [
+  {
+    id: "route-sapporo",
+    icon: "home",
+    title: "札幌先落地，先轻后重",
+    meta: "建议 2-3 晚 / 小樽或余市二选一",
+    verdict: "开局我会把札幌当成恢复底盘，落地当天只做市内和晚饭，第二天再从小樽和余市里选一个。",
+    steps: [
+      "落地日只住札幌，不再外冲。",
+      "第二天小樽和余市二选一，神威岬只在晴天和低风时加。",
+      "如果天气普通，就让这段停在小樽/札幌市内。"
+    ],
+    note: "把第一段做轻，后面每段都会更顺。",
+    sources: ["operation", "otaruCanal", "nikkaYoichi", "capeKamui"]
+  },
+  {
+    id: "route-asahikawa",
+    icon: "route",
+    title: "旭川只开一条花田线",
+    meta: "建议 2 晚 / 美瑛或富良野择一主打",
+    verdict: "旭川段我会只保一条花田主线：要么美瑛，要么富良野，不把两边都拉满。",
+    steps: [
+      "旭川住 2 晚，把花田日和移动日拆开。",
+      "美瑛看丘陵结构，富良野看花田主视觉，别一天全塞。",
+      "带广只在你们明确想做长移动时再考虑。"
+    ],
+    note: "花田越贪心，越像赶车。",
+    sources: ["asahikawa", "bieiJnto", "farmTomita", "furanoClosed", "jrFuranoBiei"]
+  },
+  {
+    id: "route-kushiro",
+    icon: "compass",
+    title: "钏路只保一个核心",
+    meta: "建议 2 晚 / 湿原、阿寒、根室三选一",
+    verdict: "东北海道我会按“一个主线一天”来做，湿原、阿寒、根室绝不在同一天硬收。",
+    steps: [
+      "想看湿原就保 Norokko 或展望点。",
+      "想泡汤就把阿寒湖当住一晚线。",
+      "想去最东端就把根室单独拎成整日。"
+    ],
+    note: "东北海道的价值在于重，不在于多。",
+    sources: ["kushiroNorokko", "lakeAkanBus", "nosappu", "operation"]
+  },
+  {
+    id: "route-hakodate",
+    icon: "train",
+    title: "函馆跨海当天只搬家",
+    meta: "建议 1-2 晚 / 只做换乘",
+    verdict: "函馆到本州那天我会只做青函链路，不再在中途加大沼、市内或别的景点。",
+    steps: [
+      "函馆站 -> 新函馆北斗 -> 新青森的链路先留足余量。",
+      "跨海当天不安排额外观光。",
+      "到仙台后只吃饭和睡觉，别继续追夜景。"
+    ],
+    note: "跨海当天最值钱的是稳定，不是打卡数。",
+    sources: ["hakodate", "shinkansen", "jreast"]
+  },
+  {
+    id: "route-tohoku-tokyo",
+    icon: "city",
+    title: "本州收尾各留一条线",
+    meta: "建议 2-4 晚 / 松岛或平泉 + 东京一条郊外线",
+    verdict: "仙台我会在松岛和平泉里二选一，东京我会在横滨、镰仓、日光里只选一条。",
+    steps: [
+      "仙台 2 晚时，松岛是轻线，平泉是文化线。",
+      "东京尾声只保一条郊外线，别把横滨、镰仓、日光都想拿下。",
+      "如果已经累了，就直接留市内吃饭和散步。"
+    ],
+    note: "收尾越轻，旅行记忆越清楚。",
+    sources: ["matsushima", "hiraizumiLoopBus", "yokohamaJnto", "kamakuraJnto", "nikkoOfficialAccess", "jrTokyoWidePass"]
+  }
+];
+
 function sections(why, traffic, decision, extra = []) {
   return [
     { title: "为什么看", items: why },
@@ -5015,6 +5088,7 @@ const transferList = document.querySelector("#transferList");
 const busTransferList = document.querySelector("#busTransferList");
 const optimizationList = document.querySelector("#optimizationList");
 const adultPlaybookList = document.querySelector("#adultPlaybook");
+const adultRoutePlanList = document.querySelector("#adultRoutePlan");
 const modal = document.querySelector("#detailModal");
 const modalSheet = modal.querySelector(".modal-sheet");
 const modalImage = document.querySelector("#modalImage");
@@ -5289,6 +5363,11 @@ function renderAdultPlaybook() {
   adultPlaybookList.innerHTML = renderDecisionCards(adultPlaybook);
 }
 
+function renderAdultRoutePlan() {
+  if (!adultRoutePlanList) return;
+  adultRoutePlanList.innerHTML = renderDecisionCards(adultRoutePlan);
+}
+
 const filterMatchers = {
   all: () => true,
   relaxed: (item) => /低体力|轻松|恢复|温泉|咖啡|甜品|散步|雨天|补给|晚饭/.test(matchText(item)),
@@ -5429,6 +5508,7 @@ renderTransportAudit();
 renderTransfers();
 renderBusTransfers();
 renderAdultPlaybook();
+renderAdultRoutePlan();
 renderOptimizations();
 updateFilterButtons();
 renderOutline();
