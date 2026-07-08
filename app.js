@@ -936,36 +936,27 @@ const coreBusTransfers = [
   }
 ];
 
-const routeMapNodes = [
-  { target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", x: 38, y: 22, kind: "base" },
-  { target: "base-sapporo", label: "札幌", sub: "接力枢纽", x: 31, y: 37, kind: "hub" },
-  { target: "base-kushiro", label: "钏路", sub: "东北海道", x: 64, y: 31, kind: "base" },
-  { target: "base-hakodate", label: "函馆", sub: "跨海前停顿", x: 23, y: 65, kind: "base" },
-  { target: "base-sendai", label: "仙台", sub: "本州缓冲", x: 57, y: 84, kind: "base" },
-  { target: "base-tokyo", label: "东京", sub: "终点", x: 81, y: 90, kind: "base" }
+const realRouteMapPoints = [
+  { target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", lat: 43.7706, lng: 142.365, kind: "base", side: "top", tone: "forest" },
+  { target: "base-sapporo", label: "札幌", sub: "接力枢纽", lat: 43.0618, lng: 141.3545, kind: "hub", side: "left", tone: "hub" },
+  { target: "base-kushiro", label: "钏路", sub: "东北海道", lat: 42.9849, lng: 144.381, kind: "base", side: "right", tone: "accent" },
+  { target: "base-hakodate", label: "函馆", sub: "跨海前停顿", lat: 41.7688, lng: 140.7288, kind: "base", side: "left", tone: "amber" },
+  { target: "city-seikan", label: "新函馆北斗", sub: "Liner", lat: 41.905, lng: 140.6475, kind: "transfer", side: "right", tone: "accent" },
+  { target: "city-seikan", label: "新青森", sub: "新干线", lat: 40.8227, lng: 140.6935, kind: "transfer", side: "right", tone: "cross" },
+  { target: "base-sendai", label: "仙台", sub: "本州缓冲", lat: 38.2601, lng: 140.8826, kind: "base", side: "right", tone: "forest" },
+  { target: "base-tokyo", label: "东京", sub: "终点", lat: 35.6812, lng: 139.7671, kind: "base", side: "left", tone: "forest" }
 ];
 
-const routeMapTransfers = [
-  { target: "city-seikan", label: "新函馆北斗", sub: "Liner", x: 26.5, y: 69 },
-  { target: "city-seikan", label: "新青森", sub: "新干线", x: 39.8, y: 74 }
-];
-
-const routeMapLines = [
-  { kind: "warning", d: "M 38 22 C 45 22 53 26 64 31" },
-  { kind: "warning", d: "M 64 31 C 52 42 38 53 23 65" },
-  { kind: "jr", d: "M 31 37 C 33 32 35 27 38 22" },
-  { kind: "flight", d: "M 31 37 C 39 34 51 31 64 31" },
-  { kind: "flight", d: "M 31 37 C 29 47 26 56 23 65" },
-  { kind: "liner", d: "M 23 65 C 24 67 25 68 26.5 69" },
-  { kind: "shinkansen", d: "M 26.5 69 C 31 71 35 73 39.8 74" },
-  { kind: "jr", d: "M 39.8 74 C 45 78 50 81 57 84" },
-  { kind: "jr", d: "M 57 84 C 64 87 72 89 81 90" }
-];
-
-const routeMapCallouts = [
-  { kind: "warning", text: "旭川 → 钏路别硬连", x: 49, y: 27 },
-  { kind: "warning", text: "钏路 → 函馆建议拆天", x: 47, y: 50 },
-  { kind: "cross", text: "青函跨海链路", x: 33.5, y: 71.5 }
+const realRouteMapSegments = [
+  { kind: "jr", label: "札幌 -> 旭川", latlngs: [[43.0618, 141.3545], [43.7706, 142.365]] },
+  { kind: "flight", label: "札幌 -> 钏路", latlngs: [[43.0618, 141.3545], [42.9849, 144.381]] },
+  { kind: "flight", label: "札幌 -> 函馆", latlngs: [[43.0618, 141.3545], [41.7688, 140.7288]] },
+  { kind: "warning", label: "旭川 -> 钏路", latlngs: [[43.7706, 142.365], [42.9849, 144.381]] },
+  { kind: "warning", label: "钏路 -> 函馆", latlngs: [[42.9849, 144.381], [41.7688, 140.7288]] },
+  { kind: "liner", label: "函馆 -> 新函馆北斗", latlngs: [[41.7688, 140.7288], [41.905, 140.6475]] },
+  { kind: "cross", label: "新函馆北斗 -> 新青森", latlngs: [[41.905, 140.6475], [40.8227, 140.6935]] },
+  { kind: "jr", label: "新青森 -> 仙台", latlngs: [[40.8227, 140.6935], [38.2601, 140.8826]] },
+  { kind: "jr", label: "仙台 -> 东京", latlngs: [[38.2601, 140.8826], [35.6812, 139.7671]] }
 ];
 
 const routeMapActions = [
@@ -5296,6 +5287,7 @@ const modalSummary = document.querySelector("#modalSummary");
 const modalFacts = document.querySelector("#modalFacts");
 const modalTags = document.querySelector("#modalTags");
 const modalSections = document.querySelector("#modalSections");
+let realRouteMapInstance = null;
 
 const expandedIds = new Set();
 let activeFilter = "all";
@@ -5619,42 +5611,50 @@ function renderDecisionCards(items = []) {
     .join("");
 }
 
+function routeMapPinAnchor(point) {
+  switch (point.side) {
+    case "top":
+      return [66, 58];
+    case "right":
+      return [8, 27];
+    case "left":
+      return [126, 27];
+    case "bottom":
+      return [66, 4];
+    default:
+      return [66, 27];
+  }
+}
+
+function routeMapPinMarkup(point) {
+  return `
+    <div class="route-map-pin is-${escapeHtml(point.side)} is-${escapeHtml(point.tone)} is-${escapeHtml(point.kind)}">
+      <span class="route-map-pin-card">
+        <strong>${escapeHtml(point.label)}</strong>
+        <small>${escapeHtml(point.sub)}</small>
+      </span>
+      <span class="route-map-pin-dot" aria-hidden="true"></span>
+    </div>
+  `;
+}
+
+function routeMapSegmentStyle(kind) {
+  switch (kind) {
+    case "flight":
+      return { color: "#245c92", weight: 3, opacity: 0.9 };
+    case "warning":
+      return { color: "#a15d1f", weight: 2.5, opacity: 0.75, dashArray: "6 6" };
+    case "cross":
+      return { color: "#355a7d", weight: 3, opacity: 0.95 };
+    case "liner":
+      return { color: "#c97a2e", weight: 2.5, opacity: 0.9 };
+    default:
+      return { color: "#24614f", weight: 3, opacity: 0.95 };
+  }
+}
+
 function renderRouteMapOverview() {
   if (!routeMapOverview) return;
-
-  const routeMapNodesMarkup = routeMapNodes
-    .map(
-      (node) => `
-        <button
-          type="button"
-          class="route-map-node${node.kind === "hub" ? " is-hub" : ""}"
-          data-route-target="${escapeHtml(node.target)}"
-          style="left:${node.x}%; top:${node.y}%;"
-          aria-label="${escapeHtml(node.label)}，${escapeHtml(node.sub)}，打开详情"
-        >
-          <strong>${escapeHtml(node.label)}</strong>
-          <span>${escapeHtml(node.sub)}</span>
-        </button>
-      `
-    )
-    .join("");
-
-  const routeMapTransfersMarkup = routeMapTransfers
-    .map(
-      (transfer) => `
-        <button
-          type="button"
-          class="route-map-transfer"
-          data-route-target="${escapeHtml(transfer.target)}"
-          style="left:${transfer.x}%; top:${transfer.y}%;"
-          aria-label="${escapeHtml(transfer.label)}，${escapeHtml(transfer.sub)}，打开详情"
-        >
-          <strong>${escapeHtml(transfer.label)}</strong>
-          <span>${escapeHtml(transfer.sub)}</span>
-        </button>
-      `
-    )
-    .join("");
 
   const routeMapLegend = [
     ["JR 主干", "jr"],
@@ -5678,8 +5678,8 @@ function renderRouteMapOverview() {
     <div class="route-map-shell">
       <div class="route-map-head">
         <div class="route-map-note">
-          <strong>札幌是接力点</strong>
-          <span>先看地理关系，再决定哪段该拆天或改飞。</span>
+          <strong>真实地图 / OpenStreetMap</strong>
+          <span>可拖动、可缩放、点城市名直接打开详情。线条显示实际地理关系，不是示意图。</span>
         </div>
         <div class="route-map-legend" aria-label="路线图例">
           ${routeMapLegend
@@ -5695,35 +5695,9 @@ function renderRouteMapOverview() {
         </div>
       </div>
 
-      <div class="route-map-stage" aria-label="路线地图概览">
-        <svg class="route-map-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <path
-            class="route-map-land is-hokkaido"
-            d="M 7 15 C 10 9 16 7 23 8 C 29 9 34 11 39 10 C 45 8 50 10 55 14 C 60 18 62 24 61 30 C 60 36 55 40 49 42 C 42 44 34 43 28 41 C 22 39 16 37 11 32 C 7 27 5 21 7 15 Z"
-          />
-          <path
-            class="route-map-land is-honshu"
-            d="M 36 55 C 42 50 49 49 56 50 C 64 51 71 54 77 58 C 83 62 88 67 91 73 C 94 79 93 86 88 90 C 83 94 76 96 68 96 C 61 96 55 94 50 91 C 45 88 42 84 40 79 C 37 73 34 67 35 61 C 35 58 35 56 36 55 Z"
-          />
-          <path class="route-map-sea" d="M 20 45 C 27 41 33 40 40 41 C 47 42 54 45 59 48" />
-          ${routeMapLines
-            .map((line) => `<path class="route-map-path is-${escapeHtml(line.kind)}" d="${escapeHtml(line.d)}"></path>`)
-            .join("")}
-        </svg>
-        ${routeMapCallouts
-          .map(
-            (callout) => `
-              <div
-                class="route-map-callout is-${escapeHtml(callout.kind)}"
-                style="left:${callout.x}%; top:${callout.y}%;"
-              >
-                ${escapeHtml(callout.text)}
-              </div>
-            `
-          )
-          .join("")}
-        ${routeMapNodesMarkup}
-        ${routeMapTransfersMarkup}
+      <div class="route-map-stage">
+        <div class="route-map-real" id="realRouteMap" aria-label="真实地图概览"></div>
+        <div class="route-map-status" id="routeMapStatus">真实地图加载中</div>
       </div>
 
       <div class="route-map-actions">
@@ -5731,6 +5705,79 @@ function renderRouteMapOverview() {
       </div>
     </div>
   `;
+
+  initRealRouteMap();
+}
+
+function initRealRouteMap() {
+  const mapHost = document.querySelector("#realRouteMap");
+  const status = document.querySelector("#routeMapStatus");
+  if (!mapHost) return;
+
+  if (realRouteMapInstance) {
+    realRouteMapInstance.remove();
+    realRouteMapInstance = null;
+  }
+
+  if (!window.L) {
+    mapHost.innerHTML = `
+      <div class="route-map-fallback">
+        真实地图组件没有加载出来。刷新一下，或者检查网络后再看。
+      </div>
+    `;
+    if (status) status.textContent = "地图组件未加载";
+    return;
+  }
+
+  const map = L.map(mapHost, {
+    zoomControl: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: true,
+    touchZoom: true,
+    dragging: true,
+    tap: true,
+    preferCanvas: true,
+    minZoom: 3,
+    maxZoom: 7
+  });
+
+  realRouteMapInstance = map;
+
+  L.control.zoom({ position: "bottomright" }).addTo(map);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 18,
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+  L.control.attribution({ position: "bottomleft", prefix: false }).addTo(map);
+
+  const bounds = L.latLngBounds([]);
+
+  realRouteMapSegments.forEach((segment) => {
+    const polyline = L.polyline(segment.latlngs, routeMapSegmentStyle(segment.kind)).addTo(map);
+    bounds.extend(polyline.getBounds());
+  });
+
+  realRouteMapPoints.forEach((point) => {
+    const marker = L.marker([point.lat, point.lng], {
+      icon: L.divIcon({
+        className: "route-map-divicon",
+        html: routeMapPinMarkup(point),
+        iconSize: point.side === "top" ? [132, 64] : [132, 54],
+        iconAnchor: routeMapPinAnchor(point)
+      }),
+      keyboard: false
+    }).addTo(map);
+
+    marker.on("click", () => jumpToRouteTarget(point.target));
+    bounds.extend([point.lat, point.lng]);
+  });
+
+  map.fitBounds(bounds.pad(0.2), { animate: false });
+
+  requestAnimationFrame(() => {
+    map.invalidateSize();
+    if (status) status.textContent = "真实地图 / OpenStreetMap";
+  });
 }
 
 function renderTransfers() {

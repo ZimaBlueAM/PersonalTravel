@@ -1,4 +1,4 @@
-const CACHE_VERSION = "personaltravel-v5";
+const CACHE_VERSION = "personaltravel-v6";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -101,7 +101,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (isStaticAsset) {
+  if (request.destination === "script" || request.destination === "style" || isStaticAsset) {
     event.respondWith(cacheFirst(request).catch(() => Response.error()));
     return;
   }
