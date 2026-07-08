@@ -937,26 +937,24 @@ const coreBusTransfers = [
 ];
 
 const realRouteMapPoints = [
-  { target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", lat: 43.7706, lng: 142.365, kind: "base", side: "top", tone: "forest" },
-  { target: "base-sapporo", label: "札幌", sub: "接力枢纽", lat: 43.0618, lng: 141.3545, kind: "hub", side: "left", tone: "hub" },
-  { target: "base-kushiro", label: "钏路", sub: "东北海道", lat: 42.9849, lng: 144.381, kind: "base", side: "right", tone: "accent" },
-  { target: "base-hakodate", label: "函馆", sub: "跨海前停顿", lat: 41.7688, lng: 140.7288, kind: "base", side: "left", tone: "amber" },
-  { target: "city-seikan", label: "新函馆北斗", sub: "Liner", lat: 41.905, lng: 140.6475, kind: "transfer", side: "right", tone: "accent" },
-  { target: "city-seikan", label: "新青森", sub: "新干线", lat: 40.8227, lng: 140.6935, kind: "transfer", side: "right", tone: "cross" },
-  { target: "base-sendai", label: "仙台", sub: "本州缓冲", lat: 38.2601, lng: 140.8826, kind: "base", side: "right", tone: "forest" },
-  { target: "base-tokyo", label: "东京", sub: "终点", lat: 35.6812, lng: 139.7671, kind: "base", side: "left", tone: "forest" }
+  { order: 1, target: "base-sapporo", label: "札幌", sub: "首站 / 恢复", lat: 43.0618, lng: 141.3545, kind: "base", side: "left", tone: "forest" },
+  { order: 2, target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", lat: 43.7706, lng: 142.365, kind: "base", side: "top", tone: "forest" },
+  { order: 3, target: "base-kushiro", label: "钏路", sub: "东北海道", lat: 42.9849, lng: 144.381, kind: "base", side: "right", tone: "accent" },
+  { order: 4, target: "base-hakodate", label: "函馆", sub: "跨海前停顿", lat: 41.7688, lng: 140.7288, kind: "base", side: "left", tone: "amber" },
+  { order: 4.1, target: "city-seikan", label: "新函馆北斗", sub: "Liner", lat: 41.905, lng: 140.6475, kind: "transfer", side: "right", tone: "accent" },
+  { order: 4.2, target: "city-seikan", label: "新青森", sub: "新干线", lat: 40.8227, lng: 140.6935, kind: "transfer", side: "right", tone: "cross" },
+  { order: 5, target: "base-sendai", label: "仙台", sub: "本州缓冲", lat: 38.2601, lng: 140.8826, kind: "base", side: "right", tone: "forest" },
+  { order: 6, target: "base-tokyo", label: "东京", sub: "终点", lat: 35.6812, lng: 139.7671, kind: "base", side: "left", tone: "forest" }
 ];
 
 const realRouteMapSegments = [
-  { kind: "jr", label: "札幌 -> 旭川", latlngs: [[43.0618, 141.3545], [43.7706, 142.365]] },
-  { kind: "flight", label: "札幌 -> 钏路", latlngs: [[43.0618, 141.3545], [42.9849, 144.381]] },
-  { kind: "flight", label: "札幌 -> 函馆", latlngs: [[43.0618, 141.3545], [41.7688, 140.7288]] },
-  { kind: "warning", label: "旭川 -> 钏路", latlngs: [[43.7706, 142.365], [42.9849, 144.381]] },
-  { kind: "warning", label: "钏路 -> 函馆", latlngs: [[42.9849, 144.381], [41.7688, 140.7288]] },
+  { kind: "jr", label: "札幌 -> 旭川", latlngs: [[43.0618, 141.3545], [43.2832, 141.563], [43.5534, 141.9048], [43.7706, 142.365]] },
+  { kind: "warning", label: "旭川 -> 钏路", latlngs: [[43.7706, 142.365], [43.6536, 143.0598], [43.1646, 143.5732], [42.9849, 144.381]] },
+  { kind: "warning", label: "钏路 -> 函馆", latlngs: [[42.9849, 144.381], [42.4821, 143.4102], [42.007, 142.8352], [41.7688, 140.7288]] },
   { kind: "liner", label: "函馆 -> 新函馆北斗", latlngs: [[41.7688, 140.7288], [41.905, 140.6475]] },
-  { kind: "cross", label: "新函馆北斗 -> 新青森", latlngs: [[41.905, 140.6475], [40.8227, 140.6935]] },
-  { kind: "jr", label: "新青森 -> 仙台", latlngs: [[40.8227, 140.6935], [38.2601, 140.8826]] },
-  { kind: "jr", label: "仙台 -> 东京", latlngs: [[38.2601, 140.8826], [35.6812, 139.7671]] }
+  { kind: "cross", label: "新函馆北斗 -> 新青森", latlngs: [[41.905, 140.6475], [41.58, 140.62], [41.25, 140.64], [40.8227, 140.6935]] },
+  { kind: "jr", label: "新青森 -> 仙台", latlngs: [[40.8227, 140.6935], [40.4, 140.78], [39.8, 140.84], [39.1, 140.86], [38.2601, 140.8826]] },
+  { kind: "jr", label: "仙台 -> 东京", latlngs: [[38.2601, 140.8826], [37.3, 140.9], [36.4, 140.1], [35.6812, 139.7671]] }
 ];
 
 const routeMapActions = [
@@ -5626,11 +5624,20 @@ function routeMapPinAnchor(point) {
   }
 }
 
+function routeMapOrderLabel(order) {
+  if (Number.isInteger(order)) return String(order);
+  return String(order).replace(/\.0+$/, "");
+}
+
 function routeMapPinMarkup(point) {
+  const orderLabel = routeMapOrderLabel(point.order);
   return `
     <div class="route-map-pin is-${escapeHtml(point.side)} is-${escapeHtml(point.tone)} is-${escapeHtml(point.kind)}">
       <span class="route-map-pin-card">
-        <strong>${escapeHtml(point.label)}</strong>
+        <span class="route-map-pin-head">
+          <span class="route-map-pin-order" aria-hidden="true">${escapeHtml(orderLabel)}</span>
+          <strong>${escapeHtml(point.label)}</strong>
+        </span>
         <small>${escapeHtml(point.sub)}</small>
       </span>
       <span class="route-map-pin-dot" aria-hidden="true"></span>
@@ -5641,15 +5648,15 @@ function routeMapPinMarkup(point) {
 function routeMapSegmentStyle(kind) {
   switch (kind) {
     case "flight":
-      return { color: "#245c92", weight: 3, opacity: 0.9 };
+      return { color: "#245c92", weight: 2.6, opacity: 0.85, lineCap: "round", lineJoin: "round" };
     case "warning":
-      return { color: "#a15d1f", weight: 2.5, opacity: 0.75, dashArray: "6 6" };
+      return { color: "#a15d1f", weight: 2.3, opacity: 0.72, dashArray: "6 6", lineCap: "round", lineJoin: "round" };
     case "cross":
-      return { color: "#355a7d", weight: 3, opacity: 0.95 };
+      return { color: "#355a7d", weight: 2.7, opacity: 0.9, lineCap: "round", lineJoin: "round" };
     case "liner":
-      return { color: "#c97a2e", weight: 2.5, opacity: 0.9 };
+      return { color: "#c97a2e", weight: 2.2, opacity: 0.88, lineCap: "round", lineJoin: "round" };
     default:
-      return { color: "#24614f", weight: 3, opacity: 0.95 };
+      return { color: "#24614f", weight: 2.7, opacity: 0.9, lineCap: "round", lineJoin: "round" };
   }
 }
 
@@ -5658,10 +5665,23 @@ function renderRouteMapOverview() {
 
   const routeMapLegend = [
     ["JR 主干", "jr"],
-    ["飞机接力", "flight"],
+    ["Liner 接驳", "liner"],
     ["不建议硬连", "warning"],
     ["青函跨海", "cross"]
   ];
+
+  const routeSequenceMarkup = realRouteMapPoints
+    .slice()
+    .sort((a, b) => a.order - b.order)
+    .map(
+      (point) => `
+        <button type="button" class="route-map-sequence-item" data-route-target="${escapeHtml(point.target)}">
+          <span class="route-map-sequence-order">${escapeHtml(routeMapOrderLabel(point.order))}</span>
+          <span class="route-map-sequence-name">${escapeHtml(point.label)}</span>
+        </button>
+      `
+    )
+    .join("");
 
   const routeMapActionsMarkup = routeMapActions
     .map(
@@ -5679,7 +5699,10 @@ function renderRouteMapOverview() {
       <div class="route-map-head">
         <div class="route-map-note">
           <strong>真实地图 / OpenStreetMap</strong>
-          <span>可拖动、可缩放、点城市名直接打开详情。线条显示实际地理关系，不是示意图。</span>
+          <span>可拖动、可缩放、点位直接打开详情。线条只负责看旅程顺序和绕路感，不是枢纽示意图。</span>
+        </div>
+        <div class="route-map-sequence" aria-label="旅程顺序">
+          ${routeSequenceMarkup}
         </div>
         <div class="route-map-legend" aria-label="路线图例">
           ${routeMapLegend
@@ -5697,7 +5720,10 @@ function renderRouteMapOverview() {
 
       <div class="route-map-stage">
         <div class="route-map-real" id="realRouteMap" aria-label="真实地图概览"></div>
-        <div class="route-map-status" id="routeMapStatus">真实地图加载中</div>
+        <div class="route-map-status" id="routeMapStatus">
+          <strong>真实地图加载中</strong>
+          <span>编号顺序 1 → 6，点位可点击</span>
+        </div>
       </div>
 
       <div class="route-map-actions">
@@ -5776,7 +5802,12 @@ function initRealRouteMap() {
 
   requestAnimationFrame(() => {
     map.invalidateSize();
-    if (status) status.textContent = "真实地图 / OpenStreetMap";
+    if (status) {
+      status.innerHTML = `
+        <strong>真实地图 / OpenStreetMap</strong>
+        <span>编号顺序 1 → 6，点位可点击</span>
+      `;
+    }
   });
 }
 
