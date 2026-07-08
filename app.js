@@ -693,19 +693,19 @@ const sourceLinks = {
   }
 };
 
-const checkedAt = "2026-07-07 官方复核";
-const jrHokkaidoLiveNote = "本次核验：JR 北海道运转信息页当前给札幌/机场、中央、道南、道北、道东、北海道新干线都显示“无取消/30 分钟以上延误信息”。路线结构成立，但出发当天仍要按具体车次、站台和替代交通再查。";
-const jrEastLiveNote = "本次核验 2026-07-07 17:23 JST：JR East Shinkansen 页面显示 Tohoku Shinkansen Normal operation，且当前没有停运信息。跨海当天还是要按具体 Hayabusa/Hayate 车次再查。";
+const checkedAt = "2026-07-08 官方复核";
+const jrHokkaidoLiveNote = "JR 北海道官方状态页按札幌、道南、北海道新干线等区域报告停运、取消和 30 分钟以上延误；出发当天仍要按具体车次复查。";
+const jrEastLiveNote = "本次核验 2026-07-08 18:07 JST：JR East Shinkansen 页面显示 Tohoku Shinkansen Normal operation，且当前没有停运信息；跨海当天仍要按具体 Hayabusa/Hayate 车次再查。";
 
 const transportAudit = {
-  title: "官方交通核验",
+  title: "必去主线交通核验",
   checked: checkedAt,
   items: [
-    "JR 北海道：当前区域页都显示“无取消/30 分钟以上延误信息”。",
-    "JR Hokkaido 规则很硬：所有特急都要指定席或空席票，Furano Biei / Kushiro Shitsugen Norokko 也都要单独预约。",
-    "Kitaca 只在札幌-旭川和函馆两个区间内好用，Otaru 以西、富良野、登别、洞爷、钏路、根室这些地方都别默认能刷。",
-    "JR East：东北新干线当前正常运行；跨海还是要按函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京这条链路查。",
-    "东北海道和南北海道的长跳跃不该写成舒服直连；更顺的做法通常是先回札幌，再用飞机或拆天接续。"
+    "必去点按最新口径固定为：札幌、小樽、神威岬、富良野、函馆、东京。",
+    "主线不再经过旭川、钏路、根室、仙台、松岛；这些全部降级为可选支线。",
+    "小樽和富良野可以从札幌处理；神威岬不是 JR 直达，推荐用中央巴士定期观光巴士提前预约。",
+    "札幌到函馆走 JR 特急 Hokuto；函馆到东京走函馆站 -> 新函馆北斗 -> 新青森 -> 东京的新干线链路。",
+    "JR 北海道特急、新干线、富良野季节列车和神威岬观光巴士都要提前锁车次/座位；岬角当天还要看风雨和开放状态。"
   ]
 };
 
@@ -727,104 +727,103 @@ const coreTransfers = [
     sources: ["operation", "timetable", "jrAirport", "jrInfoDesk", "jrKitaca", "jrUsage", "jrRailPass", "reservation", "jrHokkaidoNorikae"]
   },
   {
-    id: "transfer-sapporo-asahikawa",
+    id: "transfer-sapporo-otaru",
     icon: "train",
-    mode: "JR 特急",
+    mode: "JR 短支线",
     from: "札幌基地",
-    to: "旭川基地",
-    time: "约 1.5 小时",
-    status: "最顺主干线",
-    verdict: "这是整条路线最干净的一段基地移动。",
+    to: "小樽",
+    time: "约 30-50 分钟",
+    status: "必去 / 低风险",
+    verdict: "小樽是札幌段最稳的必去短线，适合半日到傍晚。",
     segments: [
-      { label: "JR特急", route: "札幌 -> 旭川", time: "约 1.5 小时", memo: "Kamui / Lilac；官方列车指南标注全席指定。" }
+      { label: "JR", route: "札幌 -> 小樽", time: "约 30-50 分钟", memo: "JR 函馆线方向；当天按具体列车查。" },
+      { label: "步行", route: "小樽站 -> 运河 / 堺町通", time: "约 10-20 分钟", memo: "核心区可步行串联。" },
+      { label: "JR", route: "小樽 -> 札幌", time: "约 30-50 分钟", memo: "傍晚或晚饭后回札幌。" }
     ],
-    steps: ["札幌 -> 旭川：JR 特急 Kamui / Lilac。", "JR 北海道特急全席指定；持 pass 也建议提前取指定席。"],
-    note: "官方列车指南确认 Kamui / Lilac 连接札幌与旭川，信息页标注 2026 年 3 月有效。",
-    sources: ["asahikawa", "reservation", "operation", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
+    steps: ["上午或下午从札幌坐 JR 到小樽。", "只保运河、堺町通/甜品街区，不把余市或神威岬硬塞同日。", "回札幌睡，行李不动。"],
+    note: "这是主线里最稳定的一段；风险主要是你们自己排太满。",
+    sources: ["operation", "timetable", "otaruCanal", "otaruDay", "otaruCanalCruise"]
   },
   {
-    id: "transfer-asahikawa-kushiro",
-    icon: "plane",
-    mode: "JR + 飞机接力 / 陆路备选",
-    from: "旭川基地",
-    to: "钏路基地",
-    time: "约 3-5 小时（飞行接力）/ 6-9 小时（陆路）",
-    status: "建议拆两天",
+    id: "transfer-sapporo-kamui",
+    icon: "bus",
+    mode: "定期观光巴士优先",
+    from: "札幌基地",
+    to: "神威岬",
+    time: "9小时56分",
+    status: "必去 / 提前预约",
     caution: true,
-    verdict: "别把旭川到钏路写成舒服直通；最顺手的做法是先回札幌，再飞钏路。",
+    verdict: "神威岬不能写成 JR；低风险做法是直接预约中央巴士定期观光巴士，从札幌往返。",
     segments: [
-      { label: "推荐", route: "旭川 -> 札幌", time: "JR 特急", memo: "先回主干线，不在东北海道硬穿。" },
-      { label: "推荐", route: "札幌 -> 钏路", time: "ANA 国内线", memo: "把最累的一跳交给飞机，体力和行李都轻很多。" },
-      { label: "备选", route: "旭川 -> 带广 -> 钏路", time: "North Liner + JR", memo: "保留陆路感，但仍然是整日移动日。" }
+      { label: "首选", route: "札幌站 8:40 -> 神威岬 -> 札幌站 18:36", time: "中央巴士定期观光巴士", memo: "2026-05-09 至 2026-09-30 运行；午餐含在课程内。" },
+      { label: "停留", route: "神威岬步道", time: "约 1小时20分", memo: "强风时只开放到门口；按现场管制。" },
+      { label: "备选", route: "小樽/美国方向巴士 + 积丹町生活交通", time: "整日", memo: "只作为备选，班次和预约运行比观光巴士麻烦。" },
+      { label: "保底", route: "札幌/小樽 -> 神威岬 -> 札幌", time: "包车/自驾", memo: "若观光巴士没座，这是保证到达的方式。" }
     ],
     steps: [
-      "舒服版：旭川 -> 札幌 -> 钏路，把札幌当空中接力点。",
-      "想保留陆路感：旭川 -> 带广 -> 钏路，但这天仍然要按移动日看待。",
-      "如果已经觉得累，就把钏路前后拆成两天，不要硬连。"
+      "先抢中央巴士“All of Shakotan”课程座位，确认集合点和出票方式。",
+      "若观光巴士无座，再考虑小樽/美国方向巴士、积丹町生活交通或包车。",
+      "风雨、步道关闭或返程不稳时，当天降级为小樽深玩，不临时硬冲。"
     ],
-    note: "ANA 官方路线页能查到札幌-钏路；旭川-钏路如果硬连，体感很容易过长。",
-    sources: ["asahikawa", "obihiro", "northliner", "anaDomesticTimetable", "anaSapporoKushiro", "anaKushiroSapporo", "jrUsage", "jrRailPass", "jrHokkaidoNorikae"]
+    note: "“100%可行”在神威岬这里的含义是交通方案提前锁死；自然点仍然受风、雨、步道开放影响。",
+    sources: ["capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday", "capeKamuiAccess"]
   },
   {
-    id: "transfer-kushiro-hakodate",
-    icon: "plane",
-    mode: "飞机 + JR / 分两天更舒服",
-    from: "钏路基地",
+    id: "transfer-sapporo-furano",
+    icon: "train",
+    mode: "JR / Lavender Express",
+    from: "札幌基地",
+    to: "富良野",
+    time: "约 2小时起",
+    status: "必去 / 当天往返或住一晚",
+    verdict: "富良野可以从札幌执行；2026 夏季有札幌直达富良野的 Lavender Express，备用方案再走普通 JR 换乘。",
+    segments: [
+      { label: "首选", route: "札幌 -> 富良野", time: "Furano Lavender Express 约 2 小时", memo: "2026 年 6-9 月部分日期运行；全席指定。" },
+      { label: "备选", route: "札幌 -> 滝川/旭川 -> 富良野", time: "按具体车次", memo: "普通 JR 换乘日，先锁回程。" },
+      { label: "末端", route: "Lavender Farm Station -> 富田农场", time: "步行 7-8 分钟", memo: "该临时站只在夏季 Norokko 停靠时使用。" }
+    ],
+    steps: [
+      "先查 Lavender Express 是否覆盖你们的富良野日，能直达就优先直达。",
+      "若直达列车日期不合，就用普通 JR 换乘或改成富良野住一晚。",
+      "花田只保富田农场/中富良野方向，不把美瑛青池也塞进同一天。"
+    ],
+    note: "富良野是必去，但不是必须经旭川；这会明显降低搬家次数。",
+    sources: ["timetable", "jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "farmTomita", "farmTomitaAccess", "farmTomitaStation", "reservation"]
+  },
+  {
+    id: "transfer-sapporo-hakodate",
+    icon: "train",
+    mode: "JR 特急 Hokuto",
+    from: "札幌基地",
     to: "函馆基地",
-    time: "约 4-6 小时（飞行+中继）/ 8-10 小时（硬连）",
-    status: "建议分开",
-    caution: true,
-    verdict: "钏路到函馆不要同日硬扛；更舒服的做法是先飞札幌，再接函馆。",
+    time: "约 3.5-4 小时级别",
+    status: "必去 / 主移动日",
+    verdict: "札幌到函馆是成立的 JR 主线，但这天只移动和入住，不加远景点。",
     segments: [
-      { label: "推荐", route: "钏路 -> 札幌", time: "ANA 国内线", memo: "先把东北海道最重的一跳砍掉。" },
-      { label: "推荐", route: "札幌 -> 函馆", time: "ANA 国内线 / JR Hokuto", memo: "第二跳再接函馆；最好在札幌住一晚。" },
-      { label: "备选", route: "钏路 -> 札幌 -> 函馆", time: "飞 + 飞 / 飞 + JR", memo: "适合保体力，不适合同日观光。" }
+      { label: "JR特急", route: "札幌 -> 函馆", time: "Hokuto", memo: "全席指定/指定席规则按 JR 北海道查。" },
+      { label: "市内", route: "函馆站 -> 酒店/朝市/市电区", time: "短接驳", memo: "抵达后只做晚饭或函馆市内轻线。" }
     ],
-    steps: [
-      "舒服版：钏路 -> 札幌，最好在札幌住一晚。",
-      "第二跳再去函馆：札幌 -> 函馆，飞或 JR 都行，看时间和体力。",
-      "如果一定要同日到函馆，那天就只当转场，不安排景点。"
-    ],
-    note: "ANA 官方路线页能查到札幌-钏路和札幌-函馆；钏路 -> 函馆更适合经札幌拆开。",
-    sources: ["anaDomesticTimetable", "anaKushiroSapporo", "anaSapporoKushiro", "anaSapporoHakodate", "anaHakodateSapporo", "hakodate", "reservation", "jrUsage", "jrHokkaidoNorikae"]
+    steps: ["提前订札幌到函馆的 Hokuto 指定席。", "到函馆后只入住、吃饭、轻散步。", "函馆山夜景只在天气好且抵达时间舒服时执行。"],
+    note: "这是主线里最长的北海道 JR 段；不要把神威岬或富良野和它塞同一天。",
+    sources: ["hakodate", "operation", "timetable", "reservation", "jrUsage", "jrRailPass"]
   },
   {
-    id: "transfer-hakodate-sendai",
+    id: "transfer-hakodate-tokyo",
     icon: "train",
-    mode: "Liner + 新干线",
+    mode: "Liner + 北海道/东北新干线",
     from: "函馆基地",
-    to: "仙台基地",
-    time: "约 3.5-4.5 小时",
-    status: "跨海换乘",
-    verdict: "真实链路是函馆站 -> 新函馆北斗 -> 新青森 -> 仙台。",
-    segments: [
-      { label: "1", route: "函馆站 -> 新函馆北斗", time: "Hakodate Liner 15-22 分钟", memo: "函馆站不是新干线站；官方写 16 往复/日。" },
-      { label: "2", route: "新函馆北斗 -> 新青森", time: "北海道新干线", memo: "这才是青函隧道跨海段；按 Hayabusa/Hayate 车次查。" },
-      { label: "3", route: "新青森 -> 仙台", time: "东北新干线", memo: "本州侧主干线；当前 JR East 显示东北新干线正常。" }
-    ],
-    steps: [
-      "函馆 -> 新函馆北斗：Hakodate Liner，约 15-22 分钟。",
-      "新函馆北斗 -> 新青森：北海道新干线，经青函隧道。",
-      "新青森 -> 仙台：东北新干线。"
-    ],
-    note: "JR East 当前显示东北新干线整体正常，但服务暂停栏列出个别跨海车次停运；跨海日必须查具体 Hayabusa/Hayate 车次。",
-    sources: ["shinkansen", "jreast", "jreastTimetableTop", "sendaiStationTimetable", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "reservation"]
-  },
-  {
-    id: "transfer-sendai-tokyo",
-    icon: "train",
-    mode: "东北新干线",
-    from: "仙台基地",
     to: "东京基地",
-    time: "约 1.5-2 小时",
-    status: "本州主干线",
-    verdict: "最后一跳很顺，但到东京后体力消耗来自人流。",
+    time: "约 5 小时级别",
+    status: "必去 / 跨海终段",
+    verdict: "JR-only 的真实链路是函馆站 -> 新函馆北斗 -> 新青森 -> 东京；不需要再停仙台。",
     segments: [
-      { label: "JR新干线", route: "仙台 -> 东京", time: "约 1.5-2 小时", memo: "东北新干线主干线；到东京后只做市内短点。" }
+      { label: "1", route: "函馆站 -> 新函馆北斗", time: "Hakodate Liner 15-22 分钟", memo: "函馆站不是新干线站。" },
+      { label: "2", route: "新函馆北斗 -> 新青森", time: "北海道新干线", memo: "经青函隧道，按具体 Hayabusa/Hayate 查。" },
+      { label: "3", route: "新青森 -> 东京", time: "东北新干线", memo: "本州主干线；不必停仙台。" }
     ],
-    steps: ["仙台 -> 东京：东北新干线直达。", "到达东京后只做市内短点，不再扩张远郊。"],
-    note: "JR East 当前页面显示东北新干线 Normal operation；仍以出发当天实时状态为准。",
-    sources: ["jreast", "jreastTimetableTop", "sendaiStationTimetable", "tokyoStationTimetable", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "jrTokyoWidePass", "reservation"]
+    steps: ["函馆站先坐 Hakodate Liner 到新函馆北斗。", "新函馆北斗上北海道新干线过青函隧道到新青森。", "新青森继续东北新干线到东京，到达后只做入住和吃饭。"],
+    note: "若你们觉得 5 小时级别铁路太累，舒适备选是函馆机场飞东京；但网页主线按 JR-only 写清楚。",
+    sources: ["shinkansen", "jreast", "jreastTimetableTop", "tokyoStationTimetable", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass", "reservation"]
   }
 ];
 
@@ -937,165 +936,147 @@ const coreBusTransfers = [
 ];
 
 const realRouteMapPoints = [
-  { order: 1, target: "base-sapporo", label: "札幌", sub: "首站 / 恢复", lat: 43.0618, lng: 141.3545, kind: "base", side: "left", tone: "forest" },
-  { order: 2, target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", lat: 43.7706, lng: 142.365, kind: "base", side: "top", tone: "forest" },
-  { order: 3, target: "base-kushiro", label: "钏路", sub: "东北海道", lat: 42.9849, lng: 144.381, kind: "base", side: "right", tone: "accent" },
-  { order: 4, target: "base-hakodate", label: "函馆", sub: "跨海前停顿", lat: 41.7688, lng: 140.7288, kind: "base", side: "left", tone: "amber" },
-  { order: 4.1, target: "city-seikan", label: "新函馆北斗", sub: "Liner", lat: 41.905, lng: 140.6475, kind: "transfer", side: "right", tone: "accent" },
-  { order: 4.2, target: "city-seikan", label: "新青森", sub: "新干线", lat: 40.8227, lng: 140.6935, kind: "transfer", side: "right", tone: "cross" },
-  { order: 5, target: "base-sendai", label: "仙台", sub: "本州缓冲", lat: 38.2601, lng: 140.8826, kind: "base", side: "right", tone: "forest" },
+  { order: 1, target: "base-sapporo", label: "札幌", sub: "起点 / 住宿", lat: 43.0618, lng: 141.3545, kind: "base", side: "left", tone: "forest" },
+  { order: 2, target: "city-otaru", label: "小樽", sub: "JR短线", lat: 43.1972, lng: 140.9947, kind: "base", side: "left", tone: "forest" },
+  { order: 3, target: "city-kamui", label: "神威岬", sub: "公路整日", lat: 43.3306, lng: 140.3486, kind: "base", side: "left", tone: "amber" },
+  { order: 4, target: "city-furano", label: "富良野", sub: "花田", lat: 43.342, lng: 142.383, kind: "base", side: "right", tone: "forest" },
+  { order: 5, target: "base-hakodate", label: "函馆", sub: "跨海前停顿", lat: 41.7688, lng: 140.7288, kind: "base", side: "left", tone: "amber" },
+  { order: 5.1, target: "city-seikan", label: "新函馆北斗", sub: "Liner", lat: 41.905, lng: 140.6475, kind: "transfer", side: "right", tone: "accent" },
+  { order: 5.2, target: "city-seikan", label: "新青森", sub: "新干线", lat: 40.8227, lng: 140.6935, kind: "transfer", side: "right", tone: "cross" },
   { order: 6, target: "base-tokyo", label: "东京", sub: "终点", lat: 35.6812, lng: 139.7671, kind: "base", side: "left", tone: "forest" }
 ];
 
 const realRouteMapSegments = [
-  { kind: "jr", label: "札幌 -> 旭川", latlngs: [[43.0618, 141.3545], [43.2832, 141.563], [43.5534, 141.9048], [43.7706, 142.365]] },
-  { kind: "warning", label: "旭川 -> 钏路", latlngs: [[43.7706, 142.365], [43.6536, 143.0598], [43.1646, 143.5732], [42.9849, 144.381]] },
-  { kind: "warning", label: "钏路 -> 函馆", latlngs: [[42.9849, 144.381], [42.4821, 143.4102], [42.007, 142.8352], [41.7688, 140.7288]] },
+  { kind: "jr", label: "札幌 -> 小樽", latlngs: [[43.0618, 141.3545], [43.112, 141.21], [43.1972, 140.9947]] },
+  { kind: "warning", label: "小樽 -> 神威岬", latlngs: [[43.1972, 140.9947], [43.203, 140.773], [43.229, 140.638], [43.3306, 140.3486]] },
+  { kind: "jr", label: "札幌 -> 富良野", latlngs: [[43.0618, 141.3545], [43.5578, 141.9106], [43.342, 142.383]] },
+  { kind: "jr", label: "札幌 -> 函馆", latlngs: [[43.0618, 141.3545], [42.317, 140.988], [41.7688, 140.7288]] },
   { kind: "liner", label: "函馆 -> 新函馆北斗", latlngs: [[41.7688, 140.7288], [41.905, 140.6475]] },
   { kind: "cross", label: "新函馆北斗 -> 新青森", latlngs: [[41.905, 140.6475], [41.58, 140.62], [41.25, 140.64], [40.8227, 140.6935]] },
-  { kind: "jr", label: "新青森 -> 仙台", latlngs: [[40.8227, 140.6935], [40.4, 140.78], [39.8, 140.84], [39.1, 140.86], [38.2601, 140.8826]] },
-  { kind: "jr", label: "仙台 -> 东京", latlngs: [[38.2601, 140.8826], [37.3, 140.9], [36.4, 140.1], [35.6812, 139.7671]] }
+  { kind: "jr", label: "新青森 -> 东京", latlngs: [[40.8227, 140.6935], [39.7, 140.9], [38.2601, 140.8826], [37.3, 140.9], [36.4, 140.1], [35.6812, 139.7671]] }
 ];
 
 const routeMapActions = [
-  { target: "transfer-asahikawa-kushiro", label: "看旭川→钏路", note: "先回札幌或改飞" },
-  { target: "transfer-kushiro-hakodate", label: "看钏路→函馆", note: "分两天更舒服" },
-  { target: "city-seikan", label: "看青函链路", note: "函馆北斗 / 新青森" },
-  { target: "transfer-sendai-tokyo", label: "看仙台→东京", note: "最后一跳" }
+  { target: "transfer-sapporo-otaru", label: "看札幌→小樽", note: "JR短线必去" },
+  { target: "transfer-sapporo-kamui", label: "看神威岬交通", note: "巴士/包车" },
+  { target: "transfer-sapporo-furano", label: "看富良野交通", note: "札幌往返" },
+  { target: "transfer-hakodate-tokyo", label: "看函馆→东京", note: "青函跨海" }
 ];
 
 const routeOptimizations = [
   {
-    id: "opt-six-bases",
+    id: "opt-mainline-six",
     icon: "check",
-    title: "继续用 6 基地，不拆成 19 站搬家",
-    meta: "行李 / 工作 / 体力",
-    verdict: "这是这条路线最重要的结构判断。",
+    title: "主线只保 6 个必到点",
+    meta: "札幌 / 小樽 / 神威岬 / 富良野 / 函馆 / 东京",
+    verdict: "这是最新口径：不要再把旭川、钏路、根室、仙台变成主线。",
     steps: [
-      "基地只负责住宿和主移动，城市与子目的地全部可选。",
-      "小樽、余市、美瑛、富良野、厚岸、根室、松岛都不应该变成搬行李住宿点。",
-      "每次换基地后的晚上默认只吃饭和恢复。"
+      "札幌负责落地、住宿、补给，以及小樽、神威岬、富良野三条支线。",
+      "函馆只作为南北海道必到城市和跨海前停顿。",
+      "东京是终点，不需要再强行经过仙台。"
     ],
-    note: "页面大纲默认只露出 6 个基地；展开后才看城市和子目的地。",
-    sources: ["operation", "asahikawa", "obihiro", "hakodate", "shinkansen", "jreast"]
+    note: "这会明显减少搬行李次数，也把地图从绕远路改回顺路。",
+    sources: ["operation", "jrAirport", "otaruCanal", "jrFuranoBiei", "hakodate", "shinkansen", "jreast"]
   },
   {
-    id: "opt-taste-fit",
-    icon: "search",
-    title: "按偏好取舍：松弛 / 世界边缘 / 探店",
-    meta: "不要为了完整而完整",
-    verdict: "每个可选点至少命中一个偏好，否则就是可以删的点。",
-    steps: [
-      "松弛：温泉、咖啡、短散步、雨天室内、长移动后的晚饭。",
-      "世界边缘：岬角、海岸、跨海、火山湖、峡谷、山岳、最东端。",
-      "探店：市场、拉面、炉端、牡蛎、甜品、纸品书店、温泉街小店。",
-      "如果一个点既不松弛、也没有边缘感、也没有店可探，就不要占用一天。"
-    ],
-    note: "路线大纲顶部可以按这几类临时筛选；详情弹窗会自动写“适合你们吗”。",
-    sources: ["sounkyoTaisetsu", "akanMashuAccess", "akiuSendai", "nikkoJnto", "yokohamaJnto", "kamakuraJnto"]
-  },
-  {
-    id: "opt-asahikawa-kushiro",
-    icon: "alert",
-    title: "旭川到钏路先拆两段",
-    meta: "最容易排错的一段",
+    id: "opt-kamui-bus",
+    icon: "bus",
+    title: "神威岬不要自由拼公交",
+    meta: "中央巴士定期观光巴士优先",
     caution: true,
-    verdict: "不要把旭川 -> 富良野 -> 带广 -> 钏路写成顺直 JR；舒服版通常要先回札幌。",
+    verdict: "你们要的是 100% 可执行，神威岬就应该先用札幌往返观光巴士锁死。",
     steps: [
-      "2024-04-01 起富良野-新得铁路事业废止，不能用这段 JR 穿越到十胜。",
-      "舒服版：旭川 -> 札幌 -> 钏路，札幌做飞机接力点。",
-      "陆路版：North Liner 到带广，再接 JR 去钏路，但仍然算移动日。"
+      "官方课程 2026-05-09 到 2026-09-30 运行，札幌 8:40 出发、18:36 回到札幌。",
+      "课程包含神威岬、积丹海岸和午餐，减少临时换乘失败。",
+      "小樽/美国方向公交只做备选，包车是无座时的保底。"
     ],
-    note: "如果想舒服，带广要么删掉，要么只做中继停留，不要塞进观光日。",
-    sources: ["furanoClosed", "northliner", "obihiro", "anaDomesticTimetable", "anaSapporoKushiro"]
+    note: "这不是最自由，但最像人在外地会选的稳法。",
+    sources: ["chuoShakotanTour", "capeKamui", "shakotanTownBus", "shakotanBusToday"]
   },
   {
-    id: "opt-kushiro-hakodate",
-    icon: "plane",
-    title: "钏路到函馆分两天更像旅行",
-    meta: "体力优先",
-    caution: true,
-    verdict: "钏路 -> 函馆如果硬走 JR，会把一天压得太满；更舒服的是先飞札幌，再分段去函馆。",
+    id: "opt-furano-from-sapporo",
+    icon: "train",
+    title: "富良野从札幌执行",
+    meta: "Lavender Express / 普通 JR 备选",
+    verdict: "富良野是必去，但不必为了它增加旭川住宿。",
     steps: [
-      "先飞钏路 -> 札幌，把最重的一跳砍掉。",
-      "第二段再接札幌 -> 函馆，最好在札幌住一晚。",
-      "如果一定同日到函馆，就把那天当纯转场。"
+      "先查 2026 年 Furano Lavender Express，官方写札幌到富良野直达约 2 小时、全席指定。",
+      "如果日期不合，再走普通 JR 换乘或住富良野一晚。",
+      "富良野当天只保富田农场/中富良野，不再加美瑛青池。"
     ],
-    note: "这条线的价值不是省钱，而是别把旅行变成熬车。",
-    sources: ["anaDomesticTimetable", "anaKushiroSapporo", "anaSapporoKushiro", "anaSapporoHakodate", "anaHakodateSapporo", "hakodate"]
+    note: "这样既保留花田，又避免把旅行变成北海道内大迁徙。",
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "farmTomitaAccess", "farmTomitaStation"]
+  },
+  {
+    id: "opt-sapporo-hakodate",
+    icon: "train",
+    title: "札幌到函馆就是主移动日",
+    meta: "JR 特急 Hokuto",
+    verdict: "这段成立，但不要把它和神威岬、富良野放同一天。",
+    steps: [
+      "JR 北海道官方列车指南确认 Hokuto 连接札幌和函馆，且用于接北海道新干线。",
+      "这天只做退房、坐车、入住、晚饭。",
+      "函馆山夜景只在天气好、到达不累、时间自然时执行。"
+    ],
+    note: "长交通当天的目标是稳定到达，不是继续拿点。",
+    sources: ["hakodate", "operation", "reservation"]
   },
   {
     id: "opt-seikan",
     icon: "train",
-    title: "北海道到本州：函馆站不能直上新干线",
+    title: "北海道到东京：函馆站不能直上新干线",
     meta: "青函隧道链路",
     caution: true,
-    verdict: "真实换乘是函馆 -> 新函馆北斗 -> 新青森 -> 仙台。",
+    verdict: "真实换乘是函馆站 -> 新函馆北斗 -> 新青森 -> 东京；不需要仙台缓冲。",
     steps: [
       "函馆站到新函馆北斗坐 Hakodate Liner，官方标注 15-22 分钟、每天 16 往复。",
       "新函馆北斗到新青森才是北海道新干线跨海段，经青函隧道。",
-      "JR East 当前显示东北新干线整体正常，但个别 Hayabusa 跨海车次有停运记录，必须按车次查。"
+      "JR East 2026-07-08 18:07 显示东北新干线 Normal operation，但仍要按具体车次查。"
     ],
     note: "跨海当天不要压 5 分钟换乘；给买水、上厕所、找站台留余量。",
     sources: ["shinkansen", "jreast"]
   },
   {
-    id: "opt-morioka-hiraizumi",
-    icon: "route",
-    title: "仙台若要北上，盛冈/平泉比硬补八户更顺",
-    meta: "探店 / 世界遗产 / 新干线",
-    verdict: "这是仙台基地的可选升级，不是第 7 个住宿基地。",
+    id: "opt-weather",
+    icon: "compass",
+    title: "晴天给神威岬和富良野",
+    meta: "天气取舍",
+    verdict: "不累版的核心不是少玩，而是把好天气留给正确对象。",
     steps: [
-      "仙台站和盛冈站都在东北/北海道新干线主轴上；JR East 时刻页明确列出仙台往一之关、盛冈、新青森、新函馆北斗方向，以及盛冈往仙台/东京方向。",
-      "盛冈适合探店：三大面、城跡公园、中津川散步；平泉适合世界遗产和安静文化线。",
-      "如果你们只有仙台 1 晚，仍然优先松岛；如果仙台 2 晚且想北上，盛冈/平泉优先级高于从仙台折返八户。"
+      "神威岬强依赖风、雨、步道开放和道路条件。",
+      "富良野强依赖晴天、花期和季节列车座位。",
+      "雨天留给札幌市内、小樽堺町通、函馆市内和东京室内。"
     ],
-    note: "不要把盛冈、平泉、松岛、山寺塞进同一天；从仙台北上只选一条主线。",
-    sources: ["sendaiStationTimetable", "moriokaStationTimetable", "moriokaNoodlesJnto", "chusonjiJnto", "motsujiJnto"]
+    note: "天气差不是失败，是切换到低风险版本。",
+    sources: ["capeKamui", "chuoShakotanTour", "farmTomita", "otaruCanal", "hakodateTravel", "goTokyoGinza"]
   },
   {
     id: "opt-seasonal-trains",
     icon: "info",
     title: "观光列车只当加分项，不当骨架",
-    meta: "富良野 / 钏路",
-    verdict: "富良野、美瑛、钏路湿原的观光列车很好，但要看运营日和座位。",
+    meta: "富良野",
+    verdict: "富良野观光列车很好，但要看运营日和座位，不能假设每天都有。",
     steps: [
-      "JR 北海道 2026 年富良野/美瑛观光列车集中在 6-9 月，部分列车全席指定。",
-      "富良野・美瑛 Norokko 需要基本票价外的指定席券；没有指定席券可能无法乘车。",
-      "钏路湿原 Norokko 也是季节性列车，适合替代一部分末端交通压力。"
+      "JR 北海道页面写 Furano Lavender Express 2026 年 6-9 月部分日期运行。",
+      "Furano Biei Norokko 2026 年为最后运行年，官方写 9 月 23 日结束。",
+      "没有合适车次时，直接改普通 JR 或富良野住一晚，不临时硬拼。"
     ],
-    note: "先定基地移动，再决定是否把观光列车嵌进去。",
-    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026", "kushiroNorokko"]
-  },
-  {
-    id: "opt-weather",
-    icon: "route",
-    title: "晴天给岬角和花田，雨天给城市和吃饭",
-    meta: "天气取舍",
-    verdict: "不累版的核心不是少玩，而是把好天气留给正确对象。",
-    steps: [
-      "神威岬、纳沙布岬、函馆山、种差海岸都强依赖天气和风。",
-      "小樽、余市 Nikka、札幌、旭川拉面、仙台站区、银座更适合雨天。",
-      "长移动日不再加远支线，最多只保留站周边晚饭。"
-    ],
-    note: "每个弹窗里都把“最佳条件”和“别踩坑”单独列出来。",
-    sources: ["capeKamuiAccess", "nikkaYoichi", "asahikawaRamen", "goTokyoGinza"]
+    note: "主线可行性来自备用方案，不来自某一趟网红列车。",
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "jrSightseeing2026"]
   },
   {
     id: "opt-expansion",
     icon: "search",
-    title: "新增候选城市只做替代，不做加法",
-    meta: "登别 / 洞爷 / 层云峡 / 川汤 / 秋保 / 日光",
-    verdict: "新补的城市不是让行程变满，而是让坏天气或体力变化时有更好的替换。",
+    title: "其它地方只做替代，不做加法",
+    meta: "登别 / 旭川 / 钏路 / 仙台",
+    verdict: "这些地方可以保留资料，但不再是你们这次路线的必要链路。",
     steps: [
-      "想泡温泉：用登别或作并替代一条重海岸线，不要叠加。",
-      "想要世界边缘：用层云峡、阿寒湖、川汤/摩周、日光湖区替代普通城市逛街。",
-      "函馆段天气好：大沼公园比继续城市打卡更有空间感。",
-      "仙台住 2 晚：松岛、山寺、作并、秋保四选一到二，不要全做。",
-      "东京收尾：横滨/镰仓/日光三选一，作为替代，不和涩谷/台场同日硬塞。"
+      "想泡温泉，用登别/洞爷湖替代神威岬或富良野坏天气日。",
+      "想把富良野玩松一点，才加旭川或富良野住一晚。",
+      "钏路、根室、仙台、松岛全部从本次主线删除，只有未来扩展再看。"
     ],
-    note: "新增候选全部在对应基地下面，点开看交通与取舍。",
-    sources: ["jrNoboribetsuToyako", "sounkyoTaisetsu", "lakeAkanOfficial", "lakeAkanBus", "akanMashuAccess", "akiuSendai", "nikkoJnto", "kamakuraJnto", "yokohamaJnto"]
+    note: "路线先成立，再谈扩展。",
+    sources: ["jrNoboribetsuToyako", "lakeToyaOfficial", "asahikawa", "kushiro", "sendai"]
   }
 ];
 
@@ -1129,18 +1110,18 @@ const longMoveComfort = [
     sources: ["anaDomesticTimetable", "jalDomesticTimetable", "jalDomesticReservation", "jalDomesticConnection", "jalDomesticStatus", "jrAirport"]
   },
   {
-    id: "comfort-sapporo-hub",
+    id: "comfort-kamui-reserve",
     icon: "home",
-    title: "札幌当接力枢纽",
-    meta: "旭川→钏路 / 钏路→函馆",
-    verdict: "东北海道和南北海道的大跳跃，舒服版通常都要经札幌拆开，而不是硬扛一条长 JR。",
+    title: "神威岬先预约，不当天赌",
+    meta: "观光巴士 / 包车",
+    verdict: "神威岬的减负方案不是换一条 JR，而是把公路交通提前锁死。",
     steps: [
-      "旭川 -> 札幌 -> 钏路：先回主干线，再飞钏路。",
-      "钏路 -> 札幌 -> 函馆：先把最重的一跳砍掉，再决定第二段。",
-      "如果你们只想少折腾，札幌住一晚往往比硬跑整天更值。"
+      "中央巴士观光巴士有座就用它。",
+      "没座时只考虑包车或改小樽深玩，不临时拼多段公交。",
+      "当天带水、轻食、外套，别把午饭和返程压在自己手里。"
     ],
-    note: "这不是偷懒，是把体力换回旅行质量。",
-    sources: ["anaDomesticTimetable", "anaSapporoKushiro", "anaKushiroSapporo", "anaSapporoHakodate", "anaHakodateSapporo", "asahikawa", "hakodate"]
+    note: "这条支线的风险来自末端交通和天气，不来自 JR。",
+    sources: ["chuoShakotanTour", "shakotanTownBus", "shakotanBusToday"]
   },
   {
     id: "comfort-luggage",
@@ -1160,26 +1141,27 @@ const longMoveComfort = [
     id: "comfort-split-night",
     icon: "home",
     title: "不舒服就拆成一晚中继",
-    meta: "尤其适合北海道大跳跃",
-    verdict: "旭川 -> 钏路、钏路 -> 函馆、函馆 -> 仙台这类段，如果一想到就累，就该拆成两天。",
+    meta: "富良野 / 函馆",
+    verdict: "富良野当天往返不舒服，就住富良野一晚；札幌到函馆不舒服，就把当天完全留给移动。",
     steps: [
-      "把带广、札幌、南千岁、新函馆北斗这类点当中继，不当终点。",
+      "富良野车次不漂亮时，直接升级为富良野住一晚，不再加旭川主基地。",
+      "札幌到函馆当天不要加神威岬或富良野。",
       "中继夜只吃饭、洗澡、睡觉，第二天再继续。",
       "删一个景点，通常比硬撑整天更值。"
     ],
     note: "短一点的日子，往往比多玩一个点更值得。",
-    sources: ["northliner", "obihiro", "hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
+    sources: ["jrFuranoBiei", "hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
   },
   {
     id: "comfort-seikan",
     icon: "train",
     title: "青函当天只做链路",
-    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 仙台",
+    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 东京",
     verdict: "跨海这天我会把它当搬家日，不会在中间硬塞任何游玩。",
     steps: [
       "函馆站先坐 Hakodate Liner 到新函馆北斗。",
       "真正跨海的是北海道新干线到新青森。",
-      "到本州后只接下一段车或酒店，不追夜景。"
+      "到新青森后继续接东北新干线到东京；不再停仙台。"
     ],
     note: "官方时刻表和 JR East 状态页都要按车次查，别压极限换乘。",
     sources: ["shinkansen", "jreast", "jreastTimetableTop", "reservation"]
@@ -1190,36 +1172,36 @@ const adultPlaybook = [
   {
     id: "adult-base-priority",
     icon: "home",
-    title: "先保基地，再选景点",
-    meta: "6基地的成年版用法",
-    verdict: "我会把基地当睡觉、洗衣、补给和换乘壳，不把基地本身当成要刷满的景点。",
+    title: "先保 6 个必到点",
+    meta: "这次不再追完整北海道",
+    verdict: "我会把这次路线压成札幌起、东京收，中间只保小樽、神威岬、富良野、函馆。",
     steps: [
-      "札幌、旭川、钏路、函馆、仙台、东京各自只承担一个主功能。",
-      "城市和子目的地都只从基地里辐射出去，不单独升级成住宿点。",
-      "如果某天还在犹豫要不要加点，大概率就是那天该留白。"
+      "札幌住稳，三条支线从札幌发出去。",
+      "函馆住稳，跨海前恢复。",
+      "东京只做收尾，不再把东北当必停。"
     ],
     note: "这样行李、晚饭和第二天状态都会更稳。",
-    sources: ["operation", "asahikawa", "hakodate", "jreast"]
+    sources: ["operation", "jrAirport", "hakodate", "jreast"]
   },
   {
     id: "adult-long-move",
     icon: "clock",
     title: "长移动日只移动",
     meta: "先把体力和时刻表对齐",
-    verdict: "旭川→钏路、钏路→函馆、函馆→仙台这些日子，我会默认不再塞新景点。",
+    verdict: "札幌→函馆、函馆→东京这些日子，我会默认不再塞新景点。",
     steps: [
       "长线当天只做车站、午饭、厕所、补水和必要的换乘。",
       "到站后最多再留一个晚饭或泡汤，不再扩张。",
       "如果班次让你们觉得赶，说明目标定多了。"
     ],
     note: "长移动日的价值是把路线从赶路变成平稳到达。",
-    sources: ["northliner", "obihiro", "hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
+    sources: ["hakodate", "shinkansen", "jrEastSouthHokkaidoRailPass", "jrTohokuSouthHokkaidoRailPass"]
   },
   {
     id: "adult-cross-sea",
     icon: "train",
     title: "跨海只认一条链路",
-    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 仙台/东京",
+    meta: "函馆 -> 新函馆北斗 -> 新青森 -> 东京",
     verdict: "海底隧道这段我会按真实换乘拆开，不会把函馆站想成新干线站。",
     steps: [
       "函馆站先坐 Hakodate Liner 到新函馆北斗。",
@@ -1233,29 +1215,29 @@ const adultPlaybook = [
     id: "adult-weather",
     icon: "compass",
     title: "自然景只在好天气开",
-    meta: "岬角 / 湖 / 湿原 / 山岳",
-    verdict: "神威岬、纳沙布岬、函馆山、摩周湖这类点，我会按天气决定去不去。",
+    meta: "神威岬 / 富良野 / 函馆山",
+    verdict: "神威岬、富良野、函馆山这类点，我会按天气决定强度。",
     steps: [
       "晴天把自然景当主菜，风雨天把城市和吃饭当主菜。",
       "海风大、能见度差、云压下来时，直接删，不做将就版。",
-      "雨天留给小樽、札幌、函馆市内、仙台站区和东京室内。"
+      "雨天留给小樽、札幌、函馆市内和东京室内。"
     ],
     note: "成熟的做法不是硬扛，而是把好天气留给最值得的地方。",
-    sources: ["capeKamui", "nosappu", "mtHakodate", "akanMashuAccess", "otaruCanal", "goTokyoGinza"]
+    sources: ["capeKamui", "farmTomita", "mtHakodate", "otaruCanal", "goTokyoGinza"]
   },
   {
     id: "adult-city-choice",
     icon: "route",
-    title: "本州只留一条郊外线",
-    meta: "仙台 / 东京都要有边界",
-    verdict: "仙台我会在松岛和平泉里二选一，东京我会在横滨、镰仓、日光里只选一条。",
+    title: "本州不再额外开线",
+    meta: "函馆跨海后直接东京",
+    verdict: "这次我不会再加仙台、松岛、平泉；东京如果想出城，也只选一条。",
     steps: [
-      "仙台住 2 晚时，松岛半日最稳，想要历史厚度再换平泉。",
+      "跨海后直接到东京，减少一次搬家。",
       "东京尾声想出城，只保一条郊外线，别把横滨、镰仓、日光都想拿下。",
       "如果只是想恢复，就把一天留给市内吃饭和散步。"
     ],
     note: "这会让东京收尾不至于变成第二次长途旅行。",
-    sources: ["matsushima", "hiraizumiLoopBus", "kamakuraJnto", "yokohamaJnto", "nikkoOfficialAccess", "jrTokyoWidePass"]
+    sources: ["jreast", "kamakuraJnto", "yokohamaJnto", "nikkoOfficialAccess", "jrTokyoWidePass"]
   },
   {
     id: "adult-food-rest",
@@ -1264,7 +1246,7 @@ const adultPlaybook = [
     meta: "旅行真正的发动机",
     verdict: "每个基地我会只留一顿好饭和一个明确的睡眠点，不把晚饭和返程压在一起。",
     steps: [
-      "札幌、函馆、仙台、东京都适合用一顿好饭收束长线。",
+      "札幌、函馆、东京都适合用一顿好饭收束长线。",
       "登别、洞爷、阿寒、川汤这种地方能住则住，不住就别硬拉。",
       "晚到的那天，不再追夜景第二轮。"
     ],
@@ -1277,72 +1259,74 @@ const adultRoutePlan = [
   {
     id: "route-sapporo",
     icon: "home",
-    title: "札幌先落地，先轻后重",
-    meta: "建议 2-3 晚 / 小樽或余市二选一",
-    verdict: "开局我会把札幌当成恢复底盘，落地当天只做市内和晚饭，第二天再从小樽和余市里选一个。",
+    title: "札幌先住稳",
+    meta: "建议 4 晚 / 三条支线从这里发",
+    verdict: "开局我会把札幌当成恢复底盘，落地当天只做市内和晚饭，后面依天气执行小樽、神威岬、富良野。",
     steps: [
       "落地日只住札幌，不再外冲。",
-      "第二天小樽和余市二选一，神威岬只在晴天和低风时加。",
-      "如果天气普通，就让这段停在小樽/札幌市内。"
+      "小樽放低体力日或雨天半日。",
+      "神威岬放最晴、风最稳的一天，且先预约观光巴士。",
+      "富良野放另一个晴天，先查 Lavender Express。"
     ],
     note: "把第一段做轻，后面每段都会更顺。",
-    sources: ["operation", "otaruCanal", "nikkaYoichi", "capeKamui"]
+    sources: ["operation", "otaruCanal", "chuoShakotanTour", "jrFuranoBiei"]
   },
   {
-    id: "route-asahikawa",
-    icon: "route",
-    title: "旭川只开一条花田线",
-    meta: "建议 2 晚 / 美瑛或富良野择一主打",
-    verdict: "旭川段我会只保一条花田主线：要么美瑛，要么富良野，不把两边都拉满。",
+    id: "route-otaru-kamui",
+    icon: "compass",
+    title: "小樽和神威岬分开",
+    meta: "一个轻半日 / 一个整日",
+    verdict: "这两个虽然都在西海岸方向，但体力性质完全不同，我不会把它们硬塞成同一天。",
     steps: [
-      "旭川住 2 晚，把花田日和移动日拆开。",
-      "美瑛看丘陵结构，富良野看花田主视觉，别一天全塞。",
-      "带广只在你们明确想做长移动时再考虑。"
+      "小樽：札幌 JR 短线，运河、堺町通、晚饭后回札幌。",
+      "神威岬：中央巴士观光巴士整日，不再叠加小樽深玩。",
+      "神威岬天气差时，不做将就版，直接换小樽或札幌市内。"
+    ],
+    note: "一个是港口慢逛，一个是公路岬角，不要用同一个节奏处理。",
+    sources: ["otaruCanal", "otaruSakaimachi", "chuoShakotanTour", "capeKamui"]
+  },
+  {
+    id: "route-furano",
+    icon: "train",
+    title: "富良野只保花田主视觉",
+    meta: "札幌往返 / 必要时住一晚",
+    verdict: "富良野要去，但不需要把旭川、美瑛、青池都一起打开。",
+    steps: [
+      "优先查札幌直达 Furano Lavender Express。",
+      "只保富田农场和中富良野方向。",
+      "如果直达列车或回程不舒服，就住富良野一晚，不强行当天往返。"
     ],
     note: "花田越贪心，越像赶车。",
-    sources: ["asahikawa", "bieiJnto", "farmTomita", "furanoClosed", "jrFuranoBiei"]
-  },
-  {
-    id: "route-kushiro",
-    icon: "compass",
-    title: "钏路只保一个核心",
-    meta: "建议 2 晚 / 湿原、阿寒、根室三选一",
-    verdict: "东北海道我会按“一个主线一天”来做，湿原、阿寒、根室绝不在同一天硬收。",
-    steps: [
-      "想看湿原就保 Norokko 或展望点。",
-      "想泡汤就把阿寒湖当住一晚线。",
-      "想去最东端就把根室单独拎成整日。"
-    ],
-    note: "东北海道的价值在于重，不在于多。",
-    sources: ["kushiroNorokko", "lakeAkanBus", "nosappu", "operation"]
+    sources: ["jrFuranoBiei", "jrNorokkoFurano", "farmTomita", "farmTomitaStation"]
   },
   {
     id: "route-hakodate",
     icon: "train",
-    title: "函馆跨海当天只搬家",
-    meta: "建议 1-2 晚 / 只做换乘",
-    verdict: "函馆到本州那天我会只做青函链路，不再在中途加大沼、市内或别的景点。",
+    title: "札幌到函馆当天只搬家",
+    meta: "建议 1-2 晚 / 城市恢复",
+    verdict: "札幌到函馆是北海道内最长主线段，我会把它做成完整移动日。",
     steps: [
-      "函馆站 -> 新函馆北斗 -> 新青森的链路先留足余量。",
-      "跨海当天不安排额外观光。",
-      "到仙台后只吃饭和睡觉，别继续追夜景。"
+      "早一点退房，坐 Hokuto 到函馆。",
+      "到函馆后只入住、晚饭、轻散步。",
+      "函馆山夜景看天气和体力，不作为硬任务。"
     ],
-    note: "跨海当天最值钱的是稳定，不是打卡数。",
-    sources: ["hakodate", "shinkansen", "jreast"]
+    note: "函馆要看，但不要用透支方式看。",
+    sources: ["hakodate", "hakodateTravel", "mtHakodate"]
   },
   {
-    id: "route-tohoku-tokyo",
+    id: "route-seikan-tokyo",
     icon: "city",
-    title: "本州收尾各留一条线",
-    meta: "建议 2-4 晚 / 松岛或平泉 + 东京一条郊外线",
-    verdict: "仙台我会在松岛和平泉里二选一，东京我会在横滨、镰仓、日光里只选一条。",
+    title: "函馆到东京一次完成",
+    meta: "Liner + 北海道新干线 + 东北新干线",
+    verdict: "JR 主线可行，但这天就是跨海搬家日；觉得太累就改函馆飞东京。",
     steps: [
-      "仙台 2 晚时，松岛是轻线，平泉是文化线。",
-      "东京尾声只保一条郊外线，别把横滨、镰仓、日光都想拿下。",
-      "如果已经累了，就直接留市内吃饭和散步。"
+      "函馆站 -> 新函馆北斗：Hakodate Liner。",
+      "新函馆北斗 -> 新青森：北海道新干线，经青函隧道。",
+      "新青森 -> 东京：东北新干线。",
+      "到东京后只入住和吃饭。"
     ],
-    note: "收尾越轻，旅行记忆越清楚。",
-    sources: ["matsushima", "hiraizumiLoopBus", "yokohamaJnto", "kamakuraJnto", "nikkoOfficialAccess", "jrTokyoWidePass"]
+    note: "如果你们不想坐 5 小时级别铁路，舒适版就是函馆机场飞东京。",
+    sources: ["shinkansen", "jreast", "jalDomesticTimetable", "anaDomesticTimetable", "tokyo"]
   }
 ];
 
@@ -1375,17 +1359,17 @@ const outline = [
   base({
     id: "base-sapporo",
     title: "札幌基地",
-    meta: "西北海道核心 / 前 4 晚",
+    meta: "必到起点 / 前 4 晚",
     image: img("sapporo"),
-    tags: ["基地", "已定住宿", "JR主干线需查"],
-    summary: "第一基地。用来落地、恢复体力，并向小樽、余市、神威岬放射。",
+    tags: ["必到", "起点", "已定住宿", "JR主干线需查"],
+    summary: "必到起点。用来落地、恢复体力，并执行小樽、神威岬、富良野支线。",
     sections: sections(
       ["札幌是西北海道最稳的住宿与补给点。", "你们已经有前 4 晚住宿，因此这里应承担恢复、吃饭、洗衣、购物和短支线选择。"],
-      [jrHokkaidoLiveNote, "离开札幌去旭川，官方列车指南确认有特急 Kamui / Lilac 连接札幌-旭川，且 JR 北海道特急全席指定。", "札幌往小樽、余市属于普通 JR 支线；神威岬不是 JR 直达。"],
-      ["札幌段不需要强行每天外冲。天气差时留市内或小樽，晴天体力好再考虑神威岬。"],
-      [{ title: "下一基地", items: ["札幌 -> 旭川：JR 逻辑成立，是本路线最干净的一段基地移动。"] }]
+      [jrHokkaidoLiveNote, "札幌可以稳定承担新千岁进城、小樽短线、富良野花田线和札幌->函馆主移动。", "神威岬不是 JR 直达；本次主推中央巴士定期观光巴士或提前包车。"],
+      ["札幌段现在只保护三个必去动作：小樽、神威岬、富良野。余市、登别、洞爷湖都降级为可选。"],
+      [{ title: "下一基地", items: ["札幌 -> 函馆：JR 特急 Hokuto 主移动日。"] }]
     ),
-    sources: ["operation", "asahikawa", "reservation"],
+    sources: ["operation", "jrAirport", "otaruCanal", "chuoShakotanTour", "jrFuranoBiei", "hakodate", "reservation"],
     children: [
       city({
         id: "city-sapporo",
@@ -1397,10 +1381,10 @@ const outline = [
         summary: "这不是可有可无的景点城市，而是第一段路线的交通与生活枢纽。",
         sections: sections(
           ["札幌市负责让整段北海道开局稳定。", "它是机场、住宿、餐饮和西北海道支线之间的缓冲点。"],
-          ["新千岁机场至札幌有 JR Airport 系统；但本次 JR 北海道区域摘要处于服务时间外，落地当天按 Airport/函馆千岁线具体列车再查。", "札幌出发到旭川、函馆、钏路方向都有特急系统，但长线必须预留座位和换乘时间。"],
+          ["新千岁机场到札幌有 JR Airport 系统；JR 北海道官方写新千岁到札幌最快 33 分钟，到小樽最快 73 分钟。", "札幌到富良野可查 Lavender Express 或普通 JR 换乘；札幌到函馆用 Hokuto。"],
           ["落地日只做札幌市内，不要落地当天上神威岬。"]
         ),
-        sources: ["operation", "reservation"],
+        sources: ["operation", "jrAirport", "jrFuranoBiei", "hakodate", "reservation"],
         children: [
           spot({
             id: "spot-odori",
@@ -1449,14 +1433,14 @@ const outline = [
       city({
         id: "city-otaru",
         title: "小樽",
-        meta: "可选城市 / JR短支线",
+        meta: "必去城市 / JR短支线",
         image: img("otaru"),
-        tags: ["可选城市", "轻松半日"],
-        summary: "札幌最稳的短支线。港口、运河、旧仓库都容易理解。",
+        tags: ["必去城市", "轻松半日"],
+        summary: "必去短支线。港口、运河、旧仓库都容易理解。",
         sections: sections(
           ["小樽适合低风险地获得一个清楚的港口城市画面。"],
-          ["札幌-小樽属于 JR 函馆线方向短程移动；本次 JR 北海道区域摘要处于服务时间外，出发前按札幌区域和函馆线车次再查。", "它是可选城市，不影响主线南下。"],
-          ["体力一般时优先小樽，不要硬上神威岬。"]
+          ["札幌-小樽属于 JR 函馆线方向短程移动；本次 JR 北海道区域摘要处于服务时间外，出发前按札幌区域和函馆线车次再查。", "它是必去城市，但可以轻量执行，不需要搬家。"],
+          ["体力一般时也保留小樽；神威岬才是天气与交通条件项。"]
         ),
         sources: ["operation", "timetable", "otaruCanal", "otaruSakaimachi"],
         children: [
@@ -1551,14 +1535,14 @@ const outline = [
       city({
         id: "city-kamui",
         title: "神威岬",
-        meta: "可选城市/区域 / 非JR直达",
+        meta: "必去区域 / 非JR直达",
         image: img("cape-kamui"),
-        tags: ["可选城市", "重体验", "非JR直达"],
-        summary: "札幌段最重的海岸选择。风景强，交通也最麻烦。",
+        tags: ["必去区域", "重体验", "非JR直达"],
+        summary: "必去海岸线。风景强，交通也最麻烦。",
         sections: sections(
           ["它的回报是日本海断崖、海色和尽头感。"],
           ["神威岬不能按 JR 直达处理。最省心是中央巴士定期观光巴士；自由行则要查小樽/美国方向巴士、积丹町生活交通巴士、预约运行和当天运行公告。", "JR 状态正常不等于这条支线一定顺，巴士班次、季节、预约和天气才是决定因素。"],
-          ["只在晴天、风不大、体力足时选。它是整日支线，不是顺手加点；如果交通链不漂亮，直接降级小樽或登别。"]
+          ["这是必去点，但执行条件要严：晴天、风不大、交通链提前锁定。若步道关闭或交通不稳，就保留到备用日，不临时硬冲。"]
         ),
         sources: ["operation", "timetable", "capeKamui", "chuoShakotanTour", "shakotanTownBus", "shakotanBusToday"],
         children: [
@@ -1684,16 +1668,17 @@ const outline = [
   }),
   base({
     id: "base-asahikawa",
+    optional: true,
     title: "旭川基地",
-    meta: "中北海道核心 / 建议2晚",
+    meta: "可选基地 / 可删",
     image: img("asahikawa"),
-    tags: ["基地", "花田线", "下一段长移动"],
-    summary: "第二基地。它让美瑛、富良野变成轻一点的支线，但不能把带广误写成 JR 直通。",
+    tags: ["可选基地", "花田线"],
+    summary: "可选基地。最新主线不再需要旭川；只有你们想把富良野住得更松时才加。",
     sections: sections(
-      ["旭川的意义是让中北海道停住，而不是从札幌硬冲花田。"],
+      ["旭川现在是可选资料库，不再是这次必走主线。"],
       ["札幌-旭川由特急 Kamui / Lilac 连接，官方列车指南确认该主干线存在且为全席指定。", "旭川-美瑛-富良野走富良野线；本次 JR 北海道区域摘要处于服务时间外，花田日出发前必须按富良野线具体班次再查。", "旭川去钏路没有顺直 JR，JR-only 通常要折返札幌/南千岁再接特急 Ozora，属于长移动日。"],
-      ["美瑛、富良野可选；带广不要作为旭川侧轻支线。"],
-      [{ title: "下一基地", items: ["旭川 -> 钏路：可用 JR 拼接，但不是顺路短线；建议定义为移动日。"] }]
+      ["只有当札幌往返富良野太累、想住花田区时，才考虑旭川或富良野住一晚。"],
+      [{ title: "主线关系", items: ["本次主线不需要旭川 -> 钏路，也不需要东北海道穿越。"] }]
     ),
     sources: ["operation", "asahikawa", "obihiro", "furanoClosed"],
     children: [
@@ -1831,14 +1816,14 @@ const outline = [
       city({
         id: "city-furano",
         title: "富良野",
-        meta: "可选城市 / 富良野线",
+        meta: "必去城市 / 富良野线",
         image: placeImages.farmTomita,
-        tags: ["可选城市", "7月花田"],
-        summary: "7月主视觉。花田、缓坡和远山构成北海道夏天。",
+        tags: ["必去城市", "7月花田"],
+        summary: "必去花田主视觉。花田、缓坡和远山构成北海道夏天。",
         sections: sections(
           ["富良野是季节性画面最强的一站。"],
           ["旭川-富良野走富良野线；本次 JR 北海道区域摘要处于服务时间外，出发前按富良野线具体班次再查。", "但富良野-新得 JR 已于 2024-04-01 废止，不能继续按 JR 直通去带广。"],
-          ["可和美瑛同日，但不要接带广。"]
+          ["最新主线优先从札幌执行富良野；如果车次不舒服，再考虑住旭川或富良野一晚。"]
         ),
         sources: ["operation", "furanoClosed", "jrFuranoBiei"],
         children: [
@@ -1992,16 +1977,17 @@ const outline = [
   }),
   base({
     id: "base-kushiro",
+    optional: true,
     title: "钏路基地",
-    meta: "东北海道核心 / 建议2晚",
+    meta: "可选基地 / 已降级",
     image: placeImages.kushiroMarsh,
-    tags: ["基地", "东北海道", "长线慎排"],
-    summary: "第三基地。湿原、阿寒湖、海雾、根室最东端都从这里展开。",
+    tags: ["可选基地", "东北海道", "未来扩展"],
+    summary: "可选资料库。钏路、根室、阿寒湖这次不进主线。",
     sections: sections(
-      ["钏路让东北海道真正进入路线。"],
+      ["钏路只适合未来单独做东北海道时打开。"],
       ["札幌-带广-钏路由特急 Ozora 系统承担，官方列车指南确认该主干线。", "旭川到钏路 JR-only 不顺直，通常要经札幌/南千岁；本次 JR 北海道区域摘要处于服务时间外，长移动日必须按 Ozora / 换乘站车次再查。"],
-      ["钏路必须住下来。阿寒湖、根室、厚岸和湿原都不适合从别的基地当天硬刷。"],
-      [{ title: "下一基地", items: ["钏路 -> 函馆：JR 可拼接，但极长，通常经札幌/南千岁再接 Hokuto。最好拆分或考虑飞行。"] }]
+      ["这次不去钏路；如果未来去，必须住下来，不能从札幌或函馆当天硬刷。"],
+      [{ title: "主线关系", items: ["本次主线删除钏路 -> 函馆长链路，改为札幌 -> 函馆。"] }]
     ),
     sources: ["operation", "obihiro", "hakodate"],
     children: [
@@ -2345,15 +2331,15 @@ const outline = [
   base({
     id: "base-hakodate",
     title: "函馆基地",
-    meta: "南北海道断裂点 / 建议1-2晚",
+    meta: "必到城市 / 南北海道断裂点",
     image: img("hakodate"),
-    tags: ["基地", "跨海前", "换乘关键"],
-    summary: "第四基地。北海道结束、本州开始前的停顿。",
+    tags: ["必到", "跨海前", "换乘关键"],
+    summary: "必到城市。北海道结束、本州开始前的停顿。",
     sections: sections(
       ["函馆的价值是港口城市和跨海铁路节点。"],
-      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "钏路-函馆 JR-only 很长，通常要经札幌/南千岁再接 Hokuto；本次 JR 北海道区域摘要处于服务时间外，因此它更不能当观光日。"],
-      ["从钏路长移动到达后至少住一晚。"],
-      [{ title: "下一基地", items: ["函馆 -> 仙台：先 Hakodate Liner 到新函馆北斗，再新干线穿青函隧道到新青森，继续东北新干线南下。"] }]
+      ["札幌-函馆由特急 Hokuto 连接，官方列车指南确认 Hokuto 也用于连接北海道新干线。", "本次路线从札幌直下函馆，不再从钏路或仙台方向绕路。"],
+      ["函馆到东京可以 JR-only 直通主线，不再需要仙台作为必停缓冲。"],
+      [{ title: "下一基地", items: ["函馆 -> 东京：先 Hakodate Liner 到新函馆北斗，再经新青森接东北新干线到东京。"] }]
     ),
     sources: ["operation", "hakodate", "shinkansen", "jreast"],
     children: [
@@ -2512,7 +2498,7 @@ const outline = [
             summary: "本州侧的新干线节点。",
             sections: sections(
               ["它主要是换乘节点，不是景点；新青森站和青森站不是同一个生活/观光中心。"],
-              ["如果只是跨海去仙台，就在这里换东北新干线继续南下；如果想看 WA-RASSE，要另外进青森站。"],
+              ["如果只是跨海去东京，就在这里换东北新干线继续南下；如果想看 WA-RASSE，要另外进青森站。"],
               ["停留只留买水、厕所和找站台的余量，不要把它变成拖行李探索。"]
             ),
             sources: ["jreast"]
@@ -2525,7 +2511,7 @@ const outline = [
         meta: "可选城市 / 跨海中途拆分",
         image: placeImages.aomoriHirosaki,
         tags: ["可选城市", "本州入口", "非顺手"],
-        summary: "如果不想从函馆一口气到仙台，青森/弘前可以把跨海日拆成更有内容的一段。",
+        summary: "如果不想从函馆一口气到东京，青森/弘前可以把跨海日拆成更有内容的一段。",
         sections: sections(
           ["青森市补东北祭典文化，弘前补城下町和苹果产地气质。"],
           ["青森市从新青森再接 JR/在来线到青森站；弘前城 JNTO 写明从新青森到弘前约 30 分钟特急，再从弘前站步行或巴士到城址。"],
@@ -2639,16 +2625,17 @@ const outline = [
   }),
   base({
     id: "base-sendai",
+    optional: true,
     title: "仙台基地",
-    meta: "本州东北核心 / 建议1-2晚",
+    meta: "可选基地 / 已降级",
     image: img("sendai"),
-    tags: ["基地", "东北缓冲", "新干线"],
-    summary: "第五基地。把北海道低密度过渡到本州东北城市，再进入东京。",
+    tags: ["可选基地", "东北缓冲", "未来扩展"],
+    summary: "可选资料库。最新主线从函馆跨海后直接去东京，不再强停仙台。",
     sections: sections(
-      ["仙台是跨海后最自然的缓冲城市。"],
-      ["函馆到仙台的真实链路是：函馆 -> 新函馆北斗 -> 北海道新干线 -> 新青森 -> 东北新干线 -> 仙台。", "JR East 本次状态页面显示东北新干线 Normal operation，但跨海段仍要查具体车次。"],
-      ["到仙台当天只入住、吃饭。松岛放第二天。"],
-      [{ title: "下一基地", items: ["仙台 -> 东京：东北新干线主干线，短于北海道内部长移动。"] }]
+      ["仙台只有在你们未来想单独做东北时再打开。"],
+      ["函馆到东京的真实链路是：函馆 -> 新函馆北斗 -> 北海道新干线 -> 新青森 -> 东北新干线 -> 东京。仙台在这条主线上，但不是必停点。", jrEastLiveNote],
+      ["本次不把仙台作为缓冲站，减少一次搬家。"],
+      [{ title: "主线关系", items: ["函馆 -> 东京：一次跨海完成；不在仙台中断。"] }]
     ),
     sources: ["shinkansen", "jreast"],
     children: [
@@ -3036,10 +3023,10 @@ const outline = [
   base({
     id: "base-tokyo",
     title: "东京基地",
-    meta: "终点 / 收尾与返程",
+    meta: "必到终点 / 收尾与返程",
     image: img("tokyo"),
-    tags: ["基地", "终点", "高密度"],
-    summary: "第六基地。用城市密度结束整条从北海道到本州的路线。",
+    tags: ["必到", "终点", "高密度"],
+    summary: "必到终点。用城市密度结束整条从北海道到本州的路线。",
     sections: sections(
       ["东京的价值是和北海道、东北形成反差。"],
       ["仙台-东京走东北新干线主干线；本次 JR East 状态显示东北新干线 Normal operation。", "东京市内支线短，但人流会消耗体力。"],
@@ -3979,11 +3966,11 @@ const detailGuides = {
   }),
   "base-hakodate": guide({
     facts: [["节奏", "1-2晚"], ["角色", "跨海前停顿"], ["交通", "Hokuto+Liner"], ["风险", "长线后疲劳"]],
-    play: ["从钏路到达后先住下，第二天再跨海。", "函馆只抓夜景、元町、港区三件事。"],
+    play: ["从札幌到达后先住下，第二天再跨海。", "函馆只抓夜景、元町、港区三件事。"],
     time: ["函馆市内半日到一日。", "跨海日另算。"],
-    route: ["函馆站不是新干线站，跨海必须去新函馆北斗。", "如果前一段来自钏路，最好先在札幌分拆，不要把钏路的长移动直接拖到函馆。"],
+    route: ["函馆站不是新干线站，跨海必须去新函馆北斗。", "本次主线从札幌坐 Hokuto 到函馆，再从函馆接新干线链路去东京。"],
     best: ["天气好上函馆山；天气普通做元町和仓库。"],
-    avoid: ["不要钏路长移动后继续冲仙台。"],
+    avoid: ["札幌到函馆长移动后不要继续冲远点。"],
     sources: ["hakodateTravel", "hakodate", "shinkansen"]
   }),
   "city-hakodate": guide({
@@ -4061,8 +4048,8 @@ const detailGuides = {
   "city-seikan": guide({
     facts: [["角色", "跨海枢纽"], ["必须", "新函馆北斗"], ["时间", "半日移动"], ["风险", "具体车次"]],
     play: ["把它当交通节点，不当景点。", "提前确认 Hakodate Liner 与新干线衔接，给换乘留余地。", "如果想加青森/弘前，必须主动拆成中途停留，不要临时塞。"],
-    time: ["函馆到仙台约 3.5-4.5 小时含换乘。"],
-    route: ["函馆 -> 新函馆北斗 -> 新青森 -> 仙台。", "JR Hokkaido 写 Hakodate Liner 15-22 分钟、16 往复/日；Travel Hakodate 也写约 20 分钟并配合新干线时刻。"],
+    time: ["函馆到东京约 5 小时级别，具体按 Hayabusa/Hayate 车次和换乘余量算。"],
+    route: ["函馆 -> 新函馆北斗 -> 新青森 -> 东京。", "JR Hokkaido 写 Hakodate Liner 15-22 分钟、16 往复/日；Travel Hakodate 也写约 20 分钟并配合新干线时刻。"],
     best: ["白天跨海更不焦虑。", "换乘余量足、指定席已确认时。"],
     avoid: ["不要写成函馆站直达新青森。", "不要把新青森误当成青森市区。"],
     sources: ["shinkansen", "hakodateTransport", "jreast"]
@@ -4087,10 +4074,10 @@ const detailGuides = {
   }),
   "city-aomori-hirosaki": guide({
     facts: [["角色", "跨海拆分"], ["时间", "一日/住一晚"], ["交通", "新青森分叉"], ["取舍", "非顺手"]],
-    play: ["如果函馆到仙台太长，就把新青森作为分叉，选青森市或弘前。", "青森市偏室内文化，弘前偏城下町和季节景观。"],
+    play: ["如果函馆到东京太长，就把新青森作为分叉，选青森市或弘前。", "青森市偏室内文化，弘前偏城下町和季节景观。"],
     time: ["青森市短停 2-4 小时。", "弘前半日到一日，住一晚更舒服。"],
     route: ["北海道新干线到新青森后，再接在来线/特急到青森或弘前。", "JNTO 写明新青森到弘前约 30 分钟特急。"],
-    best: ["愿意拆跨海日、不想一口气到仙台时。"],
+    best: ["愿意拆跨海日、不想一口气到东京时。"],
     avoid: ["不拆住宿时不要又青森又弘前。", "新青森只是新干线站，WA-RASSE 在青森站旁，不是同一站。"],
     sources: ["warasse", "hirosakiCastleJnto", "hirosakiPark", "jreast"]
   }),
@@ -4109,16 +4096,16 @@ const detailGuides = {
     time: ["从新青森分叉至少半日。"],
     route: ["JNTO 写明新青森到弘前约 30 分钟特急；弘前站到城址步行约 30 分钟或坐巴士。"],
     best: ["樱花季、秋天、愿意拆一天。"],
-    avoid: ["函馆到仙台同日直穿时不要加弘前。"],
+    avoid: ["函馆到东京同日直穿时不要加弘前。"],
     sources: ["hirosakiCastleJnto", "hirosakiPark"]
   }),
   "city-hachinohe-hakodate": guide({
     facts: [["角色", "东北海岸备选"], ["时间", "半日-一日"], ["交通", "新干线+末端"], ["优先级", "低于跨海主线"]],
-    play: ["只有函馆到仙台之间想补一段海岸生活时才加。", "优先二选一：种差海岸看自然，或市场/港口吃饭看日常。"],
+    play: ["只有你们主动把函馆到东京拆成东北中途停留时才加。", "优先二选一：种差海岸看自然，或市场/港口吃饭看日常。"],
     time: ["至少半日，舒服要一日。", "跨海主线同日只适合短吃饭，不适合海岸深走。"],
     route: ["需经新干线体系，不是函馆普通短支线。", "种差海岸还要从八户站接 JR 八户线约 33 分钟，再步行约 5 分钟。"],
     best: ["晴天、有完整余量、确实想看三陆北端。"],
-    avoid: ["松岛已安排时可跳过。", "不要把它夹在函馆到仙台的紧换乘日里。"],
+    avoid: ["本次主线可直接跳过。", "不要把它夹在函馆到东京的紧换乘日里。"],
     sources: ["hachinohe", "hachinoheFood", "tanesashi", "jreast"]
   }),
   "spot-tanesashi": guide({
@@ -4127,7 +4114,7 @@ const detailGuides = {
     time: ["2-4 小时。", "如果从新干线站往返，要把八户线和末端等待都算进去。"],
     route: ["Amazing AOMORI 写明从 JR 八户站坐 JR 八户线 33 分钟，再步行 5 分钟到种差海岸。", "也可查 One Coin Bus Umineko-go，从 JR 鲛站到 JR 种差海岸站方向。"],
     best: ["晴天、低风、海雾不重。"],
-    avoid: ["阴雨大风时删。", "不要跨海日为了它牺牲仙台抵达时间。"],
+    avoid: ["阴雨大风时删。", "不要跨海日为了它牺牲东京抵达时间。"],
     sources: ["tanesashi", "hachinohe"]
   }),
   "spot-hachinohe-port": guide({
@@ -4154,15 +4141,15 @@ const detailGuides = {
     time: ["1-2 小时。"],
     route: ["适合八户过夜或很早抵达后用短交通前往。"],
     best: ["开市日、天气可接受、愿意早起。"],
-    avoid: ["为了早市牺牲跨海/仙台主线不划算。"],
+    avoid: ["为了早市牺牲跨海/东京主线不划算。"],
     sources: ["tatehanaMarket", "hachinoheFood"]
   }),
   "base-sendai": guide({
-    facts: [["节奏", "1-2晚"], ["角色", "本州缓冲"], ["主线", "松岛"], ["交通", "东北新干线"]],
-    play: ["跨海抵达只住下吃饭。", "第二天松岛半日，再回仙台收尾。"],
+    facts: [["节奏", "可选"], ["角色", "未来东北扩展"], ["主线", "本次删除"], ["交通", "东北新干线"]],
+    play: ["这次不把仙台作为必停点。", "未来想做东北，再用仙台开松岛、山寺、秋保这些支线。"],
     time: ["仙台市内 2-4 小时。", "松岛半日。"],
-    route: ["函馆到仙台经新函馆北斗、新青森、东北新干线。"],
-    best: ["把它当节奏恢复站。"],
+    route: ["本次主线从函馆经新函馆北斗、新青森到东京；仙台只是可选停靠。"],
+    best: ["未来有东北专门天数时。"],
     avoid: ["第一晚不要再跑松岛。"],
     sources: ["sendai", "jntoSendai", "jreast"]
   }),
@@ -4719,7 +4706,7 @@ const foodTips = {
   "city-onuma": ["大沼适合团子、咖啡和轻食，不适合安排很重的正餐。", "如果骑行或步行，先补水再出发。"],
   "spot-onuma-walk": ["湖畔桥群散步前先补水，结束后再吃团子或咖啡。", "风雨天不要为了步道牺牲函馆市内稳餐。"],
   "spot-onuma-dango": ["沼之家团子适合做大沼的短暂停点。", "甜品和骑行二选一即可，别把半日拉太满。"],
-  "spot-seikan-tunnel": ["青函隧道本身不安排餐饮，只准备站内便当、水和咖啡。", "跨海前吃太重会影响换乘，跨海后到仙台再正式吃饭。"],
+  "spot-seikan-tunnel": ["青函隧道本身不安排餐饮，只准备站内便当、水和咖啡。", "跨海前吃太重会影响换乘，跨海后到东京再正式吃饭。"],
   "spot-shin-aomori": ["新青森只做买水、便当、厕所和换乘。", "想吃青森海鲜或苹果甜品，需要主动进青森站/市区。"],
   "city-aomori-hirosaki": ["青森市可看苹果、海鲜和睡魔主题店；弘前可看苹果甜品和咖啡。", "跨海拆分时，餐饮应围绕住宿站点，避免拖行李找店。"],
   "spot-warasse": ["WA-RASSE 附近可顺路看青森站和港口小店。", "苹果派/土产适合轻买，别增加太多行李。"],
@@ -4947,14 +4934,14 @@ function getAdultPlay(item, guideData) {
       break;
     case "base-asahikawa":
       add(
-        "旭川我会把美瑛和富良野拆开，晚上回城吃饭睡觉。",
-        "带广只当长移动的中继，不把它误写成旭川的顺路半日线。"
+        "旭川这次我会降级为可选资料库，不作为必停基地。",
+        "只有富良野当天往返太累时，才考虑旭川或富良野住一晚。"
       );
       break;
     case "base-kushiro":
       add(
-        "钏路我会只保湿原、阿寒、根室里的一个主线，晚饭收在炉端或港口。",
-        "如果要去根室，阿寒湖和厚岸就让路，不做三线全收。"
+        "钏路这次我会直接删掉，不把东北海道混进这条主线。",
+        "未来单独做东北海道时，再让湿原、阿寒、根室从钏路展开。"
       );
       break;
     case "base-hakodate":
@@ -4965,8 +4952,8 @@ function getAdultPlay(item, guideData) {
       break;
     case "base-sendai":
       add(
-        "仙台我会在松岛和平泉里二选一，仙台市内自己留给牛舌、zunda 和恢复。",
-        "如果只住一晚，就把它当缓冲站，不再向北硬追。"
+        "仙台这次我会降级为未来东北扩展，不作为必停。",
+        "函馆跨海后直接到东京，少一次搬家。"
       );
       break;
     case "base-tokyo":
@@ -4978,7 +4965,7 @@ function getAdultPlay(item, guideData) {
     case "city-seikan":
       add(
         "跨海换乘日我会只做站内便当、买水、厕所和候车，不安排探店。",
-        "函馆站 -> 新函馆北斗 -> 新青森 -> 仙台/东京，这条链路就是全部。"
+        "函馆站 -> 新函馆北斗 -> 新青森 -> 东京，这条链路就是全部。"
       );
       break;
     default:
@@ -5291,6 +5278,22 @@ const expandedIds = new Set();
 let activeFilter = "all";
 let lastFocusedElement = null;
 
+const optionalLibraryItem = base({
+  id: "base-optional-library",
+  optional: true,
+  title: "未来扩展资料库",
+  meta: "非本次主线 / 可展开查看",
+  image: img("sapporo"),
+  tags: ["可选资料库", "未来扩展", "不进主线"],
+  summary: "旭川、钏路、仙台等资料保留，但本次主线不经过。",
+  sections: sections(
+    ["这里不是这次行程的一部分，只保留给以后扩展。"],
+    ["本次必走交通已经收敛为：札幌 -> 小樽 / 神威岬 / 富良野 -> 函馆 -> 东京。"],
+    ["除非你们主动加天数，否则不要从这里恢复旭川、钏路、仙台这些大支线。"]
+  ),
+  sources: ["operation", "asahikawa", "obihiro", "sendai"]
+});
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -5303,7 +5306,7 @@ function flatten(items) {
   return items.flatMap((item) => [item, ...(item.children ? flatten(item.children) : [])]);
 }
 
-const itemMap = new Map(flatten(outline).map((item) => [item.id, item]));
+const itemMap = new Map(flatten([optionalLibraryItem, ...outline]).map((item) => [item.id, item]));
 
 function renderTags(tags = []) {
   return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
@@ -5666,7 +5669,7 @@ function renderRouteMapOverview() {
   const routeMapLegend = [
     ["JR 主干", "jr"],
     ["Liner 接驳", "liner"],
-    ["不建议硬连", "warning"],
+    ["巴士/预约", "warning"],
     ["青函跨海", "cross"]
   ];
 
@@ -5846,7 +5849,7 @@ const filterMatchers = {
   recommended: (item) => {
     const text = matchText(item);
     return (
-      item.type === "base" ||
+      (item.type === "base" && !item.optional) ||
       item.hub ||
       /核心|重点|必去|推荐|低体力|恢复|松弛|温泉|世界遗产|新干线|青函|跨海|花田|海岸|港口|日本三景|最东端|观光列车|探店|晴天|夜景|交通关键|长线/.test(text)
     );
@@ -5869,6 +5872,21 @@ function filterOutlineItems(items) {
       return null;
     })
     .filter(Boolean);
+}
+
+function displayOutlineItems() {
+  const filtered = filterOutlineItems(outline);
+  const optionalBases = filtered.filter((item) => item.type === "base" && item.optional);
+  const mainItems = filtered.filter((item) => !(item.type === "base" && item.optional));
+
+  if (!optionalBases.length) return mainItems;
+  return [
+    ...mainItems,
+    {
+      ...optionalLibraryItem,
+      children: optionalBases
+    }
+  ];
 }
 
 function renderNode(item, level = 1) {
@@ -5905,7 +5923,7 @@ function typeIconName(item) {
 }
 
 function renderOutline() {
-  outlineTree.innerHTML = filterOutlineItems(outline).map((item) => renderNode(item, 1)).join("");
+  outlineTree.innerHTML = displayOutlineItems().map((item) => renderNode(item, 1)).join("");
 }
 
 function updateFilterButtons() {

@@ -1173,6 +1173,7 @@ img {
   position: relative;
   z-index: 1;
   width: min(100%, 820px);
+  max-width: 100%;
   max-height: min(88dvh, 780px);
   margin: 0 auto;
   overflow: auto;
@@ -1211,6 +1212,7 @@ img {
 }
 
 .modal-body {
+  min-width: 0;
   padding: 18px 16px calc(22px + var(--safe-bottom));
 }
 
@@ -1232,6 +1234,7 @@ img {
   margin: 0 0 12px;
   color: var(--text);
   font-size: 15px;
+  overflow-wrap: anywhere;
 }
 
 .modal-facts {
@@ -1287,9 +1290,11 @@ img {
 .modal-sections {
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .modal-sections section {
+  min-width: 0;
   border-top: 1px solid var(--soft-line);
   padding-top: 14px;
 }
@@ -1303,10 +1308,19 @@ img {
 .modal-sections ul {
   display: grid;
   gap: 7px;
+  min-width: 0;
   margin: 0;
   padding-left: 18px;
   color: var(--text);
   font-size: 14px;
+}
+
+.modal-sections li,
+.modal-fact strong,
+.modal-tags span,
+.review-links a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .modal-sections li::marker {
