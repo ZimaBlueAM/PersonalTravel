@@ -124,6 +124,7 @@ img {
 .comfort-board,
 .optimization-board,
 .adult-board,
+.route-map-board,
 .outline-board {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -136,7 +137,8 @@ img {
 .bus-board,
 .comfort-board,
 .optimization-board,
-.adult-board {
+.adult-board,
+.route-map-board {
   margin-bottom: 14px;
 }
 
@@ -145,6 +147,7 @@ img {
 }
 
 #outline,
+#route-map-title,
 #transport-title,
 #bus-title,
 #comfort-title,
@@ -256,6 +259,310 @@ img {
   margin-top: 7px;
   border-radius: 999px;
   background: var(--forest);
+}
+
+.route-map-overview {
+  display: grid;
+  gap: 12px;
+  padding: 12px 14px 14px;
+  background: var(--paper);
+}
+
+.route-map-shell {
+  display: grid;
+  gap: 12px;
+}
+
+.route-map-head {
+  display: grid;
+  gap: 10px;
+}
+
+.route-map-note {
+  display: grid;
+  gap: 3px;
+}
+
+.route-map-note strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.route-map-note span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.route-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.route-map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  border: 1px solid var(--soft-line);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #fafbf8;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.route-map-swatch {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+}
+
+.route-map-swatch.is-jr {
+  background: var(--forest);
+}
+
+.route-map-swatch.is-flight {
+  background: var(--accent);
+}
+
+.route-map-swatch.is-warning {
+  background: var(--amber);
+}
+
+.route-map-swatch.is-cross {
+  background: #355a7d;
+}
+
+.route-map-stage {
+  position: relative;
+  min-height: 340px;
+  aspect-ratio: 100 / 64;
+  border: 1px solid var(--soft-line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7fbf8 0%, #eef4ee 100%);
+  isolation: isolate;
+}
+
+.route-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.route-map-land {
+  fill: #f2f5f0;
+  stroke: #d9ded7;
+  stroke-width: 1.2;
+}
+
+.route-map-land.is-honshu {
+  fill: #edf1ea;
+}
+
+.route-map-sea {
+  fill: none;
+  stroke: #dceaf5;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.route-map-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.route-map-path.is-jr {
+  stroke: var(--forest);
+  stroke-width: 1.9;
+}
+
+.route-map-path.is-flight {
+  stroke: var(--accent);
+  stroke-width: 1.9;
+}
+
+.route-map-path.is-warning {
+  stroke: var(--amber);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+  opacity: 0.72;
+}
+
+.route-map-path.is-cross {
+  stroke: #355a7d;
+  stroke-width: 1.9;
+}
+
+.route-map-path.is-liner {
+  stroke: var(--amber);
+  stroke-width: 1.8;
+}
+
+.route-map-path.is-shinkansen {
+  stroke: var(--ink);
+  stroke-width: 1.9;
+}
+
+.route-map-node,
+.route-map-transfer,
+.route-map-callout {
+  position: absolute;
+  z-index: 2;
+}
+
+.route-map-node,
+.route-map-transfer,
+.route-map-chip {
+  border: 1px solid var(--soft-line);
+  box-shadow: 0 10px 22px rgba(21, 23, 26, 0.08);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.route-map-node {
+  display: grid;
+  gap: 2px;
+  width: 116px;
+  min-height: 56px;
+  padding: 8px 9px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  text-align: left;
+  transform: translate(-50%, -50%);
+}
+
+.route-map-node strong {
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.route-map-node span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.route-map-node.is-hub {
+  border-color: #cadfd3;
+  background: var(--forest-soft);
+}
+
+.route-map-node.is-hub strong {
+  color: var(--forest);
+}
+
+.route-map-transfer {
+  display: grid;
+  gap: 2px;
+  width: 106px;
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(250, 251, 248, 0.98);
+  color: var(--accent);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.route-map-transfer strong {
+  font-size: 11px;
+  line-height: 1.1;
+}
+
+.route-map-transfer span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.15;
+}
+
+.route-map-callout {
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.route-map-callout.is-warning {
+  border: 1px solid #edd1bc;
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.route-map-callout.is-cross {
+  border: 1px solid #c7d8e8;
+  background: #eef5fb;
+  color: #355a7d;
+}
+
+.route-map-node:hover,
+.route-map-transfer:hover,
+.route-map-chip:hover {
+  border-color: #c6d8cf;
+  background: #ffffff;
+}
+
+.route-map-node:active,
+.route-map-transfer:active {
+  transform: translate(-50%, -50%) scale(0.98);
+}
+
+.route-map-chip:active {
+  transform: scale(0.98);
+}
+
+.route-map-node:focus-visible,
+.route-map-transfer:focus-visible,
+.route-map-chip:focus-visible {
+  outline: 3px solid rgba(36, 93, 74, 0.22);
+  outline-offset: 2px;
+}
+
+.route-map-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.route-map-chip {
+  display: grid;
+  gap: 2px;
+  min-height: 50px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  background: #fafbf8;
+  color: var(--ink);
+  text-align: left;
+  position: relative;
+  transform: none;
+}
+
+.route-map-chip strong {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.route-map-chip span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.2;
 }
 
 .transfer-card,
@@ -938,6 +1245,18 @@ img {
 
   .section-heading {
     padding-inline: 18px;
+  }
+
+  .route-map-overview {
+    padding-inline: 18px;
+  }
+
+  .route-map-stage {
+    min-height: 420px;
+  }
+
+  .route-map-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .transfer-card {

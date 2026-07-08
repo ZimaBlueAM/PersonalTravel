@@ -936,6 +936,45 @@ const coreBusTransfers = [
   }
 ];
 
+const routeMapNodes = [
+  { target: "base-asahikawa", label: "旭川", sub: "花田 / 丘陵", x: 38, y: 22, kind: "base" },
+  { target: "base-sapporo", label: "札幌", sub: "接力枢纽", x: 31, y: 37, kind: "hub" },
+  { target: "base-kushiro", label: "钏路", sub: "东北海道", x: 64, y: 31, kind: "base" },
+  { target: "base-hakodate", label: "函馆", sub: "跨海前停顿", x: 23, y: 65, kind: "base" },
+  { target: "base-sendai", label: "仙台", sub: "本州缓冲", x: 57, y: 84, kind: "base" },
+  { target: "base-tokyo", label: "东京", sub: "终点", x: 81, y: 90, kind: "base" }
+];
+
+const routeMapTransfers = [
+  { target: "city-seikan", label: "新函馆北斗", sub: "Liner", x: 26.5, y: 69 },
+  { target: "city-seikan", label: "新青森", sub: "新干线", x: 39.8, y: 74 }
+];
+
+const routeMapLines = [
+  { kind: "warning", d: "M 38 22 C 45 22 53 26 64 31" },
+  { kind: "warning", d: "M 64 31 C 52 42 38 53 23 65" },
+  { kind: "jr", d: "M 31 37 C 33 32 35 27 38 22" },
+  { kind: "flight", d: "M 31 37 C 39 34 51 31 64 31" },
+  { kind: "flight", d: "M 31 37 C 29 47 26 56 23 65" },
+  { kind: "liner", d: "M 23 65 C 24 67 25 68 26.5 69" },
+  { kind: "shinkansen", d: "M 26.5 69 C 31 71 35 73 39.8 74" },
+  { kind: "jr", d: "M 39.8 74 C 45 78 50 81 57 84" },
+  { kind: "jr", d: "M 57 84 C 64 87 72 89 81 90" }
+];
+
+const routeMapCallouts = [
+  { kind: "warning", text: "旭川 → 钏路别硬连", x: 49, y: 27 },
+  { kind: "warning", text: "钏路 → 函馆建议拆天", x: 47, y: 50 },
+  { kind: "cross", text: "青函跨海链路", x: 33.5, y: 71.5 }
+];
+
+const routeMapActions = [
+  { target: "transfer-asahikawa-kushiro", label: "看旭川→钏路", note: "先回札幌或改飞" },
+  { target: "transfer-kushiro-hakodate", label: "看钏路→函馆", note: "分两天更舒服" },
+  { target: "city-seikan", label: "看青函链路", note: "函馆北斗 / 新青森" },
+  { target: "transfer-sendai-tokyo", label: "看仙台→东京", note: "最后一跳" }
+];
+
 const routeOptimizations = [
   {
     id: "opt-six-bases",
@@ -5240,6 +5279,7 @@ function renderReviewLinks(item) {
 
 const outlineTree = document.querySelector("#outlineTree");
 const filterButtons = document.querySelectorAll("[data-filter]");
+const routeMapOverview = document.querySelector("#routeMapOverview");
 const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
 const busTransferList = document.querySelector("#busTransferList");
@@ -5524,7 +5564,7 @@ function renderTransferCards(items = []) {
   return items
     .map(
       (transfer) => `
-        <details class="transfer-card${transfer.caution ? " is-caution" : ""}">
+        <details id="${escapeHtml(transfer.id)}" class="transfer-card${transfer.caution ? " is-caution" : ""}">
           <summary class="transfer-summary">
             <span class="transfer-icon" aria-hidden="true">${icon(transfer.icon || "route")}</span>
             <div class="transfer-route">
@@ -5556,7 +5596,7 @@ function renderDecisionCards(items = []) {
   return items
     .map(
       (item) => `
-        <details class="optimization-card${item.caution ? " is-caution" : ""}">
+        <details id="${escapeHtml(item.id)}" class="optimization-card${item.caution ? " is-caution" : ""}">
           <summary class="optimization-summary">
             <span class="transfer-icon" aria-hidden="true">${icon(item.icon || "check")}</span>
             <div class="transfer-route">
@@ -5577,6 +5617,120 @@ function renderDecisionCards(items = []) {
       `
     )
     .join("");
+}
+
+function renderRouteMapOverview() {
+  if (!routeMapOverview) return;
+
+  const routeMapNodesMarkup = routeMapNodes
+    .map(
+      (node) => `
+        <button
+          type="button"
+          class="route-map-node${node.kind === "hub" ? " is-hub" : ""}"
+          data-route-target="${escapeHtml(node.target)}"
+          style="left:${node.x}%; top:${node.y}%;"
+          aria-label="${escapeHtml(node.label)}，${escapeHtml(node.sub)}，打开详情"
+        >
+          <strong>${escapeHtml(node.label)}</strong>
+          <span>${escapeHtml(node.sub)}</span>
+        </button>
+      `
+    )
+    .join("");
+
+  const routeMapTransfersMarkup = routeMapTransfers
+    .map(
+      (transfer) => `
+        <button
+          type="button"
+          class="route-map-transfer"
+          data-route-target="${escapeHtml(transfer.target)}"
+          style="left:${transfer.x}%; top:${transfer.y}%;"
+          aria-label="${escapeHtml(transfer.label)}，${escapeHtml(transfer.sub)}，打开详情"
+        >
+          <strong>${escapeHtml(transfer.label)}</strong>
+          <span>${escapeHtml(transfer.sub)}</span>
+        </button>
+      `
+    )
+    .join("");
+
+  const routeMapLegend = [
+    ["JR 主干", "jr"],
+    ["飞机接力", "flight"],
+    ["不建议硬连", "warning"],
+    ["青函跨海", "cross"]
+  ];
+
+  const routeMapActionsMarkup = routeMapActions
+    .map(
+      (action) => `
+        <button type="button" class="route-map-chip" data-route-target="${escapeHtml(action.target)}">
+          <strong>${escapeHtml(action.label)}</strong>
+          <span>${escapeHtml(action.note)}</span>
+        </button>
+      `
+    )
+    .join("");
+
+  routeMapOverview.innerHTML = `
+    <div class="route-map-shell">
+      <div class="route-map-head">
+        <div class="route-map-note">
+          <strong>札幌是接力点</strong>
+          <span>先看地理关系，再决定哪段该拆天或改飞。</span>
+        </div>
+        <div class="route-map-legend" aria-label="路线图例">
+          ${routeMapLegend
+            .map(
+              ([label, tone]) => `
+                <span class="route-map-legend-item">
+                  <i class="route-map-swatch is-${tone}" aria-hidden="true"></i>
+                  ${escapeHtml(label)}
+                </span>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <div class="route-map-stage" aria-label="路线地图概览">
+        <svg class="route-map-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path
+            class="route-map-land is-hokkaido"
+            d="M 7 15 C 10 9 16 7 23 8 C 29 9 34 11 39 10 C 45 8 50 10 55 14 C 60 18 62 24 61 30 C 60 36 55 40 49 42 C 42 44 34 43 28 41 C 22 39 16 37 11 32 C 7 27 5 21 7 15 Z"
+          />
+          <path
+            class="route-map-land is-honshu"
+            d="M 36 55 C 42 50 49 49 56 50 C 64 51 71 54 77 58 C 83 62 88 67 91 73 C 94 79 93 86 88 90 C 83 94 76 96 68 96 C 61 96 55 94 50 91 C 45 88 42 84 40 79 C 37 73 34 67 35 61 C 35 58 35 56 36 55 Z"
+          />
+          <path class="route-map-sea" d="M 20 45 C 27 41 33 40 40 41 C 47 42 54 45 59 48" />
+          ${routeMapLines
+            .map((line) => `<path class="route-map-path is-${escapeHtml(line.kind)}" d="${escapeHtml(line.d)}"></path>`)
+            .join("")}
+        </svg>
+        ${routeMapCallouts
+          .map(
+            (callout) => `
+              <div
+                class="route-map-callout is-${escapeHtml(callout.kind)}"
+                style="left:${callout.x}%; top:${callout.y}%;"
+              >
+                ${escapeHtml(callout.text)}
+              </div>
+            `
+          )
+          .join("")}
+        ${routeMapNodesMarkup}
+        ${routeMapTransfersMarkup}
+      </div>
+
+      <div class="route-map-actions">
+        ${routeMapActionsMarkup}
+      </div>
+    </div>
+  `;
 }
 
 function renderTransfers() {
@@ -5714,7 +5868,35 @@ function closeDetail() {
   }
 }
 
+function jumpToRouteTarget(target) {
+  if (!target) return;
+
+  if (itemMap.has(target)) {
+    openDetail(target);
+    return;
+  }
+
+  const element = document.getElementById(target);
+  if (!element) return;
+
+  if (element instanceof HTMLDetailsElement) {
+    element.open = true;
+    const summary = element.querySelector("summary");
+    if (summary instanceof HTMLElement) {
+      summary.focus({ preventScroll: true });
+    }
+  }
+
+  element.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 document.addEventListener("click", (event) => {
+  const routeTargetButton = event.target.closest("[data-route-target]");
+  if (routeTargetButton) {
+    jumpToRouteTarget(routeTargetButton.dataset.routeTarget);
+    return;
+  }
+
   const filterButton = event.target.closest("[data-filter]");
   if (filterButton) {
     activeFilter = filterButton.dataset.filter || "all";
@@ -5754,6 +5936,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderTransportAudit();
+renderRouteMapOverview();
 renderTransfers();
 renderBusTransfers();
 renderLongMoveComfort();
