@@ -885,25 +885,62 @@ img {
 
 .hotel-row > summary {
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) 34px;
-  gap: 9px;
+  grid-template-columns: 92px minmax(0, 1fr) 34px;
+  gap: 10px;
   min-width: 0;
-  min-height: 72px;
+  min-height: 88px;
   align-items: center;
   padding: 9px 14px;
   cursor: pointer;
   list-style: none;
 }
 
-.hotel-rank {
+.hotel-image {
+  position: relative;
   display: grid;
-  width: 36px;
-  height: 34px;
+  width: 92px;
+  aspect-ratio: 4 / 3;
   place-items: center;
-  border-radius: 7px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 11px;
+  overflow: hidden;
+  border: 1px solid var(--soft-line);
+  border-radius: 6px;
+  background: #eef2ef;
+  color: var(--muted);
+}
+
+.hotel-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-image-fallback {
+  display: grid;
+  place-items: center;
+}
+
+.hotel-image-fallback svg {
+  width: 22px;
+  height: 22px;
+}
+
+.hotel-rank {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  z-index: 1;
+  display: grid;
+  min-width: 28px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding-inline: 5px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font-size: 10px;
   font-weight: 900;
   font-variant-numeric: tabular-nums;
 }
@@ -940,7 +977,51 @@ img {
 .hotel-row-body {
   display: grid;
   gap: 10px;
-  padding: 0 14px 14px 61px;
+  padding: 0 14px 14px;
+}
+
+.hotel-row-hero {
+  position: relative;
+  display: grid;
+  aspect-ratio: 3 / 2;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--soft-line);
+  border-radius: 7px;
+  background: #eef2ef;
+}
+
+.hotel-row-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-row-hero figcaption {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  left: 7px;
+  border-radius: 5px;
+  padding: 5px 7px;
+  background: rgba(20, 24, 22, 0.76);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.hotel-row-hero.is-missing {
+  aspect-ratio: auto;
+  min-height: 76px;
+}
+
+.hotel-row-hero.is-missing figcaption {
+  position: static;
+  align-self: center;
+  background: transparent;
+  color: var(--muted);
+  text-align: center;
 }
 
 .hotel-row-body p {
@@ -2585,6 +2666,24 @@ img {
 
   .plan-tab svg {
     display: none;
+  }
+
+  .hotel-row > summary {
+    grid-template-columns: 78px minmax(0, 1fr) 30px;
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .hotel-image {
+    width: 78px;
+  }
+
+  .hotel-row-disclosure {
+    width: 30px;
+  }
+
+  .hotel-row-copy strong {
+    font-size: 12px;
   }
 }
 

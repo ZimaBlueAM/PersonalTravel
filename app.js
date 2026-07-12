@@ -6787,16 +6787,26 @@ function hotelRankLabel(item) {
   return `P${item.rank}`;
 }
 
+function hotelImagePath(item) {
+  const roomId = item.url.match(/\/rooms\/(\d+)/)?.[1];
+  return roomId ? `assets/hotels/${roomId}.jpg` : "assets/places/tokyo.jpg";
+}
+
 function renderHotelRow(item) {
   const reviewText = item.rating
     ? `${item.rating}分${item.reviews ? ` · ${item.reviews}条评价` : ""}`
     : "评分待复核";
   const visibleFlags = item.flags.filter((flag) => flag !== "recommended").slice(0, 3);
+  const imagePath = hotelImagePath(item);
 
   return `
     <details class="hotel-row" data-hotel-group="${escapeHtml(item.group)}" data-hotel-rank="${escapeHtml(item.rank)}">
       <summary>
-        <span class="hotel-rank">${escapeHtml(hotelRankLabel(item))}</span>
+        <span class="hotel-image">
+          <span class="hotel-image-fallback" aria-hidden="true">${icon("home")}</span>
+          <img src="${escapeHtml(imagePath)}" alt="${escapeHtml(item.title)} 房源主图" width="720" height="480" loading="lazy" decoding="async">
+          <span class="hotel-rank">${escapeHtml(hotelRankLabel(item))}</span>
+        </span>
         <span class="hotel-row-copy">
           <strong>${escapeHtml(item.title)}</strong>
           <small>${escapeHtml(item.area)} · ${escapeHtml(reviewText)} · ${escapeHtml(item.fit)}</small>
@@ -6804,6 +6814,10 @@ function renderHotelRow(item) {
         <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
       </summary>
       <div class="hotel-row-body">
+        <figure class="hotel-row-hero">
+          <img src="${escapeHtml(imagePath)}" alt="" width="720" height="480" loading="lazy" decoding="async">
+          <figcaption>Airbnb 房源公开主图 · 最终房态以预订页为准</figcaption>
+        </figure>
         <p>${escapeHtml(item.reason)}</p>
         <div class="hotel-row-tags">
           <span>${escapeHtml(item.area)}</span>
@@ -7713,6 +7727,13 @@ function jumpToRouteTarget(target) {
 
   element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
+document.addEventListener("error", (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || !image.closest(".hotel-image, .hotel-row-hero")) return;
+  image.hidden = true;
+  image.closest(".hotel-image, .hotel-row-hero")?.classList.add("is-missing");
+}, true);
 
 document.addEventListener("click", (event) => {
   const bottomNavItem = event.target.closest(".bottom-nav-item");
