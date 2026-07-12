@@ -749,7 +749,7 @@ const checkedAt = "2026-07-08 官方复核";
 const jrHokkaidoLiveNote = "JR 北海道官方状态页按札幌、道南、北海道新干线等区域报告停运、取消和 30 分钟以上延误；出发当天仍要按具体车次复查。";
 const jrEastLiveNote = "本次核验 2026-07-08 18:07 JST：JR East Shinkansen 页面显示 Tohoku Shinkansen Normal operation，且当前没有停运信息；跨海当天仍要按具体 Hayabusa/Hayate 车次再查。";
 
-const planningCollections = [
+const planningLibrary = [
   {
     id: "tokyo-loop",
     label: "东京进出",
@@ -914,6 +914,11 @@ const planningCollections = [
     sources: ["timetable", "chuoShakotanTour", "jrSightseeing2026", "hakodate", "shinkansen", "jreast"]
   }
 ];
+
+const planningCollections = planningLibrary.filter((plan) => ["tokyo-loop", "hokkaido-main"].includes(plan.id));
+const tokyoDestinationGuides = planningLibrary.filter((plan) =>
+  ["yokohama-kamakura", "karuizawa-cabin", "izu-east"].includes(plan.id)
+);
 
 const transportAudit = {
   title: "必去主线交通核验",
@@ -5624,6 +5629,59 @@ function renderPlanRoute(route = []) {
   `;
 }
 
+function renderDestinationGuides(plan) {
+  if (plan.id !== "tokyo-loop") return "";
+
+  return `
+    <section class="plan-section plan-destinations">
+      <div class="plan-section-title">
+        ${icon("pin")}
+        <div><h4>主题内目的地</h4><p>属于同一条东京进出路线，按需展开</p></div>
+      </div>
+      <div class="plan-destination-list">
+        ${tokyoDestinationGuides
+          .map(
+            (guide) => `
+              <details class="plan-destination">
+                <summary>
+                  <span class="plan-destination-icon" aria-hidden="true">${icon(guide.icon)}</span>
+                  <span class="plan-destination-summary">
+                    <strong>${escapeHtml(guide.label)}</strong>
+                    <small>${escapeHtml(guide.kicker)} · ${escapeHtml(guide.stats[0][1])}</small>
+                  </span>
+                  <span class="plan-destination-disclosure" aria-hidden="true">${icon("plus")}</span>
+                </summary>
+                <div class="plan-destination-body">
+                  <p class="plan-destination-intro">${escapeHtml(guide.summary)}</p>
+                  ${renderPlanRoute(guide.route)}
+                  <div class="plan-destination-subtitle">交通与末端接驳</div>
+                  ${renderTransferSegments(guide.transport)}
+                  <div class="plan-decisions">
+                    ${guide.decisions
+                      .map(
+                        (decision) => `
+                          <div class="plan-decision">
+                            <strong>${escapeHtml(decision.title)}</strong>
+                            <p>${escapeHtml(decision.body)}</p>
+                          </div>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                  <div class="plan-destination-advice">
+                    <p><strong>住宿：</strong>${escapeHtml(guide.stay)}</p>
+                    <p><strong>删减：</strong>${escapeHtml(guide.cut)}</p>
+                  </div>
+                </div>
+              </details>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
 function renderPlanningPanel() {
   if (!planPanel) return;
   const plan = planningCollections.find((item) => item.id === activePlanId) || planningCollections[0];
@@ -5683,6 +5741,8 @@ function renderPlanningPanel() {
             .join("")}
         </div>
       </section>
+
+      ${renderDestinationGuides(plan)}
 
       <section class="plan-section plan-final-advice">
         <div>
