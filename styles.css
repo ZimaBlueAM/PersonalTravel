@@ -725,6 +725,16 @@ img {
   scroll-margin-top: 18px;
 }
 
+#izu-timing,
+#izu-transport,
+#izu-verdict,
+#izu-access,
+#izu-filter,
+#izu-results,
+#izu-booking {
+  scroll-margin-top: 18px;
+}
+
 .hotel-verdict-list {
   display: grid;
   border-top: 1px solid var(--soft-line);
@@ -786,6 +796,168 @@ img {
 
 .karuizawa-filters {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.izu-filters {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.izu-date-plan {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.izu-date-plan-head {
+  display: grid;
+  gap: 5px;
+  padding: 13px 14px;
+  background: #f4f9f6;
+}
+
+.izu-date-plan-head span {
+  color: var(--forest);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.izu-date-plan-head strong {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.izu-date-steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.izu-date-steps li {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid var(--soft-line);
+  padding: 10px 14px;
+}
+
+.izu-date-steps time {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.izu-date-steps strong,
+.izu-date-steps small {
+  display: block;
+}
+
+.izu-date-steps strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.izu-date-steps small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.izu-date-steps li.is-focus {
+  border-left: 3px solid var(--forest);
+  padding-left: 11px;
+  background: var(--forest-soft);
+}
+
+.izu-date-steps li.is-focus time,
+.izu-date-steps li.is-focus strong {
+  color: var(--forest);
+}
+
+.izu-train-chain {
+  display: grid;
+  border-top: 1px solid var(--soft-line);
+}
+
+.izu-train-chain > div {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 3px 10px;
+  border-bottom: 1px solid var(--soft-line);
+  padding: 10px 0;
+}
+
+.izu-train-chain span {
+  grid-row: 1 / span 2;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.izu-train-chain strong,
+.izu-train-chain small {
+  grid-column: 2;
+}
+
+.izu-train-chain strong {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.izu-train-chain small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.izu-train-chain .is-main span,
+.izu-train-chain .is-main strong {
+  color: var(--forest);
+}
+
+.izu-price-line {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: baseline;
+  border: 1px solid #cfe0d6;
+  border-radius: 7px;
+  padding: 9px 10px;
+  background: #f4f9f6;
+}
+
+.izu-price-line span,
+.izu-price-line small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.izu-price-line strong {
+  color: var(--forest);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.izu-price-line small {
+  text-align: right;
+}
+
+.izu-price-line.is-limit {
+  border-color: #edcda8;
+  background: #fff9f0;
+}
+
+.izu-price-line.is-limit strong {
+  color: var(--amber);
 }
 
 .karuizawa-date-alert {

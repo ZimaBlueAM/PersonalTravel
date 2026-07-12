@@ -1,12 +1,12 @@
-const CACHE_VERSION = "personaltravel-v27";
+const CACHE_VERSION = "personaltravel-v29";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
 const SHELL_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=27",
-  "./app.js?v=27",
+  "./styles.css?v=29",
+  "./app.js?v=29",
   "./manifest.webmanifest",
   "./assets/source-plan.png",
   "./assets/pwa/icon.svg",
@@ -14,6 +14,19 @@ const SHELL_ASSETS = [
   "./assets/pwa/icon-512.png",
   "./assets/pwa/icon-192.png",
   "./assets/pwa/apple-touch-icon.png",
+  "./assets/izu-airbnb/798195306203615931.jpg",
+  "./assets/izu-airbnb/1336148406178050383.jpg",
+  "./assets/izu-airbnb/608834356948781974.jpg",
+  "./assets/izu-airbnb/1712965482025364080.jpg",
+  "./assets/izu-airbnb/1475078324740559322.jpg",
+  "./assets/izu-airbnb/1499550086382233141.jpg",
+  "./assets/izu-airbnb/1718507997380466778.jpg",
+  "./assets/izu-airbnb/20396837.jpg",
+  "./assets/izu-airbnb/1694267056997994017.jpg",
+  "./assets/izu-airbnb/1606254149439535407.jpg",
+  "./assets/izu-airbnb/24456092.jpg",
+  "./assets/izu-airbnb/22034652.jpg",
+  "./assets/izu-airbnb/1665760072129389440.jpg",
   "./assets/places/akkeshi.jpg",
   "./assets/places/asahikawa.jpg",
   "./assets/places/biei.jpg",

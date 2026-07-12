@@ -1060,6 +1060,13 @@ const karuizawaAirbnbTab = {
   kind: "lodging"
 };
 
+const izuAirbnbTab = {
+  id: "izu-airbnb",
+  label: "伊豆 Airbnb",
+  icon: "home",
+  kind: "lodging"
+};
+
 const karuizawaHotelListings = [
   {
     rank: 1, slug: "grandvert", area: "轻井泽站北口", access: "步行3分钟", fit: "轻井泽综合首选",
@@ -1654,10 +1661,131 @@ const karuizawaLegacyListings = [
   }
 ];
 
+const izuAirbnbListings = [
+  {
+    group: "best", rank: 1, roomId: "798195306203615931", area: "伊豆稻取", fit: "无车综合首选", total: 2886, rating: "4.91", reviews: 180,
+    title: "The Sticks · 稻取站3分整栋木屋",
+    flags: ["recommended", "rail", "whole", "kitchen", "laundry"], accessLevel: "walk",
+    access: "伊豆稻取站步行3分钟，渔港、餐厅和早市都在步行圈。",
+    reason: "它是这批里最像真正旅行基地的房源：站近、整栋、厨房和洗衣齐全，又位于伊豆高原与下田之间。",
+    advantages: ["不需公交、接送或出租车，拖箱成本最低", "两层整栋住宅，有厨房、洗衣机和空调", "坐伊豆急可北上伊豆高原、南下河津和下田"],
+    caution: "3晚税前约¥2,886，折合¥962/晚，已接近预算上限；下单前必须确认加税后不超预算。卧室在二楼，有楼梯。"
+  },
+  {
+    group: "best", rank: 2, roomId: "1336148406178050383", area: "富户 / 城崎海岸", fit: "情侣温泉首选", total: 2095, rating: "5.0", reviews: 49,
+    title: "Episode IZU · 海景房 / 私人露天温泉",
+    flags: ["recommended", "pickup", "onsen", "sea"], accessLevel: "pickup",
+    access: "富户站步行约15分钟且有坡；房东提供免费接送，需至少提前24小时报到站时间。",
+    reason: "在不自驾的前提下，它仍然把海景、设计感和私人温泉都保留了，也比住在大室山深处更可执行。",
+    advantages: ["每间房每天可预约1小时私人露天温泉", "有餐厅、休息区与高速Wi-Fi，雨天也能待住", "房源公开了接送要求、台阶和温泉税，信息透明"],
+    caution: "入口约20级台阶；接送不是随到随走，未提前通知可能无法安排。订前再问清送站是否也包含。"
+  },
+  {
+    group: "best", rank: 3, roomId: "608834356948781974", area: "下田白滨", fit: "海滩优先", total: 2367, rating: "4.86", reviews: 14,
+    title: "温泉民宿 胜五郎 · 白滨海滩3分",
+    flags: ["recommended", "bus", "onsen", "beach", "sea"], accessLevel: "bus",
+    access: "伊豆急下田站坐公交约10分钟；房源到白滨海滩步行3分钟、便利店5分钟。",
+    reason: "如果你们此次伊豆的核心是真正下海而不是四处跑景点，这间比站前住宿更对题。",
+    advantages: ["白滨海滩和便利店都很近", "自家温泉、海景房与院内温水淋浴", "下田站公交直达，不需出租车"],
+    caution: "公共卫浴、房内无电视和冰箱；20:00后不接受入住，22:00宵禁。返程公交时刻必须提前截图。"
+  },
+  {
+    group: "best", rank: 4, roomId: "1712965482025364080", area: "河津", fit: "整栋性价比", total: 2263, rating: "新上线", reviews: 0,
+    title: "河津站12分 · 阳台整栋住宅",
+    flags: ["recommended", "rail", "whole", "kitchen"], accessLevel: "walk",
+    access: "河津站步行约12分钟；房东明确建议乘火车，车站周边有餐厅、市场和公交。",
+    reason: "整栋、有厨房、铁路可达，总价仍明显低于预算，是稻取整栋房源的稳妥替代。",
+    advantages: ["整套独享，适合两人连住三晚", "厨房配置完整，可以用市场食材做饭", "河津七滩、下田和稻取都可从这里出发"],
+    caution: "新房源，暂无评价可用于验证卫生、隔音和入住流程；7月拖箱走12分钟会热，建议到站后先补给。"
+  },
+  {
+    group: "best", rank: 5, roomId: "1475078324740559322", area: "今井滨海岸", fit: "接送温泉", total: 2489, rating: "5.0", reviews: 4,
+    title: "BEACHSIDE 100 · 海景双床 / 三处私汤",
+    flags: ["recommended", "pickup", "onsen", "sea"], accessLevel: "pickup",
+    access: "抵达今井滨海岸站后致电接送；仅限入住和退房，不接送外出吃饭。",
+    reason: "它适合想住得安静、泡私汤、看海，且愿意把夜晚留在住宿里的情侣。",
+    advantages: ["三处露天温泉可免费私人使用", "明确提供车站接送，解决海拔100米的坡路", "房内有空调，公共区有冰箱和微波炉"],
+    caution: "不含餐且无法接送外出晚餐，官方明确建议抵达前吃完晚饭。房间仅15平方米，评价样本也较少。"
+  },
+  {
+    group: "rail", rank: 6, roomId: "1499550086382233141", area: "伊豆高原", fit: "最低预算", total: 1273, rating: "4.95", reviews: 21,
+    title: "和室 柠檬 · 花园日式客房",
+    flags: ["rail", "budget", "garden"], accessLevel: "bus",
+    access: "伊豆高原站车程约5分钟；坐公交至“高原中央”后步行7分钟。",
+    reason: "三晚总价不到¥1,300，却仍有空调、独立单元浴室和花园，适合把钱留给交通和吃饭。",
+    advantages: ["价格余量最大，加税后也不容易超预算", "空调、房内浴室、行李寄存均写得清楚", "位于伊豆高原景点密集区"],
+    caution: "不是车站步行房，且伊东市公交班次不密；订前先把“高原中央”往返时刻与拖箱路线截图。"
+  },
+  {
+    group: "rail", rank: 7, roomId: "1718507997380466778", area: "伊东", fit: "铁路城市生活", total: 1387, rating: "新上线", reviews: 0,
+    title: "Nijiro Tei Umikaze · 昭和复古独立房",
+    flags: ["rail", "budget", "laundry"], accessLevel: "walk",
+    access: "房源明确标注车站、海边与商店街均在步行圈，不用车也能活动。",
+    reason: "这不是度假别墅，但会是炎热、下雨或晚归时最省脑力的低成本基地。",
+    advantages: ["车站、餐厅、商店街和海边均可步行", "公共厨房、洗衣机与阳台晾晒适合海边连住", "总价低，可随时换火车去南北沿线"],
+    caution: "新上线无评价；浴室、厨房、餐厅和卫生间都是公用，更像小型民宿。"
+  },
+  {
+    group: "rail", rank: 8, roomId: "20396837", area: "热海", fit: "进出伊豆缓冲", total: 1760, rating: "4.84", reviews: 37,
+    title: "热海站5分 · 海景天然温泉旅馆",
+    flags: ["rail", "onsen", "sea"], accessLevel: "walk",
+    access: "热海站步行5分钟，沙滩步行约4分钟，位于新干线与伊东线换乘点。",
+    reason: "如果伊豆只能留2晚，或天气差到不适合深入半岛，这是最稳的缩短版。",
+    advantages: ["全程步行、换乘和补给都方便", "天然温泉、海景和沙滩同时具备", "大雨或临时改行程时损失最小"],
+    caution: "这是伊豆入口而非东伊豆深度基地；卫浴为旅馆公共温泉，不是房内独立浴室。"
+  },
+  {
+    group: "rail", rank: 9, roomId: "1694267056997994017", area: "热海", fit: "热海整套替代", total: 1718, rating: "新上线", reviews: 0,
+    title: "眠窟 · 热海站10分整套2LDK",
+    flags: ["rail", "whole", "kitchen", "beach"], accessLevel: "walk",
+    access: "热海站步行10分钟，热海Sun Beach也约10分钟。",
+    reason: "如果你们更在意整套隐私、厨房和城市餐厅，它比热海旅馆房更适合三晚生活。",
+    advantages: ["整套2LDK，隐私和空间都好于独立客房", "车站、海滩、餐厅与温泉街都能步行", "价格远低于三晚¥3,000上限"],
+    caution: "新房源无评价；21:00后要严格安静，且热海市区坡路多，订前向房东索要从站到门的无台阶路线。"
+  },
+  {
+    group: "conditional", rank: 10, roomId: "1606254149439535407", area: "伊豆高原 / 大室山", fit: "真小屋条件项", total: 2319, rating: "5.0", reviews: 6,
+    title: "JIRO's Cottage · 樱花并木整栋小屋",
+    flags: ["whole", "cabin", "kitchen", "laundry"], accessLevel: "conditional",
+    access: "房东建议从伊豆高原站坐出租车，公交班次有限；到大室山约2公里。",
+    reason: "这是这批里居住质量最高的真整栋小屋之一，有大客厅、书房、洗烘一体机与完整厨房。",
+    advantages: ["高隔热、双空调、洗烘一体机适合7月连住", "整栋安静，退房到12:00", "65英寸电视、音响、书房与高速网络，雨天体验很完整"],
+    caution: "不属于交通好的默认选项。只有房东确认往返接送，或你们接受每天少量出租车时才考虑。"
+  },
+  {
+    group: "conditional", rank: 11, roomId: "24456092", area: "下田老城", fit: "低价位置换舒适", total: 1425, rating: "4.78", reviews: 147,
+    title: "Kawamura Apartment 203 · 下田站10分",
+    flags: ["rail", "budget"], accessLevel: "walk",
+    access: "伊豆急下田站步行10分钟，超市、佩里路和租自行车点都很近。",
+    reason: "位置和价格确实优秀，但它更像给背包客的基础落脚点，不是两个人的舒服度假房。",
+    advantages: ["下田站和老城徒步可达", "超市几十秒，餐厅、温泉钱汤也在附近", "147条评价，基本运营稳定"],
+    caution: "房内没有浴室或淋浴，需走到5分钟外的温泉或7分钟外的付费淋浴；一楼居酒屋可能吵到23:00，Wi-Fi也不稳。"
+  },
+  {
+    group: "conditional", rank: 12, roomId: "22034652", area: "河津", fit: "有门槛的便宜房", total: 1299, rating: "4.82", reviews: 108,
+    title: "Guest Room 403 · 河津河畔和室",
+    flags: ["rail", "budget"], accessLevel: "walk",
+    access: "河津站步行10至15分钟，河边2至3分钟，海边4至5分钟。",
+    reason: "它便宜且铁路可达，但条件明显不适合对隐私和休息有要求的情侣。",
+    advantages: ["房内有空调，到河畔和海边很近", "总价低，车站步行可达", "房东把噪声、昆虫和规则写得很直接"],
+    caution: "房间无锁、隔音差、不能使用洗衣机，22:00后不能洗澡；5至10月房东明示可能有大蜘蛛等昆虫。"
+  },
+  {
+    group: "conditional", rank: 13, roomId: "1665760072129389440", area: "伊东港", fit: "新房源核路线", total: 1075, rating: "新上线", reviews: 0,
+    title: "Harbor Terrace Izu · 海港整栋 / 帐篷桑拿",
+    flags: ["whole", "budget", "kitchen", "laundry", "sea"], accessLevel: "conditional",
+    access: "位于JR伊东站与Marine Town之间，房源未写明到站步行分钟；所在山坡且入口有台阶。",
+    reason: "价格低得很吸引人，还有整套2LDK、厨房、洗衣机和步行可达的大型商店，值得先问清路线。",
+    advantages: ["三晚税前仅约¥1,075，价格余量很大", "整栋、完整厨房、洗衣机和帐篷桑拿", "MEGA唐吉诃德约5分钟，Marine Town约10分钟"],
+    caution: "不要被价格直接说服。预订前要求房东发送从伊东站拖箱到门的实际路线、步行时间与台阶照片，无法证实就不订。"
+  }
+];
+
 const planningCollections = [
   ...planningLibrary.filter((plan) => ["tokyo-loop", "hokkaido-main"].includes(plan.id)),
   hotelRecommendationTab,
-  karuizawaAirbnbTab
+  karuizawaAirbnbTab,
+  izuAirbnbTab
 ];
 const tokyoDestinationGuides = planningLibrary.filter((plan) =>
   ["yokohama-kamakura", "karuizawa-cabin", "izu-east"].includes(plan.id)
@@ -6841,6 +6969,7 @@ let activeFilter = "all";
 let activeTokyoOptionFilter = "strong";
 let activeHotelFilter = "recommended";
 let activeKaruizawaFilter = "no-car";
+let activeIzuFilter = "recommended";
 const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
 let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
@@ -7527,6 +7656,174 @@ function renderKaruizawaPanel() {
   `;
 }
 
+const izuFilterLabels = [
+  ["recommended", "我会选"],
+  ["rail", "车站步行"],
+  ["pickup", "明确接送"],
+  ["onsen", "温泉"],
+  ["beach", "海滩优先"],
+  ["whole", "整套独享"],
+  ["budget", "低于¥500/晚"],
+  ["all", "全部13套"]
+];
+
+const izuGroupMeta = {
+  best: ["优先核价", "交通、体验和预算同时成立"],
+  rail: ["铁路基地", "适合雨天、热天与随时改计划"],
+  conditional: ["谨慎看", "价格有吸引力，但存在明确交通或舒适度门槛"]
+};
+
+const izuAccessMeta = {
+  walk: ["铁路步行", "不依赖末班公交，最适合拖箱和雨天"],
+  pickup: ["预约接送", "可行，但要在订房前把时段、送站和行李写进聊天"],
+  bus: ["铁路 + 公交", "可执行，但要保存去程、回程和末班时刻"],
+  conditional: ["需二次确认", "未证实拖箱路线或需要出租车，不进入默认推荐"]
+};
+
+function matchesIzuFilter(item) {
+  if (activeIzuFilter === "all") return true;
+  return item.flags.includes(activeIzuFilter);
+}
+
+function izuAirbnbUrl(item) {
+  return `https://www.airbnb.com/rooms/${item.roomId}?check_in=2026-07-21&check_out=2026-07-24&guests=2&adults=2&currency=CNY`;
+}
+
+function renderIzuFilters() {
+  return `
+    <div class="hotel-filters izu-filters" role="group" aria-label="伊豆Airbnb筛选">
+      ${izuFilterLabels.map(([value, label]) => `
+        <button type="button" class="hotel-filter${activeIzuFilter === value ? " is-active" : ""}" data-izu-filter="${escapeHtml(value)}" aria-pressed="${activeIzuFilter === value}">${escapeHtml(label)}</button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderIzuRow(item) {
+  const nightly = Math.round(item.total / 3);
+  const [accessLabel] = izuAccessMeta[item.accessLevel];
+  const budgetClass = nightly >= 900 ? " is-limit" : "";
+
+  return `
+    <details class="hotel-row izu-row" data-izu-group="${escapeHtml(item.group)}" data-izu-rank="${escapeHtml(item.rank)}">
+      <summary>
+        <span class="hotel-image">
+          <span class="hotel-image-fallback" aria-hidden="true">${icon("home")}</span>
+          <img src="assets/izu-airbnb/${escapeHtml(item.roomId)}.jpg" alt="${escapeHtml(item.title)} 房源主图" width="720" height="480" loading="lazy" decoding="async">
+          <span class="hotel-rank">#${escapeHtml(item.rank)}</span>
+        </span>
+        <span class="hotel-row-copy">
+          <strong>${escapeHtml(item.title)}</strong>
+          <small>¥${item.total.toLocaleString("zh-CN")} / 3晚 · 约¥${nightly}/晚 · ${escapeHtml(item.area)}</small>
+        </span>
+        <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-row-body">
+        <figure class="hotel-row-hero">
+          <img src="assets/izu-airbnb/${escapeHtml(item.roomId)}.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+          <figcaption>7月21日入住 · 7月24日退房 · 2人 · 7月12日查询</figcaption>
+        </figure>
+        <div class="izu-price-line${budgetClass}">
+          <span>税前总价</span><strong>¥${item.total.toLocaleString("zh-CN")} / 3晚</strong><small>${escapeHtml(item.rating)}${item.reviews ? ` · ${escapeHtml(item.reviews)}条评价` : ""}</small>
+        </div>
+        <div class="karuizawa-access is-${item.accessLevel === "pickup" ? "taxi" : item.accessLevel === "bus" || item.accessLevel === "conditional" ? "car" : "walk"}"><span>${escapeHtml(accessLabel)}</span><strong>${escapeHtml(item.access)}</strong></div>
+        <section class="karuizawa-copy-block"><h5>为什么入选</h5><p>${escapeHtml(item.reason)}</p></section>
+        <section class="karuizawa-copy-block"><h5>主要优点</h5><ul>${item.advantages.map((advantage) => `<li>${escapeHtml(advantage)}</li>`).join("")}</ul></section>
+        <p class="karuizawa-caution"><strong>缺点：</strong>${escapeHtml(item.caution)}</p>
+        <div class="hotel-row-tags"><span>${escapeHtml(item.fit)}</span><span>${escapeHtml(accessLabel)}</span><span>约¥${nightly}/晚</span></div>
+        <a href="${escapeHtml(izuAirbnbUrl(item))}" target="_blank" rel="noreferrer" aria-label="在Airbnb查看${escapeHtml(item.title)}">${icon("link")}<span>带 7/21-24 日期打开 Airbnb</span></a>
+      </div>
+    </details>
+  `;
+}
+
+function renderIzuGroup(group, id) {
+  const [title, subtitle] = izuGroupMeta[group];
+  const items = izuAirbnbListings.filter((item) => item.group === group && matchesIzuFilter(item));
+  if (!items.length) return "";
+  const shouldOpen = group === "best" || activeIzuFilter !== "recommended";
+  return `
+    <details class="hotel-group" id="${escapeHtml(id)}"${shouldOpen ? " open" : ""}>
+      <summary class="hotel-group-summary">
+        <span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(subtitle)} · 当前${items.length}套</small></span>
+        <span class="hotel-group-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-list">${items.length ? items.map(renderIzuRow).join("") : `<p class="hotel-empty">当前筛选在这一组没有候选。</p>`}</div>
+    </details>
+  `;
+}
+
+function renderIzuPanel() {
+  const visibleCount = izuAirbnbListings.filter(matchesIzuFilter).length;
+  planPanel.setAttribute("aria-labelledby", "plan-tab-izu-airbnb");
+  planPanel.innerHTML = `
+    <article class="hotel-detail izu-detail">
+      <header class="plan-detail-head" id="izu-overview">
+        <span class="plan-kicker">7月18-25日总行程 · 2人 · 无车 · ¥1,000/晚上限</span>
+        <h3>伊豆 Airbnb · 交通优先版</h3>
+        <p>先解决哪三晚住伊豆，再看房。这一页只收录精确日期仍返回、两人税前平均不超¥1,000/晚的房源。</p>
+      </header>
+
+      <dl class="plan-stats">
+        <div><dt>推荐伊豆</dt><dd>7/21-24</dd></div><div><dt>精查候选</dt><dd>13套</dd></div><div><dt>最低税前</dt><dd>约¥358/晚</dd></div>
+      </dl>
+
+      <section class="izu-date-plan" id="izu-timing" aria-label="推荐日程">
+        <div class="izu-date-plan-head"><span>我建议这样排</span><strong>轻井泽 2晚 → 东京缓冲 1晚 → 伊豆 3晚 → 东京 1晚</strong></div>
+        <ol class="izu-date-steps">
+          <li><time>7/18-20</time><div><strong>轻井泽</strong><small>你已确定的2晚</small></div></li>
+          <li><time>7/20</time><div><strong>回东京住1晚</strong><small>海之日，不在三连休末日硬赶轻井泽→伊豆</small></div></li>
+          <li class="is-focus"><time>7/21-24</time><div><strong>东伊豆3晚</strong><small>选一个铁路基地，不搬家</small></div></li>
+          <li><time>7/24</time><div><strong>回东京住1晚</strong><small>给7/25离开、购物或天气延误留余量</small></div></li>
+        </ol>
+      </section>
+
+      <section class="plan-section" id="izu-transport">
+        <div class="plan-section-title">${icon("train")}<div><h4>真实交通链</h4><p>用2026年7月运行的踊り子5号作为易理解的直达样例</p></div></div>
+        <div class="izu-train-chain">
+          <div><span>7/20</span><strong>轻井泽 → 东京</strong><small>北陆新干线约1小时10分 · 住东京/品川便于次日南下</small></div>
+          <div class="is-main"><span>7/21</span><strong>东京10:00 → 伊豆高原12:04</strong><small>踊り子5号直达 · 无换乘</small></div>
+          <div><span>同车</span><strong>稻取12:20 · 河津12:28 · 下田12:39</strong><small>按最终房源选下车站，全程不换乘</small></div>
+          <div><span>7/24</span><strong>东伊豆 → 东京</strong><small>优先预约踊り子指定席，不在热海拖箱换车</small></div>
+        </div>
+      </section>
+
+      <section class="plan-section hotel-verdict" id="izu-verdict">
+        <div class="plan-section-title">${icon("star")}<div><h4>先做一个选择</h4><p>三种玩法，都比绕半岛搬家舒服</p></div></div>
+        <div class="hotel-verdict-list">
+          <button type="button" data-izu-open-rank="1"><span>#1</span><strong>最稳的无车基地</strong><small>稻取站3分 · 整栋 · 厨房洗衣 · 南北都好走</small></button>
+          <button type="button" data-izu-open-rank="2"><span>#2</span><strong>两个人的温泉度假</strong><small>Episode IZU · 富户站预约接送 · 私人露天温泉</small></button>
+          <button type="button" data-izu-open-rank="3"><span>#3</span><strong>把海滩放在第一位</strong><small>白滨海滩3分 · 下田站公交10分 · 温泉民宿</small></button>
+        </div>
+      </section>
+
+      <section class="plan-section" id="izu-access">
+        <div class="plan-section-title">${icon("route")}<div><h4>无车交通等级</h4><p>“靠近海”不等于“靠近车站”</p></div></div>
+        <div class="karuizawa-access-guide">
+          ${Object.entries(izuAccessMeta).map(([level, [title, body]]) => `<div class="karuizawa-access is-${level === "pickup" ? "taxi" : level === "bus" || level === "conditional" ? "car" : "walk"}"><span>${escapeHtml(title)}</span><strong>${escapeHtml(body)}</strong></div>`).join("")}
+        </div>
+      </section>
+
+      <section class="plan-section hotel-filter-section" id="izu-filter">
+        <div class="plan-section-title">${icon("search")}<div><h4>按你们的真实偏好筛</h4><p>当前显示${visibleCount}套 · 默认只看我认为值得立即核价的5套</p></div></div>
+        ${renderIzuFilters()}
+      </section>
+
+      <section class="hotel-results" id="izu-results" aria-label="伊豆Airbnb候选列表">
+        ${renderIzuGroup("best", "izu-best")}
+        ${renderIzuGroup("rail", "izu-rail")}
+        ${renderIzuGroup("conditional", "izu-conditional")}
+      </section>
+
+      <section class="plan-section plan-final-advice hotel-budget" id="izu-booking">
+        <div><span>下单顺序</span><p>先问#1加税总价；若超预算，在#2情侣温泉、#3白滨海滩和#4河津整栋之间按玩法选。纯省钱则看#6或#7。</p></div>
+        <div class="is-cut"><span>不要硬上</span><p>不订西伊豆、堂岛和任何只写“开车X分钟”的山中别墅。税前价不是最终扣款，#1这类预算临界项必须看到付款页总额再决定。</p></div>
+      </section>
+      ${renderPlanSourceDisclosure(["odorikoOfficial", "odorikoTimetable", "izukyuTimetable", "izukyuGlobal", "inatoriClimate", "shimodaAccess"])}
+    </article>
+  `;
+}
+
 function renderPlanningPanel() {
   if (!planPanel) return;
   if (activePlanId === "tokyo-hotels") {
@@ -7535,6 +7832,10 @@ function renderPlanningPanel() {
   }
   if (activePlanId === "karuizawa-airbnb") {
     renderKaruizawaPanel();
+    return;
+  }
+  if (activePlanId === "izu-airbnb") {
+    renderIzuPanel();
     return;
   }
   const plan = planningCollections.find((item) => item.id === activePlanId) || planningCollections[0];
@@ -7633,6 +7934,14 @@ function renderBottomNav() {
       ["karuizawa-filter", "search", "筛选"],
       ["karuizawa-results", "list", "候选"]
     ];
+  } else if (activePlanId === "izu-airbnb") {
+    items = [
+      ["izu-timing", "calendar", "日期"],
+      ["izu-transport", "train", "交通"],
+      ["izu-verdict", "star", "首选"],
+      ["izu-filter", "search", "筛选"],
+      ["izu-results", "list", "房源"]
+    ];
   } else if (activePlanId === "tokyo-loop") {
     items = [
         ["planning", "calendar", "规划"],
@@ -7665,7 +7974,7 @@ function renderBottomNav() {
 
 function syncThemeUI() {
   const showHokkaido = activePlanId === "hokkaido-main";
-  const showRouteMap = !["tokyo-hotels", "karuizawa-airbnb"].includes(activePlanId);
+  const showRouteMap = !["tokyo-hotels", "karuizawa-airbnb", "izu-airbnb"].includes(activePlanId);
   hokkaidoThemeSections.forEach((section) => {
     section.hidden = !showHokkaido;
   });
@@ -8406,6 +8715,27 @@ document.addEventListener("click", (event) => {
     renderKaruizawaPanel();
     requestAnimationFrame(() => {
       const row = document.querySelector(`[data-karuizawa-rank="${karuizawaPickButton.dataset.karuizawaOpenRank}"]`);
+      if (row instanceof HTMLDetailsElement) {
+        row.open = true;
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    return;
+  }
+
+  const izuFilterButton = event.target.closest("[data-izu-filter]");
+  if (izuFilterButton) {
+    activeIzuFilter = izuFilterButton.dataset.izuFilter || "recommended";
+    renderIzuPanel();
+    return;
+  }
+
+  const izuPickButton = event.target.closest("[data-izu-open-rank]");
+  if (izuPickButton) {
+    activeIzuFilter = "recommended";
+    renderIzuPanel();
+    requestAnimationFrame(() => {
+      const row = document.querySelector(`[data-izu-rank="${izuPickButton.dataset.izuOpenRank}"]`);
       if (row instanceof HTMLDetailsElement) {
         row.open = true;
         row.scrollIntoView({ behavior: "smooth", block: "center" });
