@@ -1046,7 +1046,242 @@ const planningLibrary = [
   }
 ];
 
-const planningCollections = planningLibrary.filter((plan) => ["tokyo-loop", "hokkaido-main"].includes(plan.id));
+const hotelRecommendationTab = {
+  id: "tokyo-hotels",
+  label: "酒店推荐",
+  icon: "home",
+  kind: "lodging"
+};
+
+const hotelListings = [
+  {
+    group: "top", rank: 1, area: "涩谷", fit: "首选", rating: "4.91", reviews: 164,
+    title: "Shibuya Sta. 3-min walk | COMFORT SUITE | SIMMONS",
+    url: "https://www.airbnb.com/rooms/887366478153361724",
+    flags: ["recommended", "quiet", "transit", "space"],
+    reason: "涩谷站步行3分钟，夜间安静、双阳台、Simmons床。两个人住的综合完成度最高。"
+  },
+  {
+    group: "top", rank: 2, area: "港区", fit: "首选", rating: "5.0", reviews: 33,
+    title: "Tokyo Tower View 4pax | 10 min Shimbashi (43m2)",
+    url: "https://www.airbnb.com/rooms/1218542085331878832",
+    flags: ["recommended", "view", "quiet", "space"],
+    reason: "东京塔景观、43㎡、两张床分区，靠近新桥且周边安静。景观与实用性的最佳平衡。"
+  },
+  {
+    group: "top", rank: 3, area: "新宿", fit: "首选", rating: "4.98", reviews: 53,
+    title: "Very close to Shinjuku and Shibuya / Cyber Room Tokyo",
+    url: "https://www.airbnb.com/rooms/1471004067029224772",
+    flags: ["recommended", "quiet", "transit"],
+    reason: "明确适合2人，皇后床加沙发，安静但能快速连接新宿和涩谷。"
+  },
+  {
+    group: "top", rank: 4, area: "新宿", fit: "首选", rating: "4.93", reviews: 86,
+    title: "yohaku.101: quiet residential center-of-Shinjuku stay",
+    url: "https://www.airbnb.com/rooms/1231916439795650000",
+    flags: ["recommended", "quiet", "transit"],
+    reason: "安静住宅区、步行5分钟到车站，评价稳定。适合把睡眠质量放在夜生活之前。"
+  },
+  {
+    group: "top", rank: 5, area: "港区", fit: "强", rating: "4.97", reviews: 73,
+    title: "NEW! Breathtaking Tokyo Tower view - Roppongi nearby",
+    url: "https://www.airbnb.com/rooms/1222336439563175082",
+    flags: ["recommended", "view", "transit", "space"],
+    reason: "东京塔景观、麻布十番步行5分钟、两张皇后床。中心区景观非常明确。"
+  },
+  {
+    group: "top", rank: 6, area: "港区", fit: "强", rating: "4.96", reviews: 23,
+    title: "Roppongi Azabu SKY TERRACE / Tokyo Tower view",
+    url: "https://www.airbnb.com/rooms/1383650972004083454",
+    flags: ["recommended", "view", "space"],
+    reason: "31㎡、屋顶露台、双阳台与东京塔景观。很适合重视照片和夜景的两个人。"
+  },
+  {
+    group: "top", rank: 7, area: "涩谷", fit: "强", rating: "4.91", reviews: 398,
+    title: "2BR with Open-Air Terrace in Harajuku & Omotesando",
+    url: "https://www.airbnb.com/rooms/12597472",
+    flags: ["view", "transit", "space"],
+    reason: "原宿站步行8分钟、开放露台、两卧室，评价量很深，适合想住得更有设计感。"
+  },
+  {
+    group: "top", rank: 8, area: "涩谷", fit: "强", rating: "4.77", reviews: 133,
+    title: "Central Shibuya, 2BR @ 52m2 with terrace",
+    url: "https://www.airbnb.com/rooms/28745942",
+    flags: ["view", "quiet", "transit", "space"],
+    reason: "52㎡、18㎡露台、涩谷站步行6分钟，中心位置但相对安静。"
+  },
+  {
+    group: "top", rank: 9, area: "目黑", fit: "可选", rating: "5.0", reviews: 19,
+    title: "Parkview: 3 min to Shibuya, 5 min to Shinjuku",
+    url: "https://www.airbnb.com/rooms/1464762686371354283",
+    flags: ["view", "quiet", "transit"],
+    reason: "阳台与公园景观，能同时快速去涩谷和新宿；评价量尚少，因此排在第二梯队。"
+  },
+  {
+    group: "top", rank: 10, area: "涩谷", fit: "强", rating: "4.96", reviews: 54,
+    title: "Cozy apartment in Shibuya",
+    url: "https://www.airbnb.com/rooms/1184322561450024873",
+    flags: ["quiet", "transit"],
+    reason: "明确2人、1床、1.5卫浴，步行进入涩谷核心方便，是稳妥的情侣型选择。"
+  },
+  {
+    group: "top", rank: 11, area: "港区", fit: "可选", rating: "4.8", reviews: 190,
+    title: "C4: walking distance to Tokyo Tower | 2-bedroom unit",
+    url: "https://www.airbnb.com/rooms/33358628",
+    flags: ["view", "quiet", "transit", "space"],
+    reason: "安静住宅区，可步行到东京塔与芝公园，机场接入方便，适合作为稳定备份。"
+  },
+  {
+    group: "top", rank: 12, area: "中央区", fit: "可选", rating: "4.78", reviews: 855,
+    title: "Ginza / Tokyo Junior Suite / Hotel Vintage Tsukiji",
+    url: "https://www.airbnb.com/rooms/25377337",
+    flags: ["quiet", "transit", "space"],
+    reason: "整层套房、筑地与银座通勤方便，评价样本最深，安全与使用难度都很低。"
+  },
+  {
+    group: "backup", rank: 1, area: "千代田", fit: "实用", rating: "4.5", reviews: 12,
+    title: "5 min Kanda Sta | Up to 3 | 22m2 | AKA HOTEL",
+    url: "https://www.airbnb.com/rooms/1617096696050002131",
+    flags: ["transit"], reason: "神田站步行5分钟、22㎡、城市景观。房间紧凑，但两个人换乘非常实用。"
+  },
+  {
+    group: "backup", rank: 2, area: "千代田", fit: "实用", rating: "4.9", reviews: 10,
+    title: "F23 Akihabara 3 min walk / Elevator / Quiet Hotel",
+    url: "https://www.airbnb.com/rooms/781024105302745501",
+    flags: ["quiet", "transit"], reason: "秋叶原步行3分钟、电梯、酒店式管理；评价量少，但作为交通备份很直接。"
+  },
+  {
+    group: "backup", rank: 3, area: "千代田/台东", fit: "预算", rating: "4.6", reviews: 25,
+    title: "Akihabara Area / 5G WiFi / KEYHOTEL",
+    url: "https://www.airbnb.com/rooms/48303223",
+    flags: ["view", "transit"], reason: "带开放屋顶露台，位置方便，适合预算优先时的中心区备份。"
+  },
+  {
+    group: "backup", rank: 4, area: "世田谷", fit: "舒适", rating: "4.78", reviews: 65,
+    title: "Shibuya 1 stop / Meguro River / Balcony view",
+    url: "https://www.airbnb.com/rooms/1229338783810147996",
+    flags: ["view", "quiet"], reason: "自然采光、阳台、目黑川方向，离核心略远，但居住感更舒服。"
+  },
+  {
+    group: "backup", rank: 5, area: "港区", fit: "安静", rating: "4.92", reviews: 61,
+    title: "Serene Traditional Home / Temple View / nr Tokyo Tower",
+    url: "https://www.airbnb.com/rooms/890779294391268306",
+    flags: ["view", "quiet"], reason: "寺院庭园景观与安静氛围很稀缺，适合把平静感放在城市天际线之前。"
+  },
+  {
+    group: "backup", rank: 6, area: "港区", fit: "景观", rating: "4.91", reviews: 11,
+    title: "Tokyo Tower Night View | Minato | Hot tub",
+    url: "https://www.airbnb.com/rooms/1416287139986357960",
+    flags: ["view", "space"], reason: "东京塔夜景与浴缸突出，但更偏多人房，两人入住的性价比需重新核价。"
+  },
+  {
+    group: "backup", rank: 7, area: "港区", fit: "景观", rating: "4.63", reviews: 215,
+    title: "Tokyo Tower View Deluxe Studio",
+    url: "https://www.airbnb.com/rooms/20698490",
+    flags: ["view"], reason: "位置与东京塔景观成立，但评分弱于前面的港区候选，只作为后备。"
+  },
+  {
+    group: "pool", rank: 1, area: "涩谷", fit: "安静", rating: "4.9", reviews: 126,
+    title: "Shibuya Station and Yoyogi Park within walking distance",
+    url: "https://www.airbnb.com/rooms/31096328",
+    flags: ["quiet", "transit"], reason: "松涛住宅区，步行连接涩谷与代代木公园，安静与核心位置兼顾。"
+  },
+  {
+    group: "pool", rank: 2, area: "涩谷", fit: "实用", rating: "4.9", reviews: 167,
+    title: "5 mins from Shibuya sta / Checkout 12PM / Elevator 803",
+    url: "https://www.airbnb.com/rooms/25580667",
+    flags: ["transit"], reason: "两人一卧一床，涩谷站步行5分钟，退房时间友好，可靠但景观较弱。"
+  },
+  {
+    group: "pool", rank: 3, area: "世田谷", fit: "舒适", rating: "4.91", reviews: 140,
+    title: "Real Life SANGENJAYA 1BR with terrace 2Pax",
+    url: "https://www.airbnb.com/rooms/48191294",
+    flags: ["view", "quiet"], reason: "露台、明确2人一床，适合想住得安静，同时保留涩谷与代官山活动半径。"
+  },
+  {
+    group: "pool", rank: 4, area: "新宿", fit: "空间", rating: "4.9", reviews: 139,
+    title: "Shinjuku Warm House 2 bedrooms / English OK",
+    url: "https://www.airbnb.com/rooms/774477915822557543",
+    flags: ["space"], reason: "两卧室、两卫浴，空间充足；如果两个人更在意分区与洗漱效率，会比小公寓舒服。"
+  },
+  {
+    group: "pool", rank: 5, area: "新宿", fit: "稳定", rating: "4.89", reviews: 245,
+    title: "3rd floor penthouse @ heart of Tokyo",
+    url: "https://www.airbnb.com/rooms/1306664",
+    flags: ["quiet", "transit"], reason: "两人一卧的核心区顶层备份，评价积累充分。"
+  },
+  {
+    group: "pool", rank: 6, area: "世田谷", fit: "生活感", rating: "4.87", reviews: 537,
+    title: "Shimokita Stay #3 / Shimokitazawa / Shibuya 3 min",
+    url: "https://www.airbnb.com/rooms/21348052",
+    flags: ["view", "quiet", "transit"], reason: "木质露台、下北泽生活感、评价样本深；适合不想每天住在大站中心。"
+  },
+  {
+    group: "pool", rank: 7, area: "目黑", fit: "交通", rating: null, reviews: null,
+    title: "NIYS apartments 03 type (32m2)",
+    url: "https://www.airbnb.com/rooms/26763404",
+    flags: ["view", "transit", "space"], reason: "目黑站步行1分钟、32㎡、目黑川景观信号明确，需补查最新评分与价格。"
+  },
+  {
+    group: "pool", rank: 8, area: "港区", fit: "安静", rating: null, reviews: null,
+    title: "1-Bedroom in Minato / walking distance of Tokyo Tower",
+    url: "https://www.airbnb.com/rooms/853469577504926894",
+    flags: ["view", "quiet", "transit"], reason: "安静住宅区、步行到东京塔与芝公园、车站约4分钟，适合情侣。"
+  },
+  {
+    group: "pool", rank: 9, area: "港区", fit: "睡眠", rating: "4.89", reviews: 38,
+    title: "Ebisu Area | 9AM In, 3PM Out Solo Stay | Simmons",
+    url: "https://www.airbnb.com/rooms/1209341997417179417",
+    flags: ["quiet"], reason: "两人一卧一床，Simmons床与宽松入住退房时间突出，偏睡眠优先。"
+  },
+  {
+    group: "pool", rank: 10, area: "港区", fit: "交通", rating: null, reviews: null,
+    title: "Roppongi / Hiroo / Shirokane-Takanawa access",
+    url: "https://www.airbnb.com/rooms/1495602390174778163",
+    flags: ["quiet", "transit"], reason: "白金高轮方向，可直达或直通涩谷、新宿、六本木，移动安全性较好。"
+  },
+  {
+    group: "pool", rank: 11, area: "墨田", fit: "景观", rating: "4.9", reviews: null,
+    title: "Single-family home near Skytree | Rooftop terrace",
+    url: "https://www.airbnb.com/rooms/859678218520456349",
+    flags: ["view", "transit", "space"], reason: "三层独栋、屋顶露台与晴空塔景观，机场接入方便，但两人住空间可能过剩。"
+  },
+  {
+    group: "pool", rank: 12, area: "台东", fit: "景观", rating: null, reviews: null,
+    title: "Peaceful Riverside View, Asakusa / Tokyo",
+    url: "https://www.airbnb.com/rooms/7358397",
+    flags: ["view", "quiet"], reason: "隅田川与晴空塔视野、附近有警署，是东京核心少见的开阔水岸感。"
+  },
+  {
+    group: "pool", rank: 13, area: "台东", fit: "景观", rating: "4.86", reviews: 480,
+    title: "Riverview Apt. | Asakusa-Skytree | 4 min to Metro",
+    url: "https://www.airbnb.com/rooms/1500328469444744529",
+    flags: ["view", "transit"], reason: "河景、地铁步行4分钟、评价量很深，是浅草方向的强景观备份。"
+  },
+  {
+    group: "pool", rank: 14, area: "千代田", fit: "实用", rating: null, reviews: null,
+    title: "301 Japanese style / Akihabara 5 minutes",
+    url: "https://www.airbnb.com/rooms/1048439675776573213",
+    flags: ["quiet", "transit"], reason: "两人、安静明亮、秋叶原站步行5分钟，属于纯实用型中心备份。"
+  },
+  {
+    group: "pool", rank: 15, area: "千代田", fit: "实用", rating: null, reviews: null,
+    title: "101 Japanese style / Akihabara 5 minutes / 2 people",
+    url: "https://www.airbnb.com/rooms/1048437525896159172",
+    flags: ["quiet", "transit"], reason: "与301相同的安静、明亮与两人定位，最终按日期价格和楼层取舍。"
+  },
+  {
+    group: "pool", rank: 16, area: "世田谷", fit: "空间", rating: "4.89", reviews: 54,
+    title: "2 minutes by train to Shibuya / Cozy hideaway",
+    url: "https://www.airbnb.com/rooms/1180685821848846813",
+    flags: ["quiet", "transit", "space"], reason: "一卧两床、空间更宽，坐车到涩谷约2分钟，适合希望离核心半步的选择。"
+  }
+];
+
+const planningCollections = [
+  ...planningLibrary.filter((plan) => ["tokyo-loop", "hokkaido-main"].includes(plan.id)),
+  hotelRecommendationTab
+];
 const tokyoDestinationGuides = planningLibrary.filter((plan) =>
   ["yokohama-kamakura", "karuizawa-cabin", "izu-east"].includes(plan.id)
 );
@@ -6205,6 +6440,7 @@ const bottomNav = document.querySelector("#bottomNav");
 const hokkaidoThemeSections = document.querySelectorAll('[data-theme-section="hokkaido"]');
 const filterButtons = document.querySelectorAll("[data-filter]");
 const routeMapOverview = document.querySelector("#routeMapOverview");
+const routeMapBoard = routeMapOverview?.closest(".route-map-board");
 const transportAuditElement = document.querySelector("#transportAudit");
 const transferList = document.querySelector("#transferList");
 const busTransferList = document.querySelector("#busTransferList");
@@ -6226,6 +6462,7 @@ let realRouteMapInstance = null;
 const expandedIds = new Set();
 let activeFilter = "all";
 let activeTokyoOptionFilter = "strong";
+let activeHotelFilter = "recommended";
 const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
 let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
@@ -6502,8 +6739,172 @@ function renderDestinationGuides(plan) {
   `;
 }
 
+const hotelFilterLabels = [
+  ["recommended", "我会选"],
+  ["view", "景观"],
+  ["quiet", "安静"],
+  ["transit", "交通"],
+  ["space", "空间"],
+  ["all", "全部"]
+];
+
+const hotelFlagLabels = {
+  recommended: "我会选",
+  view: "有景观",
+  quiet: "安静",
+  transit: "交通方便",
+  space: "空间更好"
+};
+
+const hotelGroupMeta = {
+  top: ["Top Picks", "研究排名前12"],
+  backup: ["Best Backups", "7个可靠备份"],
+  pool: ["扩展比较池", "16个补充候选"]
+};
+
+function matchesHotelFilter(item) {
+  return activeHotelFilter === "all" || item.flags.includes(activeHotelFilter);
+}
+
+function renderHotelFilters() {
+  return `
+    <div class="hotel-filters" role="group" aria-label="酒店推荐筛选">
+      ${hotelFilterLabels.map(([value, label]) => `
+        <button
+          type="button"
+          class="hotel-filter${activeHotelFilter === value ? " is-active" : ""}"
+          data-hotel-filter="${escapeHtml(value)}"
+          aria-pressed="${activeHotelFilter === value}"
+        >${escapeHtml(label)}</button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function hotelRankLabel(item) {
+  if (item.group === "top") return `#${item.rank}`;
+  if (item.group === "backup") return `B${item.rank}`;
+  return `P${item.rank}`;
+}
+
+function renderHotelRow(item) {
+  const reviewText = item.rating
+    ? `${item.rating}分${item.reviews ? ` · ${item.reviews}条评价` : ""}`
+    : "评分待复核";
+  const visibleFlags = item.flags.filter((flag) => flag !== "recommended").slice(0, 3);
+
+  return `
+    <details class="hotel-row" data-hotel-group="${escapeHtml(item.group)}" data-hotel-rank="${escapeHtml(item.rank)}">
+      <summary>
+        <span class="hotel-rank">${escapeHtml(hotelRankLabel(item))}</span>
+        <span class="hotel-row-copy">
+          <strong>${escapeHtml(item.title)}</strong>
+          <small>${escapeHtml(item.area)} · ${escapeHtml(reviewText)} · ${escapeHtml(item.fit)}</small>
+        </span>
+        <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-row-body">
+        <p>${escapeHtml(item.reason)}</p>
+        <div class="hotel-row-tags">
+          <span>${escapeHtml(item.area)}</span>
+          <span>${escapeHtml(item.fit)}</span>
+          ${visibleFlags.map((flag) => `<span>${escapeHtml(hotelFlagLabels[flag])}</span>`).join("")}
+        </div>
+        <a href="${item.url}" target="_blank" rel="noreferrer" aria-label="在Airbnb查看${escapeHtml(item.title)}">
+          ${icon("link")}
+          <span>在 Airbnb 查看</span>
+        </a>
+      </div>
+    </details>
+  `;
+}
+
+function renderHotelGroup(group, id) {
+  const [title, subtitle] = hotelGroupMeta[group];
+  const items = hotelListings.filter((item) => item.group === group && matchesHotelFilter(item));
+  const shouldOpen = group === "top" || activeHotelFilter !== "all";
+
+  return `
+    <details class="hotel-group" id="${escapeHtml(id)}"${shouldOpen ? " open" : ""}>
+      <summary class="hotel-group-summary">
+        <span>
+          <strong>${escapeHtml(title)}</strong>
+          <small>${escapeHtml(subtitle)} · 当前${items.length}个</small>
+        </span>
+        <span class="hotel-group-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-list">
+        ${items.length ? items.map(renderHotelRow).join("") : `<p class="hotel-empty">当前筛选在这一组没有候选。</p>`}
+      </div>
+    </details>
+  `;
+}
+
+function renderHotelPanel() {
+  const visibleCount = hotelListings.filter(matchesHotelFilter).length;
+  planPanel.setAttribute("aria-labelledby", "plan-tab-tokyo-hotels");
+  planPanel.innerHTML = `
+    <article class="hotel-detail">
+      <header class="plan-detail-head" id="hotel-overview">
+        <span class="plan-kicker">东京住宿研究库</span>
+        <h3>酒店推荐 · 2人 / 1000 CNY 初筛</h3>
+        <p>不把房源数量当答案。先看综合首选、景观和安静程度，再按真实日期核对含税总价。</p>
+      </header>
+
+      <dl class="plan-stats">
+        <div><dt>Top Picks</dt><dd>12个</dd></div>
+        <div><dt>完整候选</dt><dd>35个</dd></div>
+        <div><dt>预算口径</dt><dd>每晚1000内</dd></div>
+      </dl>
+
+      <section class="plan-section hotel-verdict" id="hotel-verdict">
+        <div class="plan-section-title">
+          ${icon("star")}
+          <div><h4>先看结论</h4><p>三种最值得直接进入最终核价的方向</p></div>
+        </div>
+        <div class="hotel-verdict-list">
+          <button type="button" data-hotel-open-rank="1"><span>#1</span><strong>综合最稳</strong><small>涩谷站3分钟 · 安静 · 双阳台</small></button>
+          <button type="button" data-hotel-open-rank="2"><span>#2</span><strong>景观最好</strong><small>东京塔景 · 43㎡ · 港区</small></button>
+          <button type="button" data-hotel-open-rank="4"><span>#4</span><strong>睡眠优先</strong><small>新宿住宅区 · 车站5分钟</small></button>
+        </div>
+      </section>
+
+      <section class="plan-section hotel-filter-section" id="hotel-filter">
+        <div class="plan-section-title">
+          ${icon("search")}
+          <div><h4>按偏好筛选</h4><p>当前显示${visibleCount}个 · 默认是我会选的6个</p></div>
+        </div>
+        ${renderHotelFilters()}
+      </section>
+
+      <section class="hotel-results" id="hotel-results" aria-label="酒店推荐列表">
+        ${renderHotelGroup("top", "hotel-top")}
+        <div id="hotel-all">
+          ${renderHotelGroup("backup", "hotel-backup")}
+          ${renderHotelGroup("pool", "hotel-pool")}
+        </div>
+      </section>
+
+      <section class="plan-section plan-final-advice hotel-budget" id="hotel-budget">
+        <div>
+          <span>最终核价</span>
+          <p>1000 CNY是初筛上限，不是已锁定房价。打开Airbnb、输入入住日期和2位住客，再比较含清洁费、服务费与税后的总价。</p>
+        </div>
+        <div class="is-cut">
+          <span>别只看评分</span>
+          <p>评价量、夜间安静、步行到站、床型和取消规则，比0.1分的评分差更影响真实入住体验。</p>
+        </div>
+      </section>
+    </article>
+  `;
+}
+
 function renderPlanningPanel() {
   if (!planPanel) return;
+  if (activePlanId === "tokyo-hotels") {
+    renderHotelPanel();
+    return;
+  }
   const plan = planningCollections.find((item) => item.id === activePlanId) || planningCollections[0];
   planPanel.setAttribute("aria-labelledby", `plan-tab-${plan.id}`);
   planPanel.innerHTML = `
@@ -6583,21 +6984,32 @@ function renderPlanningPanel() {
 
 function renderBottomNav() {
   if (!bottomNav) return;
-  const items = activePlanId === "tokyo-loop"
-    ? [
+  let items;
+  if (activePlanId === "tokyo-hotels") {
+    items = [
+      ["hotel-overview", "home", "酒店"],
+      ["hotel-verdict", "star", "首选"],
+      ["hotel-filter", "search", "筛选"],
+      ["hotel-results", "list", "候选"],
+      ["hotel-budget", "check", "核价"]
+    ];
+  } else if (activePlanId === "tokyo-loop") {
+    items = [
         ["planning", "calendar", "规划"],
         ["plan-destinations", "pin", "目的地"],
         ["route-map-title", "compass", "地图"],
         ["plan-transport", "route", "交通"],
         ["plan-decisions", "check", "取舍"]
-      ]
-    : [
-        ["planning", "calendar", "规划"],
-        ["outline", "list", "大纲"],
-        ["route-map-title", "compass", "地图"],
-        ["transport-title", "route", "交通"],
-        ["optimization-title", "check", "取舍"]
       ];
+  } else {
+    items = [
+      ["planning", "calendar", "规划"],
+      ["outline", "list", "大纲"],
+      ["route-map-title", "compass", "地图"],
+      ["transport-title", "route", "交通"],
+      ["optimization-title", "check", "取舍"]
+    ];
+  }
 
   bottomNav.innerHTML = items
     .map(
@@ -6613,11 +7025,18 @@ function renderBottomNav() {
 
 function syncThemeUI() {
   const showHokkaido = activePlanId === "hokkaido-main";
+  const showRouteMap = activePlanId !== "tokyo-hotels";
   hokkaidoThemeSections.forEach((section) => {
     section.hidden = !showHokkaido;
   });
+  if (routeMapBoard) routeMapBoard.hidden = !showRouteMap;
   renderBottomNav();
-  renderRouteMapOverview();
+  if (showRouteMap) {
+    renderRouteMapOverview();
+  } else if (realRouteMapInstance) {
+    realRouteMapInstance.remove();
+    realRouteMapInstance = null;
+  }
 }
 
 function selectPlanning(planId, updateUrl = true) {
@@ -7304,6 +7723,27 @@ document.addEventListener("click", (event) => {
       if (active) item.setAttribute("aria-current", "location");
       else item.removeAttribute("aria-current");
     });
+  }
+
+  const hotelFilterButton = event.target.closest("[data-hotel-filter]");
+  if (hotelFilterButton) {
+    activeHotelFilter = hotelFilterButton.dataset.hotelFilter || "recommended";
+    renderHotelPanel();
+    return;
+  }
+
+  const hotelPickButton = event.target.closest("[data-hotel-open-rank]");
+  if (hotelPickButton) {
+    activeHotelFilter = "recommended";
+    renderHotelPanel();
+    requestAnimationFrame(() => {
+      const row = document.querySelector(`[data-hotel-group="top"][data-hotel-rank="${hotelPickButton.dataset.hotelOpenRank}"]`);
+      if (row instanceof HTMLDetailsElement) {
+        row.open = true;
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    return;
   }
 
   const planButton = event.target.closest("[data-plan-id]");
