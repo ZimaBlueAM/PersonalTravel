@@ -1055,10 +1055,93 @@ const hotelRecommendationTab = {
 
 const karuizawaAirbnbTab = {
   id: "karuizawa-airbnb",
-  label: "轻井泽 Airbnb",
+  label: "轻井泽/长野住宿",
   icon: "home",
   kind: "lodging"
 };
+
+const karuizawaHotelListings = [
+  {
+    rank: 1, slug: "grandvert", area: "轻井泽站北口", access: "步行3分钟", fit: "轻井泽综合首选",
+    title: "Hotel Grand Vert 旧轻井泽", url: "https://www.grandvert-kyukaruizawa.jp/",
+    image: "assets/karuizawa-hotels/grandvert.jpg",
+    reason: "离新干线站非常近，同时有书墙与真正的壁炉氛围，比普通站前商务酒店更接近你们想要的森林度假感。",
+    advantages: ["拖行李步行即可，不依赖末班公交", "站前吃饭、便利店、Outlet与租自行车都方便", "公共空间有书和壁炉，雨天也不只是困在房间"],
+    caution: "不是温泉度假村；三连休房价可能明显高于平日，先比较房型面积和是否含早餐。"
+  },
+  {
+    rank: 2, slug: "rosso", area: "轻井泽站北口", access: "步行5分钟", fit: "最省脑力",
+    title: "Hotel Rosso Karuizawa", url: "https://www.hotel-rosso.jp/lg_en/",
+    image: "assets/karuizawa-hotels/rosso.jpg",
+    reason: "位置明确、进出简单，是只有两晚时最不容易被交通拖累的实用方案。",
+    advantages: ["官方明确轻井泽站北口步行5分钟", "可把行李放下后再去旧轻井泽或星野区", "晚饭后不必卡公交或叫远程出租车"],
+    caution: "酒店感偏实用，森林与温泉体验弱；要确认房型窗景、面积和早餐时间。"
+  },
+  {
+    rank: 3, slug: "twin-line", area: "轻井泽本通", access: "步行7分钟 / 500米", fit: "情侣设计感",
+    title: "TWIN-LINE HOTEL KARUIZAWA", url: "https://twin-line-hotel.com/",
+    image: "assets/karuizawa-hotels/twin-line.jpg",
+    reason: "51间客房的小型设计酒店，餐厅、酒吧和步行位置都适合两个人短住。",
+    advantages: ["官方明确车站步行7分钟", "去旧轻井泽方向比南口大型度假村顺", "不想晚间再移动时，酒店内餐饮是实用加分"],
+    caution: "设计型酒店常见房间偏紧凑；确认床宽、浴室形式和是否面向道路。"
+  },
+  {
+    rank: 4, slug: "apa", area: "轻井泽站北口", access: "步行2分钟", fit: "位置第一",
+    title: "APA Hotel 轻井泽站前", url: "https://www3.apahotel.com/gd/hotel/koshinetsu/nagano/karuizawa-ekimae/",
+    image: "assets/karuizawa-hotels/apa.jpg",
+    reason: "如果三连休只剩昂贵房，它是最该先查的站前保底：位置几乎不会出错。",
+    advantages: ["官方明确北口步行2分钟", "早到晚走、拖箱和下雨都最省力", "回东京时不需要预留接驳缓冲"],
+    caution: "典型商务酒店，房间可能较小、楼龄与隔音感受不如度假酒店；别为站前位置支付过高溢价。"
+  },
+  {
+    rank: 5, slug: "prince-east", area: "轻井泽站南口度假区", access: "固定免费接驳约10分钟", fit: "无车森林度假",
+    title: "轻井泽王子大饭店 East", url: "https://www.princehotels.com/karuizawa-east/",
+    image: "assets/karuizawa-hotels/prince-east.jpg",
+    reason: "这是不用自己开车，又能获得林地、SPA与度假区氛围的成熟方案。",
+    advantages: ["官方提供车站南口接驳", "林地、SPA、餐饮与活动集中在酒店体系内", "两晚可以把一天完全留在度假区"],
+    caution: "价格通常高，园区很大、内部仍需走路或等循环车；订前核接驳末班和房间距主楼距离。"
+  },
+  {
+    rank: 6, slug: "prince-west", area: "轻井泽站南口度假区", access: "固定免费循环接驳", fit: "温泉与设施",
+    title: "轻井泽王子大饭店 West", url: "https://www.princehotels.com/karuizawa-west/",
+    image: "assets/karuizawa-hotels/prince-west.jpg",
+    reason: "温泉、露天浴场和大型度假区设施完整，适合不自驾但想把酒店本身当行程。",
+    advantages: ["2026年官方接驳覆盖车站与各馆", "温泉、桑拿、餐饮和购物区集中", "坏天气时仍有可做的事"],
+    caution: "大型团客感更强，房间到温泉或餐厅可能很远；部分设施另收费，务必看房型所在建筑。"
+  },
+  {
+    rank: 7, slug: "hotel1130", area: "北轻井泽", access: "预约制固定接驳40分钟", fit: "不自驾进山条件项",
+    title: "Hotel Karuizawa 1130", url: "https://www.karuizawaclub.co.jp/hotel1130/en/",
+    image: "assets/karuizawa-hotels/hotel1130.jpg",
+    reason: "这是北轻井泽少数能用酒店固定接驳实现的山地度假，不需要自己开车。",
+    advantages: ["官方每日接驳轻井泽站，车程约40分钟", "海拔1130米、天然温泉与室内设施完整", "比临时公交去私人木屋可靠"],
+    caution: "去程仅10:30、14:30、16:40等固定班次，须前一日18:00前预约；住进去后基本不要再往返镇内。"
+  },
+  {
+    rank: 8, slug: "metropolitan-nagano", area: "长野站", access: "站楼直结", fit: "长野换乘首选",
+    title: "Hotel Metropolitan Nagano", url: "https://nagano.hotel-metropolitan.com/",
+    image: "assets/karuizawa-hotels/metropolitan-nagano.jpg",
+    reason: "新干线到站即入住，是从东京往返、去善光寺、户隐巴士或小布施私铁最稳的总枢纽。",
+    advantages: ["与JR长野站建筑直接相连", "大件行李、下雨和早晚班车最轻松", "去户隐的巴士与长野电铁都从站区出发"],
+    caution: "城市酒店而非森林住宿；想要自然感，需要把白天留给户隐或饭纲。"
+  },
+  {
+    rank: 9, slug: "tokyu-rei-nagano", area: "长野站善光寺口", access: "步行1分钟 / 地下道直结", fit: "交通性价比",
+    title: "Nagano Tokyu REI Hotel", url: "https://www.tokyuhotels.co.jp/zh-CHS/nagano-r/index.html",
+    image: "assets/karuizawa-hotels/tokyu-rei-nagano.jpg",
+    reason: "位置与Metropolitan几乎同等级，通常更偏实用，适合把预算留给吃饭和一日游。",
+    advantages: ["官方明确长野站步行1分钟、地下通道直结", "信州早餐与周边餐饮方便", "去新干线、公交和长野电铁都不绕"],
+    caution: "公共空间和度假感弱于轻井泽酒店；确认双人房面积，不要误订偏小的单人房型。"
+  },
+  {
+    rank: 10, slug: "dormy-nagano", area: "长野站善光寺口", access: "步行1-3分钟", fit: "温泉恢复",
+    title: "Dormy Inn Nagano", url: "https://dormy-hotels.com/dormyinn/hotels/nagano/",
+    image: "assets/karuizawa-hotels/dormy-nagano.jpg",
+    reason: "站前加天然温泉大浴场，对连续走路两天的人比纯商务酒店更舒服。",
+    advantages: ["官方页面标注长野站善光寺口步行1分钟", "顶层天然温泉、露天风吕与桑拿", "夜间拉面和大浴场让酒店本身有恢复价值"],
+    caution: "热门周末容易涨价或售罄；房间仍是商务酒店尺度，温泉高峰时段可能拥挤。"
+  }
+];
 
 const hotelListings = [
   {
@@ -1286,6 +1369,169 @@ const hotelListings = [
 ];
 
 const karuizawaAirbnbListings = [
+  {
+    group: "transit", rank: 1, area: "长野市 / 桐原", fit: "无车综合首选", rating: "4.98", reviews: 137, price: "¥4,588 / 2晚",
+    title: "KIRISIMIZU · 百年町屋 / 现代厨房卫浴",
+    url: "https://www.airbnb.com/rooms/41386625?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["recommended", "no-car", "nagano", "heritage"], accessLevel: "walk",
+    access: "东京坐北陆新干线到长野；桐原站到长野站约15分钟，房源附近便利店约7分钟步行、超市约15分钟。",
+    reason: "它不是深山木屋，但用铁路就能抵达，传统入母屋结构、榻榻米与现代厨房卫浴兼得。对于只有2晚的人，这是把体验感和可执行性放在一起的最稳选择。",
+    advantages: ["4.98分、137条评价，清洁与准确度公开评分均为5.0", "整栋独享、厨房和工作区完整，雨天也能舒服停留", "长野市区、善光寺、户隐与小布施都能作为后续选项"],
+    caution: "7人房对两个人空间偏大；页面精确日期搜索价为抓取时总价，税费与取消政策仍以结算页为准。"
+  },
+  {
+    group: "transit", rank: 2, area: "小布施", fit: "情侣设计首选", rating: "4.94", reviews: 51, price: "¥3,998 / 2晚",
+    title: "Kura Stay · 果园藏屋 / 圆形浴缸",
+    url: "https://www.airbnb.com/rooms/1035154262252671204?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["recommended", "no-car", "nagano", "under4k", "heritage"], accessLevel: "walk",
+    access: "东京到长野后换长野电铁前往小布施方向；房源称到小布施核心约15分钟步行或一小段电车，最后一段无需租车。",
+    reason: "一晚仅接一组客人，楼上两张大床与投影、楼下圆形浴缸，空间尺度很适合情侣。果园晨间与采摘体验让住宿本身就有内容。",
+    advantages: ["4.94分、51条评价，清洁度5.0", "山景、花园景、空调和独立卫浴完整", "小布施咖啡、栗子甜品、酒藏与美术馆适合慢走一天"],
+    caution: "不是森林木屋；帐篷桑拿等体验另收费，果园项目需预约且受季节与天气影响。"
+  },
+  {
+    group: "transit", rank: 3, area: "黑姬 / 信浓町", fit: "无车木屋首选", rating: "4.67", reviews: 15, price: "¥2,087 / 2晚",
+    title: "Kurohime Owl · 黑姬站3分钟木屋",
+    url: "https://www.airbnb.com/rooms/1574973422503444542?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["recommended", "no-car", "nagano", "under4k", "cabin", "forest"], accessLevel: "walk",
+    access: "东京坐北陆新干线到长野，再换北信浓线到黑姬；房源标注从黑姬站步行约3分钟。",
+    reason: "目前精确日期结果里，少数真正同时满足木质空间、群山环境和铁路步行可达的房源。两晚不必把时间浪费在取车还车。",
+    advantages: ["¥2,087两晚，当前候选里价格很有优势", "木屋、山景与车站步行同时成立", "长野站接入简单，回东京时仍是一条铁路主线"],
+    caution: "4.67分、15条评价，可靠性弱于前两名；页面标注共享浴室，预订前必须确认是否会与他人共用空间。"
+  },
+  {
+    group: "transit", rank: 4, area: "轻井泽镇内", fit: "不租车保底", rating: "新房源", reviews: 0, price: "¥3,621 / 2晚",
+    title: "Karuizawa Economy Double · 镇内双人房",
+    url: "https://www.airbnb.com/rooms/1635406709641605849?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["no-car", "karuizawa", "under4k"], accessLevel: "taxi",
+    access: "房源位于轻井泽镇内；先向房东确认最近车站与步行时间，若不是步行范围，只需安排一次短途出租。",
+    reason: "它没有木屋氛围，但能让你们保留轻井泽本身，不必为了森林照片被迫租车。适合把白天留给旧轻井泽、云场池与星野区。",
+    advantages: ["双人床与独立卫浴，空间不会为大团体付费", "精确日期搜索仍返回，可作为轻井泽镇内保底", "不需要承担北轻井泽夜间山路"],
+    caution: "新房源暂无公开评价；下单前确认具体地址、空调、隔音、最近车站和取消规则。"
+  },
+  {
+    group: "transit", rank: 5, area: "小诸", fit: "预算铁路备选", rating: "5.0", reviews: 2, price: "¥1,656 / 2晚",
+    title: "Makihausu · 小诸站7分钟民宿",
+    url: "https://www.airbnb.com/rooms/1436757246292700125?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["no-car", "nagano", "under4k"], accessLevel: "walk",
+    access: "轻井泽换信浓铁道到小诸，房源标注小诸站步行约7分钟；返程可沿原线回轻井泽转新干线。",
+    reason: "价格低、铁路清楚，小诸城址与老城生活圈就在附近。适合宁愿住得朴素，也不想为2晚租车的人。",
+    advantages: ["两晚约¥1,656，是当前最省钱的可执行项", "车站步行明确，周边吃饭比深山房容易", "房东已有9年接待经验"],
+    caution: "这是寄宿式房间，不是整栋；浴室、洗手间可能共享，评价仅2条，入住时间也较窄（17:00-19:00）。"
+  },
+  {
+    group: "forest", rank: 6, area: "北轻井泽 / 嬬恋", fit: "森林舒适首选", rating: "5.0", reviews: 6, price: "¥6,251 / 2晚",
+    title: "Forrest Villa · 松林木宅 / 桑拿 / 篝火",
+    url: "https://www.airbnb.com/rooms/818441565175375959?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "cabin", "forest"], accessLevel: "car",
+    access: "位于嬬恋松林，超市约15分钟车程；从轻井泽站取车、先补给再入住，别把免费自行车当成对外交通。",
+    reason: "高松林中的完整木宅，三卧、桑拿、工作区与室内舒适度都好，是当前可订房里最像真正森林度假的一套。",
+    advantages: ["5.0分、6条评价，房东为Superhost且回复快", "桑拿、厨房、Wi-Fi和停车完整", "附近可散步骑行，住进去后可以一整天不赶景点"],
+    caution: "两晚价格最高之一，评价样本仍少；15:00-20:00入住，必须提前完成租车和采购。"
+  },
+  {
+    group: "forest", rank: 7, area: "北轻井泽 / 嬬恋", fit: "两晚性价比", rating: "新房源", reviews: 0, price: "¥3,939 / 2晚",
+    title: "Forest Cafe & Villa · 披萨 / BBQ / 电影",
+    url: "https://www.airbnb.com/rooms/1626585774713146403?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "under4k", "cabin", "forest"], accessLevel: "car",
+    access: "嬬恋森林区房源，按自驾方案处理；轻井泽站取车后先买两晚早餐、饮料和简单食材。",
+    reason: "价格比同周末多数独栋低，披萨制作、BBQ和投影让雨天也不至于无聊，适合把住宿本身当主要活动。",
+    advantages: ["两晚约¥3,939，卡在4千以内", "两卧室、完整独栋，情侣住不会像大型团建屋那样空", "有明确的室内娱乐与做饭主题"],
+    caution: "新房源无评分；预订前确认具体收费项目、厨房耗材、最近超市与夜间道路。"
+  },
+  {
+    group: "forest", rank: 8, area: "北轻井泽 / 嬬恋", fit: "生活设施最全", rating: "4.83", reviews: 6, price: "¥4,536 / 2晚",
+    title: "107㎡ Forest Home · 地暖 / 全天候BBQ",
+    url: "https://www.airbnb.com/rooms/863454537702754655?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "cabin", "forest"], accessLevel: "car",
+    access: "北轻井泽浅间高原，官方描述以车程标注周边；自驾入住，停车2辆，日落前抵达。",
+    reason: "107㎡独栋、完整厨房、空调、地暖、影音和全天候BBQ都齐，对临时订房而言比极简木屋更不容易踩生活设施的坑。",
+    advantages: ["厨房设备、咖啡茶、Wi-Fi与影音很完整", "一日一组，清洁度公开评分5.0", "雨天仍能在屋内做饭、看电影和休息"],
+    caution: "最多9人的大房，两个人性价比一般；评价仅6条，位置和价值评分约4.7。"
+  },
+  {
+    group: "forest", rank: 9, area: "北轻井泽 / 长野原", fit: "安静小宅", rating: "5.0", reviews: 4, price: "¥4,594 / 2晚",
+    title: "Yuyuso · 65㎡山间小宅",
+    url: "https://www.airbnb.com/rooms/1076516130373851764?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "cabin", "forest"], accessLevel: "car",
+    access: "长野原山间，便利店约10分钟车程；夜间无路灯，必须自驾并在天黑前到。",
+    reason: "269㎡地块上的65㎡两卧小宅，比十几人团体别墅更接近两个人安静住两晚的尺度。",
+    advantages: ["4条评价均为5分，清洁与沟通公开评分5.0", "有浴缸和停车位，户外安静", "桌游可借，适合晚上留在屋里"],
+    caution: "设施列表只有7项，准确度评分4.0，房东整体评分4.38；下单前确认厨房、Wi-Fi、空调和热水。"
+  },
+  {
+    group: "forest", rank: 10, area: "北轻井泽 / 嬬恋", fit: "浅间山景", rating: "4.6", reviews: 5, price: "¥4,918 / 2晚",
+    title: "Forest Fire Pit · 27㎡土屋 / 浅间山浴缸",
+    url: "https://www.airbnb.com/rooms/1135408909234930135?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "cabin", "forest"], accessLevel: "car",
+    access: "在浅间高原酒店前台办理入住，15:00-17:00时段很窄；自驾才能可靠完成。",
+    reason: "40,000㎡森林生境、浅间山大窗、浴缸和屋顶观星平台都很有记忆点，27㎡也适合情侣。",
+    advantages: ["篝火套装已包含基础柴火", "有空调、浴缸和两张双人床", "住宿视觉独特，不是普通大别墅"],
+    caution: "无厨房，BBQ、帐篷桑拿、木炉等多项另收费；5条评价仅4.6分，且需自行清洗部分设备。"
+  },
+  {
+    group: "forest", rank: 11, area: "北轻井泽 / 嬬恋", fit: "半露天浴缸", rating: "4.68", reviews: 41, price: "¥5,170 / 2晚",
+    title: "Forest Villa NO9 · 货柜小屋 / 猫脚浴缸",
+    url: "https://www.airbnb.com/rooms/916302269602289675?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "cabin", "forest"], accessLevel: "car",
+    access: "在浅间高原酒店办理入住，附近便利店约6分钟车程；自驾并在17:00前到达。",
+    reason: "猫脚泡泡浴缸、带顶木平台和货柜小屋造型明确，两个人住的空间不浪费。",
+    advantages: ["41条评价，比多数临时可订木屋样本更深", "空调、Wi-Fi和浴缸齐全", "有雨棚的木平台可应对阵雨"],
+    caution: "没有完整厨房，也没有烟雾和一氧化碳报警器；BBQ、篝火、木炉和宠物均另收费，退房清洁要求较多。"
+  },
+  {
+    group: "forest", rank: 12, area: "北轻井泽 / 嬬恋", fit: "轻量Glamping", rating: "新房源", reviews: 0, price: "¥3,725 / 2晚",
+    title: "Forest Dome · 森林摩天轮下Glamping",
+    url: "https://www.airbnb.com/rooms/1613339157530929423?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["car", "karuizawa", "under4k", "forest"], accessLevel: "car",
+    access: "位于嬬恋度假区，按自驾入住；不要假设园区班车能覆盖轻井泽站。",
+    reason: "在独栋普遍超过4千的周末，它提供较低门槛的森林住宿和两人尺度，不用为十几人别墅买单。",
+    advantages: ["两晚约¥3,725", "一卧两床、独立卫浴", "圆顶空间适合短住和拍照"],
+    caution: "新房源无评价；隔音、空调、卫浴距离、雨天动线和餐食必须在下单前逐项确认。"
+  },
+  {
+    group: "character", rank: 13, area: "佐久穗", fit: "离网体验", rating: "4.95", reviews: 607, price: "¥2,133 / 2晚",
+    title: "Sanson Terrace · 离网微型木屋",
+    url: "https://www.airbnb.com/rooms/2207040?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["nagano", "under4k", "car", "cabin", "forest"], accessLevel: "car",
+    access: "在佐久穗山村，房东明确从轻井泽到房源超过1.5小时；只适合把目的地改成佐久穗并自驾，不适合轻井泽顺便住。",
+    reason: "607条评价、森林吊床、木炉、太阳能与手作小屋非常独特，是真正的离网生活体验。",
+    advantages: ["4.95分、607条评价，成熟度极高", "两晚约¥2,133，体验价值突出", "免费电助力车、山景与森林散步"],
+    caution: "没有浴室、没有自来水和常规供电，厕所非冲水式；最近洗澡点在1.5公里外，不舒服就不要为照片硬选。"
+  },
+  {
+    group: "character", rank: 14, area: "长野市郊 / 虫仓山", fit: "古民家共住", rating: "5.0", reviews: 104, price: "¥2,886 / 2晚",
+    title: "Kominka Amane · 江户古民家 / 五右卫门浴",
+    url: "https://www.airbnb.com/rooms/895364181142926329?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["nagano", "under4k", "heritage", "forest", "car"], accessLevel: "car",
+    access: "长野市山村；房东明确周末公交自2025年起大幅减班，自驾最稳，公共交通只在核实当日往返班次后使用。",
+    reason: "Top 1%、5.0分104条评价，早餐、五右卫门浴、劈柴和乡村生活都由房东参与，是住宿体验而不是普通租房。",
+    advantages: ["早餐包含，晚餐可提前预约", "历史木结构与山村景观真实", "评价里房东款待、浴室与景观信号很强"],
+    caution: "与房东共住、浴室共享、房内无锁；没有空调且会有昆虫和室内犬，想要绝对私密就不要选。"
+  },
+  {
+    group: "character", rank: 15, area: "户隐", fit: "山居整栋", rating: "4.95", reviews: 21, price: "¥2,850 / 2晚",
+    title: "Togakushi no Ie · 户隐山居整栋",
+    url: "https://www.airbnb.com/rooms/38438942?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["nagano", "under4k", "car", "forest"], accessLevel: "car",
+    access: "先到长野站，再自驾进入户隐最稳；虽有长野站到户隐的官方巴士，但房源不保证从站点步行可达。",
+    reason: "2019年新建整栋、星空、户隐荞麦与神社山林都很对题，且价格比北轻井泽多数独栋低。",
+    advantages: ["4.95分、21条评价，清洁度5.0", "完整厨房、Wi-Fi、停车和较晚入住", "两晚约¥2,850，适合把户隐本身设为目的地"],
+    caution: "附近几乎无法补给，先买食物；只接受有一定Airbnb好评记录的客人，且公开提示可能遇到危险野生动物。"
+  },
+  {
+    group: "character", rank: 16, area: "饭纲高原 / 长野市郊", fit: "古民家桑拿", rating: "4.88", reviews: 24, price: "¥4,058 / 2晚",
+    title: "Log Iizuna · 百年古民家 / 桧木桑拿",
+    url: "https://www.airbnb.com/rooms/1129928008105508292?check_in=2026-07-18&check_out=2026-07-20&guests=2&adults=2&currency=CNY",
+    flags: ["nagano", "car", "heritage", "forest"], accessLevel: "car",
+    access: "长野市区约30分钟车程，饭纲高原约10分钟；无超市和便利店，取车后先采购再进山。",
+    reason: "900米海拔、百年古民家、室内桧木桑拿、溪流与有顶BBQ区，住宿本身足够撑起两天。",
+    advantages: ["高速Wi-Fi、厨房、庭院和桑拿齐全", "24条评价、房东Superhost且回复快", "离饭纲和户隐活动区更近"],
+    caution: "最多12人、14张床，对两个人严重过大；位置与价值评分只有4.2和4.5，必须接受自驾与补给成本。"
+  }
+];
+
+const karuizawaLegacyListings = [
   {
     group: "balanced", rank: 1, area: "轻井泽森林别墅区", fit: "森林首选", rating: "4.94", reviews: 99,
     title: "Riverside House · 河畔森林别墅 / 桑拿 / 壁炉",
@@ -6594,7 +6840,7 @@ const expandedIds = new Set();
 let activeFilter = "all";
 let activeTokyoOptionFilter = "strong";
 let activeHotelFilter = "recommended";
-let activeKaruizawaFilter = "recommended";
+let activeKaruizawaFilter = "no-car";
 const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
 let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
@@ -7048,10 +7294,10 @@ function renderHotelPanel() {
 const karuizawaFilterLabels = [
   ["recommended", "我会选"],
   ["no-car", "无车可行"],
-  ["cabin", "木屋"],
-  ["forest", "森林感"],
-  ["sauna", "桑拿/木炉"],
-  ["car", "租车限定"],
+  ["karuizawa", "轻井泽圈"],
+  ["nagano", "长野县"],
+  ["under4k", "两晚4千内"],
+  ["car", "无车不推荐"],
   ["all", "全部"]
 ];
 
@@ -7061,23 +7307,31 @@ const karuizawaFlagLabels = {
   cabin: "木屋感",
   forest: "森林感",
   sauna: "桑拿/木炉",
-  car: "建议租车"
+  car: "无车不推荐",
+  karuizawa: "轻井泽圈",
+  nagano: "长野县",
+  under4k: "两晚4千内",
+  heritage: "传统建筑"
 };
 
 const karuizawaAccessMeta = {
   walk: ["步行可达", "到站后可步行完成"],
   taxi: ["出租车可行", "提前约一次末端接驳"],
-  car: ["建议租车", "不要依赖临时公交或反复打车"]
+  car: ["无车不推荐", "没有酒店固定接驳就不要选"]
 };
 
 const karuizawaGroupMeta = {
-  balanced: ["两人优先", "交通与森林感最平衡的5套"],
-  immersive: ["森林沉浸", "愿意多做一次接驳的3套"],
-  drive: ["租车后才成立", "木屋感更强但末端交通更重的4套"]
+  transit: ["铁路友好", "不租车也能执行的5套"],
+  forest: ["北轻井泽远山", "7套均不适合本次无车行程"],
+  character: ["长野远山体验", "4套有明显交通或住宿门槛"]
 };
 
 function matchesKaruizawaFilter(item) {
-  return activeKaruizawaFilter === "all" || item.flags.includes(activeKaruizawaFilter);
+  if (activeKaruizawaFilter === "all") return true;
+  if (["karuizawa", "nagano", "under4k"].includes(activeKaruizawaFilter)) {
+    return item.flags.includes("no-car") && item.flags.includes(activeKaruizawaFilter);
+  }
+  return item.flags.includes(activeKaruizawaFilter);
 }
 
 function renderKaruizawaFilters() {
@@ -7087,6 +7341,45 @@ function renderKaruizawaFilters() {
         <button type="button" class="hotel-filter${activeKaruizawaFilter === value ? " is-active" : ""}" data-karuizawa-filter="${escapeHtml(value)}" aria-pressed="${activeKaruizawaFilter === value}">${escapeHtml(label)}</button>
       `).join("")}
     </div>
+  `;
+}
+
+function renderKaruizawaHotelRow(item) {
+  return `
+    <details class="hotel-row karuizawa-hotel-row" data-karuizawa-hotel-rank="${escapeHtml(item.rank)}">
+      <summary>
+        <span class="hotel-image">
+          <span class="hotel-image-fallback" aria-hidden="true">${icon("home")}</span>
+          <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)} 酒店图片" width="720" height="480" loading="lazy" decoding="async">
+          <span class="hotel-rank">H${escapeHtml(item.rank)}</span>
+        </span>
+        <span class="hotel-row-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.area)} · ${escapeHtml(item.access)}</small></span>
+        <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-row-body">
+        <figure class="hotel-row-hero">
+          <img src="${escapeHtml(item.image)}" alt="" width="720" height="480" loading="lazy" decoding="async">
+          <figcaption>酒店官方公开图片 · 7月18-20日房价需在预订页即时确认</figcaption>
+        </figure>
+        <div class="karuizawa-access is-walk"><span>${escapeHtml(item.access)}</span><strong>${escapeHtml(item.fit)}</strong></div>
+        <section class="karuizawa-copy-block"><h5>为什么入选</h5><p>${escapeHtml(item.reason)}</p></section>
+        <section class="karuizawa-copy-block"><h5>主要优点</h5><ul>${item.advantages.map((advantage) => `<li>${escapeHtml(advantage)}</li>`).join("")}</ul></section>
+        <p class="karuizawa-caution"><strong>缺点：</strong>${escapeHtml(item.caution)}</p>
+        <a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer" aria-label="打开${escapeHtml(item.title)}官网">${icon("link")}<span>打开官网查 7/18-20</span></a>
+      </div>
+    </details>
+  `;
+}
+
+function renderKaruizawaHotels() {
+  return `
+    <details class="hotel-group karuizawa-hotel-group" id="karuizawa-hotels" open>
+      <summary class="hotel-group-summary">
+        <span><strong>酒店 · 交通优先</strong><small>7家轻井泽 + 3家长野站 · 全部无需自驾</small></span>
+        <span class="hotel-group-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-list">${karuizawaHotelListings.map(renderKaruizawaHotelRow).join("")}</div>
+    </details>
   `;
 }
 
@@ -7108,23 +7401,23 @@ function renderKaruizawaRow(item) {
           <img src="${escapeHtml(imagePath)}" alt="${escapeHtml(item.title)} 房源主图" width="720" height="480" loading="lazy" decoding="async">
           <span class="hotel-rank">#${escapeHtml(item.rank)}</span>
         </span>
-        <span class="hotel-row-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.area)} · ${escapeHtml(item.rating)}分 · ${escapeHtml(item.reviews)}条 · ${escapeHtml(accessLabel)}</small></span>
+        <span class="hotel-row-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.price)} · ${escapeHtml(item.area)} · ${escapeHtml(item.rating)}${item.reviews ? ` / ${escapeHtml(item.reviews)}条` : ""}</small></span>
         <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
       </summary>
       <div class="hotel-row-body">
         <figure class="hotel-row-hero">
           <img src="${escapeHtml(imagePath)}" alt="" width="720" height="480" loading="lazy" decoding="async">
-          <figcaption>Airbnb 房源公开主图 · 日期价格和房态需最终复核</figcaption>
+          <figcaption>7月18-20日精确搜索返回 · 抓取于7月12日</figcaption>
         </figure>
         <div class="karuizawa-access is-${escapeHtml(item.accessLevel)}"><span>${escapeHtml(accessLabel)}</span><strong>${escapeHtml(item.access)}</strong></div>
         <section class="karuizawa-copy-block"><h5>为什么入选</h5><p>${escapeHtml(item.reason)}</p></section>
         <section class="karuizawa-copy-block"><h5>主要优点</h5><ul>${item.advantages.map((advantage) => `<li>${escapeHtml(advantage)}</li>`).join("")}</ul></section>
         <p class="karuizawa-caution"><strong>注意：</strong>${escapeHtml(item.caution)}</p>
         <div class="hotel-row-tags">
-          <span>${escapeHtml(item.area)}</span><span>${escapeHtml(item.fit)}</span>
+          <span>${escapeHtml(item.price)}</span><span>${escapeHtml(item.fit)}</span><span>${escapeHtml(accessLabel)}</span>
           ${visibleFlags.map((flag) => `<span>${escapeHtml(karuizawaFlagLabels[flag])}</span>`).join("")}
         </div>
-        <a href="${item.url}" target="_blank" rel="noreferrer" aria-label="在Airbnb查看${escapeHtml(item.title)}">${icon("link")}<span>在 Airbnb 查看</span></a>
+        <a href="${item.url}" target="_blank" rel="noreferrer" aria-label="在Airbnb查看${escapeHtml(item.title)}">${icon("link")}<span>带日期打开 Airbnb</span></a>
       </div>
     </details>
   `;
@@ -7133,7 +7426,7 @@ function renderKaruizawaRow(item) {
 function renderKaruizawaGroup(group, id) {
   const [title, subtitle] = karuizawaGroupMeta[group];
   const items = karuizawaAirbnbListings.filter((item) => item.group === group && matchesKaruizawaFilter(item));
-  const shouldOpen = group === "balanced" || activeKaruizawaFilter !== "all";
+  const shouldOpen = group === "transit" || activeKaruizawaFilter !== "all";
 
   return `
     <details class="hotel-group" id="${escapeHtml(id)}"${shouldOpen ? " open" : ""}>
@@ -7146,52 +7439,90 @@ function renderKaruizawaGroup(group, id) {
   `;
 }
 
+function renderKaruizawaLegacy() {
+  return `
+    <details class="hotel-group karuizawa-legacy" id="karuizawa-legacy">
+      <summary class="hotel-group-summary">
+        <span><strong>改期参考 · 原榜12套</strong><small>7月18-20日精确搜索均未返回，不计入当前可订结果</small></span>
+        <span class="hotel-group-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-list">
+        ${karuizawaLegacyListings.map((item) => `
+          <a class="karuizawa-legacy-row" href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">
+            <strong>${escapeHtml(item.title)}</strong>
+            <small>${escapeHtml(item.area)} · 原评分${escapeHtml(item.rating)} · 本日期未返回</small>
+          </a>
+        `).join("")}
+      </div>
+    </details>
+  `;
+}
+
 function renderKaruizawaPanel() {
   const visibleCount = karuizawaAirbnbListings.filter(matchesKaruizawaFilter).length;
   planPanel.setAttribute("aria-labelledby", "plan-tab-karuizawa-airbnb");
   planPanel.innerHTML = `
     <article class="hotel-detail karuizawa-detail">
       <header class="plan-detail-head" id="karuizawa-overview">
-        <span class="plan-kicker">轻井泽森林住宿研究</span>
-        <h3>轻井泽 Airbnb · 木屋与森林</h3>
-        <p>不只按照片排名。先把轻井泽站、中轻井泽、御代田和北轻井泽的真实末端交通分开，再看森林感。</p>
+        <span class="plan-kicker">7月18日入住 · 7月20日退房 · 2人</span>
+        <h3>轻井泽 / 长野住宿</h3>
+        <p>不自驾版本：只把车站步行、铁路直达或酒店固定接驳算作可行。山中私人木屋不再进入主推荐。</p>
       </header>
       <dl class="plan-stats">
-        <div><dt>精选房源</dt><dd>12套</dd></div><div><dt>无车可行</dt><dd>8套</dd></div><div><dt>建议停留</dt><dd>2-3晚</dd></div>
+        <div><dt>酒店候选</dt><dd>10家</dd></div><div><dt>Airbnb无车</dt><dd>5套</dd></div><div><dt>远山排除</dt><dd>11套</dd></div>
       </dl>
 
+      <section class="karuizawa-date-alert" aria-label="日期审计结论">
+        <span>三连休房态</span>
+        <strong>7月20日是日本“海の日”法定假日</strong>
+        <p>现在剩余房源明显偏贵、偏远或新上架。价格是7月12日搜索时两晚总价；打开后仍需核税费、清洁费与取消政策。</p>
+      </section>
+
+      <section class="plan-section" id="karuizawa-hotel-guide">
+        <div class="plan-section-title">${icon("home")}<div><h4>先看酒店</h4><p>你们不自驾，酒店比临时剩下的山中Airbnb更稳</p></div></div>
+        <div class="karuizawa-hotel-verdict">
+          <strong>住轻井泽：</strong><span>先查 H1 Grand Vert、H2 Rosso、H3 TWIN-LINE。</span>
+          <strong>住长野：</strong><span>先查 H8 Metropolitan、H9 Tokyu REI、H10 Dormy Inn。</span>
+        </div>
+      </section>
+
+      <section class="hotel-results" aria-label="轻井泽和长野酒店候选">
+        ${renderKaruizawaHotels()}
+      </section>
+
       <section class="plan-section hotel-verdict" id="karuizawa-verdict">
-        <div class="plan-section-title">${icon("star")}<div><h4>我会先核这三套</h4><p>森林体验、无车可行与木屋实用性分别取第一</p></div></div>
+        <div class="plan-section-title">${icon("star")}<div><h4>Airbnb 只留无车项</h4><p>精确日期仍返回、且铁路能到的优先</p></div></div>
         <div class="hotel-verdict-list">
-          <button type="button" data-karuizawa-open-rank="1"><span>#1</span><strong>森林体验最强</strong><small>河畔 · 桑拿 · 壁炉</small></button>
-          <button type="button" data-karuizawa-open-rank="2"><span>#2</span><strong>无车综合最稳</strong><small>星野区步行 · 两人同价</small></button>
-          <button type="button" data-karuizawa-open-rank="3"><span>#3</span><strong>真木屋最好用</strong><small>中轻井泽站2分钟</small></button>
+          <button type="button" data-karuizawa-open-rank="1"><span>#1</span><strong>不租车，住长野</strong><small>百年町屋 · 铁路15分钟到长野站</small></button>
+          <button type="button" data-karuizawa-open-rank="3"><span>#3</span><strong>不租车，也要木屋</strong><small>黑姬站3分钟 · ¥2,087 / 2晚</small></button>
+          <button type="button" data-karuizawa-open-rank="2"><span>#2</span><strong>小布施情侣体验</strong><small>果园藏屋 · 圆形浴缸 · 私铁可达</small></button>
         </div>
       </section>
 
       <section class="plan-section" id="karuizawa-access">
-        <div class="plan-section-title">${icon("route")}<div><h4>先看末端交通</h4><p>“轻井泽”三个字不代表能从车站走到</p></div></div>
+        <div class="plan-section-title">${icon("route")}<div><h4>无车交通边界</h4><p>步行与固定接驳可用，临时山路公交不算</p></div></div>
         <div class="karuizawa-access-guide">
           ${Object.entries(karuizawaAccessMeta).map(([level, [title, body]]) => `<div class="karuizawa-access is-${escapeHtml(level)}"><span>${escapeHtml(title)}</span><strong>${escapeHtml(body)}</strong></div>`).join("")}
         </div>
       </section>
 
       <section class="plan-section hotel-filter-section" id="karuizawa-filter">
-        <div class="plan-section-title">${icon("search")}<div><h4>按住宿偏好筛选</h4><p>当前显示${visibleCount}套 · 默认是我会优先核价的7套</p></div></div>
+        <div class="plan-section-title">${icon("search")}<div><h4>按你的真实条件筛选</h4><p>当前显示${visibleCount}套 · 默认是我认为值得立刻核价的5套</p></div></div>
         ${renderKaruizawaFilters()}
       </section>
 
-      <section class="hotel-results" id="karuizawa-results" aria-label="轻井泽Airbnb候选列表">
-        ${renderKaruizawaGroup("balanced", "karuizawa-balanced")}
-        ${renderKaruizawaGroup("immersive", "karuizawa-immersive")}
-        ${renderKaruizawaGroup("drive", "karuizawa-drive")}
+      <section class="hotel-results" id="karuizawa-results" aria-label="轻井泽和长野Airbnb候选列表">
+        ${renderKaruizawaGroup("transit", "karuizawa-transit")}
+        ${renderKaruizawaGroup("forest", "karuizawa-forest")}
+        ${renderKaruizawaGroup("character", "karuizawa-character")}
+        ${renderKaruizawaLegacy()}
       </section>
 
       <section class="plan-section plan-final-advice hotel-budget" id="karuizawa-booking">
-        <div><span>订房前必须问</span><p>确认真实入住日期总价、从最近车站到房源的方式、出租车是否需要预约、夏季空调、洗衣、厨房和昆虫情况。</p></div>
-        <div class="is-cut"><span>我的取舍</span><p>不租车时优先#1-#8；如果不愿意预订出租车，只看#2、#3、#5、#8。#9-#12不要靠临时公交硬上。</p></div>
+        <div><span>我现在会怎么选</span><p>想保留轻井泽：先抢H1-H3；价格太高就住H8-H10长野站。Airbnb只看#1、#2、#3、#4、#5，其中#1和#2的体验最完整。</p></div>
+        <div class="is-cut"><span>不要硬上</span><p>#6-#16大多应自驾，页面仅保留作为差异说明。只有2晚，不要为了木屋照片赌北轻井泽的临时公交或反复打车。</p></div>
       </section>
-      ${renderPlanSourceDisclosure(["karuizawaAccess", "karuizawaClimate"])}
+      ${renderPlanSourceDisclosure(["karuizawaAccess", "karuizawaClimate", "tokyoHokurikuTimetable"])}
     </article>
   `;
 }
@@ -7296,8 +7627,8 @@ function renderBottomNav() {
     ];
   } else if (activePlanId === "karuizawa-airbnb") {
     items = [
-      ["karuizawa-overview", "home", "木屋"],
-      ["karuizawa-verdict", "star", "首选"],
+      ["karuizawa-hotel-guide", "home", "酒店"],
+      ["karuizawa-verdict", "star", "Airbnb"],
       ["karuizawa-access", "route", "交通"],
       ["karuizawa-filter", "search", "筛选"],
       ["karuizawa-results", "list", "候选"]

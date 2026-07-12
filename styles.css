@@ -788,6 +788,58 @@ img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.karuizawa-date-alert {
+  display: grid;
+  gap: 5px;
+  border-top: 1px solid #ecd8bd;
+  border-bottom: 1px solid #ecd8bd;
+  padding: 13px 14px;
+  background: #fff9f0;
+}
+
+.karuizawa-date-alert > span {
+  color: var(--amber);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.karuizawa-date-alert strong {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.karuizawa-date-alert p {
+  margin: 0;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.karuizawa-hotel-verdict {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 7px 8px;
+  border-top: 1px solid var(--soft-line);
+  padding-top: 11px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.karuizawa-hotel-verdict strong {
+  color: var(--forest);
+}
+
+.karuizawa-hotel-group {
+  border-top: 1px solid var(--line);
+}
+
+.karuizawa-hotel-row .hotel-rank {
+  background: rgba(237, 247, 242, 0.95);
+  color: var(--forest);
+}
+
 .hotel-filter {
   min-width: 0;
   min-height: 44px;
@@ -1171,6 +1223,35 @@ img {
   padding: 14px;
   color: var(--muted);
   font-size: 12px;
+}
+
+.karuizawa-legacy-row {
+  display: grid;
+  gap: 3px;
+  border-bottom: 1px solid var(--soft-line);
+  padding: 11px 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.karuizawa-legacy-row:last-child {
+  border-bottom: 0;
+}
+
+.karuizawa-legacy-row strong {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.karuizawa-legacy-row small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.karuizawa-legacy-row:hover {
+  background: #f8faf7;
 }
 
 .hotel-budget {
