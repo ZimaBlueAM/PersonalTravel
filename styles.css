@@ -125,6 +125,7 @@ img {
 .optimization-board,
 .adult-board,
 .route-map-board,
+.planning-board,
 .outline-board {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -138,7 +139,8 @@ img {
 .comfort-board,
 .optimization-board,
 .adult-board,
-.route-map-board {
+.route-map-board,
+.planning-board {
   margin-bottom: 14px;
 }
 
@@ -146,6 +148,7 @@ img {
   margin-bottom: 14px;
 }
 
+#planning,
 #outline,
 #route-map-title,
 #transport-title,
@@ -202,6 +205,334 @@ img {
 .heading-icon.is-quiet {
   background: var(--forest-soft);
   color: var(--forest);
+}
+
+.plan-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--soft-line);
+  background: var(--paper);
+  scrollbar-width: none;
+}
+
+.plan-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.plan-tab {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 44px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: var(--paper);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 850;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.plan-tab svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.plan-tab:hover {
+  border-color: #cad9d2;
+  background: #f7faf8;
+}
+
+.plan-tab.is-active {
+  border-color: #bcd2c6;
+  background: var(--forest-soft);
+  color: var(--forest);
+}
+
+.plan-panel {
+  min-width: 0;
+  background: var(--paper);
+}
+
+.plan-detail {
+  min-width: 0;
+}
+
+.plan-detail-head {
+  display: grid;
+  gap: 6px;
+  padding: 18px 14px 16px;
+}
+
+.plan-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.plan-detail-head h3 {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.plan-detail-head p {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.plan-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--soft-line);
+  border-bottom: 1px solid var(--soft-line);
+  background: #fafbf9;
+}
+
+.plan-stats > div {
+  min-width: 0;
+  padding: 11px 10px 12px;
+  text-align: center;
+}
+
+.plan-stats > div + div {
+  border-left: 1px solid var(--soft-line);
+}
+
+.plan-stats dt,
+.plan-stats dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-stats dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.plan-stats dd {
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.plan-section {
+  min-width: 0;
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.plan-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 11px;
+}
+
+.plan-section-title > svg {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.plan-section-title h4,
+.plan-section-title p {
+  margin: 0;
+}
+
+.plan-section-title h4 {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.plan-section-title p {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.plan-route {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--soft-line);
+  list-style: none;
+}
+
+.plan-route-stop {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.plan-route-day {
+  display: grid;
+  min-height: 32px;
+  place-items: center;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.plan-route-stop.is-forest .plan-route-day {
+  border-left-color: var(--forest);
+  background: var(--forest-soft);
+  color: var(--forest);
+}
+
+.plan-route-stop.is-amber .plan-route-day {
+  border-left-color: var(--amber);
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.plan-route-stop strong,
+.plan-route-stop small {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-route-stop strong {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.plan-route-stop small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.plan-section .transfer-segments {
+  margin-bottom: 0;
+}
+
+.plan-decisions {
+  display: grid;
+  border-top: 1px solid var(--soft-line);
+}
+
+.plan-decision {
+  display: grid;
+  gap: 3px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.plan-decision strong {
+  font-size: 13px;
+}
+
+.plan-decision p {
+  margin: 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.plan-final-advice {
+  display: grid;
+  gap: 12px;
+}
+
+.plan-final-advice > div {
+  border-left: 3px solid var(--forest);
+  padding-left: 10px;
+}
+
+.plan-final-advice > div.is-cut {
+  border-left-color: var(--amber);
+}
+
+.plan-final-advice span {
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.plan-final-advice .is-cut span {
+  color: var(--amber);
+}
+
+.plan-final-advice p {
+  margin: 3px 0 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.plan-primary-action {
+  display: flex;
+  width: calc(100% - 28px);
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px;
+  border-radius: 8px;
+  background: var(--forest);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.plan-primary-action svg {
+  width: 19px;
+  height: 19px;
+}
+
+.plan-detail > .source-links {
+  padding: 0 14px 16px;
+}
+
+.plan-detail > .source-links h3 {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.plan-detail > .source-links ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-detail > .source-links a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fafbf8;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-decoration: none;
 }
 
 .transfer-list,
@@ -391,8 +722,9 @@ img {
 
 .route-map-stage {
   position: relative;
-  min-height: 340px;
-  aspect-ratio: 100 / 64;
+  width: 100%;
+  height: clamp(340px, 64vw, 420px);
+  min-height: 0;
   border: 1px solid var(--soft-line);
   border-radius: 12px;
   overflow: hidden;
@@ -1371,6 +1703,20 @@ img {
 
   .section-heading {
     padding-inline: 18px;
+  }
+
+  .plan-tabs,
+  .plan-detail-head,
+  .plan-section {
+    padding-inline: 18px;
+  }
+
+  .plan-detail > .source-links {
+    padding-inline: 18px;
+  }
+
+  .plan-detail > .source-links ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .route-map-overview {

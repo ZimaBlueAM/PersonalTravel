@@ -690,12 +690,230 @@ const sourceLinks = {
   rainbowBridgeGoodLuck: {
     label: "Good Luck Trip: Rainbow Bridge",
     url: "https://www.gltjp.com/en/directory/item/rainbow-bridge/"
+  },
+  yokohamaAreaJnto: {
+    label: "JNTO: Yokohama and around",
+    url: "https://www.japan.travel/en/destinations/kanto/kanagawa/yokohama-and-around/"
+  },
+  kanagawaAccessMap: {
+    label: "Kanagawa official access map: Yokohama / Kamakura / Enoshima",
+    url: "https://trip.pref.kanagawa.jp/pdf/kanagawa-guide-map-en.pdf"
+  },
+  karuizawaAccess: {
+    label: "Karuizawa Tourist Association: access and local transport",
+    url: "https://karuizawa-kankokyokai.jp/en/access/"
+  },
+  karuizawaThreeDays: {
+    label: "Karuizawa Tourist Association: 3 days / 2 nights by bus",
+    url: "https://karuizawa-kankokyokai.jp/en/course/64101/"
+  },
+  karuizawaTimetable: {
+    label: "JR East: Karuizawa Station Hokuriku Shinkansen timetable",
+    url: "https://timetables.jreast.co.jp/en/timetable/list0518.html"
+  },
+  tokyoHokurikuTimetable: {
+    label: "JR East: Tokyo Station Hokuriku Shinkansen timetable",
+    url: "https://timetables.jreast.co.jp/en/2607/timetable/tt1039/1039061.html"
+  },
+  odorikoOfficial: {
+    label: "JR East: Odoriko to the Izu Peninsula",
+    url: "https://www.jreast.co.jp/en/multi/traininformation/odoriko/"
+  },
+  saphirOfficial: {
+    label: "JR East: Saphir Odoriko",
+    url: "https://www.jreast.co.jp/en/saphir/en/"
+  },
+  odorikoTimetable: {
+    label: "JR East: current Izu limited express timetable",
+    url: "https://www.jreast.co.jp/multi/traininformation/odoriko/pdf/odoriko_timetable.pdf"
+  },
+  izukyuTimetable: {
+    label: "Izu Kyuko: 2026 train timetables",
+    url: "https://www.izukyu.co.jp/train/index.php"
+  },
+  izukyuGlobal: {
+    label: "Izu Kyuko: English / Chinese guide and timetable",
+    url: "https://www.izukyu.co.jp/global_site/"
+  },
+  inatoriClimate: {
+    label: "JMA: Inatori 1991-2020 monthly climate normals",
+    url: "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?block_no=0457&day=02&month=01&prec_no=50&view=p1s&year="
+  },
+  jmaHeavyRain: {
+    label: "JMA: typhoon and heavy-rain safety information",
+    url: "https://www.jma.go.jp/jma/bosaiinfo/rain_portal.html"
   }
 };
 
 const checkedAt = "2026-07-08 官方复核";
 const jrHokkaidoLiveNote = "JR 北海道官方状态页按札幌、道南、北海道新干线等区域报告停运、取消和 30 分钟以上延误；出发当天仍要按具体车次复查。";
 const jrEastLiveNote = "本次核验 2026-07-08 18:07 JST：JR East Shinkansen 页面显示 Tohoku Shinkansen Normal operation，且当前没有停运信息；跨海当天仍要按具体 Hayabusa/Hayate 车次再查。";
+
+const planningCollections = [
+  {
+    id: "tokyo-loop",
+    label: "东京进出",
+    icon: "route",
+    kicker: "推荐整合版",
+    title: "东京进出 · 10晚松弛环线",
+    summary: "先向北住轻井泽，再经东京转向横滨、镰仓和东伊豆，最后回东京。大方向只有一次折返，长交通后不安排重景点。",
+    stats: [
+      ["建议", "9-11晚"],
+      ["搬家", "4次"],
+      ["最长单段", "约2-3小时"]
+    ],
+    route: [
+      { day: "D1-2", title: "东京", meta: "抵达、恢复、城市日 · 2晚", tone: "base" },
+      { day: "D3-5", title: "轻井泽小木屋", meta: "真正住下来 · 3晚", tone: "forest" },
+      { day: "D6-7", title: "横滨基地 + 镰仓", meta: "横滨住2晚，镰仓当天往返", tone: "accent" },
+      { day: "D8-9", title: "东伊豆", meta: "伊豆高原或下田二选一 · 2晚", tone: "amber" },
+      { day: "D10", title: "东京", meta: "回程缓冲 · 1晚", tone: "base" }
+    ],
+    transport: [
+      { label: "北上", route: "东京 -> 轻井泽", time: "北陆新干线约1小时10分", memo: "指定席优先；大件行李减少换乘。" },
+      { label: "转向", route: "轻井泽 -> 东京 -> 横滨", time: "约2小时级别", memo: "同站系换乘后继续南下，当天只入住和看夜景。" },
+      { label: "短线", route: "横滨 -> 镰仓", time: "JR约30分钟", memo: "不搬行李，早出晚回。" },
+      { label: "沿海", route: "横滨 -> 伊豆高原 / 下田", time: "直达踊り子约1小时40分-2小时20分", memo: "只选实际停靠横滨的指定席车次。" },
+      { label: "收尾", route: "东伊豆 -> 东京", time: "约2-3小时", memo: "国际航班前一晚回东京。" }
+    ],
+    decisions: [
+      { title: "横滨是南线基地", body: "横滨和镰仓不要各搬一次酒店。住横滨两晚，第二天无行李去镰仓。" },
+      { title: "轻井泽先走", body: "轻井泽是唯一北向支线，放在前半段；回到东京后一路向南，不在伊豆之后再北上。" },
+      { title: "伊豆只选东岸", body: "这版坚持铁路友好，不把西伊豆公交环线混进来。想看西岸时应另开自驾版。" }
+    ],
+    stay: "东京住交通方便的主站区；横滨住横滨站或樱木町；轻井泽小木屋必须有接站；伊豆优先伊豆高原或伊豆急下田站接驳明确的住宿。",
+    cut: "只有7-8晚时，先删伊豆或把轻井泽降为2晚；不要把四个区域都压成一晚。",
+    sources: ["tokyo", "tokyoHokurikuTimetable", "karuizawaAccess", "kamakuraJnto", "yokohamaAreaJnto", "odorikoTimetable", "izukyuTimetable", "inatoriClimate"]
+  },
+  {
+    id: "yokohama-kamakura",
+    label: "横滨·镰仓",
+    icon: "city",
+    kicker: "低风险近郊",
+    title: "横滨住2晚，镰仓轻装往返",
+    summary: "这两个地方地理上连续，但体验节奏不同。横滨适合傍晚和夜景，镰仓适合清晨与步行，因此用一个基地、两个完整时段最舒服。",
+    stats: [
+      ["建议", "2晚"],
+      ["东京出发", "约30分钟"],
+      ["横滨-镰仓", "约30分钟"]
+    ],
+    route: [
+      { day: "D1", title: "东京 -> 横滨", meta: "下午入住，港未来到红砖仓库，夜景收尾", tone: "accent" },
+      { day: "D2", title: "镰仓", meta: "北镰仓早到 -> 寺院 -> 镰仓站 -> 长谷/海边", tone: "forest" },
+      { day: "D3", title: "横滨 -> 下一站", meta: "睡够再走，不安排早班硬赶", tone: "base" }
+    ],
+    transport: [
+      { label: "进", route: "东京 -> 横滨", time: "JR普通列车约30分钟", memo: "从东京市区不必坐新干线去新横滨。" },
+      { label: "玩", route: "横滨 -> 北镰仓 / 镰仓", time: "JR约30分钟", memo: "北镰仓进、镰仓出，减少回头路。" },
+      { label: "市内", route: "镰仓 -> 长谷", time: "江之电或步行组合", memo: "暑期拥挤时，江之电只坐必要段。" }
+    ],
+    decisions: [
+      { title: "江之岛不是默认必加", body: "若去长谷寺、大佛和海边，江之岛会把一天拉得很满。只有体力、天气都好时再加。" },
+      { title: "7月从早晨开始", body: "寺院和老街步行量大，优先8点前后到北镰仓，中午用室内餐厅休息。" },
+      { title: "行李留在横滨", body: "镰仓站寄存空间和人流都有不确定性，不要拖箱走江之电。" }
+    ],
+    stay: "横滨站适合继续转车；樱木町适合夜景和步行。若下一站是伊豆，优先横滨站附近并核对踊り子停靠。",
+    cut: "只有1天时，选镰仓或横滨，不做上午镰仓、下午横滨的打卡拼盘。",
+    sources: ["yokohamaAreaJnto", "kamakuraJnto", "kanagawaAccessMap", "yokohamaPass"]
+  },
+  {
+    id: "karuizawa-cabin",
+    label: "轻井泽小木屋",
+    icon: "home",
+    kicker: "住下来版本",
+    title: "轻井泽小木屋 · 2-3晚",
+    summary: "新干线只解决东京到轻井泽站，真正决定舒不舒服的是车站到小木屋的最后一段。先确认接送，再订房。",
+    stats: [
+      ["建议", "3晚最佳"],
+      ["东京出发", "约1小时10分"],
+      ["硬条件", "住宿接站"]
+    ],
+    route: [
+      { day: "D1", title: "东京 -> 轻井泽", meta: "午前到站、补给、接驳入住，晚上留在木屋", tone: "forest" },
+      { day: "D2", title: "森林慢日", meta: "旧轻井泽 / 中轻井泽二选一，不赶场", tone: "forest" },
+      { day: "D3", title: "完整木屋日", meta: "骑行、咖啡、做饭或纯休息", tone: "base" },
+      { day: "可选", title: "长野", meta: "只在住3晚以上且有明确目的时加入", tone: "amber" }
+    ],
+    transport: [
+      { label: "主干", route: "东京 -> 轻井泽", time: "北陆新干线约1小时10分", memo: "列车快且稳定，提前选舒服时间。" },
+      { label: "末端", route: "轻井泽站 -> 小木屋", time: "接驳 / 出租 / 租车", memo: "不是所有木屋都在公交可用范围。" },
+      { label: "镇内", route: "轻井泽 / 中轻井泽", time: "信浓铁道、巴士或骑行", memo: "晚间班次少，返程时间先问住宿。" },
+      { label: "选配", route: "轻井泽 -> 长野", time: "北陆新干线一段", memo: "会吃掉一个完整白天；2晚方案直接不去。" }
+    ],
+    decisions: [
+      { title: "订房前问5件事", body: "最近车站、免费接站时段、最晚返程、行李容量、最近超市/餐厅。任何一项含糊，就换住宿。" },
+      { title: "无车优先站区", body: "没有租车时，选轻井泽站、旧轻井泽或中轻井泽可接驳范围；深山独栋只适合接送确定的房源。" },
+      { title: "长野不是顺手点", body: "它虽在同一条新干线上，但往返仍占半天以上。除非明确要善光寺或长野市，否则留给木屋。" }
+    ],
+    stay: "两个人住小木屋，厨房、洗衣、空调/暖气、遮光和接送比网红外观更重要。到站先买两顿早餐和饮水，再上接驳车。",
+    cut: "只有2晚时：抵达日 + 1个完整日 + 离开日，不去长野、不加草津。",
+    sources: ["karuizawaAccess", "karuizawaThreeDays", "karuizawaTimetable", "tokyoHokurikuTimetable", "jrTokyoWidePass"]
+  },
+  {
+    id: "izu-east",
+    label: "伊豆半岛",
+    icon: "thermometer",
+    kicker: "天气敏感版",
+    title: "东伊豆铁路线 · 2晚",
+    summary: "伊豆不是一个能靠铁路随意绕一圈的点。无车时沿东岸选一个住宿基地：伊豆高原更松弛，下田更有海岸终点感。",
+    stats: [
+      ["建议", "2晚"],
+      ["7月均温", "24.8°C"],
+      ["7月降水", "281.8mm"]
+    ],
+    route: [
+      { day: "D1", title: "东京 / 横滨 -> 东伊豆", meta: "踊り子直达，入住后只看附近海景", tone: "amber" },
+      { day: "D2", title: "海岸完整日", meta: "清晨户外，12-15点回酒店，傍晚再出门", tone: "forest" },
+      { day: "D3", title: "东伊豆 -> 东京", meta: "保留雨天和列车缓冲", tone: "base" }
+    ],
+    transport: [
+      { label: "首选", route: "东京 / 横滨 -> 伊豆高原 / 伊豆急下田", time: "踊り子指定席约2-3小时", memo: "选直达车，减少热天拖行李换乘。" },
+      { label: "舒适", route: "东京 -> 伊豆急下田", time: "Saphir Odoriko", memo: "班次更少，适合把交通本身当体验。" },
+      { label: "备选", route: "东京 -> 热海 -> 伊东 / 伊豆急线", time: "新干线或东海道线 + 地方铁路", memo: "直达票不合适时再换乘。" },
+      { label: "不混", route: "西伊豆", time: "公交 / 自驾体系", memo: "堂岛、松崎不塞进这条东岸铁路版。" }
+    ],
+    decisions: [
+      { title: "7月不是凉爽海岛", body: "气象厅稻取常值：7月平均24.8°C、平均最高28.3°C、最低22.2°C，且月降水281.8mm。实际晴天体感可能更热。" },
+      { title: "把中午交给酒店", body: "海岸步道、坡路和无遮阴路段放在早晨；正午回房、温泉或咖啡馆，傍晚再看海。" },
+      { title: "大雨就换玩法", body: "台风、大雨、强风浪时不去断崖和海岸步道，改温泉、室内美术馆或直接留在住宿。" }
+    ],
+    stay: "伊豆高原适合慢住与自然；下田适合海滩和终点感。住宿必须确认车站接送、晚餐时间和雨天取消条款。",
+    cut: "只有1晚时留在热海/伊东；想去下田就至少2晚。不要同一趟同时追东伊豆和西伊豆。",
+    sources: ["odorikoOfficial", "saphirOfficial", "odorikoTimetable", "izukyuTimetable", "izukyuGlobal", "inatoriClimate", "jmaHeavyRain"]
+  },
+  {
+    id: "hokkaido-main",
+    label: "北海道→东京",
+    icon: "train",
+    kicker: "原必去主线",
+    title: "札幌起点 · 东京终点",
+    summary: "保留已经核验的6个必去点：札幌、小樽、神威岬、富良野、函馆、东京。这里作为另一套独立规划，不和东京进出线混排。",
+    stats: [
+      ["必去", "6点"],
+      ["起终点", "札幌 / 东京"],
+      ["跨海", "青函隧道"]
+    ],
+    route: [
+      { day: "1", title: "札幌", meta: "起点与西北海道基地", tone: "forest" },
+      { day: "2-4", title: "小樽 / 神威岬 / 富良野", meta: "从札幌辐射，不额外搬家", tone: "accent" },
+      { day: "5", title: "函馆", meta: "Hokuto 主移动日", tone: "amber" },
+      { day: "6", title: "东京", meta: "新函馆北斗经青函隧道到本州", tone: "base" }
+    ],
+    transport: [
+      { label: "西线", route: "札幌 -> 小樽 / 神威岬", time: "JR / 预约巴士", memo: "神威岬不是JR直达。" },
+      { label: "花田", route: "札幌 -> 富良野", time: "季节列车或JR换乘", memo: "按2026运行日锁票。" },
+      { label: "南下", route: "札幌 -> 函馆", time: "Hokuto约3.5-4小时", memo: "当天只移动。" },
+      { label: "跨海", route: "函馆 -> 新函馆北斗 -> 新青森 -> 东京", time: "约5小时级别", memo: "真实JR链路。" }
+    ],
+    decisions: [
+      { title: "完整细节保留在下方", body: "基地、城市、子目的地、真实地图和每段交通仍按原结构展开。" }
+    ],
+    stay: "札幌做辐射基地，函馆做跨海前夜，东京做终点。",
+    cut: "不要把旭川、钏路、仙台重新塞回必去主线。",
+    action: { label: "查看北海道详细大纲", target: "outline" },
+    sources: ["timetable", "chuoShakotanTour", "jrSightseeing2026", "hakodate", "shinkansen", "jreast"]
+  }
+];
 
 const transportAudit = {
   title: "必去主线交通核验",
@@ -5254,6 +5472,8 @@ function renderReviewLinks(item) {
 }
 
 const outlineTree = document.querySelector("#outlineTree");
+const planTabs = document.querySelector("#planTabs");
+const planPanel = document.querySelector("#planPanel");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const routeMapOverview = document.querySelector("#routeMapOverview");
 const transportAuditElement = document.querySelector("#transportAudit");
@@ -5276,6 +5496,8 @@ let realRouteMapInstance = null;
 
 const expandedIds = new Set();
 let activeFilter = "all";
+const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
+let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
 
 const optionalLibraryItem = base({
@@ -5348,6 +5570,148 @@ function renderTransferSegments(segments = []) {
       `).join("")}
     </div>
   `;
+}
+
+function renderPlanningTabs() {
+  if (!planTabs) return;
+  planTabs.innerHTML = planningCollections
+    .map((plan) => {
+      const active = plan.id === activePlanId;
+      return `
+        <button
+          type="button"
+          class="plan-tab${active ? " is-active" : ""}"
+          id="plan-tab-${escapeHtml(plan.id)}"
+          role="tab"
+          aria-selected="${active}"
+          aria-controls="planPanel"
+          tabindex="${active ? "0" : "-1"}"
+          data-plan-id="${escapeHtml(plan.id)}"
+        >
+          ${icon(plan.icon)}
+          <span>${escapeHtml(plan.label)}</span>
+        </button>
+      `;
+    })
+    .join("");
+
+  requestAnimationFrame(() => {
+    planTabs.querySelector(`[data-plan-id="${activePlanId}"]`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center"
+    });
+  });
+}
+
+function renderPlanRoute(route = []) {
+  return `
+    <ol class="plan-route" aria-label="推荐行程顺序">
+      ${route
+        .map(
+          (stop) => `
+            <li class="plan-route-stop is-${escapeHtml(stop.tone || "base")}">
+              <span class="plan-route-day">${escapeHtml(stop.day)}</span>
+              <div>
+                <strong>${escapeHtml(stop.title)}</strong>
+                <small>${escapeHtml(stop.meta)}</small>
+              </div>
+            </li>
+          `
+        )
+        .join("")}
+    </ol>
+  `;
+}
+
+function renderPlanningPanel() {
+  if (!planPanel) return;
+  const plan = planningCollections.find((item) => item.id === activePlanId) || planningCollections[0];
+  planPanel.setAttribute("aria-labelledby", `plan-tab-${plan.id}`);
+  planPanel.innerHTML = `
+    <article class="plan-detail">
+      <header class="plan-detail-head">
+        <span class="plan-kicker">${escapeHtml(plan.kicker)}</span>
+        <h3>${escapeHtml(plan.title)}</h3>
+        <p>${escapeHtml(plan.summary)}</p>
+      </header>
+
+      <dl class="plan-stats">
+        ${plan.stats
+          .map(
+            ([label, value]) => `
+              <div>
+                <dt>${escapeHtml(label)}</dt>
+                <dd>${escapeHtml(value)}</dd>
+              </div>
+            `
+          )
+          .join("")}
+      </dl>
+
+      <section class="plan-section">
+        <div class="plan-section-title">
+          ${icon("route")}
+          <div><h4>推荐顺序</h4><p>先看整体，不用先读长文</p></div>
+        </div>
+        ${renderPlanRoute(plan.route)}
+      </section>
+
+      <section class="plan-section">
+        <div class="plan-section-title">
+          ${icon("train")}
+          <div><h4>交通链</h4><p>每一段都说明换乘和风险</p></div>
+        </div>
+        ${renderTransferSegments(plan.transport)}
+      </section>
+
+      <section class="plan-section">
+        <div class="plan-section-title">
+          ${icon("check")}
+          <div><h4>关键判断</h4><p>真正影响体力和可行性的地方</p></div>
+        </div>
+        <div class="plan-decisions">
+          ${plan.decisions
+            .map(
+              (decision) => `
+                <div class="plan-decision">
+                  <strong>${escapeHtml(decision.title)}</strong>
+                  <p>${escapeHtml(decision.body)}</p>
+                </div>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="plan-section plan-final-advice">
+        <div>
+          <span>住宿策略</span>
+          <p>${escapeHtml(plan.stay)}</p>
+        </div>
+        <div class="is-cut">
+          <span>天数不够时</span>
+          <p>${escapeHtml(plan.cut)}</p>
+        </div>
+      </section>
+
+      ${plan.action ? `<button type="button" class="plan-primary-action" data-route-target="${escapeHtml(plan.action.target)}">${escapeHtml(plan.action.label)}${icon("route")}</button>` : ""}
+      ${renderSources(plan.sources, "官方交通与气候入口")}
+    </article>
+  `;
+}
+
+function selectPlanning(planId, updateUrl = true) {
+  if (!planningCollections.some((plan) => plan.id === planId)) return;
+  activePlanId = planId;
+  renderPlanningTabs();
+  renderPlanningPanel();
+
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("plan", activePlanId);
+    window.history.replaceState(null, "", url);
+  }
 }
 
 function renderFacts(guideData) {
@@ -5987,6 +6351,12 @@ function jumpToRouteTarget(target) {
 }
 
 document.addEventListener("click", (event) => {
+  const planButton = event.target.closest("[data-plan-id]");
+  if (planButton) {
+    selectPlanning(planButton.dataset.planId);
+    return;
+  }
+
   const routeTargetButton = event.target.closest("[data-route-target]");
   if (routeTargetButton) {
     jumpToRouteTarget(routeTargetButton.dataset.routeTarget);
@@ -6026,11 +6396,27 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
+  const activeTab = event.target.closest?.("[role='tab'][data-plan-id]");
+  if (activeTab && ["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+    event.preventDefault();
+    const currentIndex = planningCollections.findIndex((plan) => plan.id === activeTab.dataset.planId);
+    const nextIndex = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? planningCollections.length - 1
+        : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + planningCollections.length) % planningCollections.length;
+    selectPlanning(planningCollections[nextIndex].id);
+    document.querySelector(`[data-plan-id="${planningCollections[nextIndex].id}"]`)?.focus();
+    return;
+  }
+
   if (event.key === "Escape" && !modal.hidden) {
     closeDetail();
   }
 });
 
+renderPlanningTabs();
+renderPlanningPanel();
 renderTransportAudit();
 renderRouteMapOverview();
 renderTransfers();
@@ -6041,9 +6427,3 @@ renderAdultRoutePlan();
 renderOptimizations();
 updateFilterButtons();
 renderOutline();
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
-  });
-}

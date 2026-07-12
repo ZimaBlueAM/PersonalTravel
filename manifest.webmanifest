@@ -1,7 +1,7 @@
 {
-  "name": "Travel Outline",
-  "short_name": "Outline",
-  "description": "可在手机上浏览的多基地旅行路线大纲，支持分层展开、离线缓存和更轻量的交通查看。",
+  "name": "Travel Plans",
+  "short_name": "旅行大纲",
+  "description": "可在手机上切换多套方案的旅行规划合集，支持路线、交通与离线查看。",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
