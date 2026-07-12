@@ -1053,6 +1053,13 @@ const hotelRecommendationTab = {
   kind: "lodging"
 };
 
+const karuizawaAirbnbTab = {
+  id: "karuizawa-airbnb",
+  label: "轻井泽 Airbnb",
+  icon: "home",
+  kind: "lodging"
+};
+
 const hotelListings = [
   {
     group: "top", rank: 1, area: "涩谷", fit: "首选", rating: "4.91", reviews: 164,
@@ -1278,9 +1285,133 @@ const hotelListings = [
   }
 ];
 
+const karuizawaAirbnbListings = [
+  {
+    group: "balanced", rank: 1, area: "轻井泽森林别墅区", fit: "森林首选", rating: "4.94", reviews: 99,
+    title: "Riverside House · 河畔森林别墅 / 桑拿 / 壁炉",
+    url: "https://www.airbnb.com/rooms/1065624343788136613",
+    flags: ["recommended", "no-car", "forest", "sauna"], accessLevel: "taxi",
+    access: "轻井泽站到房源建议预订出租车；房源未承诺车站步行，入住后适合留在别墅休息。",
+    reason: "约2500㎡河畔场地、森林、壁炉、4人桑拿和按摩浴缸同时成立，是这批里最接近“住进森林本身”的选择。",
+    advantages: ["4人容量对两个人不会夸张到失去居住感", "公开评价中景观、安静、舒适与位置反馈都很强", "河景、花园和室内壁炉让雨天也有完整体验"],
+    caution: "会有昆虫；入住时间为15:00-19:00，出租车和晚餐补给要提前安排。"
+  },
+  {
+    group: "balanced", rank: 2, area: "中轻井泽 / 星野区", fit: "无车首选", rating: "4.82", reviews: 125,
+    title: "Harunire · 翻新日式平屋 / 星野区步行",
+    url: "https://www.airbnb.com/rooms/660350949102393077",
+    flags: ["recommended", "no-car", "forest"], accessLevel: "walk",
+    access: "信浓铁道中轻井泽站约900米；榆树街小镇与蜻蜓之汤约5-7分钟步行。",
+    reason: "传统平屋、木质旧宅氛围和星野森林步行圈结合得最好；不是网红深山木屋，但最适合你们真正无车住2-3晚。",
+    advantages: ["大床卧室加独立和室，两个人既亲密又有分区", "便利店、餐厅、超市与温泉都在可用范围", "房东明确两人以内同价，情侣入住不会为大团体空间付太多冗余"],
+    caution: "从轻井泽新干线站需先换信浓铁道到中轻井泽；Airbnb页面把浴室标为Half-bath，预订前确认具体卫浴配置。"
+  },
+  {
+    group: "balanced", rank: 3, area: "中轻井泽站", fit: "交通最稳", rating: "4.90", reviews: 159,
+    title: "IZUMIYA · 中轻井泽站2分钟 / 木炉小屋",
+    url: "https://www.airbnb.com/rooms/914029343777974834",
+    flags: ["recommended", "no-car", "cabin", "sauna"], accessLevel: "walk",
+    access: "信浓铁道中轻井泽站步行约2分钟、160米；从轻井泽站换乘一站即可。",
+    reason: "真正带木炉的整套 cottage，同时把铁路末端接驳压到最低，是行李多、住3晚和不想租车时最稳的木屋方案。",
+    advantages: ["159条评价且清洁度公开评分5.0，成熟度高", "厨房、洗烘、空调和Wi-Fi完整，适合连续住", "中轻井泽去星野区、超市和餐厅比深山木屋容易"],
+    caution: "木炉柴火另收费；住宅区21:00后严格安静，不能BBQ、篝火或在室外聊天。"
+  },
+  {
+    group: "immersive", rank: 4, area: "中轻井泽森林", fit: "森林奢侈版", rating: "4.83", reviews: 24,
+    title: "COCO VILLA · 1000㎡森林 / 私人桑拿",
+    url: "https://www.airbnb.com/rooms/1546846914767184028",
+    flags: ["recommended", "no-car", "forest", "sauna"], accessLevel: "taxi",
+    access: "中轻井泽站约5分钟出租车；轻井泽站约10分钟出租车。",
+    reason: "大窗森林景、木平台、3D打印私人桑拿与安静环境完成度很高，最适合把一天完全留给房子。",
+    advantages: ["桑拿、冷水浴、BBQ设备目前均标注包含在设施费内", "出租车距离短，不租车也能实现一次性进出", "空调、洗衣、完整厨房和三卧室适合舒适长住"],
+    caution: "最多12人的大房，两个人可能价格效率很低；评价样本只有24条，必须按真实日期核总价。"
+  },
+  {
+    group: "balanced", rank: 5, area: "轻井泽站", fit: "两人最轻松", rating: "4.98", reviews: 291,
+    title: "Eco-Chic Nordic Suite · 轻井泽站5分钟",
+    url: "https://www.airbnb.com/rooms/42630746",
+    flags: ["recommended", "no-car"], accessLevel: "walk",
+    access: "轻井泽站步行约5分钟；房源提供免费自行车，去旧轻井泽与森林别墅区更容易。",
+    reason: "它不是独栋木屋，但北欧家具、恒温系统、南向阳台和291条高分评价，让它成为两个人最轻松的设计住宿。",
+    advantages: ["1卧室、完整厨房与洗烘更贴合两人需求", "公开评分4.98且属于Top 5%，可靠性是本组最高", "车站、餐厅、Outlet和自行车都能直接使用"],
+    caution: "位于餐厅楼上、需走约20级楼梯且没有电梯；卧室没有遮光窗帘。"
+  },
+  {
+    group: "balanced", rank: 6, area: "旧轻井泽森地区", fit: "旧轻井泽氛围", rating: "4.93", reviews: 30,
+    title: "Old Karuizawa Mori · 森林私宅 / 旧银座7分钟",
+    url: "https://www.airbnb.com/rooms/1298129940050032296",
+    flags: ["recommended", "no-car", "forest"], accessLevel: "taxi",
+    access: "房源写的是步行7分钟到旧轻井泽银座，不是到轻井泽站；带行李建议从车站坐公交或出租车。",
+    reason: "安静别墅区、自然包围与旧轻井泽生活圈同时成立，适合早晚散步和中午回屋避暑。",
+    advantages: ["旧轻井泽位置比北轻井泽深山房更容易吃饭和散步", "两卧室、厨房和自助入住适合2-3晚", "评分4.93，近期房东沟通评价很好"],
+    caution: "房源最多10人，两人可能承担大房成本；当前公开评价样本30条，价格与取消政策需重点比较。"
+  },
+  {
+    group: "immersive", rank: 7, area: "追分 / 中轻井泽西侧", fit: "木炉与挑高", rating: "4.96", reviews: 156,
+    title: "R-villa Karuizawa 02 · 挑高中庭 / 木炉",
+    url: "https://www.airbnb.com/rooms/995412928672335556",
+    flags: ["recommended", "no-car", "cabin", "forest", "sauna"], accessLevel: "taxi",
+    access: "信浓追分站步行约25分钟；带行李建议出租车，去中轻井泽核心约5分钟车程。",
+    reason: "大窗、挑高中庭、森林光线和木炉把室内木屋感做得很强，雨天也不会浪费住宿体验。",
+    advantages: ["156条评价、4.96分，成熟度和设计感兼得", "两层两卧室、洗烘与空调完整", "离中轻井泽不远，出租车方案比北轻井泽容易"],
+    caution: "25分钟步行不适合拖箱；两人入住空间偏大，木炉柴火另收费。"
+  },
+  {
+    group: "immersive", rank: 8, area: "御代田 / 西轻井泽", fit: "北欧木屋", rating: "4.92", reviews: 39,
+    title: "Nordic Villa Miyota · 121㎡ / Loft / Fireplace",
+    url: "https://www.airbnb.com/rooms/1543234753168244461",
+    flags: ["no-car", "cabin", "forest", "sauna"], accessLevel: "walk",
+    access: "房源标注御代田站步行范围；从轻井泽站需搭信浓铁道向西，再步行入住。",
+    reason: "121㎡北欧风、挑高Loft、木质内装和壁炉选项都很对题，是愿意离开轻井泽核心换取空间的人会喜欢的房子。",
+    advantages: ["御代田站可达，不租车仍有实现路径", "完整厨房、洗衣、Wi-Fi与工作区适合住3晚", "4.92分且清洁度公开评分5.0"],
+    caution: "木炉与BBQ均需额外预约付费；去轻井泽景点要依赖信浓铁道班次，不能当成轻井泽站旁住宿。"
+  },
+  {
+    group: "drive", rank: 9, area: "Honors Hill别墅区", fit: "山景森林", rating: "4.80", reviews: 64,
+    title: "R-villa OHK E-20 · 浅间山景 / 全天候木平台",
+    url: "https://www.airbnb.com/rooms/818532201399892781",
+    flags: ["cabin", "forest", "sauna", "car"], accessLevel: "car",
+    access: "轻井泽站约25-30分钟车程；周边没有步行可达商店，建议租车并先完成补给。",
+    reason: "每个一层房间都能看浅间山，木平台、开放浴室和木炉让森林别墅感非常完整。",
+    advantages: ["山景比普通林间房更有方向感", "全天候平台在雨天仍可使用", "三卧室和稳定Wi-Fi适合长住或工作"],
+    caution: "不建议靠临时出租车反复进出；评分与位置分低于前几名，只在租车且重视景观时选。"
+  },
+  {
+    group: "drive", rank: 10, area: "轻井泽高原", fit: "舒适大宅", rating: "4.90", reviews: 68,
+    title: "One-Story Forest Villa · 1070㎡ / 地暖",
+    url: "https://www.airbnb.com/rooms/826394928270091049",
+    flags: ["forest", "car"], accessLevel: "car",
+    access: "房源标注到车站约12分钟车程、星野区约10分钟；建议租车。",
+    reason: "1070㎡土地、地暖、空调、Serta床和大厨房更像高舒适度森林住宅，不是原始木屋。",
+    advantages: ["一层布局与无台阶动线对行李和连续居住友好", "遮光、洗烘、双台盆和工作区提升生活质量", "森林与住宅区交界，房东称昆虫压力相对深山房更低"],
+    caution: "最多13人的大宅，两个人性价比通常不高；宠物设施占比很大，不带宠物时价值会下降。"
+  },
+  {
+    group: "drive", rank: 11, area: "北轻井泽 / 长野原", fit: "花园木屋", rating: "4.75", reviews: 122,
+    title: "Forest Villa Karuizawa A · 大花园木屋",
+    url: "https://www.airbnb.com/rooms/50121666",
+    flags: ["cabin", "forest", "car"], accessLevel: "car",
+    access: "从榆树街小镇约15分钟车程；便利店和补给也需约5分钟车程，租车更合理。",
+    reason: "真正的整套 cabin、大花园、木平台和山林视野都很明确，适合把住宿本身当活动。",
+    advantages: ["122条评价，长期运营信息较充分", "大床、大浴缸、厨房与洗烘配置完整", "一组独享花园，私密感比集合式度假村更好"],
+    caution: "位置评分与性价比分别约4.7和4.4；靠近国道且只适合租车方案。"
+  },
+  {
+    group: "drive", rank: 12, area: "北轻井泽 / 嬬恋", fit: "真原木屋", rating: "4.83", reviews: 95,
+    title: "Karuizawa Forest Cabin · 北欧原木屋 / 木炉",
+    url: "https://www.airbnb.com/rooms/1222230483913972754",
+    flags: ["cabin", "forest", "sauna", "car"], accessLevel: "car",
+    access: "轻井泽站约30分钟车程、星野温泉约25分钟；便利店约10分钟车程，必须租车。",
+    reason: "北欧原木结构、挑高客厅、木平台BBQ和木炉，是这批里“真木屋”视觉最直接的一套。",
+    advantages: ["海拔约1100米，夏季森林气候更凉", "95条评价，安静、舒适与清洁反馈稳定", "洗烘、光纤Wi-Fi、投影与完整厨房适合窝在屋里"],
+    caution: "夜间无路灯、手机信号可能弱，应在日落前入住；木炉与BBQ另收费且木炉仅冷季开放。"
+  }
+];
+
 const planningCollections = [
   ...planningLibrary.filter((plan) => ["tokyo-loop", "hokkaido-main"].includes(plan.id)),
-  hotelRecommendationTab
+  hotelRecommendationTab,
+  karuizawaAirbnbTab
 ];
 const tokyoDestinationGuides = planningLibrary.filter((plan) =>
   ["yokohama-kamakura", "karuizawa-cabin", "izu-east"].includes(plan.id)
@@ -6463,6 +6594,7 @@ const expandedIds = new Set();
 let activeFilter = "all";
 let activeTokyoOptionFilter = "strong";
 let activeHotelFilter = "recommended";
+let activeKaruizawaFilter = "recommended";
 const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
 let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
@@ -6913,10 +7045,165 @@ function renderHotelPanel() {
   `;
 }
 
+const karuizawaFilterLabels = [
+  ["recommended", "我会选"],
+  ["no-car", "无车可行"],
+  ["cabin", "木屋"],
+  ["forest", "森林感"],
+  ["sauna", "桑拿/木炉"],
+  ["car", "租车限定"],
+  ["all", "全部"]
+];
+
+const karuizawaFlagLabels = {
+  recommended: "我会选",
+  "no-car": "无车可行",
+  cabin: "木屋感",
+  forest: "森林感",
+  sauna: "桑拿/木炉",
+  car: "建议租车"
+};
+
+const karuizawaAccessMeta = {
+  walk: ["步行可达", "到站后可步行完成"],
+  taxi: ["出租车可行", "提前约一次末端接驳"],
+  car: ["建议租车", "不要依赖临时公交或反复打车"]
+};
+
+const karuizawaGroupMeta = {
+  balanced: ["两人优先", "交通与森林感最平衡的5套"],
+  immersive: ["森林沉浸", "愿意多做一次接驳的3套"],
+  drive: ["租车后才成立", "木屋感更强但末端交通更重的4套"]
+};
+
+function matchesKaruizawaFilter(item) {
+  return activeKaruizawaFilter === "all" || item.flags.includes(activeKaruizawaFilter);
+}
+
+function renderKaruizawaFilters() {
+  return `
+    <div class="hotel-filters karuizawa-filters" role="group" aria-label="轻井泽Airbnb筛选">
+      ${karuizawaFilterLabels.map(([value, label]) => `
+        <button type="button" class="hotel-filter${activeKaruizawaFilter === value ? " is-active" : ""}" data-karuizawa-filter="${escapeHtml(value)}" aria-pressed="${activeKaruizawaFilter === value}">${escapeHtml(label)}</button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function karuizawaImagePath(item) {
+  const roomId = item.url.match(/\/rooms\/(\d+)/)?.[1];
+  return roomId ? `assets/karuizawa-airbnb/${roomId}.jpg` : "assets/places/karuizawa.jpg";
+}
+
+function renderKaruizawaRow(item) {
+  const imagePath = karuizawaImagePath(item);
+  const [accessLabel] = karuizawaAccessMeta[item.accessLevel];
+  const visibleFlags = item.flags.filter((flag) => flag !== "recommended").slice(0, 4);
+
+  return `
+    <details class="hotel-row karuizawa-row" data-karuizawa-group="${escapeHtml(item.group)}" data-karuizawa-rank="${escapeHtml(item.rank)}">
+      <summary>
+        <span class="hotel-image">
+          <span class="hotel-image-fallback" aria-hidden="true">${icon("home")}</span>
+          <img src="${escapeHtml(imagePath)}" alt="${escapeHtml(item.title)} 房源主图" width="720" height="480" loading="lazy" decoding="async">
+          <span class="hotel-rank">#${escapeHtml(item.rank)}</span>
+        </span>
+        <span class="hotel-row-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.area)} · ${escapeHtml(item.rating)}分 · ${escapeHtml(item.reviews)}条 · ${escapeHtml(accessLabel)}</small></span>
+        <span class="hotel-row-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-row-body">
+        <figure class="hotel-row-hero">
+          <img src="${escapeHtml(imagePath)}" alt="" width="720" height="480" loading="lazy" decoding="async">
+          <figcaption>Airbnb 房源公开主图 · 日期价格和房态需最终复核</figcaption>
+        </figure>
+        <div class="karuizawa-access is-${escapeHtml(item.accessLevel)}"><span>${escapeHtml(accessLabel)}</span><strong>${escapeHtml(item.access)}</strong></div>
+        <section class="karuizawa-copy-block"><h5>为什么入选</h5><p>${escapeHtml(item.reason)}</p></section>
+        <section class="karuizawa-copy-block"><h5>主要优点</h5><ul>${item.advantages.map((advantage) => `<li>${escapeHtml(advantage)}</li>`).join("")}</ul></section>
+        <p class="karuizawa-caution"><strong>注意：</strong>${escapeHtml(item.caution)}</p>
+        <div class="hotel-row-tags">
+          <span>${escapeHtml(item.area)}</span><span>${escapeHtml(item.fit)}</span>
+          ${visibleFlags.map((flag) => `<span>${escapeHtml(karuizawaFlagLabels[flag])}</span>`).join("")}
+        </div>
+        <a href="${item.url}" target="_blank" rel="noreferrer" aria-label="在Airbnb查看${escapeHtml(item.title)}">${icon("link")}<span>在 Airbnb 查看</span></a>
+      </div>
+    </details>
+  `;
+}
+
+function renderKaruizawaGroup(group, id) {
+  const [title, subtitle] = karuizawaGroupMeta[group];
+  const items = karuizawaAirbnbListings.filter((item) => item.group === group && matchesKaruizawaFilter(item));
+  const shouldOpen = group === "balanced" || activeKaruizawaFilter !== "all";
+
+  return `
+    <details class="hotel-group" id="${escapeHtml(id)}"${shouldOpen ? " open" : ""}>
+      <summary class="hotel-group-summary">
+        <span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(subtitle)} · 当前${items.length}套</small></span>
+        <span class="hotel-group-disclosure" aria-hidden="true">${icon("plus")}</span>
+      </summary>
+      <div class="hotel-list">${items.length ? items.map(renderKaruizawaRow).join("") : `<p class="hotel-empty">当前筛选在这一组没有候选。</p>`}</div>
+    </details>
+  `;
+}
+
+function renderKaruizawaPanel() {
+  const visibleCount = karuizawaAirbnbListings.filter(matchesKaruizawaFilter).length;
+  planPanel.setAttribute("aria-labelledby", "plan-tab-karuizawa-airbnb");
+  planPanel.innerHTML = `
+    <article class="hotel-detail karuizawa-detail">
+      <header class="plan-detail-head" id="karuizawa-overview">
+        <span class="plan-kicker">轻井泽森林住宿研究</span>
+        <h3>轻井泽 Airbnb · 木屋与森林</h3>
+        <p>不只按照片排名。先把轻井泽站、中轻井泽、御代田和北轻井泽的真实末端交通分开，再看森林感。</p>
+      </header>
+      <dl class="plan-stats">
+        <div><dt>精选房源</dt><dd>12套</dd></div><div><dt>无车可行</dt><dd>8套</dd></div><div><dt>建议停留</dt><dd>2-3晚</dd></div>
+      </dl>
+
+      <section class="plan-section hotel-verdict" id="karuizawa-verdict">
+        <div class="plan-section-title">${icon("star")}<div><h4>我会先核这三套</h4><p>森林体验、无车可行与木屋实用性分别取第一</p></div></div>
+        <div class="hotel-verdict-list">
+          <button type="button" data-karuizawa-open-rank="1"><span>#1</span><strong>森林体验最强</strong><small>河畔 · 桑拿 · 壁炉</small></button>
+          <button type="button" data-karuizawa-open-rank="2"><span>#2</span><strong>无车综合最稳</strong><small>星野区步行 · 两人同价</small></button>
+          <button type="button" data-karuizawa-open-rank="3"><span>#3</span><strong>真木屋最好用</strong><small>中轻井泽站2分钟</small></button>
+        </div>
+      </section>
+
+      <section class="plan-section" id="karuizawa-access">
+        <div class="plan-section-title">${icon("route")}<div><h4>先看末端交通</h4><p>“轻井泽”三个字不代表能从车站走到</p></div></div>
+        <div class="karuizawa-access-guide">
+          ${Object.entries(karuizawaAccessMeta).map(([level, [title, body]]) => `<div class="karuizawa-access is-${escapeHtml(level)}"><span>${escapeHtml(title)}</span><strong>${escapeHtml(body)}</strong></div>`).join("")}
+        </div>
+      </section>
+
+      <section class="plan-section hotel-filter-section" id="karuizawa-filter">
+        <div class="plan-section-title">${icon("search")}<div><h4>按住宿偏好筛选</h4><p>当前显示${visibleCount}套 · 默认是我会优先核价的7套</p></div></div>
+        ${renderKaruizawaFilters()}
+      </section>
+
+      <section class="hotel-results" id="karuizawa-results" aria-label="轻井泽Airbnb候选列表">
+        ${renderKaruizawaGroup("balanced", "karuizawa-balanced")}
+        ${renderKaruizawaGroup("immersive", "karuizawa-immersive")}
+        ${renderKaruizawaGroup("drive", "karuizawa-drive")}
+      </section>
+
+      <section class="plan-section plan-final-advice hotel-budget" id="karuizawa-booking">
+        <div><span>订房前必须问</span><p>确认真实入住日期总价、从最近车站到房源的方式、出租车是否需要预约、夏季空调、洗衣、厨房和昆虫情况。</p></div>
+        <div class="is-cut"><span>我的取舍</span><p>不租车时优先#1-#8；如果不愿意预订出租车，只看#2、#3、#5、#8。#9-#12不要靠临时公交硬上。</p></div>
+      </section>
+      ${renderPlanSourceDisclosure(["karuizawaAccess", "karuizawaClimate"])}
+    </article>
+  `;
+}
+
 function renderPlanningPanel() {
   if (!planPanel) return;
   if (activePlanId === "tokyo-hotels") {
     renderHotelPanel();
+    return;
+  }
+  if (activePlanId === "karuizawa-airbnb") {
+    renderKaruizawaPanel();
     return;
   }
   const plan = planningCollections.find((item) => item.id === activePlanId) || planningCollections[0];
@@ -7007,6 +7294,14 @@ function renderBottomNav() {
       ["hotel-results", "list", "候选"],
       ["hotel-budget", "check", "核价"]
     ];
+  } else if (activePlanId === "karuizawa-airbnb") {
+    items = [
+      ["karuizawa-overview", "home", "木屋"],
+      ["karuizawa-verdict", "star", "首选"],
+      ["karuizawa-access", "route", "交通"],
+      ["karuizawa-filter", "search", "筛选"],
+      ["karuizawa-results", "list", "候选"]
+    ];
   } else if (activePlanId === "tokyo-loop") {
     items = [
         ["planning", "calendar", "规划"],
@@ -7039,7 +7334,7 @@ function renderBottomNav() {
 
 function syncThemeUI() {
   const showHokkaido = activePlanId === "hokkaido-main";
-  const showRouteMap = activePlanId !== "tokyo-hotels";
+  const showRouteMap = !["tokyo-hotels", "karuizawa-airbnb"].includes(activePlanId);
   hokkaidoThemeSections.forEach((section) => {
     section.hidden = !showHokkaido;
   });
@@ -7759,6 +8054,27 @@ document.addEventListener("click", (event) => {
     renderHotelPanel();
     requestAnimationFrame(() => {
       const row = document.querySelector(`[data-hotel-group="top"][data-hotel-rank="${hotelPickButton.dataset.hotelOpenRank}"]`);
+      if (row instanceof HTMLDetailsElement) {
+        row.open = true;
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    return;
+  }
+
+  const karuizawaFilterButton = event.target.closest("[data-karuizawa-filter]");
+  if (karuizawaFilterButton) {
+    activeKaruizawaFilter = karuizawaFilterButton.dataset.karuizawaFilter || "recommended";
+    renderKaruizawaPanel();
+    return;
+  }
+
+  const karuizawaPickButton = event.target.closest("[data-karuizawa-open-rank]");
+  if (karuizawaPickButton) {
+    activeKaruizawaFilter = "recommended";
+    renderKaruizawaPanel();
+    requestAnimationFrame(() => {
+      const row = document.querySelector(`[data-karuizawa-rank="${karuizawaPickButton.dataset.karuizawaOpenRank}"]`);
       if (row instanceof HTMLDetailsElement) {
         row.open = true;
         row.scrollIntoView({ behavior: "smooth", block: "center" });

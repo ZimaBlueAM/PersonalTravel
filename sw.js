@@ -1,12 +1,12 @@
-const CACHE_VERSION = "personaltravel-v22";
+const CACHE_VERSION = "personaltravel-v23";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
 const SHELL_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=22",
-  "./app.js?v=22",
+  "./styles.css?v=23",
+  "./app.js?v=23",
   "./manifest.webmanifest",
   "./assets/source-plan.png",
   "./assets/pwa/icon.svg",
