@@ -35,7 +35,14 @@ const placeImages = {
   motsuji: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/General_view_-_Motsuji%2C_Hiraizumi%2C_Iwate_-_DSC04467.jpg/1280px-General_view_-_Motsuji%2C_Hiraizumi%2C_Iwate_-_DSC04467.jpg",
   yokohama: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Minato_Mirai.jpg/1280px-Minato_Mirai.jpg",
   kamakura: "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg",
-  nikko: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nikko_Toshogu_Yomeimon_M3249.jpg"
+  nikko: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nikko_Toshogu_Yomeimon_M3249.jpg",
+  kiyosumi: "https://www.gotokyo.org/en/destinations/eastern-tokyo/kiyosumi-shirakawa/images/25_0109_2.jpg",
+  yanesen: "https://www.gotokyo.org/en/destinations/northern-tokyo/yanaka-and-nezu/images/area013_0996_12.jpg",
+  sankeien: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sankeien.jpg?width=1280",
+  karuizawa: "https://commons.wikimedia.org/wiki/Special:Redirect/file/KARUIZAWA%20reiku.jpg?width=1280",
+  shiraitoKaruizawa: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shiraito%20Falls%2C%20Karuizawa%202014-08-04%20%2815250317335%29.jpg?width=1280",
+  jogasaki: "https://itospa.com/lsc/upfile/spot/0005/4002/54002_1_l.jpg",
+  shimodaBeach: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shirahama%20%C5%8Chama%20%28Shimoda%29.jpg?width=1280"
 };
 
 const sourceLinks = {
@@ -739,6 +746,130 @@ const sourceLinks = {
     label: "JMA: Inatori 1991-2020 monthly climate normals",
     url: "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?block_no=0457&day=02&month=01&prec_no=50&view=p1s&year="
   },
+  tokyoJuly2026: {
+    label: "GO TOKYO: July 2026 weather and events",
+    url: "https://www.gotokyo.org/en/story/guide/july/index.html"
+  },
+  tokyoClimate: {
+    label: "JMA: Tokyo 1991-2020 monthly climate normals",
+    url: "https://www.data.jma.go.jp/stats/etrn/view/nml_sfc_ym.php?block_no=47662&prec_no=44"
+  },
+  goTokyoKiyosumi: {
+    label: "GO TOKYO: Kiyosumi Shirakawa",
+    url: "https://www.gotokyo.org/en/destinations/eastern-tokyo/kiyosumi-shirakawa/"
+  },
+  goTokyoYanesen: {
+    label: "GO TOKYO: Yanaka, Nezu and Sendagi",
+    url: "https://www.gotokyo.org/en/destinations/northern-tokyo/yanaka-and-nezu/index.html"
+  },
+  yokohamaYamashita: {
+    label: "Yokohama official: Yamashita Park",
+    url: "https://www.yokohamajapan.com/en/things-to-do/detail.php?bbid=190"
+  },
+  yokohamaBaysideBlue: {
+    label: "Yokohama official: BAYSIDE BLUE waterfront bus",
+    url: "https://www.yokohamajapan.com/article/bayside-blue/"
+  },
+  yokohamaItineraries: {
+    label: "Yokohama official: one-day and half-day itineraries",
+    url: "https://yokohamajapan.com/media/en/travel/itineraries/"
+  },
+  enodenTimetable: {
+    label: "Enoden: current timetable",
+    url: "https://www.enoden.co.jp/en/train/time-table/"
+  },
+  enodenAccess: {
+    label: "Enoden: station access times and IC card guide",
+    url: "https://www.enoden.co.jp/en/tourism/access/"
+  },
+  enodenFaq: {
+    label: "Enoden: lockers and walking access FAQ",
+    url: "https://www.enoden.co.jp/en/train/faq/"
+  },
+  kamakuraDaibutsu: {
+    label: "JNTO: Great Buddha of Kamakura",
+    url: "https://www.japan.travel/en/spot/1588/"
+  },
+  kamakuraHasedera: {
+    label: "JNTO: Hasedera Temple",
+    url: "https://www.japan.travel/en/spot/1592/"
+  },
+  karuizawaBusCourse: {
+    label: "Karuizawa official: car-free day route by bus",
+    url: "https://karuizawa-kankokyokai.jp/en/course/63940/"
+  },
+  karuizawaClimate: {
+    label: "Karuizawa official: highland climate and summer fog",
+    url: "https://karuizawa-kankokyokai.jp/en/about_karuizawa/894/"
+  },
+  karuizawaShiraito: {
+    label: "Karuizawa official: Shiraito Falls",
+    url: "https://karuizawa-kankokyokai.jp/en/spot/30498/"
+  },
+  karuizawaKumoba: {
+    label: "Karuizawa official: Kumoba Pond",
+    url: "https://karuizawa-kankokyokai.jp/en/spot/30500/"
+  },
+  hoshinoAccess: {
+    label: "Hoshino Area: access and luggage notice",
+    url: "https://www.hoshino-area.jp/en/access/"
+  },
+  hoshinoHours: {
+    label: "Hoshino Area: current business hours",
+    url: "https://www.hoshino-area.jp/en/business-hours/"
+  },
+  hoshinoSummer2026: {
+    label: "Hoshino Area: 2026 summer crowd forecast",
+    url: "https://www.hoshino-area.jp/en/news/news-2342/"
+  },
+  naganoAccess: {
+    label: "Nagano official: Zenkoji access from Nagano Station",
+    url: "https://en.nagano-cvb.or.jp/modules/page/access"
+  },
+  itoJogasaki: {
+    label: "Ito official: Jogasaki Coast",
+    url: "https://itospa.com/spot/detail_54002.html"
+  },
+  itoCourses: {
+    label: "Ito official: current model courses",
+    url: "https://itospa.com/course/"
+  },
+  itoIppekiko: {
+    label: "Ito official: Lake Ippekiko and partial trail closure",
+    url: "https://itospa.com/spot/detail_54018.html"
+  },
+  shimodaAccess: {
+    label: "Shimoda official: access",
+    url: "https://www.shimoda-city.info/access"
+  },
+  shimodaPerry: {
+    label: "Shimoda official: Perry Road",
+    url: "https://www.shimoda-city.info/kanko/perryroad"
+  },
+  shimodaShirahama: {
+    label: "Shimoda official: Shirahama Ohama Beach 2026",
+    url: "https://www.shimoda-city.info/shirahama-ohama"
+  },
+  shimodaTsumekizaki: {
+    label: "Shimoda official: Tsumekizaki",
+    url: "https://www.shimoda-city.info/kanko/tsumekizaki"
+  },
+  shimodaPromenade: {
+    label: "Shimoda official: coastal walking routes and bus access",
+    url: "https://www.shimoda-city.info/promenade"
+  },
+  tokaibusRoutes: {
+    label: "Tokai Bus: current route and stop timetables",
+    url: "https://www.tokaibus.jp/rosen/"
+  },
+  tokaibusSightseeing: {
+    label: "Tokai Bus: Izu sightseeing access",
+    url: "https://www.tokaibus.jp/rosen/sightseeing_tokaibus.html"
+  },
+  atamiAccess: {
+    label: "Atami official: rail and local transport access",
+    url: "https://www.ataminews.gr.jp/access"
+  },
   jmaHeavyRain: {
     label: "JMA: typhoon and heavy-rain safety information",
     url: "https://www.jma.go.jp/jma/bosaiinfo/rain_portal.html"
@@ -919,6 +1050,33 @@ const planningCollections = planningLibrary.filter((plan) => ["tokyo-loop", "hok
 const tokyoDestinationGuides = planningLibrary.filter((plan) =>
   ["yokohama-kamakura", "karuizawa-cabin", "izu-east"].includes(plan.id)
 );
+
+const tokyoDestinationSections = [
+  {
+    id: "tokyo-stay",
+    area: "tokyo",
+    label: "东京停留",
+    icon: "city",
+    kicker: "抵达与回程缓冲",
+    summary: "东京不再塞经典景点清单，只保留能恢复体力、适合两个人慢走、并且能随天气缩短的片区。",
+    route: [
+      { day: "D1-2", title: "抵达与恢复", meta: "酒店周边 + 一个半日片区", tone: "base" },
+      { day: "D10", title: "回程缓冲", meta: "购物、洗衣、整理行李", tone: "accent" }
+    ],
+    transport: [
+      { label: "原则", route: "东京主站区 -> 半日片区", time: "地铁 / JR 30分钟级", memo: "每天只跨一个方向。" }
+    ],
+    decisions: [
+      { title: "7月按热浪逻辑玩", body: "东京7月平年平均25.7°C、平均最高29.9°C；2026官方月度指南也提醒高温高湿。上午户外、正午室内。" }
+    ],
+    stay: "优先东京站、上野、品川等换乘简单且有室内餐饮的区域。",
+    cut: "城市日疲惫时只吃饭和休息，不需要补景点。"
+  },
+  ...tokyoDestinationGuides.map((guide) => ({
+    ...guide,
+    area: guide.id === "yokohama-kamakura" ? "yokohama" : guide.id === "karuizawa-cabin" ? "karuizawa" : "izu"
+  }))
+];
 
 const transportAudit = {
   title: "必去主线交通核验",
@@ -1184,6 +1342,41 @@ const routeMapActions = [
   { target: "transfer-sapporo-kamui", label: "看神威岬交通", note: "巴士/包车" },
   { target: "transfer-sapporo-furano", label: "看富良野交通", note: "札幌往返" },
   { target: "transfer-hakodate-tokyo", label: "看函馆→东京", note: "青函跨海" }
+];
+
+const tokyoRouteMapPoints = [
+  { order: 1, target: "tokyo-kiyosumi", label: "东京", sub: "起点 / 接力 / 终点", lat: 35.6812, lng: 139.7671, kind: "base", side: "top", tone: "forest" },
+  { order: 2, target: "karuizawa-old-kumoba", label: "轻井泽", sub: "小木屋 3晚", lat: 36.3485, lng: 138.6352, kind: "base", side: "left", tone: "forest" },
+  { order: 3, target: "yokohama-waterfront", label: "横滨", sub: "南线基地", lat: 35.4657, lng: 139.6224, kind: "base", side: "right", tone: "accent" },
+  { order: 3.1, target: "kamakura-kita", label: "镰仓", sub: "无行李往返", lat: 35.3192, lng: 139.5503, kind: "transfer", side: "left", tone: "accent" },
+  { order: 4, target: "izu-jogasaki", label: "伊豆高原", sub: "东岸二选一", lat: 34.8778, lng: 139.1082, kind: "base", side: "right", tone: "amber" },
+  { order: 4.1, target: "izu-shimoda-town", label: "下田", sub: "东岸二选一", lat: 34.6796, lng: 138.944, kind: "base", side: "left", tone: "amber" }
+];
+
+const tokyoRouteMapSegments = [
+  { kind: "cross", label: "东京 -> 轻井泽", latlngs: [[35.6812, 139.7671], [35.906, 139.624], [36.3485, 138.6352]] },
+  { kind: "cross", label: "轻井泽 -> 东京", latlngs: [[36.3485, 138.6352], [35.906, 139.624], [35.6812, 139.7671]] },
+  { kind: "jr", label: "东京 -> 横滨", latlngs: [[35.6812, 139.7671], [35.548, 139.677], [35.4657, 139.6224]] },
+  { kind: "jr", label: "横滨 -> 镰仓", latlngs: [[35.4657, 139.6224], [35.403, 139.596], [35.3192, 139.5503]] },
+  { kind: "liner", label: "横滨 -> 伊豆高原", latlngs: [[35.4657, 139.6224], [35.103, 139.077], [34.968, 139.092], [34.8778, 139.1082]] },
+  { kind: "liner", label: "伊豆高原 -> 下田", latlngs: [[34.8778, 139.1082], [34.753, 139.014], [34.6796, 138.944]] },
+  { kind: "liner", label: "东伊豆 -> 东京", latlngs: [[34.6796, 138.944], [34.8778, 139.1082], [35.103, 139.077], [35.6812, 139.7671]] }
+];
+
+const tokyoRouteMapSequence = [
+  ["1", "东京"],
+  ["2", "轻井泽"],
+  ["3", "东京接力"],
+  ["4", "横滨 / 镰仓"],
+  ["5", "东伊豆"],
+  ["6", "东京"]
+];
+
+const tokyoRouteMapActions = [
+  { target: "karuizawa-old-kumoba", label: "看轻井泽玩法", note: "小木屋 2-3晚" },
+  { target: "yokohama-waterfront", label: "看横滨慢线", note: "港湾傍晚" },
+  { target: "kamakura-kita", label: "看镰仓走法", note: "清晨轻装" },
+  { target: "izu-jogasaki", label: "看东伊豆取舍", note: "高原 / 下田二选一" }
 ];
 
 const routeOptimizations = [
@@ -4828,6 +5021,535 @@ const detailGuides = {
   })
 };
 
+const tokyoOptionItems = [
+  spot({
+    id: "tokyo-kiyosumi",
+    area: "tokyo",
+    tier: "strong",
+    modes: ["relaxed", "rain"],
+    title: "清澄白河",
+    meta: "咖啡 + 庭园 + 当代艺术 / 半日",
+    image: placeImages.kiyosumi,
+    tags: ["强推", "低体力", "雨天可用", "东京"],
+    summary: "东京恢复日最合适的半日选项。庭园、咖啡和美术馆距离近，可以按天气随时缩短。",
+    sections: sections(
+      ["清澄庭园负责安静散步，咖啡店负责休息，东京都现代美术馆负责雨天。", "它不是东京必打卡，而是长途移动前后最容易让人真正恢复的一段。"],
+      ["最近是清澄白河站，半藏门线与大江户线可达。", "从东京站方向通常在大手町换半藏门线，官方参考约30分钟。"],
+      ["晴天先庭园再咖啡；雨天直接美术馆和咖啡。", "不要同时再叠浅草或台场。"],
+      [{ title: "推荐走法", items: ["清澄庭园 60-90 分钟 -> 午饭/咖啡 -> 东京都现代美术馆 90-150 分钟。", "只想放空时删美术馆，保留庭园与咖啡。"] }]
+    ),
+    sources: ["goTokyoKiyosumi", "tokyoJuly2026", "tokyoClimate"]
+  }),
+  spot({
+    id: "tokyo-yanesen",
+    area: "tokyo",
+    tier: "strong",
+    modes: ["relaxed", "sun"],
+    title: "谷中・根津・千驮木",
+    meta: "旧东京街区 / 3-4小时",
+    image: placeImages.yanesen,
+    tags: ["强推", "慢逛", "晴天", "东京"],
+    summary: "比热门商业区更适合两个人散步的旧东京。日暮里进、根津或千驮木出，避免走回头路。",
+    sections: sections(
+      ["谷中银座、夕烧阶梯、寺町小巷和根津神社形成一条有生活感的慢线。", "它保留了木造街区、旧商店和小型艺廊，比追大景点更适合恢复日。"],
+      ["JR到日暮里最直接；根津、千驮木可用千代田线离开。", "东京站到日暮里官方参考约12分钟，之后全靠步行。"],
+      ["上午或傍晚去，7月正午不适合长时间走无阴影街巷。", "谷中银座店铺开门较晚，过早到可先走墓园与寺町。"],
+      [{ title: "推荐走法", items: ["日暮里 -> 谷中墓园 -> 上野樱木 -> 根津神社 -> 千代田线离开。", "想吃小店再把谷中银座插入，不必把三片区全部走满。"] }]
+    ),
+    sources: ["goTokyoYanesen", "tokyoJuly2026", "tokyoClimate"]
+  }),
+  spot({
+    id: "yokohama-waterfront",
+    area: "yokohama",
+    tier: "strong",
+    modes: ["relaxed", "sun"],
+    title: "横滨港湾慢线",
+    meta: "港未来 -> 山下公园 / 傍晚",
+    image: placeImages.yokohama,
+    tags: ["强推", "低体力", "夜景", "横滨"],
+    summary: "横滨最值得保留的一条线。把大景观放到傍晚，用步行、BAYSIDE BLUE或水上巴士减少暴晒。",
+    sections: sections(
+      ["港未来、红砖仓库、大栈桥、山下公园和中华街本来就在同一条海岸轴上。", "重点不是全部打卡，而是让天色从白天走到港口夜景。"],
+      ["横滨站可搭BAYSIDE BLUE串联主要港湾点；官方页面写明约30-40分钟一班。", "山下公园距元町・中华街站约3分钟。"],
+      ["炎热时从红砖仓库直接坐车到山下公园，别硬走完整段。", "大栈桥屋顶无遮阴，放在日落前后。"],
+      [{ title: "推荐走法", items: ["16:00 港未来 -> 红砖仓库 -> 大栈桥日落 -> 山下公园 -> 中华街晚饭。", "下雨时删大栈桥，保留红砖仓库室内与晚饭。"] }]
+    ),
+    sources: ["yokohamaAreaJnto", "yokohamaYamashita", "yokohamaBaysideBlue", "yokohamaItineraries"]
+  }),
+  spot({
+    id: "yokohama-sankeien",
+    area: "yokohama",
+    tier: "optional",
+    modes: ["bus", "sun"],
+    title: "三溪园",
+    meta: "传统庭园 / 独立半日",
+    image: placeImages.sankeien,
+    tags: ["可选", "需公交", "晴天", "横滨"],
+    summary: "如果想在横滨加入传统建筑与庭园，它比继续逛商场更有反差，但会占掉一个完整半日。",
+    sections: sections(
+      ["园林、历史建筑和池塘景观集中，适合认真散步而不是顺路拍照。"],
+      ["不在港湾步行轴上，需要从横滨站或樱木町方向转公交。", "出发前用横滨官方行程页与实时导航确认当日线路。"],
+      ["只能和港湾夜景组合，不能再叠镰仓。", "7月放在开园后第一段，午后回市区休息。"]
+    ),
+    sources: ["yokohamaItineraries", "yokohamaAreaJnto"]
+  }),
+  spot({
+    id: "kamakura-kita",
+    area: "yokohama",
+    tier: "strong",
+    modes: ["sun"],
+    title: "北镰仓寺院线",
+    meta: "北镰仓进 / 清晨半日",
+    image: placeImages.kamakura,
+    tags: ["强推", "早出", "步行", "镰仓"],
+    summary: "镰仓最适合清晨的一段。北镰仓下车，选两座寺院后步行或乘JR到镰仓站，不走回头路。",
+    sections: sections(
+      ["北镰仓的价值在于山谷、寺院和更安静的开场，不是寺院数量。", "两座寺院已经足够，保留体力给午饭与长谷。"],
+      ["横滨到北镰仓走JR横须贺线方向；回程可从镰仓站直接回横滨。", "不要拖箱，行李留在横滨住宿。"],
+      ["8点前后抵达最舒服；雨后石阶湿滑就缩短。", "不要把北镰仓、长谷、江之岛三个区全塞满。"]
+    ),
+    sources: ["kamakuraJnto", "enodenAccess", "enodenFaq"]
+  }),
+  spot({
+    id: "kamakura-hase",
+    area: "yokohama",
+    tier: "strong",
+    modes: ["sun", "bus"],
+    title: "长谷寺 + 镰仓大佛",
+    meta: "江之电必要段 / 2-3小时",
+    image: placeImages.kamakura,
+    tags: ["强推", "海景", "需江之电", "镰仓"],
+    summary: "镰仓的第二个核心片区。两个主景点步行可串，长谷寺有高处海景，大佛负责地标感。",
+    sections: sections(
+      ["长谷寺与大佛距离近，适合做成一个明确的小片区。", "海边只是加分项，不要为了打卡再走很远。"],
+      ["江之电官方参考：镰仓到长谷约5分钟；长谷站步行到长谷寺约5分钟、到大佛约7分钟。", "拥挤时可用公交或出租车替代一段江之电。"],
+      ["先长谷寺再大佛，下午人流变大前离开。", "正午高温时删海边，直接回镰仓站吃饭。"]
+    ),
+    sources: ["kamakuraHasedera", "kamakuraDaibutsu", "enodenTimetable", "enodenAccess", "enodenFaq"]
+  }),
+  spot({
+    id: "kamakura-enoshima",
+    area: "yokohama",
+    tier: "conditional",
+    modes: ["sun", "bus"],
+    title: "江之岛",
+    meta: "体力与天气条件项 / 半日",
+    image: placeImages.kamakura,
+    tags: ["条件项", "高体力", "晴天", "镰仓"],
+    summary: "景色值得，但7月拥挤、暴晒、台阶多。它应该替换北镰仓或长谷，而不是作为第三段追加。",
+    sections: sections(
+      ["海岛、展望和傍晚海风是它的优势；通往岛内高处的台阶与人流是成本。"],
+      ["江之电官方参考：镰仓到江之岛约23分钟。", "回横滨前要给江之电与JR换乘留冗余。"],
+      ["只有晴朗、体力好且愿意晚回时选择。", "强风、雷雨或中暑风险高时直接删除。"]
+    ),
+    sources: ["enodenTimetable", "enodenAccess", "kamakuraJnto", "tokyoJuly2026"]
+  }),
+  spot({
+    id: "karuizawa-cabin-day",
+    area: "karuizawa",
+    tier: "strong",
+    modes: ["relaxed", "rain"],
+    title: "小木屋完整空白日",
+    meta: "不出远门 / 住3晚时强推",
+    image: placeImages.karuizawa,
+    tags: ["强推", "最低体力", "雨天可用", "轻井泽"],
+    summary: "这不是浪费一天，而是选择小木屋的核心价值。做饭、散步、咖啡、洗衣和发呆比再加一个城市更稀缺。",
+    sections: sections(
+      ["两个人在森林住宿真正住下来，是这条路线区别于普通打卡行程的部分。"],
+      ["这一天不依赖公共交通；提前备好早餐、饮水和晚餐材料。", "确认住宿接送、最近超市和夜间出租车可用性。"],
+      ["住2晚时保留半天；住3晚时保留完整一天。", "不要因为觉得空白而临时去草津或长野。"]
+    ),
+    sources: ["karuizawaAccess", "karuizawaClimate"]
+  }),
+  spot({
+    id: "karuizawa-old-kumoba",
+    area: "karuizawa",
+    tier: "strong",
+    modes: ["relaxed", "sun"],
+    title: "旧轻井泽 + 云场池",
+    meta: "镇内慢线 / 半日",
+    image: placeImages.karuizawa,
+    tags: ["强推", "低体力", "晴天", "轻井泽"],
+    summary: "最容易无车完成的轻井泽半日。旧轻井泽负责吃逛，云场池负责1公里级的森林散步。",
+    sections: sections(
+      ["旧轻井泽银座约750米，老店、面包与咖啡密集；云场池环池约1公里。"],
+      ["从轻井泽站用公交、出租或骑行进入；回程不要依赖太晚的班次。", "雨天骑行降级为公交或出租。"],
+      ["上午云场池、午饭后旧轻井泽最顺。", "7月雾多，别把远景当成保证。"]
+    ),
+    sources: ["karuizawaBusCourse", "karuizawaKumoba", "karuizawaClimate"]
+  }),
+  spot({
+    id: "karuizawa-hoshino",
+    area: "karuizawa",
+    tier: "strong",
+    modes: ["relaxed", "bus", "rain"],
+    title: "星野区 + 榆树街小镇",
+    meta: "中轻井泽 / 半日到傍晚",
+    image: placeImages.karuizawa,
+    tags: ["强推", "需公交", "温泉", "轻井泽"],
+    summary: "无车情况下体验森林、餐饮和温泉最稳定的一组，但夏季高峰必须错峰。",
+    sections: sections(
+      ["榆树街小镇适合吃饭和咖啡，森林步道与蜻蜓之汤负责放松。"],
+      ["官方参考从轻井泽站坐公交约20分钟。", "星野区没有行李寄存，拖箱当天不要来。"],
+      ["2026年7月18日至8月31日为拥挤期；官方提示12-14点和18-20点餐厅可能等候超过1小时。", "蜻蜓之汤16-20点集中，10-15点相对松。"]
+    ),
+    sources: ["hoshinoAccess", "hoshinoHours", "hoshinoSummer2026", "karuizawaBusCourse"]
+  }),
+  spot({
+    id: "karuizawa-shiraito",
+    area: "karuizawa",
+    tier: "conditional",
+    modes: ["bus", "sun"],
+    title: "白丝瀑布",
+    meta: "班次型远端 / 2-3小时",
+    image: placeImages.shiraitoKaruizawa,
+    tags: ["条件项", "需公交", "晴天", "轻井泽"],
+    summary: "夏天清凉、景观明确，但完全由往返公交时间决定。把它当一段预约好的出门任务，不和多个远端点拼。",
+    sections: sections(
+      ["瀑布高约3米、宽约70米，地下水像白线从岩层涌出。"],
+      ["官方无车示例为轻井泽站9:20发、9:43到白丝瀑布；实际必须重查当日班次。", "先截好返程班次，错过后不要赌临时出租车。"],
+      ["晴天或轻雾都可以；强雨、雷暴、公交中断时删除。", "2晚方案优先星野或旧轻井泽，不必强加。"]
+    ),
+    sources: ["karuizawaShiraito", "karuizawaBusCourse", "karuizawaAccess"]
+  }),
+  spot({
+    id: "karuizawa-nagano",
+    area: "karuizawa",
+    tier: "replace",
+    modes: ["replace", "sun"],
+    title: "长野・善光寺",
+    meta: "只做替换日 / 不顺手",
+    image: placeImages.karuizawa,
+    tags: ["仅替换", "完整一日", "长野", "轻井泽"],
+    summary: "新干线方向顺，但往返会吃掉木屋日。只有住3晚以上且明确想看善光寺时才成立。",
+    sections: sections(
+      ["善光寺与门前町是明确目的，不是为了利用铁路而去。"],
+      ["轻井泽到长野用北陆新干线；长野站善光寺口1号站台乘公交约10分钟到善光寺大门，再步行约5分钟。", "官方说明日间公交约5-10分钟一班。"],
+      ["把它替换小木屋空白日，不要叠在星野或白丝瀑布同一天。", "住2晚直接删除。"]
+    ),
+    sources: ["karuizawaTimetable", "naganoAccess"]
+  }),
+  spot({
+    id: "izu-jogasaki",
+    area: "izu",
+    tier: "strong",
+    modes: ["sun", "bus"],
+    title: "城崎海岸・门胁吊桥",
+    meta: "伊豆高原核心 / 2-4小时",
+    image: placeImages.jogasaki,
+    tags: ["强推", "海岸", "需公交", "伊豆"],
+    summary: "东伊豆最强的火山海岸景观。只走门胁吊桥周边短线就足够，不需要挑战9公里完整步道。",
+    sections: sections(
+      ["约4000年前大室山熔岩入海形成海岸，门胁吊桥长48米、高约23米。"],
+      ["城崎海岸站步行到核心区官方参考约35分钟；热天更适合公交或出租到门胁附近。", "回程班次与酒店接送先查好。"],
+      ["清晨去，正午前离开。", "强风、雷雨、湿滑或海浪警报时不走断崖步道。"]
+    ),
+    sources: ["itoJogasaki", "itoCourses", "tokaibusRoutes", "jmaHeavyRain"]
+  }),
+  spot({
+    id: "izu-omuro",
+    area: "izu",
+    tier: "strong",
+    modes: ["sun", "bus"],
+    title: "大室山",
+    meta: "晴天视野项 / 半日",
+    image: placeImages.jogasaki,
+    tags: ["强推", "晴天", "需公交", "伊豆"],
+    summary: "天气通透时是伊豆高原最值得的360度视野；强风停运或低云时价值会迅速下降。",
+    sections: sections(
+      ["乘吊椅上山后可走约1公里火口环线，晴天看相模滩、伊豆诸岛与富士山方向。"],
+      ["从伊东或伊豆高原方向坐东海巴士接入。", "吊椅受强风影响，出发前查营业与天气。"],
+      ["与城崎海岸同日时只各做短版，中午安排室内午饭。", "云底压山或风大就删大室山，别为已买票硬去。"]
+    ),
+    sources: ["itoCourses", "tokaibusRoutes", "jmaHeavyRain"]
+  }),
+  spot({
+    id: "izu-shimoda-town",
+    area: "izu",
+    tier: "strong",
+    modes: ["relaxed", "rain"],
+    title: "下田港 + Perry Road",
+    meta: "下田基地低体力线 / 2-3小时",
+    image: placeImages.shimodaBeach,
+    tags: ["强推", "低体力", "雨天可用", "伊豆"],
+    summary: "住下田时最稳定的到达日玩法。港町、历史街道和晚饭都靠近，不需要再追远端公交。",
+    sections: sections(
+      ["Perry Road与港口把开国史、石造水渠和小店串成短步行线。"],
+      ["伊豆急下田站出发步行或短程公交/出租即可。", "大件行李先送酒店，不拖去街区。"],
+      ["抵达日或雨天保留；大雨时缩到车站附近午饭与酒店。", "不要同日再加白浜与爪木崎。"]
+    ),
+    sources: ["shimodaAccess", "shimodaPerry", "tokaibusSightseeing"]
+  }),
+  spot({
+    id: "izu-shirahama",
+    area: "izu",
+    tier: "strong",
+    modes: ["sun", "bus"],
+    title: "白浜大浜海水浴场",
+    meta: "下田晴天首选 / 半日",
+    image: placeImages.shimodaBeach,
+    tags: ["强推", "海滩", "需公交", "伊豆"],
+    summary: "下田最直接的白沙海岸选项。2026开放期为7月18日至8月31日，非开放时段只按海岸散步看待。",
+    sections: sections(
+      ["官方资料写明沙滩约770米，是下田最热闹的大型海滩。"],
+      ["伊豆急下田站9号站台乘白浜方向公交约15分钟，在Respo白浜下车。", "返程班次先截图；傍晚出租车不一定随叫随到。"],
+      ["海水浴开放时间官方标为8:00-16:00；防晒、饮水与遮阳必须带。", "风浪、雷暴或救生管理外时不下水。"]
+    ),
+    sources: ["shimodaShirahama", "tokaibusRoutes", "shimodaAccess", "jmaHeavyRain"]
+  }),
+  spot({
+    id: "izu-tsumekizaki",
+    area: "izu",
+    tier: "conditional",
+    modes: ["sun", "bus"],
+    title: "爪木崎",
+    meta: "灯塔 + 柱状节理 / 半日",
+    image: placeImages.shimodaBeach,
+    tags: ["条件项", "海岸", "需公交", "伊豆"],
+    summary: "比白浜更偏向岬角地貌与步道。景观好，但公交少、无遮阴、强风风险高。",
+    sections: sections(
+      ["白色灯塔、俵矶柱状节理和海岸步道构成核心。"],
+      ["下田站10号站台乘爪木崎方向；官方步道页参考约22分钟到爪木崎。", "必须按东海巴士当日站点时刻锁定去回程。"],
+      ["只在天气稳定、风不大时选。", "白浜与爪木崎二选一；不要在炎热日连续做两段海岸。"]
+    ),
+    sources: ["shimodaTsumekizaki", "shimodaPromenade", "tokaibusRoutes", "tokaibusSightseeing"]
+  }),
+  spot({
+    id: "izu-kawazu-seven-falls",
+    area: "izu",
+    tier: "conditional",
+    modes: ["sun", "bus"],
+    title: "河津七滝",
+    meta: "河津站再接公交 / 半日以上",
+    image: placeImages.jogasaki,
+    tags: ["条件项", "瀑布", "需公交", "伊豆"],
+    summary: "森林峡谷比海岸凉一些，但它不是铁路站旁景点。适合替换一个海岸日，不适合和下田远端点拼。",
+    sections: sections(
+      ["连续瀑布与峡谷步道适合想从海岸换成森林的一天。"],
+      ["伊豆急到河津站后，再搭东海巴士前往河津七滝方向；车程与回程要按当天搜索。", "雨后可能湿滑，鞋底抓地比拍照更重要。"],
+      ["阴天但无暴雨时可以；暴雨、土砂风险或河水上涨时删除。", "和大室山、城崎海岸、白浜互为替换，不是加法。"]
+    ),
+    sources: ["tokaibusRoutes", "tokaibusSightseeing", "izukyuGlobal", "jmaHeavyRain"]
+  }),
+  spot({
+    id: "izu-ippekiko",
+    area: "izu",
+    tier: "optional",
+    modes: ["relaxed", "bus"],
+    title: "一碧湖",
+    meta: "湖边咖啡 / 不做完整环湖",
+    image: placeImages.jogasaki,
+    tags: ["可选", "低体力", "需公交", "伊豆"],
+    summary: "适合把行程降速成湖边咖啡和短散步。自2025年10月31日起部分步道封闭，不能按完整环湖规划。",
+    sections: sections(
+      ["它的价值是安静与停下来，不是必须完成的环湖里程。"],
+      ["从伊东/伊豆高原方向用东海巴士进入，班次与站点当天核对。", "部分路段封闭时严格按现场围挡折返。"],
+      ["适合低云、海岸风大但道路正常的日子。", "只做开放段和咖啡，不尝试绕过封闭区。"]
+    ),
+    sources: ["itoIppekiko", "tokaibusRoutes", "itoCourses"]
+  }),
+  spot({
+    id: "izu-atami-replace",
+    area: "izu",
+    tier: "replace",
+    modes: ["replace", "rain", "relaxed"],
+    title: "热海低摩擦替代",
+    meta: "少坐车版本 / 1晚",
+    image: placeImages.jogasaki,
+    tags: ["仅替换", "低体力", "雨天", "伊豆"],
+    summary: "如果不想继续坐到伊豆高原或下田，热海是最合理的缩短版。它替换东伊豆深处，不与下田同时保留。",
+    sections: sections(
+      ["温泉、海边和站前餐饮足以形成一个舒适过夜点，重点是少一次长车程。"],
+      ["东京到热海可用东海道新干线或JR东海道线；市内再按住宿位置用公交或出租。", "热海坡多，酒店接送比直线距离更重要。"],
+      ["只剩1晚、天气差或身体不舒服时选它。", "选热海就删除伊豆高原与下田，不再向南追。"]
+    ),
+    sources: ["atamiAccess", "odorikoOfficial", "jmaHeavyRain"]
+  })
+];
+
+Object.assign(detailGuides, {
+  "tokyo-kiyosumi": guide({
+    facts: [["优先级", "强推"], ["用时", "半日"], ["体力", "低"], ["雨天", "可用"]],
+    play: ["晴天先庭园，再用咖啡店把节奏压下来。", "雨天把重心改成东京都现代美术馆。"],
+    time: ["轻版2小时：庭园+咖啡。", "完整版4-5小时：再加美术馆与午饭。"],
+    route: ["半藏门线或大江户线到清澄白河站。", "东京站方向通常在大手町换乘，官方参考约30分钟。"],
+    best: ["长途移动后的恢复日。", "高温或阵雨频繁时。"],
+    avoid: ["美术馆闭馆日先查。", "不要再同日跨城去台场。"],
+    sources: ["goTokyoKiyosumi", "tokyoJuly2026", "tokyoClimate"]
+  }),
+  "tokyo-yanesen": guide({
+    facts: [["优先级", "强推"], ["用时", "3-4小时"], ["体力", "中低"], ["最佳", "上午/傍晚"]],
+    play: ["日暮里进，顺着谷中、根津或千驮木单向走。", "小店只挑感兴趣的停，不把商店街当任务。"],
+    time: ["3小时做一条单向线。", "想加咖啡和艺廊预留4-5小时。"],
+    route: ["JR日暮里站进入；千代田线根津或千驮木站离开。"],
+    best: ["想看东京生活感而非大地标时。"],
+    avoid: ["7月正午不做长距离街巷步行。"],
+    sources: ["goTokyoYanesen", "tokyoJuly2026"]
+  }),
+  "yokohama-waterfront": guide({
+    facts: [["优先级", "强推"], ["用时", "4-6小时"], ["体力", "可调"], ["最佳", "傍晚"]],
+    play: ["从港未来一路向山下公园单向移动。", "用大栈桥日落或港口夜景作为唯一高潮。"],
+    time: ["轻版3小时：红砖+大栈桥+晚饭。", "完整版加山下公园与中华街。"],
+    route: ["BAYSIDE BLUE可从横滨站串联港未来、山下公园与中华街。", "官方页面显示约30-40分钟一班，出发前查当天。"],
+    best: ["抵达横滨当天下午。"],
+    avoid: ["烈日下不要徒步完整海岸轴。"],
+    sources: ["yokohamaYamashita", "yokohamaBaysideBlue", "yokohamaItineraries"]
+  }),
+  "yokohama-sankeien": guide({
+    facts: [["优先级", "可选"], ["用时", "半日"], ["体力", "中"], ["交通", "公交"]],
+    play: ["把三溪园当独立庭园半日，而不是港湾顺路点。"],
+    time: ["含往返与散步至少4小时。"],
+    route: ["从横滨市区转公交进入，按官方行程与实时导航确认。"],
+    best: ["想看传统建筑和庭园时。"],
+    avoid: ["不要与镰仓同日。"],
+    sources: ["yokohamaItineraries"]
+  }),
+  "kamakura-kita": guide({
+    facts: [["优先级", "强推"], ["用时", "3-4小时"], ["体力", "中"], ["最佳", "清晨"]],
+    play: ["只选两座寺院，保留山谷与步行的质感。", "之后从镰仓站转去长谷或直接午饭。"],
+    time: ["北镰仓片区半日足够。"],
+    route: ["横滨出发坐JR横须贺线方向到北镰仓。", "镰仓站回横滨，不回北镰仓。"],
+    best: ["8点前后开始。"],
+    avoid: ["雨后石阶湿滑时删远寺院。"],
+    sources: ["kamakuraJnto", "enodenFaq"]
+  }),
+  "kamakura-hase": guide({
+    facts: [["优先级", "强推"], ["用时", "2-3小时"], ["体力", "中"], ["交通", "江之电"]],
+    play: ["长谷寺看庭园与海景，大佛看地标。", "有余力才去由比滨。"],
+    time: ["两个景点加步行约2-3小时。"],
+    route: ["镰仓到长谷约5分钟；长谷站到长谷寺约5分钟、到大佛约7分钟。"],
+    best: ["上午晚段或午饭前。"],
+    avoid: ["江之电拥挤时不要带行李。"],
+    sources: ["kamakuraHasedera", "kamakuraDaibutsu", "enodenTimetable", "enodenFaq"]
+  }),
+  "kamakura-enoshima": guide({
+    facts: [["优先级", "条件项"], ["用时", "半日"], ["体力", "高"], ["最佳", "晴天"]],
+    play: ["把江之岛当镰仓日的替换模块。", "只保岛内最想看的高点与海景。"],
+    time: ["交通和岛内步行至少4小时。"],
+    route: ["江之电镰仓到江之岛官方参考约23分钟。"],
+    best: ["体力好、愿意晚回横滨时。"],
+    avoid: ["高温、雷雨、强风或已经走完北镰仓时删除。"],
+    sources: ["enodenTimetable", "enodenAccess", "tokyoJuly2026"]
+  }),
+  "karuizawa-cabin-day": guide({
+    facts: [["优先级", "强推"], ["用时", "完整日"], ["体力", "最低"], ["价值", "真正住下"]],
+    play: ["早餐、林间散步、做饭、午睡与洗衣就是当天内容。", "只安排一个可随时取消的咖啡或短散步。"],
+    time: ["住3晚时留完整日；住2晚时至少留半日。"],
+    route: ["不依赖公共交通，但前一天要完成食品和饮水补给。"],
+    best: ["下雨、起雾或连续移动后。"],
+    avoid: ["不要临时因为焦虑而加长野或草津。"],
+    sources: ["karuizawaAccess", "karuizawaClimate"]
+  }),
+  "karuizawa-old-kumoba": guide({
+    facts: [["优先级", "强推"], ["用时", "半日"], ["体力", "中低"], ["无车", "可行"]],
+    play: ["先云场池短走，再去旧轻井泽午饭和咖啡。"],
+    time: ["云场池30-60分钟，旧轻井泽2-3小时。"],
+    route: ["轻井泽站用公交、出租或骑行进入。", "回程不要压到夜间末班。"],
+    best: ["晴天或轻雾。"],
+    avoid: ["雨天不骑行。"],
+    sources: ["karuizawaBusCourse", "karuizawaKumoba", "karuizawaClimate"]
+  }),
+  "karuizawa-hoshino": guide({
+    facts: [["优先级", "强推"], ["用时", "半日"], ["体力", "低"], ["行李", "不可寄存"]],
+    play: ["榆树街小镇吃饭，森林步道慢走，蜻蜓之汤收尾。"],
+    time: ["4-6小时，不必从早待到晚。"],
+    route: ["轻井泽站公交约20分钟。", "官方明确星野区没有行李寄存。"],
+    best: ["10-15点错开温泉高峰。"],
+    avoid: ["2026暑期12-14点与18-20点餐厅等待可能超过1小时。"],
+    sources: ["hoshinoAccess", "hoshinoHours", "hoshinoSummer2026"]
+  }),
+  "karuizawa-shiraito": guide({
+    facts: [["优先级", "条件项"], ["用时", "2-3小时"], ["交通", "公交"], ["风险", "错过返程"]],
+    play: ["只看瀑布与短森林步道，不再叠多个远端点。"],
+    time: ["现场停留45-75分钟，整体由公交决定。"],
+    route: ["官方无车示例轻井泽站9:20发、9:43到；实际按当日班次。"],
+    best: ["夏季晴天或轻雾。"],
+    avoid: ["没有确认返程就不要上车。"],
+    sources: ["karuizawaShiraito", "karuizawaBusCourse"]
+  }),
+  "karuizawa-nagano": guide({
+    facts: [["优先级", "仅替换"], ["用时", "完整日"], ["交通", "新干线+公交"], ["前提", "住3晚+"]],
+    play: ["善光寺、门前町与一顿荞麦面已经足够。"],
+    time: ["从轻井泽往返预留一整天。"],
+    route: ["长野站善光寺口1号站台乘公交约10分钟，再步行约5分钟。"],
+    best: ["明确想看善光寺时。"],
+    avoid: ["2晚轻井泽不要加。"],
+    sources: ["karuizawaTimetable", "naganoAccess"]
+  }),
+  "izu-jogasaki": guide({
+    facts: [["优先级", "强推"], ["用时", "2-4小时"], ["体力", "中"], ["天气", "强依赖"]],
+    play: ["只走门胁吊桥与附近短线。", "把火山地貌与海岸作为唯一核心。"],
+    time: ["短版2小时，完整短步道3-4小时。"],
+    route: ["城崎海岸站步行到核心区约35分钟；热天优先公交或出租。"],
+    best: ["清晨、风小、路面干。"],
+    avoid: ["强风、雷雨、湿滑时不上断崖步道。"],
+    sources: ["itoJogasaki", "itoCourses", "tokaibusRoutes", "jmaHeavyRain"]
+  }),
+  "izu-omuro": guide({
+    facts: [["优先级", "强推"], ["用时", "半日"], ["交通", "公交"], ["风险", "强风停运"]],
+    play: ["吊椅上山后走火口环线，视野不好就缩短。"],
+    time: ["含公交与排队3-4小时。"],
+    route: ["从伊东或伊豆高原方向搭东海巴士。"],
+    best: ["晴朗、低风、能见度好。"],
+    avoid: ["低云或强风时不硬去。"],
+    sources: ["itoCourses", "tokaibusRoutes", "jmaHeavyRain"]
+  }),
+  "izu-shimoda-town": guide({
+    facts: [["优先级", "强推"], ["用时", "2-3小时"], ["体力", "低"], ["雨天", "可缩短"]],
+    play: ["Perry Road、港口与晚饭组成到达日短线。"],
+    time: ["2小时即可，不必安排整天。"],
+    route: ["下田站步行或短程公交/出租进入。"],
+    best: ["抵达日、阴天或海岸风大。"],
+    avoid: ["不要拖箱散步。"],
+    sources: ["shimodaAccess", "shimodaPerry", "tokaibusSightseeing"]
+  }),
+  "izu-shirahama": guide({
+    facts: [["优先级", "强推"], ["用时", "半日"], ["公交", "约15分钟"], ["2026开放", "7/18-8/31"]],
+    play: ["早到、遮阳、只留半日，下午回酒店休息。"],
+    time: ["海滩3-4小时足够。"],
+    route: ["下田站9号站台乘白浜方向，Respo白浜下车。"],
+    best: ["晴天、风浪小、救生管理开放。"],
+    avoid: ["非开放时间不把下水当保证。"],
+    sources: ["shimodaShirahama", "tokaibusRoutes", "jmaHeavyRain"]
+  }),
+  "izu-tsumekizaki": guide({
+    facts: [["优先级", "条件项"], ["用时", "半日"], ["公交", "约22分钟"], ["体力", "中"]],
+    play: ["灯塔、柱状节理与一段开放海岸步道。"],
+    time: ["含公交至少4小时。"],
+    route: ["下田站10号站台乘爪木崎方向，按当日时刻去回。"],
+    best: ["天气稳定、风小。"],
+    avoid: ["不要与白浜同日连做。"],
+    sources: ["shimodaTsumekizaki", "shimodaPromenade", "tokaibusRoutes"]
+  }),
+  "izu-kawazu-seven-falls": guide({
+    facts: [["优先级", "条件项"], ["用时", "半日+"], ["交通", "铁路+公交"], ["风险", "湿滑/大雨"]],
+    play: ["把它作为海岸日的森林替换。"],
+    time: ["含河津站往返至少5小时。"],
+    route: ["河津站换东海巴士到河津七滝方向。"],
+    best: ["阴天无暴雨、气温较温和。"],
+    avoid: ["暴雨或土砂风险时删除。"],
+    sources: ["tokaibusRoutes", "izukyuGlobal", "jmaHeavyRain"]
+  }),
+  "izu-ippekiko": guide({
+    facts: [["优先级", "可选"], ["用时", "2-3小时"], ["体力", "低"], ["步道", "部分封闭"]],
+    play: ["只做开放段短走与湖边咖啡。"],
+    time: ["不按完整环湖计算。"],
+    route: ["从伊东/伊豆高原方向搭东海巴士。"],
+    best: ["海岸风大但道路正常时。"],
+    avoid: ["不绕围挡、不尝试完整环湖。"],
+    sources: ["itoIppekiko", "tokaibusRoutes"]
+  }),
+  "izu-atami-replace": guide({
+    facts: [["优先级", "仅替换"], ["建议", "1晚"], ["体力", "低"], ["作用", "缩短交通"]],
+    play: ["入住、温泉、海边短走与一顿晚饭。"],
+    time: ["1晚足够承担缩短版伊豆。"],
+    route: ["东京到热海可用新干线或东海道线；市内按酒店位置接公交/出租。"],
+    best: ["只剩1晚、天气差或不想再坐长车时。"],
+    avoid: ["选热海就删伊豆高原和下田。"],
+    sources: ["atamiAccess", "odorikoOfficial", "jmaHeavyRain"]
+  })
+});
+
 function getGuide(item) {
   return detailGuides[item.id] || guide({
     facts: [["层级", kindLabels[item.type] || "目的地"], ["节奏", item.optional ? "可选" : "主线"], ["体力", "按当天调整"], ["交通", "点开审计"]],
@@ -5479,6 +6201,8 @@ function renderReviewLinks(item) {
 const outlineTree = document.querySelector("#outlineTree");
 const planTabs = document.querySelector("#planTabs");
 const planPanel = document.querySelector("#planPanel");
+const bottomNav = document.querySelector("#bottomNav");
+const hokkaidoThemeSections = document.querySelectorAll('[data-theme-section="hokkaido"]');
 const filterButtons = document.querySelectorAll("[data-filter]");
 const routeMapOverview = document.querySelector("#routeMapOverview");
 const transportAuditElement = document.querySelector("#transportAudit");
@@ -5501,6 +6225,7 @@ let realRouteMapInstance = null;
 
 const expandedIds = new Set();
 let activeFilter = "all";
+let activeTokyoOptionFilter = "strong";
 const requestedPlanId = new URLSearchParams(window.location.search).get("plan");
 let activePlanId = planningCollections.some((plan) => plan.id === requestedPlanId) ? requestedPlanId : "tokyo-loop";
 let lastFocusedElement = null;
@@ -5533,7 +6258,7 @@ function flatten(items) {
   return items.flatMap((item) => [item, ...(item.children ? flatten(item.children) : [])]);
 }
 
-const itemMap = new Map(flatten([optionalLibraryItem, ...outline]).map((item) => [item.id, item]));
+const itemMap = new Map(flatten([optionalLibraryItem, ...outline, ...tokyoOptionItems]).map((item) => [item.id, item]));
 
 function renderTags(tags = []) {
   return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
@@ -5557,6 +6282,26 @@ function renderSources(sources = [], title = "依据") {
       <h3>${escapeHtml(title)}</h3>
       <ul>${links}</ul>
     </section>
+  `;
+}
+
+function renderPlanSourceDisclosure(sources = []) {
+  const links = unique(sources)
+    .map((key) => sourceLinks[key])
+    .filter(Boolean);
+  if (!links.length) return "";
+
+  return `
+    <details class="plan-source-disclosure">
+      <summary>
+        ${icon("link")}
+        <span><strong>官方依据与时刻表</strong><small>${links.length}个入口 · 出发前再核对</small></span>
+        ${icon("plus")}
+      </summary>
+      <ul>
+        ${links.map((source) => `<li><a href="${source.url}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a></li>`).join("")}
+      </ul>
+    </details>
   `;
 }
 
@@ -5629,25 +6374,98 @@ function renderPlanRoute(route = []) {
   `;
 }
 
+const tokyoOptionFilterLabels = [
+  ["strong", "我会选"],
+  ["all", "全部"],
+  ["relaxed", "低体力"],
+  ["sun", "晴天"],
+  ["rain", "雨天"],
+  ["bus", "需接驳"],
+  ["replace", "只做替换"]
+];
+
+const tokyoOptionTierLabels = {
+  strong: "强推",
+  optional: "可选",
+  conditional: "条件项",
+  replace: "仅替换"
+};
+
+function matchesTokyoOptionFilter(item) {
+  if (activeTokyoOptionFilter === "all") return true;
+  if (activeTokyoOptionFilter === "strong" || activeTokyoOptionFilter === "replace") {
+    return item.tier === activeTokyoOptionFilter;
+  }
+  return item.modes?.includes(activeTokyoOptionFilter);
+}
+
+function renderTokyoOptionFilters() {
+  return `
+    <div class="plan-option-filters" role="group" aria-label="周边选项筛选">
+      ${tokyoOptionFilterLabels
+        .map(
+          ([value, label]) => `
+            <button
+              type="button"
+              class="plan-option-filter${activeTokyoOptionFilter === value ? " is-active" : ""}"
+              data-option-filter="${escapeHtml(value)}"
+              aria-pressed="${activeTokyoOptionFilter === value}"
+            >${escapeHtml(label)}</button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderTokyoOptionList(area) {
+  const areaItems = tokyoOptionItems.filter((item) => item.area === area);
+  const visibleItems = areaItems.filter(matchesTokyoOptionFilter);
+
+  if (!visibleItems.length) {
+    return `<p class="plan-option-empty">这一类没有适合当前区域的项，换一个筛选即可。</p>`;
+  }
+
+  return `
+    <div class="plan-option-list">
+      ${visibleItems
+        .map(
+          (item) => `
+            <button type="button" class="plan-option-row is-${escapeHtml(item.tier)}" data-detail-id="${escapeHtml(item.id)}" aria-label="打开${escapeHtml(item.title)}详情">
+              <span class="plan-option-marker" aria-hidden="true">${icon("pin")}</span>
+              <span class="plan-option-copy">
+                <strong>${escapeHtml(item.title)}</strong>
+                <small>${escapeHtml(item.meta)}</small>
+              </span>
+              <span class="plan-option-tier">${escapeHtml(tokyoOptionTierLabels[item.tier] || "可选")}</span>
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 function renderDestinationGuides(plan) {
   if (plan.id !== "tokyo-loop") return "";
 
   return `
-    <section class="plan-section plan-destinations">
+    <section class="plan-section plan-destinations" id="plan-destinations">
       <div class="plan-section-title">
         ${icon("pin")}
-        <div><h4>主题内目的地</h4><p>属于同一条东京进出路线，按需展开</p></div>
+        <div><h4>目的地与周边 Options</h4><p>默认只看我会选的；点名称打开完整攻略</p></div>
       </div>
+      ${renderTokyoOptionFilters()}
       <div class="plan-destination-list">
-        ${tokyoDestinationGuides
+        ${tokyoDestinationSections
           .map(
             (guide) => `
-              <details class="plan-destination">
+              <details class="plan-destination" data-option-area="${escapeHtml(guide.area)}">
                 <summary>
                   <span class="plan-destination-icon" aria-hidden="true">${icon(guide.icon)}</span>
                   <span class="plan-destination-summary">
                     <strong>${escapeHtml(guide.label)}</strong>
-                    <small>${escapeHtml(guide.kicker)} · ${escapeHtml(guide.stats[0][1])}</small>
+                    <small>${escapeHtml(guide.kicker)} · ${tokyoOptionItems.filter((item) => item.area === guide.area).length}个选项</small>
                   </span>
                   <span class="plan-destination-disclosure" aria-hidden="true">${icon("plus")}</span>
                 </summary>
@@ -5672,6 +6490,8 @@ function renderDestinationGuides(plan) {
                     <p><strong>住宿：</strong>${escapeHtml(guide.stay)}</p>
                     <p><strong>删减：</strong>${escapeHtml(guide.cut)}</p>
                   </div>
+                  <div class="plan-destination-subtitle plan-option-title">周边可选项</div>
+                  <div class="plan-option-slot">${renderTokyoOptionList(guide.area)}</div>
                 </div>
               </details>
             `
@@ -5707,7 +6527,7 @@ function renderPlanningPanel() {
           .join("")}
       </dl>
 
-      <section class="plan-section">
+      <section class="plan-section" id="plan-route">
         <div class="plan-section-title">
           ${icon("route")}
           <div><h4>推荐顺序</h4><p>先看整体，不用先读长文</p></div>
@@ -5715,7 +6535,7 @@ function renderPlanningPanel() {
         ${renderPlanRoute(plan.route)}
       </section>
 
-      <section class="plan-section">
+      <section class="plan-section" id="plan-transport">
         <div class="plan-section-title">
           ${icon("train")}
           <div><h4>交通链</h4><p>每一段都说明换乘和风险</p></div>
@@ -5723,7 +6543,7 @@ function renderPlanningPanel() {
         ${renderTransferSegments(plan.transport)}
       </section>
 
-      <section class="plan-section">
+      <section class="plan-section" id="plan-decisions">
         <div class="plan-section-title">
           ${icon("check")}
           <div><h4>关键判断</h4><p>真正影响体力和可行性的地方</p></div>
@@ -5756,9 +6576,48 @@ function renderPlanningPanel() {
       </section>
 
       ${plan.action ? `<button type="button" class="plan-primary-action" data-route-target="${escapeHtml(plan.action.target)}">${escapeHtml(plan.action.label)}${icon("route")}</button>` : ""}
-      ${renderSources(plan.sources, "官方交通与气候入口")}
+      ${renderPlanSourceDisclosure(plan.sources)}
     </article>
   `;
+}
+
+function renderBottomNav() {
+  if (!bottomNav) return;
+  const items = activePlanId === "tokyo-loop"
+    ? [
+        ["planning", "calendar", "规划"],
+        ["plan-destinations", "pin", "目的地"],
+        ["route-map-title", "compass", "地图"],
+        ["plan-transport", "route", "交通"],
+        ["plan-decisions", "check", "取舍"]
+      ]
+    : [
+        ["planning", "calendar", "规划"],
+        ["outline", "list", "大纲"],
+        ["route-map-title", "compass", "地图"],
+        ["transport-title", "route", "交通"],
+        ["optimization-title", "check", "取舍"]
+      ];
+
+  bottomNav.innerHTML = items
+    .map(
+      ([target, iconName, label], index) => `
+        <a href="#${escapeHtml(target)}" class="bottom-nav-item${index === 0 ? " is-active" : ""}"${index === 0 ? ' aria-current="location"' : ""}>
+          ${icon(iconName)}
+          <span>${escapeHtml(label)}</span>
+        </a>
+      `
+    )
+    .join("");
+}
+
+function syncThemeUI() {
+  const showHokkaido = activePlanId === "hokkaido-main";
+  hokkaidoThemeSections.forEach((section) => {
+    section.hidden = !showHokkaido;
+  });
+  renderBottomNav();
+  renderRouteMapOverview();
 }
 
 function selectPlanning(planId, updateUrl = true) {
@@ -5766,6 +6625,7 @@ function selectPlanning(planId, updateUrl = true) {
   activePlanId = planId;
   renderPlanningTabs();
   renderPlanningPanel();
+  syncThemeUI();
 
   if (updateUrl) {
     const url = new URL(window.location.href);
@@ -5947,13 +6807,16 @@ function renderDetailSections(item) {
   const allSections = [...guideSections, ...item.sections].filter((section) => section.items?.length);
   const renderedSections = allSections
     .map(
-      (section) => `
-        <section>
-          <h3>${escapeHtml(section.title)}</h3>
+      (section, index) => `
+        <details class="modal-detail-section"${index < 2 ? " open" : ""}>
+          <summary>
+            <h3>${escapeHtml(section.title)}</h3>
+            ${icon("plus")}
+          </summary>
           <ul>
             ${section.items.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
           </ul>
-        </section>
+        </details>
       `
     );
   const transportInsertIndex = guideSections.findIndex((section) => section.title === "交通要点") + 1;
@@ -6087,30 +6950,52 @@ function routeMapSegmentStyle(kind) {
   }
 }
 
+function getActiveRouteMapConfig() {
+  if (activePlanId === "tokyo-loop") {
+    return {
+      title: "东京进出真实路线",
+      subtitle: "看清唯一北向支线与一路南下关系",
+      note: "轻井泽先北上并回东京接力，之后只向横滨、镰仓和东伊豆南下。伊豆高原与下田是二选一。",
+      points: tokyoRouteMapPoints,
+      segments: tokyoRouteMapSegments,
+      actions: tokyoRouteMapActions,
+      sequence: tokyoRouteMapSequence.map(([order, label]) => ({ order, label })),
+      legend: [["新干线往返", "cross"], ["JR短线", "jr"], ["踊り子 / 伊豆急", "liner"]]
+    };
+  }
+
+  return {
+    title: "北海道到东京真实路线",
+    subtitle: "先看地理，再判断是否绕路",
+    note: "编号顺序 1 → 6，点位直接打开对应基地或交通详情。",
+    points: realRouteMapPoints,
+    segments: realRouteMapSegments,
+    actions: routeMapActions,
+    sequence: realRouteMapPoints.slice().sort((a, b) => a.order - b.order).map((point) => ({ order: routeMapOrderLabel(point.order), label: point.label })),
+    legend: [["JR 主干", "jr"], ["Liner 接驳", "liner"], ["巴士/预约", "warning"], ["青函跨海", "cross"]]
+  };
+}
+
 function renderRouteMapOverview() {
   if (!routeMapOverview) return;
+  const config = getActiveRouteMapConfig();
+  const mapTitle = document.querySelector("#route-map-title");
+  const mapSubtitle = mapTitle?.parentElement?.querySelector("p");
+  if (mapTitle) mapTitle.textContent = config.title;
+  if (mapSubtitle) mapSubtitle.textContent = config.subtitle;
 
-  const routeMapLegend = [
-    ["JR 主干", "jr"],
-    ["Liner 接驳", "liner"],
-    ["巴士/预约", "warning"],
-    ["青函跨海", "cross"]
-  ];
-
-  const routeSequenceMarkup = realRouteMapPoints
-    .slice()
-    .sort((a, b) => a.order - b.order)
+  const routeSequenceMarkup = config.sequence
     .map(
       (point) => `
-        <button type="button" class="route-map-sequence-item" data-route-target="${escapeHtml(point.target)}">
-          <span class="route-map-sequence-order">${escapeHtml(routeMapOrderLabel(point.order))}</span>
+        <span class="route-map-sequence-item">
+          <span class="route-map-sequence-order">${escapeHtml(point.order)}</span>
           <span class="route-map-sequence-name">${escapeHtml(point.label)}</span>
-        </button>
+        </span>
       `
     )
     .join("");
 
-  const routeMapActionsMarkup = routeMapActions
+  const routeMapActionsMarkup = config.actions
     .map(
       (action) => `
         <button type="button" class="route-map-chip" data-route-target="${escapeHtml(action.target)}">
@@ -6126,13 +7011,13 @@ function renderRouteMapOverview() {
       <div class="route-map-head">
         <div class="route-map-note">
           <strong>真实地图 / OpenStreetMap</strong>
-          <span>可拖动、可缩放、点位直接打开详情。线条只负责看旅程顺序和绕路感，不是枢纽示意图。</span>
+          <span>${escapeHtml(config.note)}</span>
         </div>
         <div class="route-map-sequence" aria-label="旅程顺序">
           ${routeSequenceMarkup}
         </div>
         <div class="route-map-legend" aria-label="路线图例">
-          ${routeMapLegend
+          ${config.legend
             .map(
               ([label, tone]) => `
                 <span class="route-map-legend-item">
@@ -6159,10 +7044,10 @@ function renderRouteMapOverview() {
     </div>
   `;
 
-  initRealRouteMap();
+  initRealRouteMap(config);
 }
 
-function initRealRouteMap() {
+function initRealRouteMap(config) {
   const mapHost = document.querySelector("#realRouteMap");
   const status = document.querySelector("#routeMapStatus");
   if (!mapHost) return;
@@ -6205,12 +7090,12 @@ function initRealRouteMap() {
 
   const bounds = L.latLngBounds([]);
 
-  realRouteMapSegments.forEach((segment) => {
+  config.segments.forEach((segment) => {
     const polyline = L.polyline(segment.latlngs, routeMapSegmentStyle(segment.kind)).addTo(map);
     bounds.extend(polyline.getBounds());
   });
 
-  realRouteMapPoints.forEach((point) => {
+  config.points.forEach((point) => {
     const marker = L.marker([point.lat, point.lng], {
       icon: L.divIcon({
         className: "route-map-divicon",
@@ -6411,9 +7296,34 @@ function jumpToRouteTarget(target) {
 }
 
 document.addEventListener("click", (event) => {
+  const bottomNavItem = event.target.closest(".bottom-nav-item");
+  if (bottomNavItem) {
+    bottomNav?.querySelectorAll(".bottom-nav-item").forEach((item) => {
+      const active = item === bottomNavItem;
+      item.classList.toggle("is-active", active);
+      if (active) item.setAttribute("aria-current", "location");
+      else item.removeAttribute("aria-current");
+    });
+  }
+
   const planButton = event.target.closest("[data-plan-id]");
   if (planButton) {
     selectPlanning(planButton.dataset.planId);
+    return;
+  }
+
+  const optionFilterButton = event.target.closest("[data-option-filter]");
+  if (optionFilterButton) {
+    activeTokyoOptionFilter = optionFilterButton.dataset.optionFilter || "strong";
+    document.querySelectorAll("[data-option-filter]").forEach((button) => {
+      const active = button.dataset.optionFilter === activeTokyoOptionFilter;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelectorAll("[data-option-area]").forEach((destination) => {
+      const slot = destination.querySelector(".plan-option-slot");
+      if (slot) slot.innerHTML = renderTokyoOptionList(destination.dataset.optionArea);
+    });
     return;
   }
 
@@ -6477,8 +7387,8 @@ document.addEventListener("keydown", (event) => {
 
 renderPlanningTabs();
 renderPlanningPanel();
+syncThemeUI();
 renderTransportAudit();
-renderRouteMapOverview();
 renderTransfers();
 renderBusTransfers();
 renderLongMoveComfort();

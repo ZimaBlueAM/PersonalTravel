@@ -140,7 +140,7 @@
         <div class="plan-panel" id="planPanel" role="tabpanel" tabindex="0"></div>
       </section>
 
-      <section class="outline-board" id="outline" aria-labelledby="outline-title">
+      <section class="outline-board" id="outline" aria-labelledby="outline-title" data-theme-section="hokkaido">
         <div class="section-heading outline-heading">
           <span class="heading-icon" aria-hidden="true"><svg><use href="#i-list"></use></svg></span>
           <div>
@@ -170,7 +170,7 @@
         <div class="route-map-overview" id="routeMapOverview"></div>
       </section>
 
-      <section class="transport-board" aria-labelledby="transport-title">
+      <section class="transport-board" aria-labelledby="transport-title" data-theme-section="hokkaido">
         <div class="section-heading">
           <span class="heading-icon" aria-hidden="true"><svg><use href="#i-route"></use></svg></span>
           <div>
@@ -182,7 +182,7 @@
         <div class="transfer-list" id="transferList"></div>
       </section>
 
-      <section class="bus-board" aria-labelledby="bus-title">
+      <section class="bus-board" aria-labelledby="bus-title" data-theme-section="hokkaido">
         <div class="section-heading">
           <span class="heading-icon is-quiet" aria-hidden="true"><svg><use href="#i-bus"></use></svg></span>
           <div>
@@ -193,7 +193,7 @@
         <div class="transfer-list" id="busTransferList"></div>
       </section>
 
-      <section class="comfort-board" aria-labelledby="comfort-title">
+      <section class="comfort-board" aria-labelledby="comfort-title" data-theme-section="hokkaido">
         <div class="section-heading">
           <span class="heading-icon is-quiet" aria-hidden="true"><svg><use href="#i-clock"></use></svg></span>
           <div>
@@ -204,7 +204,7 @@
         <div class="optimization-list" id="comfortList"></div>
       </section>
 
-      <section class="adult-board" aria-labelledby="adult-title">
+      <section class="adult-board" aria-labelledby="adult-title" data-theme-section="hokkaido">
         <div class="section-heading">
           <span class="heading-icon" aria-hidden="true"><svg><use href="#i-compass"></use></svg></span>
           <div>
@@ -217,7 +217,7 @@
         <div class="adult-list" id="adultRoutePlan"></div>
       </section>
 
-      <section class="optimization-board" aria-labelledby="optimization-title">
+      <section class="optimization-board" aria-labelledby="optimization-title" data-theme-section="hokkaido">
         <div class="section-heading">
           <span class="heading-icon is-quiet" aria-hidden="true"><svg><use href="#i-check"></use></svg></span>
           <div>
@@ -229,28 +229,7 @@
       </section>
     </main>
 
-    <nav class="bottom-nav" aria-label="页面导航">
-      <a href="#planning" class="bottom-nav-item">
-        <svg aria-hidden="true"><use href="#i-calendar"></use></svg>
-        <span>规划</span>
-      </a>
-      <a href="#outline" class="bottom-nav-item">
-        <svg aria-hidden="true"><use href="#i-list"></use></svg>
-        <span>大纲</span>
-      </a>
-      <a href="#route-map-title" class="bottom-nav-item">
-        <svg aria-hidden="true"><use href="#i-pin"></use></svg>
-        <span>地图</span>
-      </a>
-      <a href="#transport-title" class="bottom-nav-item">
-        <svg aria-hidden="true"><use href="#i-route"></use></svg>
-        <span>交通</span>
-      </a>
-      <a href="#optimization-title" class="bottom-nav-item">
-        <svg aria-hidden="true"><use href="#i-check"></use></svg>
-        <span>取舍</span>
-      </a>
-    </nav>
+    <nav class="bottom-nav" id="bottomNav" aria-label="页面导航"></nav>
 
     <div class="detail-modal" id="detailModal" hidden>
       <div class="modal-backdrop" data-close-modal aria-hidden="true"></div>

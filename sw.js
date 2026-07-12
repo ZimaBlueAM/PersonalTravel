@@ -1,4 +1,4 @@
-const CACHE_VERSION = "personaltravel-v12";
+const CACHE_VERSION = "personaltravel-v17";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
